@@ -1,0 +1,83 @@
+dispatch:
+  interval_seconds: 5
+  scenario_steps: 360      # 每个验收场景30分钟
+  warmup_steps: 120        # 先运行10分钟使SOC/机组状态连续，预热段不计分
+
+plant:
+  grid:
+    rated_capacity_kw: 1300
+  generator:
+    # 按4台300 kW级机组等值，燃油曲线同比例缩放。
+    rated_power_kw: 1200
+    minimum_stable_power_kw: 240
+    ramp_kw_per_step: 120
+  storage:
+    rated_power_kw: 500
+    energy_capacity_kwh: 133
+    soc_initial: 0.65
+    soc_min: 0.15
+    soc_max: 0.90
+    charge_efficiency: 0.95
+    discharge_efficiency: 0.95
+
+cost:
+  grid_price_yuan_per_kwh: 0.75
+  diesel_price_yuan_per_l: 7.50
+  storage_degradation_yuan_per_kwh: 0.15
+  unserved_energy_penalty_yuan_per_kwh: 100.0
+
+robust_mpc:
+  # 项目预测主链；权重仅由验证集学习，不包含 PatchTST/iTransformer 对手。
+  forecast_model: Causal-ErrorFeedback-Ensemble
+  fixed_reserve_kw: 10.0
+  forecast_disagreement_weight: 0.25
+  deterministic_terminal_soc_drop: 0.025
+  # 鲁棒方法要求滚动时域末端SOC不低于当前值，防止短视地提前耗尽储能。
+  robust_terminal_soc_drop: 0.005
+  # 平时保电、风险时释能：高风险允许更大SOC下降，优先降低未供电。
+  risk_terminal_soc_drop:
+    "0": 0.002
+    "1": 0.005
+    "2": 0.015
+    "3": 0.030
+
+scenario_cvar_mpc:
+  # 强对手：多模型轨迹作为场景，对未供电成本的90%CVaR显式惩罚。
+  forecast_members:
+    - Persistence
+    - Validation-Weighted-Ensemble
+    - PatchTST
+    - iTransformer
+    - StateAware-TCN-Attention
+    - StateAware-Patch-Transformer
+  alpha: 0.90
+  weight: 1.0
+  terminal_soc_drop: 0.005
+  risk_adaptive:
+    # 风险升高时增加尾部关注并逐级释放可用储能。
+    alpha_by_level:
+      "0": 0.90
+      "1": 0.90
+      "2": 0.925
+      "3": 0.95
+    weight_by_level:
+      "0": 1.00
+      "1": 1.00
+      "2": 1.50
+      "3": 2.00
+    terminal_soc_drop_by_level:
+      "0": 0.005
+      "1": 0.010
+      "2": 0.020
+      "3": 0.030
+
+scenarios:
+  A_supply_adequate:
+    title: "场景A：综合供能充足的平稳工况"
+    grid_capacity_kw: 1300
+  B_constrained_impact:
+    title: "场景B：综合供能受限下的冲击负荷"
+    grid_capacity_kw: 900
+  C_emergency_supply:
+    title: "场景C：综合供能严重不足的应急工况"
+    grid_capacity_kw: 500

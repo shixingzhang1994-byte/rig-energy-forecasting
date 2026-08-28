@@ -1,0 +1,9 @@
+feature_analysis:
+  peak_quantile: 0.95
+  peak_release_ratio: 0.97
+  minimum_peak_duration_seconds: 10
+  impact_ramp_quantile: 0.99
+  minimum_impact_ramp_kw_per_s: 30.0
+  transition_window_seconds: 30
+  typical_window_minutes: 30
+  include_component_power: true

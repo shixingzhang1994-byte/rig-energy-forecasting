@@ -1,0 +1,67 @@
+metadata:
+  rig_scope: "代表性250—375吨交流电驱陆地钻机；不是特定现场型号"
+  reviewed_on: "2026-08-27"
+  rule: "厂家额定值用于设备上限，论文/专利用于运行区间；未有公开值的噪声参数明确标为工程假设"
+
+parameters:
+  - parameter: total_installed_supply_capacity
+    public_value: "2—3 MW"
+    selected_value: "仿真总功率保护上限2.2 MW"
+    source_type: peer_reviewed_paper
+    source_url: "https://www.mdpi.com/1996-1073/12/4/606"
+    confidence: high
+  - parameter: rig_base_load
+    public_value: "约600—800 kW；另一代表性表述约400—600 kW"
+    selected_value: "由辅助系统与各设备待机功率叠加生成，不作为硬常数"
+    source_type: patent
+    source_url: "https://patents.google.com/patent/US8446037B2/en"
+    confidence: medium
+  - parameter: daily_average_power
+    public_value: "20台钻机研究中约350—500 kW，随钻机类型和井复杂度变化"
+    selected_value: "用于结果合理性对照，不强制拟合；当前对象为较大功率等级钻机"
+    source_type: peer_reviewed_paper
+    source_url: "https://link.springer.com/article/10.1007/s13202-021-01248-5"
+    confidence: high
+  - parameter: intermittent_peak_load
+    public_value: "典型1.5 MW，最高约2.0 MW"
+    selected_value: "总功率峰值通常1.5—2.1 MW"
+    source_type: patent
+    source_url: "https://patents.google.com/patent/US8446037B2/en"
+    confidence: medium
+  - parameter: mud_pump_rating
+    public_value: "12-P-160/FD-1600为1600 hp（1193 kW）"
+    selected_value: "1193 kW，一台等效运行泵"
+    source_type: manufacturer_datasheet
+    source_url: "https://www.nov.com/products/mud-pumps-fluid-mixing-and-processing-systems"
+    confidence: high
+  - parameter: topdrive_rating
+    public_value: "TDS-1000/TDS-8S为1150 hp（约858 kW）"
+    selected_value: "858 kW，钻进负载率约28%—47%"
+    source_type: manufacturer_datasheet
+    source_url: "https://www.nov.com/products/top-drive-systems"
+    confidence: high
+  - parameter: drawworks_rating
+    public_value: "DSGD-375为1500 hp（约1119 kW）；DSGD-CX425最高2000 hp（1492 kW）"
+    selected_value: "1119 kW连续、1492 kW短时峰值"
+    source_type: manufacturer_datasheet
+    source_url: "https://www.nov.com/-/media/nov/files/products/rig/rig-equipment/drawworks-and-hoisting-systems/ac-gear-driven-drawworks-spec-sheet.pdf"
+    confidence: high
+  - parameter: tripping_load_period
+    public_value: "绞车脉冲周期约2—4 min；另一研究给出0到最大负荷变化约5—7 min"
+    selected_value: "主周期5—7 min，短时动作叠加"
+    source_type: peer_reviewed_papers
+    source_url: "https://www.mdpi.com/1996-1073/12/4/606"
+    supporting_url: "https://www.mdpi.com/1996-1073/15/5/1865"
+    confidence: high
+  - parameter: storage_transient_support
+    public_value: "超级电容1000 kW/3 s，电池500 kW/120 s，133 kWh，回充约133 kW/180 s"
+    selected_value: "储能额定500 kW、133 kWh，并在风险调度中保留SOC约束"
+    source_type: peer_reviewed_paper
+    source_url: "https://link.springer.com/article/10.1007/s13202-021-01248-5"
+    confidence: high
+  - parameter: measurement_noise_and_missingness
+    public_value: "未找到与目标SCADA同型号的公开误差分布"
+    selected_value: "12 kW白噪声、8 kW慢漂移、0.5 kW量化、短缺失块"
+    source_type: engineering_assumption
+    source_url: null
+    confidence: low

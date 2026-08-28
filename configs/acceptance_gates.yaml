@@ -1,0 +1,16 @@
+official_taskbook:
+  minimum_supply_unit_models: 3
+  minimum_typical_scenarios: 3
+
+# 以下是研发内部质量门槛，不冒充任务书原文指标。
+internal_quality_gates:
+  forecast_r2_minimum: 0.95
+  forecast_mae_improvement_over_persistence_minimum: 0.30
+  risk_macro_f1_minimum: 0.60
+  risk_high_recall_minimum: 0.85
+  scenario_regime_purity_minimum: 0.95
+  soc_minimum_pct: 15.0
+  soc_maximum_pct: 90.0
+  capacity_tolerance_kw: 0.001
+  zero_unserved_tolerance_kwh: 0.001
+  emergency_safety_degradation_tolerance_ratio: 0.001
