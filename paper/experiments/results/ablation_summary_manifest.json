@@ -1,0 +1,29 @@
+{
+  "analysis_type": "paper_side_frozen_holdout_ablation_summary",
+  "protocol": "V15 generator-first reserve",
+  "seeds": [
+    20261011,
+    20261012
+  ],
+  "sources": [
+    {
+      "path": "./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/method_summary.csv",
+      "sha256": "fd61e3523e89b175718234e1090700f1213d46565894c06ac626919fdeb08f8a"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/method_summary.csv",
+      "sha256": "e92c318cace2f300dd3e60710b84be653c287f14e84a013122664401586f7a45"
+    }
+  ],
+  "method_interpretations": {
+    "ML-Robust-MPC": "robust baseline without scenario CVaR or SOC supervisory switching",
+    "Scenario-CVaR-MPC": "static scenario-CVaR without risk adaptation or SOC supervisory switching",
+    "Risk-Adaptive-CVaR-MPC": "risk-adaptive scenario-CVaR without SOC supervisory switching",
+    "Risk-SOC-Supervisory-MPC": "complete risk-adaptive CVaR plus SOC supervisory controller"
+  },
+  "not_isolated_by_this_summary": [
+    "emergency protection fully disabled",
+    "forecast uncertainty envelope fully disabled",
+    "independent full MILP reimplementation"
+  ]
+}

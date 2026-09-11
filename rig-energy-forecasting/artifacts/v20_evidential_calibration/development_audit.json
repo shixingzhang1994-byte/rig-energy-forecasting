@@ -1,0 +1,72 @@
+{
+  "protocol_id": "V20-CONFLICT-CALIBRATION-20260909",
+  "development_freeze_sha256": "6f3dff8c8acf714222195697d3153748f1ddf652d7eb82dd1db8463cce553b6a",
+  "candidate_results_sha256": "c1baf7ac615f6222626e3a17c51d45f53021a76ff77fe36b70a495c97a8263ef",
+  "frozen_file_hashes_pass": true,
+  "candidate_count": 12,
+  "eligible_candidate_count": 0,
+  "v20_decision": "stop_before_holdout_no_candidate_passed_all_hard_gates",
+  "best_probability_candidate_descriptive_only": {
+    "candidate_index": 9,
+    "combination_rule": "dempster_normalized",
+    "temperature": 0.5,
+    "mean_calibrated_brier": 0.03813938119609869,
+    "mean_baseline_brier": 0.0443016449245908,
+    "mean_brier_delta": -0.0061622637284921185,
+    "mean_macro_f1_delta": 0.008701394342034457,
+    "per_seed": [
+      {
+        "seed": 20261034,
+        "baseline_macro_f1": 0.8067253089262965,
+        "candidate_macro_f1": 0.8191105825346137,
+        "macro_f1_delta": 0.012385273608317204,
+        "baseline_brier": 0.0360846719483036,
+        "candidate_brier": 0.0365693574498354,
+        "brier_delta": 0.0004846855015318008,
+        "high_risk_recall": 0.9879211697393515,
+        "severe_recall": 0.9856353591160221
+      },
+      {
+        "seed": 20261035,
+        "baseline_macro_f1": 0.7920649529844637,
+        "candidate_macro_f1": 0.786993809240285,
+        "macro_f1_delta": -0.005071143744178719,
+        "baseline_brier": 0.04522672904383581,
+        "candidate_brier": 0.03419566216152527,
+        "brier_delta": -0.011031066882310543,
+        "high_risk_recall": 0.9847993740918743,
+        "severe_recall": 0.9888156345655758
+      },
+      {
+        "seed": 20261036,
+        "baseline_macro_f1": 0.7768114891077359,
+        "candidate_macro_f1": 0.7729726593542404,
+        "macro_f1_delta": -0.0038388297534954763,
+        "baseline_brier": 0.0634297995971856,
+        "candidate_brier": 0.05343553670349342,
+        "brier_delta": -0.00999426289369218,
+        "high_risk_recall": 0.9759690858591957,
+        "severe_recall": 0.9730878186968839
+      },
+      {
+        "seed": 20261037,
+        "baseline_macro_f1": 0.7519341359326073,
+        "candidate_macro_f1": 0.7832644131901021,
+        "macro_f1_delta": 0.03133027725749482,
+        "baseline_brier": 0.03246537910903822,
+        "candidate_brier": 0.028356968469540667,
+        "brier_delta": -0.004108410639497552,
+        "high_risk_recall": 0.9968021456571075,
+        "severe_recall": 0.9938863708232318
+      }
+    ]
+  },
+  "probability_numerical_audit": {
+    "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+    "minimum_probability": 0.0007137391890938628,
+    "maximum_probability": 0.9907086190402311,
+    "pass": true
+  },
+  "interpretation": "Probability calibration improved on average, but the frozen V20 classification-superiority and recall gates were not all met.",
+  "holdout_opened": false
+}

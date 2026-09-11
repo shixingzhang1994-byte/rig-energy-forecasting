@@ -1,0 +1,17 @@
+{
+  "weights": {
+    "XGBoost": 0.01926818585649445,
+    "LSTM": 0.1958180005746071,
+    "TCN": 0.7468258113919861,
+    "StateAware-TCN-Attention": 0.03807773119991006,
+    "StateAware-Patch-Transformer": 8.69442293943582e-06,
+    "StateAware-DualBranch-Patch-Transformer": 1.5765540628255536e-06
+  },
+  "fit": {
+    "fit_method": "validation_slsqp",
+    "validation_objective": 25820.544166863136,
+    "l2_penalty": 0.0001,
+    "optimizer_success": true,
+    "optimizer_message": "Optimization terminated successfully"
+  }
+}

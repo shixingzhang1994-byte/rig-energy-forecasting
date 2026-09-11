@@ -1,0 +1,66 @@
+{
+  "analysis": "V19 frozen evidential-risk prospective holdouts",
+  "unit_of_analysis": "seed; three scenarios remain clustered within seed",
+  "seeds": [
+    20261022,
+    20261024,
+    20261025,
+    20261027,
+    20261028,
+    20261029
+  ],
+  "n": 6,
+  "aggregate": {
+    "baseline_unserved_energy_kwh": 335.2325760658882,
+    "evidential_unserved_energy_kwh": 335.2325760658882,
+    "evidential_minus_baseline_unserved_energy_kwh": 0.0,
+    "baseline_risk_adjusted_cost_yuan": 42420.31158122514,
+    "evidential_risk_adjusted_cost_yuan": 42419.01188739086,
+    "risk_adjusted_cost_ratio": 0.9999693615207942,
+    "physical_action_changed_rows": 53,
+    "physical_action_total_rows": 6480,
+    "physical_action_change_rate": 0.008179012345679013
+  },
+  "paired_unserved_effect": {
+    "mean_kwh_per_seed": 0.0,
+    "sample_sd_kwh": 0.0,
+    "median_kwh": 0.0,
+    "seed_bootstrap_95_interval_kwh": [
+      0.0,
+      0.0
+    ],
+    "exact_two_sided_sign_flip_p": 1.0,
+    "improved_tied_worse": [
+      0,
+      6,
+      0
+    ],
+    "interpretation": "null_within_tolerance"
+  },
+  "paired_cost_effect": {
+    "mean_yuan_per_seed": -0.2166156390466464,
+    "sample_sd_yuan": 0.690796265249969,
+    "exact_two_sided_sign_flip_p": 0.4375
+  },
+  "mean_risk_metrics": {
+    "baseline_macro_f1": 0.7477649487601933,
+    "evidential_macro_f1": 0.7724028661945822,
+    "baseline_high_risk_recall": 0.9862634036307446,
+    "evidential_high_risk_recall": 0.9859248298918212,
+    "mean_ignorance": 0.20644034948338544,
+    "mean_conflict": 0.07315670427804373
+  },
+  "checks": {
+    "exact_first_six_eligible_seeds": true,
+    "aggregate_unserved_not_worse": true,
+    "aggregate_cost_ratio_within_cap": true,
+    "all_physical_audits_pass": true,
+    "nonzero_physical_action_change": true
+  },
+  "status": "pass",
+  "claim_boundary": [
+    "Risk recognition, physical action, and outcome effects are distinct estimands.",
+    "A null shortage effect cannot be described as control improvement.",
+    "The evidence is prospective within the declared synthetic generator, not field validation."
+  ]
+}

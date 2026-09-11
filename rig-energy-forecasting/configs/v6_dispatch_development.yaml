@@ -1,0 +1,26 @@
+protocol:
+  name: v6-validation-calibrated-dispatch-envelope
+  development_seeds: [20260901, 20260902]
+  holdout_seeds: [20260903, 20260904]
+  v5_test_seed_excluded_from_selection: 20260825
+  simulation_days: 14
+  coverage_candidates: [0.80, 0.90, 0.95, 0.975]
+  risk_split:
+    train_fraction: 0.30
+    val_fraction: 0.20
+    test_fraction: 0.50
+
+selection:
+  primary_metric: risk_adjusted_cost_yuan
+  safety_metric: unserved_energy_kwh
+  safety_rule: proposed_must_not_exceed_rule_based
+  aggregation: mean_across_development_seeds
+  tie_breaker: lower_equivalent_cost_yuan
+  holdout_labels_used_for_selection: false
+
+claim_boundary:
+  - "开发种子只用于选择覆盖率，不用于最终竞争性结论。"
+  - "留出种子在选择完成前不得运行或查看。"
+  - "四级风险必须在训练/验证/测试三段全部出现，不允许放宽覆盖门槛。"
+  - "每种子14天，用数据时长提高作业×供给联合场景覆盖，不因单个种子放宽纯度门槛。"
+  - "仅限合成数据，不代表现场SCADA有效性。"

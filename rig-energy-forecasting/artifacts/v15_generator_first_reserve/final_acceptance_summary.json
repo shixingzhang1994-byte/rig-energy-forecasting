@@ -1,0 +1,222 @@
+{
+  "protocol": "v15-generator-first-storage-reserve",
+  "status": "internal_public_evidence_simulation_acceptance_pass",
+  "development_seeds": [
+    20261008,
+    20261009
+  ],
+  "holdout_seeds": [
+    20261011,
+    20261012
+  ],
+  "all_declared_seeds_eligible_and_passed": true,
+  "freeze_manifest_path": "artifacts/v15_generator_first_reserve/freeze_manifest.json",
+  "freeze_manifest_sha256": "f67853d06504ac93c478b26146acee76503b8f00085f15f63952779256a08f6d",
+  "evidence_records": [
+    {
+      "seed": 20261008,
+      "result_path": "artifacts/v15_generator_first_reserve/seed_20261008/result.json",
+      "result_sha256": "7ccdd971f768047f7fa35cf3fe33afbee5e7ec33c34daec01669deff279b9e7c",
+      "evidence_manifest_path": "artifacts/v15_generator_first_reserve/seed_20261008/evidence_manifest.json",
+      "evidence_manifest_sha256": "8d713ecfbaf100c8a6f33ecfcb9a61b6be2dfaf6cc50418fa6d461a377dae496"
+    },
+    {
+      "seed": 20261009,
+      "result_path": "artifacts/v15_generator_first_reserve/seed_20261009/result.json",
+      "result_sha256": "6c9df5f0e41cd7ec829ca2c0d3e90e05d07d03f8c5a761af618c4fd912023a6c",
+      "evidence_manifest_path": "artifacts/v15_generator_first_reserve/seed_20261009/evidence_manifest.json",
+      "evidence_manifest_sha256": "0dee35ee2db1b08d68d99237aef6a5f93344d7e34bc27c3c721c823844f06357"
+    },
+    {
+      "seed": 20261011,
+      "result_path": "artifacts/v15_generator_first_reserve/seed_20261011/result.json",
+      "result_sha256": "40327f08d01e02e949d22c97af5b746ade247fa3ee513f9219916785a8e89d74",
+      "evidence_manifest_path": "artifacts/v15_generator_first_reserve/seed_20261011/evidence_manifest.json",
+      "evidence_manifest_sha256": "5bb009050b19c433c69dd1adbb9d3cbbfacd228f7cc1c27c43a836286c4de222"
+    },
+    {
+      "seed": 20261012,
+      "result_path": "artifacts/v15_generator_first_reserve/seed_20261012/result.json",
+      "result_sha256": "f3a71c387fba5b849338b88a1e23101da5aa2948ed11ed57e0c77a471e7c436c",
+      "evidence_manifest_path": "artifacts/v15_generator_first_reserve/seed_20261012/evidence_manifest.json",
+      "evidence_manifest_sha256": "95773a8c8ca97c02af0df311a3c80a59b48f24400feea97c631f7379606860d0"
+    }
+  ],
+  "holdout_results": [
+    {
+      "seed": 20261011,
+      "phase": "holdout",
+      "eligible": true,
+      "risk_transition_feature": {
+        "source": "history_transition_flags",
+        "causal": true,
+        "future_transition_flags_excluded": true
+      },
+      "proposed_method": "Risk-SOC-Supervisory-MPC",
+      "proposed_unserved_energy_kwh": 104.55804005437258,
+      "rule_unserved_energy_kwh": 104.81141640342344,
+      "ml_robust_unserved_energy_kwh": 104.77690744239827,
+      "risk_adjusted_cost_ratio_vs_ml_robust": 0.9914150305513239,
+      "scenario_regret_reference_methods": [
+        "Rule-Based",
+        "ML-Robust-MPC"
+      ],
+      "scenario_unserved_regret_kwh_vs_best_reference": {
+        "A_stable_drilling": 0.0,
+        "B_connection_transition": 0.0,
+        "C_tripping_impact": -0.2092337898441201
+      },
+      "worst_scenario_unserved_regret_kwh_vs_ml_robust": 0.0,
+      "max_decision_seconds": 0.2122524800001883,
+      "physical_audit": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "checks": {
+        "aggregate_safety_noninferiority": true,
+        "single_scenario_regret_cap": true,
+        "risk_adjusted_cost_cap": true,
+        "real_time_latency": true,
+        "not_dominated_by_ml_robust": true,
+        "physical_feasibility": true
+      },
+      "overall_pass": true,
+      "reproduction_command": "python scripts/run_v15_dispatch_benchmark.py --predictions ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/source/forecast/forecast_predictions.npz --prediction-keys ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/source/forecast/forecast_prediction_keys.json --config ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/resolved_dispatch_config.yaml --risk-signals ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/risk/risk_predictions.csv --artifact-dir ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/dispatch",
+      "controller_delta": "committed_generator_before_storage",
+      "diagnostic_seed_excluded": 20261004,
+      "field_scada_claimed": false
+    },
+    {
+      "seed": 20261012,
+      "phase": "holdout",
+      "eligible": true,
+      "risk_transition_feature": {
+        "source": "history_transition_flags",
+        "causal": true,
+        "future_transition_flags_excluded": true
+      },
+      "proposed_method": "Risk-SOC-Supervisory-MPC",
+      "proposed_unserved_energy_kwh": 104.49349422272442,
+      "rule_unserved_energy_kwh": 107.02551675350271,
+      "ml_robust_unserved_energy_kwh": 105.81561814056666,
+      "risk_adjusted_cost_ratio_vs_ml_robust": 0.9863081758260768,
+      "scenario_regret_reference_methods": [
+        "Rule-Based",
+        "ML-Robust-MPC"
+      ],
+      "scenario_unserved_regret_kwh_vs_best_reference": {
+        "A_stable_drilling": 0.0,
+        "B_connection_transition": 0.0,
+        "C_tripping_impact": -1.3221239178422337
+      },
+      "worst_scenario_unserved_regret_kwh_vs_ml_robust": 0.0,
+      "max_decision_seconds": 0.187886355000046,
+      "physical_audit": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "checks": {
+        "aggregate_safety_noninferiority": true,
+        "single_scenario_regret_cap": true,
+        "risk_adjusted_cost_cap": true,
+        "real_time_latency": true,
+        "not_dominated_by_ml_robust": true,
+        "physical_feasibility": true
+      },
+      "overall_pass": true,
+      "reproduction_command": "python scripts/run_v15_dispatch_benchmark.py --predictions ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/source/forecast/forecast_predictions.npz --prediction-keys ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/source/forecast/forecast_prediction_keys.json --config ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/resolved_dispatch_config.yaml --risk-signals ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/risk/risk_predictions.csv --artifact-dir ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/dispatch",
+      "controller_delta": "committed_generator_before_storage",
+      "diagnostic_seed_excluded": 20261004,
+      "field_scada_claimed": false
+    }
+  ],
+  "holdout_method_totals": {
+    "Risk-SOC-Supervisory-MPC": {
+      "equivalent_cost_yuan": 2818.640994362213,
+      "risk_adjusted_cost_yuan": 23723.79442207191,
+      "unserved_energy_kwh": 209.051534277097,
+      "generator_startups": 45,
+      "diesel_fuel_l": 142.60829445915385,
+      "max_decision_seconds": 0.2122524800001883
+    },
+    "Rule-Based": {
+      "equivalent_cost_yuan": 3172.292504543414,
+      "risk_adjusted_cost_yuan": 24355.985820236026,
+      "unserved_energy_kwh": 211.83693315692614,
+      "generator_startups": 98,
+      "diesel_fuel_l": 158.4206196333075,
+      "max_decision_seconds": 9.417000001121778e-05
+    },
+    "ML-Robust-MPC": {
+      "equivalent_cost_yuan": 2931.6916961468273,
+      "risk_adjusted_cost_yuan": 23990.94425444332,
+      "unserved_energy_kwh": 210.59252558296492,
+      "generator_startups": 63,
+      "diesel_fuel_l": 142.34927390108498,
+      "max_decision_seconds": 0.1072002239998255
+    }
+  },
+  "holdout_comparison": {
+    "unserved_reduction_vs_rule_kwh": 2.785398879829131,
+    "unserved_reduction_vs_rule_pct": 1.3148787788415266,
+    "unserved_reduction_vs_ml_robust_kwh": 1.5409913058679194,
+    "unserved_reduction_vs_ml_robust_pct": 0.7317407403715434,
+    "risk_adjusted_cost_ratio_vs_ml_robust": 0.9888645553281243,
+    "equivalent_cost_reduction_vs_ml_robust_pct": 3.8561592930525013
+  },
+  "supply_demand_indicator_formulas": {
+    "supply_margin_kw": "available_supply_kw - required_power_kw",
+    "load_deficit_kw": "max(-supply_margin_kw, 0)",
+    "power_redundancy_kw": "max(supply_margin_kw, 0)"
+  },
+  "supply_demand_indicator_summary_path": "artifacts/v15_generator_first_reserve/supply_demand_indicator_summary.csv",
+  "supply_demand_indicator_summary_sha256": "1a7cc4f3d2d40a547589576e74f6816235fff1394e1b7d70d8d9c014297a2ff9",
+  "supply_demand_indicators": [
+    {
+      "seed": 20261011,
+      "sample_count": 27151,
+      "mean_supply_margin_kw": 596.4520147614392,
+      "minimum_supply_margin_kw": -970.25305,
+      "mean_supply_margin_ratio": 0.8868423486515771,
+      "load_deficit_sample_count": 7836,
+      "load_deficit_sample_fraction": 0.2886081543957865,
+      "mean_load_deficit_kw": 98.13664246968936,
+      "maximum_load_deficit_kw": 970.25305,
+      "mean_power_redundancy_kw": 694.5886572311296,
+      "maximum_power_redundancy_kw": 2044.7863
+    },
+    {
+      "seed": 20261012,
+      "sample_count": 27151,
+      "mean_supply_margin_kw": 531.3468193642079,
+      "minimum_supply_margin_kw": -887.94165,
+      "mean_supply_margin_ratio": 0.6924957862343784,
+      "load_deficit_sample_count": 8750,
+      "load_deficit_sample_fraction": 0.32227173953077237,
+      "mean_load_deficit_kw": 123.51210664283965,
+      "maximum_load_deficit_kw": 887.94165,
+      "mean_power_redundancy_kw": 654.8589260070511,
+      "maximum_power_redundancy_kw": 2031.6675
+    }
+  ],
+  "claim_boundary": {
+    "field_scada_validated": false,
+    "hardware_in_loop_validated": false,
+    "statistical_superiority_claimed": false,
+    "allowed_claim": "V15在公开证据约束合成仿真中完成两开发、冻结和两按序留出硬门，对两种强参考达到安全非劣并取得描述性小幅改善。"
+  }
+}

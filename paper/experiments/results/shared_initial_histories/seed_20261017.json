@@ -1,0 +1,108 @@
+{
+  "seed": "seed_20261017",
+  "purpose": "exact shared pre-window transition histories for independent paper baselines",
+  "scenarios": {
+    "A_stable_drilling": {
+      "warmup_steps": 120,
+      "policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 23.82061878831026,
+      "comparison_initial_generator_kw": 120.0,
+      "comparison_initial_generator_units": 1,
+      "startup_history": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "checks": {
+        "soc_matches_frozen_metadata": true,
+        "generator_kw_matches_frozen_metadata": true,
+        "units_match_frozen_metadata": true
+      }
+    },
+    "B_connection_transition": {
+      "warmup_steps": 120,
+      "policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 74.8596315033002,
+      "comparison_initial_generator_kw": 242.47952036472702,
+      "comparison_initial_generator_units": 2,
+      "startup_history": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "checks": {
+        "soc_matches_frozen_metadata": true,
+        "generator_kw_matches_frozen_metadata": true,
+        "units_match_frozen_metadata": true
+      }
+    },
+    "C_tripping_impact": {
+      "warmup_steps": 120,
+      "policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 75.01451329955385,
+      "comparison_initial_generator_kw": 0.0,
+      "comparison_initial_generator_units": 0,
+      "startup_history": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "checks": {
+        "soc_matches_frozen_metadata": true,
+        "generator_kw_matches_frozen_metadata": true,
+        "units_match_frozen_metadata": true
+      }
+    }
+  },
+  "source_hashes": {
+    "config": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+    "risk_signals": "19c3a2c011e21aedb8f96ecaa25bf9b45b23e6d393d0eabf25d6ffb5cde3ccf3",
+    "forecast_predictions": "244029e77674df87b2f5059614d5f3cbfb3dad0a43033391ba927d9ec52350ba",
+    "scenario_selection": "c6bcd5689fce94db7042081ae50bf2973af7927209085bb0867317edbc9a79ee"
+  }
+}

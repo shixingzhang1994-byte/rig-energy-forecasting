@@ -1,0 +1,74 @@
+protocol:
+  id: V17-USER-DESIGNATED-EXTERNAL-ACCEPTANCE-20260902
+  status: preregistered_before_execution
+  purpose: frozen_v15_release_test_on_user_designated_target_rig_data
+  data_usage_class: USER_DESIGNATED_TARGET_RIG_ACCEPTANCE_DATA
+  original_provenance_must_be_preserved: true
+  field_origin_claim_allowed: false
+  no_retraining: true
+  no_external_target_tuning: true
+  release_seed: 20261008
+
+paths:
+  data: ./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/10_canonical_observed_5s.csv.gz
+  release_root: artifacts/v15_generator_first_reserve/seed_20261008
+  artifact_dir: artifacts/v17_user_designated_external_acceptance
+
+data_handling:
+  expected_frequency_seconds: 5
+  supply_forward_fill_limit_steps: 12
+  supply_forward_fill_is_causal: true
+  forecast_target_interpolation_allowed: false
+  required_supply_columns:
+    - grid_available_capacity_kw
+    - generator_available_capacity_kw
+    - storage_soc_pct
+    - storage_available_discharge_power_kw
+
+forecast_release:
+  history_steps: 120
+  horizon_steps: 12
+  stride: 1
+  batch_size: 1024
+  primary_model: Causal-ErrorFeedback-Ensemble
+  primary_deployment_initialization: zero_bias_cold_start
+  warmup_excluded_samples: 12
+  secondary_model: Validation-Weighted-Ensemble
+  baseline_model: Persistence
+  peak_metric_definition: external_dataset_p90_descriptive_only
+
+risk_release:
+  model: Balanced-Ordinal-Safety-Max
+  role: frozen_dispatch_guard_and_external_risk_evaluation
+  reason: exactly_releasable_from_saved_balanced_and_ordinal_xgboost_models
+  unavailable_release_component: V15 Validation-Weighted-Ensemble calibration table was not persisted
+
+acceptance_gates:
+  forecast_primary_r2_min: 0.95
+  forecast_primary_mae_improvement_over_persistence_min: 0.30
+  forecast_predictions_must_be_finite: true
+  risk_macro_f1_min: 0.70
+  risk_high_recall_min: 0.80
+  risk_severe_recall_min: 0.80
+  dispatch_supervisory_unserved_energy_kwh_max: 0.0
+  dispatch_supervisory_critical_unserved_energy_kwh_max: 0.0
+
+expected_sha256:
+  data: 2d58aef196e19c7ba59ec60a13cd2857c49870dce7bb26895736f92f85b605b0
+  resolved_forecast_config.yaml: 76368c637db5d66d81e169a81dbc2371c3aacf120d198119a1da0bd31b4bdb73
+  resolved_risk_config.yaml: ab51ea2e220437fa37002253cb09866b475d415d96917a1cf2129b857fc2c1cb
+  resolved_dispatch_config.yaml: 04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0
+  forecast/models/xgboost_multi_horizon.joblib: 557c378558f254fe76679c90fdf3962cfc99322dec424cbdeb51493bbfdc96fd
+  forecast/models/lstm.pt: 9f8773a65a46cfb9221a450edeacb5cb1b168f4207654e107a5be77d3935eae0
+  forecast/models/tcn.pt: 1a36e6ac4eb2a8352ff34392bedeff193320ae5154ea2b2c2a4e9e4dc64c9aa4
+  forecast/models/patchtst.pt: 7f9e69e0fb0bef2442f1f741d50fd6a0e719619b1f4b02cb0a3810319d9f2acf
+  forecast/models/itransformer.pt: 5e818decca94872354622ae002bb126a795dcf036ddd41c46dbffd8e9d16bb42
+  forecast/models/stateaware_tcn_attention.pt: 144c682fff841c59442389cbc78bb7d3e02a76fd5046fd02794770a899c82294
+  forecast/models/stateaware_patch_transformer.pt: 7c68e9cc1e6261d1b32db3cc2395862a49134859b373236ef237140148e2856c
+  forecast/models/stateaware_dualbranch_patch_transformer.pt: 16e19f5bb715a2de58d097be8888cf12470f51279f6049ed7036598807f5a694
+  forecast/ensemble_weights.json: 0af75aebebfc89ce5dc1f3d0a7ee1942aecb17a625b1edc67bb637f9cca5f137
+  forecast/error_feedback.json: c1aa4922de2ce61e29d74acc22d5956af0e58167a4f1b8a2808d4af4791db73b
+  forecast/dispatch_uncertainty_envelope.json: 0edbd69ce3021c554819ff971165f80a0fa1d898b1fb5990a4603d66cac28bf7
+  risk/models/balanced_multiclass_xgboost_risk.joblib: f4b20beab8995e86d53972fb7660613c022286b38963692512a54e72512f35fe
+  risk/models/ordinal_xgboost_risk.joblib: a209bf3e5ecef8139f3ee78342cd1daff874194e23b45346cf8cc6f184414303
+  risk/operational_model_selection.json: 79ab39705c81272333758d7dce7974d2e0d8082418fd4c77553315bb7b8ff4fe

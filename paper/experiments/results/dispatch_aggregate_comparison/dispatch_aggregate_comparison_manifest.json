@@ -1,0 +1,25 @@
+{
+  "analysis_type": "paper_side_frozen_v15_dispatch_aggregate_figure",
+  "seeds": [
+    20261011,
+    20261012
+  ],
+  "methods": [
+    "Risk-SOC-Supervisory-MPC",
+    "ML-Robust-MPC",
+    "Rule-Based"
+  ],
+  "aggregation": "sum across the two frozen holdout method_summary.csv rows",
+  "sources": [
+    {
+      "path": "./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/method_summary.csv",
+      "sha256": "fd61e3523e89b175718234e1090700f1213d46565894c06ac626919fdeb08f8a"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261012/method_summary.csv",
+      "sha256": "e92c318cace2f300dd3e60710b84be653c287f14e84a013122664401586f7a45"
+    }
+  ],
+  "output": "./paper/experiments/results/dispatch_aggregate_comparison/dispatch_aggregate_comparison.png",
+  "claim_boundary": "descriptive simulation result; no field validation or statistical significance claim"
+}

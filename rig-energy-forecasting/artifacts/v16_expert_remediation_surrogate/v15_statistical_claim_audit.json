@@ -1,0 +1,16 @@
+{
+  "paired_units": 6,
+  "positive_units": 2,
+  "ties": 4,
+  "mean_improvement_kwh": 0.2552262846143923,
+  "median_improvement_kwh": 0.0,
+  "bootstrap_mean_ci_kwh": [
+    0.0,
+    0.6959342572284702
+  ],
+  "exact_two_sided_sign_flip_pvalue": 0.5,
+  "statistically_significant_at_0p05": false,
+  "sota_claim_allowed": false,
+  "allowed_claim": "冻结V15在两个合成留出上安全非劣并取得描述性小幅改善",
+  "forbidden_claim": "统计显著SOTA或普遍优于强基线"
+}

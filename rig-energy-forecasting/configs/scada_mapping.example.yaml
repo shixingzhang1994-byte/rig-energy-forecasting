@@ -1,0 +1,50 @@
+# 现场真实数据接入示例。左侧为项目统一字段，右侧改成现场 CSV/Excel 的实际列名。
+column_mapping:
+  timestamp: Time
+  total_active_power_kw: ActivePower
+  operation_state: OperationState
+  # 下列字段按现场实际情况选填；没有就保持注释，不影响负荷预测。
+  # auxiliary_power_kw: AuxiliaryPower
+  # mud_pump_power_kw: MudPumpPower
+  # topdrive_power_kw: TopDrivePower
+  # drawworks_power_kw: DrawworksPower
+  # grid_active_power_kw: GridPower
+  # grid_available_capacity_kw: GridCapacity
+  # generator_active_power_kw: GensetPower
+  # generator_available_capacity_kw: GensetCapacity
+  # storage_active_power_kw: StoragePower
+  # storage_soc_pct: StorageSOC
+  # storage_available_charge_power_kw: StorageChargeLimit
+  # storage_available_discharge_power_kw: StorageDischargeLimit
+  # 以下工艺字段为V2拟真器和后续机理增强预留，全部选填。
+  # well_depth_m: HoleDepth
+  # formation_hardness_index: FormationIndex
+  # pump_strokes_per_min: PumpSPM
+  # standpipe_pressure_mpa: StandpipePressure
+  # topdrive_rpm: TopDriveRPM
+  # hookload_pct: HookLoadPct
+  # hook_speed_m_per_s: HookSpeed
+  # rate_of_penetration_m_per_h: ROP
+
+# 左侧填现场原始工况值，右侧是项目标准工况。也支持 DRILL、TRIP 等厂家编码。
+state_value_mapping:
+  待机: idle
+  循环: circulation
+  钻进: drilling
+  接立根: connection
+  起下钻: tripping
+  维护: maintenance
+
+# 默认功率/容量字段沿用 adapter.power_unit；个别字段单位不同可在此覆盖。
+unit_mapping:
+  # total_active_power_kw: kW
+  # grid_active_power_kw: W
+  # storage_active_power_kw: kW
+
+adapter:
+  frequency_seconds: 5
+  timezone: Asia/Shanghai
+  timestamp_format: null
+  power_unit: kW          # 支持 W、kW、MW
+  max_interpolation_gap_steps: 3
+  default_operation_state: unknown

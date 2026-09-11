@@ -1,0 +1,61 @@
+{
+  "analysis_type": "orthogonal_risk_signal_ablation",
+  "seed": "seed_20261016",
+  "status": "paper_extension_not_original_v15_acceptance",
+  "neutralized_columns": [
+    "predicted_risk_level",
+    "dispatch_risk_level",
+    "reserve_adder_kw"
+  ],
+  "held_constant": [
+    "supply regime and dynamic capacity traces",
+    "selected scenario windows and shared warm-up",
+    "forecast members and uncertainty envelope",
+    "SOC thresholds and hysteresis",
+    "generator-first and grid-headroom reserve actions",
+    "plant, cost, and solver configuration"
+  ],
+  "scenario_selection_match": true,
+  "risk_on": {
+    "unserved_energy_kwh": 65.1934897034694,
+    "risk_adjusted_cost_yuan": 7853.151487113759,
+    "diesel_fuel_l": 55.88607088977844,
+    "generator_startups": 23.0,
+    "max_decision_seconds": 0.2739257939974777
+  },
+  "risk_off": {
+    "unserved_energy_kwh": 65.1934897034694,
+    "risk_adjusted_cost_yuan": 7853.516614453671,
+    "diesel_fuel_l": 55.96376825810012,
+    "generator_startups": 23.0,
+    "max_decision_seconds": 0.2946671179961413
+  },
+  "risk_on_minus_risk_off": {
+    "unserved_energy_kwh": 0.0,
+    "risk_adjusted_cost_yuan": -0.36512733991185087,
+    "diesel_fuel_l": -0.0776973683216795,
+    "generator_startups": 0.0,
+    "max_decision_seconds": -0.02074132399866363
+  },
+  "physical_audit": {
+    "max_power_balance_error_kw": 1.1368683772161603e-13,
+    "max_capacity_violation_kw": 0.0,
+    "max_soc_violation": 0.0,
+    "max_integer_commitment_error": 0.0,
+    "trajectory_count": 3,
+    "row_count": 1080,
+    "simultaneous_charge_discharge_count": 0,
+    "all_numeric_values_finite": true,
+    "physical_checks_pass": true
+  },
+  "source_hashes": {
+    "original_risk": "b207459acfaf992ce5a9fc7ad16a41946c75755b2967329a07ce910872730f6b",
+    "neutral_risk": "94bfb4c14284517af949912a3f6c648e8478e2a197e3ccbfb825bc916afc33d3",
+    "config": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+    "original_selection": "09c60cfddf0bb3cf091ee328bf2b74ed3c288ef7202ba0afdf3dbf62e6663a47",
+    "ablated_selection": "56aec35e253ffb316e0a69ec05e3c6c81e1e51163b95ed353ef80bdfb76e67a4",
+    "new_metrics": "3580331a3719f66178c7b78eae05e30a37386767d779b01f227db7fd876a6a5c"
+  },
+  "interpretation": "Paired mechanism diagnostic. A positive unserved-energy delta means the risk-on controller reduced shortage relative to the otherwise identical risk-off controller.",
+  "reproduction_command": "python ./rig-energy-forecasting/scripts/run_v15_dispatch_benchmark.py --predictions ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/source/forecast/forecast_predictions.npz --prediction-keys ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/source/forecast/forecast_prediction_keys.json --config ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/resolved_dispatch_config.yaml --artifact-dir ./paper/experiments/results/risk_signal_ablation/seed_20261016/dispatch --risk-signals ./paper/experiments/results/risk_signal_ablation/seed_20261016/risk_predictions_neutral.csv"
+}

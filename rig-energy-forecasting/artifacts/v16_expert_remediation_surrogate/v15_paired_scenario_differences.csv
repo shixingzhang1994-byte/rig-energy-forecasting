@@ -1,0 +1,7 @@
+﻿seed,scenario,project_unserved_kwh,best_reference,best_reference_unserved_kwh,improvement_kwh
+20261011,A_stable_drilling,0.0,Rule-Based,0.0,0.0
+20261011,B_connection_transition,1.671336792263419,ML-Robust-MPC,1.671336792263419,0.0
+20261011,C_tripping_impact,102.88670326210917,ML-Robust-MPC,103.09593705195329,0.2092337898441201
+20261012,A_stable_drilling,0.0,Rule-Based,0.0,0.0
+20261012,B_connection_transition,0.0,Rule-Based,0.0,0.0
+20261012,C_tripping_impact,104.49349422272442,ML-Robust-MPC,105.81561814056666,1.3221239178422337

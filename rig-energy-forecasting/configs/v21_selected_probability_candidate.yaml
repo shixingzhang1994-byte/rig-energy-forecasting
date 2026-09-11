@@ -1,0 +1,39 @@
+candidate_id: V21-Dempster-T050
+source_v20_candidate_index: 9
+combination_rule: dempster_normalized
+discounts:
+  learned_probability: 0.6130381031216257
+  margin_interval: 0.47163329729867787
+  low_soc: 0.2206718206205288
+  healthy_soc: 0.3084098826700752
+  grid_derating: 0.4182307892098369
+  rapid_ramp: 0.18391741584370205
+margin_thresholds:
+  normal_margin_ratio: 0.15
+  watch_margin_ratio: 0.05
+  warning_margin_ratio: 0.00
+uncertainty_interval_scale: 1.2752330633292377
+soc_warning_pct: 35.00
+soc_healthy_pct: 65.00
+grid_derating_threshold_kw: 700.00
+ramp_threshold_kw_per_s: 25.00
+decision:
+  high_score_threshold: 0.5641617263380043
+  severe_score_threshold: 0.308562007330501
+  conflict_weight: 0.27106826627104563
+reserve_adder_kw:
+  0: 0.00
+  1: 30.00
+  2: 80.00
+  3: 150.00
+calibration:
+  method: scalar_temperature_power
+  temperature: 0.50
+  fit_scope: V20_development_seeds_20261034_to_20261037_only
+  dispatch_uses: raw_pignistic_probability
+selection_provenance:
+  v20_protocol: configs/v20_evidential_calibration_protocol.yaml
+  v20_development_audit: artifacts/v20_evidential_calibration/development_audit.json
+  v20_original_gate_status: failed_no_candidate_eligible
+  v21_role: prospectively_frozen_calibration_only_candidate
+  V19_or_V21_holdout_labels_used: false

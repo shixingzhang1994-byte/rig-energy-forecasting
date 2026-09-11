@@ -1,0 +1,110 @@
+{
+  "causality_rule": "sample i only uses residuals from samples <= i-feedback_delay_steps",
+  "feedback_delay_steps": 12,
+  "selection_data": "validation_only",
+  "selected_smoothing": 0.01,
+  "selected_correction_clip_kw": 100.0,
+  "selected_validation_mae_kw": 85.5438461303711,
+  "candidates": [
+    {
+      "smoothing": 0.01,
+      "correction_clip_kw": 25.0,
+      "validation_mae_kw": 92.93621063232422
+    },
+    {
+      "smoothing": 0.01,
+      "correction_clip_kw": 50.0,
+      "validation_mae_kw": 87.76024627685547
+    },
+    {
+      "smoothing": 0.01,
+      "correction_clip_kw": 100.0,
+      "validation_mae_kw": 85.5438461303711
+    },
+    {
+      "smoothing": 0.01,
+      "correction_clip_kw": 150.0,
+      "validation_mae_kw": 85.54667663574219
+    },
+    {
+      "smoothing": 0.02,
+      "correction_clip_kw": 25.0,
+      "validation_mae_kw": 92.7435302734375
+    },
+    {
+      "smoothing": 0.02,
+      "correction_clip_kw": 50.0,
+      "validation_mae_kw": 87.77284240722656
+    },
+    {
+      "smoothing": 0.02,
+      "correction_clip_kw": 100.0,
+      "validation_mae_kw": 86.3120346069336
+    },
+    {
+      "smoothing": 0.02,
+      "correction_clip_kw": 150.0,
+      "validation_mae_kw": 86.5571060180664
+    },
+    {
+      "smoothing": 0.05,
+      "correction_clip_kw": 25.0,
+      "validation_mae_kw": 93.0988998413086
+    },
+    {
+      "smoothing": 0.05,
+      "correction_clip_kw": 50.0,
+      "validation_mae_kw": 89.43634796142578
+    },
+    {
+      "smoothing": 0.05,
+      "correction_clip_kw": 100.0,
+      "validation_mae_kw": 89.66835021972656
+    },
+    {
+      "smoothing": 0.05,
+      "correction_clip_kw": 150.0,
+      "validation_mae_kw": 90.58407592773438
+    },
+    {
+      "smoothing": 0.1,
+      "correction_clip_kw": 25.0,
+      "validation_mae_kw": 95.6559829711914
+    },
+    {
+      "smoothing": 0.1,
+      "correction_clip_kw": 50.0,
+      "validation_mae_kw": 93.64363861083984
+    },
+    {
+      "smoothing": 0.1,
+      "correction_clip_kw": 100.0,
+      "validation_mae_kw": 95.79060363769531
+    },
+    {
+      "smoothing": 0.1,
+      "correction_clip_kw": 150.0,
+      "validation_mae_kw": 98.94890594482422
+    },
+    {
+      "smoothing": 0.2,
+      "correction_clip_kw": 25.0,
+      "validation_mae_kw": 97.06255340576172
+    },
+    {
+      "smoothing": 0.2,
+      "correction_clip_kw": 50.0,
+      "validation_mae_kw": 96.69518280029297
+    },
+    {
+      "smoothing": 0.2,
+      "correction_clip_kw": 100.0,
+      "validation_mae_kw": 102.97789764404297
+    },
+    {
+      "smoothing": 0.2,
+      "correction_clip_kw": 150.0,
+      "validation_mae_kw": 111.2106704711914
+    }
+  ]
+}

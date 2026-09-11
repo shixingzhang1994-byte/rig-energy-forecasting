@@ -1,0 +1,106 @@
+{
+  "analysis": "V19 prospective evidential-risk evidence package",
+  "file_count": 20,
+  "files": [
+    {
+      "path": "configs/v19_evidential_risk_development.yaml",
+      "sha256": "6b12d7bd060833e71416a231ffe3497f820e9402e2597ba7cf1eb44aa3af909b",
+      "size_bytes": 3629
+    },
+    {
+      "path": "configs/v19_evidential_risk_holdouts.yaml",
+      "sha256": "41770585b846ef310933018f55ee7c25db0989bf48b3664dc61fe4054ff250c3",
+      "size_bytes": 4394
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/risk_candidate_freeze.json",
+      "sha256": "db9a8d35937fbae12b186a08d1faf0960e1fd8ab545aecdccbbee3393875f8a0",
+      "size_bytes": 2206
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective_run_freeze.json",
+      "sha256": "d5b281bb3ddbc11528e4d1deaa09f8f91b730007dfef5f0b286576a6af0b717e",
+      "size_bytes": 2687
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/development_search/selected_evidential_config.yaml",
+      "sha256": "403f85ea31476183bd9808ee5b076e5115a99c697cf01a68872f3d70856a9a10",
+      "size_bytes": 1073
+    },
+    {
+      "path": "scripts/run_v19_evidential_holdouts.py",
+      "sha256": "74443605422230da4fa7ada9143fa303f616a43631bff5c106b2d1ff5d989d71",
+      "size_bytes": 24326
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/prospective_summary.json",
+      "sha256": "ef88040cba7557f5742cf3369170f4af45fb98dd30e680bf9983033686aa2716",
+      "size_bytes": 2094
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/prospective_seed_results.csv",
+      "sha256": "a20f0edece7bc77c7c8195a620f758cbb40aa5b2113583d98622ee688b82a5cf",
+      "size_bytes": 1473
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/result.json",
+      "sha256": "14e09c1ac794375549d87b5e4816e2bcb99e776ba40c0ca29c5992ca04dcb7dc",
+      "size_bytes": 4123
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261024/result.json",
+      "sha256": "588f8fb6d237a51c149d11d01441899397d3d0d33be6f8c07ee70a1067bbd01d",
+      "size_bytes": 4136
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261025/result.json",
+      "sha256": "7d2e9f16a7522535d69a55e351dd9f527022d905a33becd1e95e6ff9df349a5d",
+      "size_bytes": 4128
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261027/result.json",
+      "sha256": "e9af26df048f1dc20b304a64cfd6b03bdf55b2743d4fb5918691df90da87dff8",
+      "size_bytes": 4123
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261028/result.json",
+      "sha256": "8ab07932dfccf1458dda4484b1aaf8d336d2076a33e2090593de553d7cab6e18",
+      "size_bytes": 4121
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261029/result.json",
+      "sha256": "28ba1f399ae9bfa3eff04467e0bd197d0aa13cf111db019c0def4624d5067782",
+      "size_bytes": 4076
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/evidence_manifest.json",
+      "sha256": "b7b0fedd358f1a19dfddfbf2cf4219e5593d7779a77c72fc0f04da556ba857ac",
+      "size_bytes": 2061
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261024/evidence_manifest.json",
+      "sha256": "164a858374c337e33cafef1059a806c6dd394768846b782f4103beecdcc14019",
+      "size_bytes": 2061
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261025/evidence_manifest.json",
+      "sha256": "9484f78f93627911a8fc5250b10ecb50dbac5968692f505e80f36c42e91c3eb6",
+      "size_bytes": 2061
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261027/evidence_manifest.json",
+      "sha256": "a329c71e2171900ac515c6957a93dadc4039b7f2640cb98c78ff21d2202d69a6",
+      "size_bytes": 2061
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261028/evidence_manifest.json",
+      "sha256": "a106dff9d95fa99cc9300f3900c1f8389ab7e053f1b13dbefd195f11941c4746",
+      "size_bytes": 2061
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261029/evidence_manifest.json",
+      "sha256": "a7f663fb18543264a9ba281f4700dd85cebb3060118c63f4596379e9fe060841",
+      "size_bytes": 2061
+    }
+  ]
+}

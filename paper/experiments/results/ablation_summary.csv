@@ -1,0 +1,5 @@
+method,ablation_interpretation,holdout_seeds,unserved_energy_kwh_sum,risk_adjusted_cost_yuan_sum,diesel_fuel_l_sum,generator_startups_sum,max_decision_seconds,source_status
+ML-Robust-MPC,robust baseline without scenario CVaR or SOC supervisory switching,20261011;20261012,210.592526,23990.944254,142.349274,63,0.1072,existing_frozen_v15_holdout_rows
+Scenario-CVaR-MPC,static scenario-CVaR without risk adaptation or SOC supervisory switching,20261011;20261012,211.057576,24035.826484,143.214266,67,0.212013,existing_frozen_v15_holdout_rows
+Risk-Adaptive-CVaR-MPC,risk-adaptive scenario-CVaR without SOC supervisory switching,20261011;20261012,215.104491,24428.787692,142.479367,66,0.206965,existing_frozen_v15_holdout_rows
+Risk-SOC-Supervisory-MPC,complete risk-adaptive CVaR plus SOC supervisory controller,20261011;20261012,209.051534,23723.794422,142.608294,45,0.212252,existing_frozen_v15_holdout_rows

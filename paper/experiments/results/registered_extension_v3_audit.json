@@ -1,0 +1,446 @@
+{
+  "audit": "registered_v15_extension_v3_and_ten_holdout_evidence",
+  "status": "pass",
+  "checks": {
+    "protocol_starts_at_20261016": true,
+    "protocol_requires_six_eligible": true,
+    "only_registered_v3_seeds_ran": true,
+    "freeze_protocol_hash_matches": true,
+    "summary_has_exact_ten_seeds": true,
+    "summary_seed_is_independent_unit": true,
+    "all_main_physical_pass": true,
+    "all_risk_ablation_physical_pass": true,
+    "all_uncertainty_ablation_physical_pass": true,
+    "all_causal_physical_pass": true,
+    "trajectory_total_is_480": true,
+    "seed_20261016_eligible_before_dispatch": true,
+    "seed_20261016_all_frozen_gates_pass": true,
+    "seed_20261017_eligible_before_dispatch": true,
+    "seed_20261017_all_frozen_gates_pass": true,
+    "seed_20261018_eligible_before_dispatch": true,
+    "seed_20261018_all_frozen_gates_pass": true,
+    "seed_20261019_eligible_before_dispatch": true,
+    "seed_20261019_all_frozen_gates_pass": true,
+    "seed_20261020_eligible_before_dispatch": true,
+    "seed_20261020_all_frozen_gates_pass": true,
+    "seed_20261021_eligible_before_dispatch": true,
+    "seed_20261021_all_frozen_gates_pass": true,
+    "all_registered_evidence_files_exist": true
+  },
+  "missing": [],
+  "v3_seed_directories": [
+    20261016,
+    20261017,
+    20261018,
+    20261019,
+    20261020,
+    20261021
+  ],
+  "all_reported_seeds": [
+    20261011,
+    20261012,
+    20261014,
+    20261015,
+    20261016,
+    20261017,
+    20261018,
+    20261019,
+    20261020,
+    20261021
+  ],
+  "trajectory_audit_counts": {
+    "main_online_method_scenario_trajectories": 210,
+    "risk_off_supervisor_trajectories": 30,
+    "uncertainty_ablation_method_scenario_trajectories": 210,
+    "independent_causal_full_milp_trajectories": 30,
+    "total": 480
+  },
+  "primary_multiplicity": {
+    "family": [
+      "RSS minus RB unserved energy",
+      "RSS minus MLR unserved energy",
+      "RSS minus history-matched CR unserved energy"
+    ],
+    "method": "Holm step-down adjustment",
+    "raw_p": {
+      "RSS minus RB unserved energy": 0.015625,
+      "RSS minus MLR unserved energy": 0.00390625,
+      "RSS minus history-matched CR unserved energy": 0.001953125
+    },
+    "adjusted_p": {
+      "RSS minus history-matched CR unserved energy": 0.005859375,
+      "RSS minus MLR unserved energy": 0.0078125,
+      "RSS minus RB unserved energy": 0.015625
+    }
+  },
+  "file_count": 73,
+  "files": [
+    {
+      "path": "rig-energy-forecasting/configs/paper_v15_extension_holdouts_v3.yaml",
+      "sha256": "5ee28c1cb36fd160409e5b0ef950e7e8a84a93a6f9abaa55aed653c12de7699e",
+      "size_bytes": 4240
+    },
+    {
+      "path": "paper/experiments/preregistered_extension_v3.yaml",
+      "sha256": "ba5fcfea772503ccd1149c2baa655b6dcf4061f847ef2eb72f7b501efbc828c4",
+      "size_bytes": 1390
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/freeze_manifest.json",
+      "sha256": "8b7d205c0c4c228f016bdf877990993fd45311019dfc53202c1a62d73b9b34f1",
+      "size_bytes": 8318
+    },
+    {
+      "path": "paper/experiments/run_registered_extension_pipeline.py",
+      "sha256": "e5e74026b2718acb12b17478445e74b3b45a4afa38a89504fe806e34d7bffbb5",
+      "size_bytes": 5563
+    },
+    {
+      "path": "paper/experiments/summarize_extended_holdouts.py",
+      "sha256": "37b633686753db9711349ec4f8fc16a2208a5fa62bfeb6b0ea28768ba6de3cad",
+      "size_bytes": 20025
+    },
+    {
+      "path": "paper/experiments/run_independent_causal_full_milp.py",
+      "sha256": "3bb616a78b1cba68290917a7a8c06ca454548684666b04179470cfd15ef4f75b",
+      "size_bytes": 20529
+    },
+    {
+      "path": "paper/experiments/export_shared_initial_histories.py",
+      "sha256": "d26f41333a2b3d8681a47a49bab853d353686344c0a1e5852c7430d1f55a6535",
+      "size_bytes": 6573
+    },
+    {
+      "path": "paper/experiments/run_risk_signal_ablation.py",
+      "sha256": "b1186339b4588713c752dabe9ed91f9af3c00ac2b0bc0ca49588fb15b67c69a6",
+      "size_bytes": 8967
+    },
+    {
+      "path": "paper/experiments/run_no_uncertainty_ablation.py",
+      "sha256": "6b29ecf65f06826dc25d335a43a4d08d71655bb12b148fb8a8838cbab4bce18f",
+      "size_bytes": 9553
+    },
+    {
+      "path": "paper/experiments/summarize_risk_action_overlap.py",
+      "sha256": "e2d3ac893ff5a125598bb52a68f6dbf83bdb101dd95c891cb24e084427a1c44d",
+      "size_bytes": 5196
+    },
+    {
+      "path": "paper/experiments/tests/test_independent_causal_full_milp.py",
+      "sha256": "b956a18ff91132c368c82b6fa6e268becf4585700ee8f3fda77c35fa0915dffa",
+      "size_bytes": 2696
+    },
+    {
+      "path": "paper/experiments/tests/test_extended_holdout_statistics.py",
+      "sha256": "9bb213716e409d03040a02c240fd5a89099c6aa2fa6a87ee85cc5e99cbe6abcc",
+      "size_bytes": 1063
+    },
+    {
+      "path": "paper/experiments/results/extended_holdout_analysis.json",
+      "sha256": "3ed8105b00ef56bbf9a586bdf14b128ae0dd7585f3779e51db1f77ba6d62ad1d",
+      "size_bytes": 30894
+    },
+    {
+      "path": "paper/experiments/results/extended_holdout_analysis.csv",
+      "sha256": "5f29c5e4a787852301338d0171f268abca432cb6b33e13f633c1e20491ab681a",
+      "size_bytes": 8710
+    },
+    {
+      "path": "paper/experiments/results/risk_action_overlap.json",
+      "sha256": "4bc33fc32b9e55d7c6084645f3ec507f01aeab57e730c969dd7bdc11ff32463d",
+      "size_bytes": 9400
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/eligibility.json",
+      "sha256": "13b63db78b13d622a0458444d19e02fecf1beb351e0c9d85f2702bb5eea36e5e",
+      "size_bytes": 1113
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/result.json",
+      "sha256": "8240ebd6f2186331245aceb58b65f5d2875ea0048aac8d26e22bbea000816ce6",
+      "size_bytes": 2515
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/method_summary.csv",
+      "sha256": "0aee97f114f441efa8a680c311c9331a63be8cf70180541267dad2e5b0655b70",
+      "size_bytes": 1066
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261017/eligibility.json",
+      "sha256": "5fdfdbfa4dd6af4c4885cd0a2b16c7e097ce07209d50ab05d77aafa304aa95c1",
+      "size_bytes": 1112
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261017/result.json",
+      "sha256": "28c2dd2a2026d59a6a047a3a9a7092caa7cd3796d20e6b28f685e7aa2907c4a0",
+      "size_bytes": 2538
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261017/method_summary.csv",
+      "sha256": "5f5800367b1955a2219932a8218755327900d47fc19c6c937da5a114ebe6e9a2",
+      "size_bytes": 1075
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261018/eligibility.json",
+      "sha256": "54b3b7164e88bb5099e30d6df19588aa881df395e31e4a8fe3ff3c75679d83af",
+      "size_bytes": 1113
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261018/result.json",
+      "sha256": "b21db349a1f7b4c908888f525d72d05d19a57f3fdc65ac89c43650d8837df518",
+      "size_bytes": 2513
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261018/method_summary.csv",
+      "sha256": "90956d985800e3cbac76fbcd62798a455ba46032358f49c8660566567ec4891f",
+      "size_bytes": 1059
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261019/eligibility.json",
+      "sha256": "b00649894550b7b1f1755c8faf5a418cabc8ce123191f96f1b6645e8970bfe6c",
+      "size_bytes": 1114
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261019/result.json",
+      "sha256": "cfe819204cbf36a57dbf16a35950834b06a5d749eb4f3355affc227a74f181a6",
+      "size_bytes": 2498
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261019/method_summary.csv",
+      "sha256": "7af294c89c1cb4084139f2d745dadb35f2063df79f7108b91f730d2c8c3a9fa9",
+      "size_bytes": 1063
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261020/eligibility.json",
+      "sha256": "43ea9da84875ffc50cd63ae4bcc7f20ea0948bef582fd095f0c696103be47102",
+      "size_bytes": 1114
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261020/result.json",
+      "sha256": "a5e7c9b24603d2bdaba937ca1d6f084cdfa0962f7e9cd7102d16086597a7e11f",
+      "size_bytes": 2518
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261020/method_summary.csv",
+      "sha256": "b917f4b1ddb8d759ed0a277a12bb2a08dd04c40c23676414b992f8d3744755f7",
+      "size_bytes": 1074
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261021/eligibility.json",
+      "sha256": "584f7a41d1aa3bfe118660b31ce9fc0e99e91f6ad6822c061315f882e00b0b8a",
+      "size_bytes": 1113
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261021/result.json",
+      "sha256": "1b2e2e40c57937f936be6204310c5dd652adb1b1bfe01f070e44eb97d27416c3",
+      "size_bytes": 2520
+    },
+    {
+      "path": "rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261021/method_summary.csv",
+      "sha256": "932a3cf50ac4602ac1f2c7f5003bd8563bfb780f3300cde22fd14da5e263533d",
+      "size_bytes": 1068
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261011.json",
+      "sha256": "2ea73fb779b0bc0a4cab7e0004f57c69fd97a3771be2f8d8574b77a5d8def185",
+      "size_bytes": 2602
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261011.json",
+      "sha256": "b50f5ed4b148ac79b25000eedbe61342c7e24100d406f7d57690ee32bcf39b23",
+      "size_bytes": 4755
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261011/risk_ablation_result.json",
+      "sha256": "15705bebec05b2c2f0ec2ba64bbcbbaf45834f66368e44406ca66ee9e8df5908",
+      "size_bytes": 3266
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261011/uncertainty_ablation_result.json",
+      "sha256": "73c177d12cb6c1a2d783096356c27daf96eecbdb5025243f74487ed131e7640e",
+      "size_bytes": 3240
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261012.json",
+      "sha256": "3b68891559c95993abcdc5a7789135218fd80c2fa787d14a62ce91104b8f3008",
+      "size_bytes": 2587
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261012.json",
+      "sha256": "80c29d8d634d18c614b81dc9630d6119f03fa779a8dd46ac5fbaed3842747651",
+      "size_bytes": 4756
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261012/risk_ablation_result.json",
+      "sha256": "58c22bbfaa8ec187f3e4e6c1a3451606d103d77a5179b02b9d139a4586a7e2a2",
+      "size_bytes": 3230
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261012/uncertainty_ablation_result.json",
+      "sha256": "1b3a9865c35cda97f5dcbaf5075ed2279253eab06dd64d93b5524da6cc1f6844",
+      "size_bytes": 3236
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261014.json",
+      "sha256": "70bfc313092bc5a67a316ffe76e1d8702f8897a50c0e4168a16c872972a98b5c",
+      "size_bytes": 2601
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261014.json",
+      "sha256": "4f034f6eaef1375df8fb1e9f6e3bb7fa0b7fa34338769ca22163bfa115b83ab3",
+      "size_bytes": 4734
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261014/risk_ablation_result.json",
+      "sha256": "3978c5d45ff7d768c444438755fc3116748c8912b7ba92e614cd1d6b4d79eef0",
+      "size_bytes": 3244
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261014/uncertainty_ablation_result.json",
+      "sha256": "e1ab60713ca1aebe16bc78ec9fed17bcaf2efc17cbc8c9993b07796a0d0f57bd",
+      "size_bytes": 3251
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261015.json",
+      "sha256": "e32fbc4b877662e5892a8d7c2ab78ee62b60f9344c0d3289538a38454c6ab694",
+      "size_bytes": 2602
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261015.json",
+      "sha256": "7d8ef660f624dfd4075c84c6b60df808cdba7c507c6431e86b4454340d336b62",
+      "size_bytes": 4758
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261015/risk_ablation_result.json",
+      "sha256": "7207bfda0b9fb5c76924bbc3f7b1c8e50cfd8de21e4c29c06b740d65f164a812",
+      "size_bytes": 3242
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261015/uncertainty_ablation_result.json",
+      "sha256": "dcd69222b1d46a0b90e203ad216eddef55caa7abce983fe7259b12e9bdab93c9",
+      "size_bytes": 3248
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261016.json",
+      "sha256": "ff51a6dfbefc41ef8218c2c28c29b023c7808005c8e6405a25abc5c7efdc2d9c",
+      "size_bytes": 2614
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261016.json",
+      "sha256": "66c4345c0d89a43f7e08793e4326ebbd5b96ab604c96076e6046a74ba0c0c704",
+      "size_bytes": 4764
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261016/risk_ablation_result.json",
+      "sha256": "2319b0fd6badb3d7923db16f524cfc26dd3091cde7fc5805bc3978f67bf95d46",
+      "size_bytes": 3270
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261016/uncertainty_ablation_result.json",
+      "sha256": "9dc16f93ff37ee6e02374935172fdbc48bf29f11eda25eb45e31201a546f94c9",
+      "size_bytes": 3229
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261017.json",
+      "sha256": "846e611eb5150b440c6aff70d6ff55e24812c65e53cbbcee947aa5eb6ebfb4df",
+      "size_bytes": 2599
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261017.json",
+      "sha256": "c6ee45df70336e0870524b9ce5a74eadffd7a12a9aa7c16b07bd41e7105ae9fb",
+      "size_bytes": 4763
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261017/risk_ablation_result.json",
+      "sha256": "c472ee0037e0423e5375af354ebf3d034d15f03184d496258b3f26ad9d6b3b6a",
+      "size_bytes": 3288
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261017/uncertainty_ablation_result.json",
+      "sha256": "63383cf90a371ee378bd20b2dc010add0b54d70b8e2df25c402860724ad3ca6b",
+      "size_bytes": 3249
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261018.json",
+      "sha256": "d8913a00c34e2716c3dc26ff3b10e7bf3a4b46f725376da21e0f2d249e327775",
+      "size_bytes": 2601
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261018.json",
+      "sha256": "4fa935fccd7b3b60ea2d16b33707859498596f8f3b49af932fa404da4820eddc",
+      "size_bytes": 4734
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261018/risk_ablation_result.json",
+      "sha256": "006fe446a37cfb1b9943b2e4f9ea7b0747bd644cabb26a7356adab78e8030b7e",
+      "size_bytes": 3259
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261018/uncertainty_ablation_result.json",
+      "sha256": "d627324b1756c98389cc3500c5c5684874f6fb8c4228d1e8808cb8a755f59271",
+      "size_bytes": 3243
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261019.json",
+      "sha256": "b594f6fdd55d45b1c0bae7d42a95c624bf0688dc10e403dcb7340b411aa826be",
+      "size_bytes": 2583
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261019.json",
+      "sha256": "f52d223040f7d38952d9e5c858dd965afbd10dd1ec6ac9064e2ee62096a4abe6",
+      "size_bytes": 4755
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261019/risk_ablation_result.json",
+      "sha256": "0d359306e8e1239c09efbb559c962150e3f30ecac89bb96f2d718d4a3539029d",
+      "size_bytes": 3272
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261019/uncertainty_ablation_result.json",
+      "sha256": "f0d71fdf35d4210c06c7a5b982e5f60c78d55ace5d65e2c63ec13940ae75896f",
+      "size_bytes": 3231
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261020.json",
+      "sha256": "5374a25781abe31d121ba0047f5d3085c8edc9b30595d6f8c1bc6767e55c101c",
+      "size_bytes": 2598
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261020.json",
+      "sha256": "8820464d7f6237483d11c958a4a8c6eaf75684498b41b40f7dd8318c20d8da12",
+      "size_bytes": 4765
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261020/risk_ablation_result.json",
+      "sha256": "3a06c1c46ae2bd77192f8eb49dd9e655ba35a61e88a4ad340b8b3b72bffdee32",
+      "size_bytes": 3243
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261020/uncertainty_ablation_result.json",
+      "sha256": "2127b3fc660a3de83f47ece2bcc4632005d83d6c6ebaaed8e3225e0cfde0171d",
+      "size_bytes": 3268
+    },
+    {
+      "path": "paper/experiments/results/shared_initial_histories/seed_20261021.json",
+      "sha256": "5e56ef352617e3e503dfa42418caf7c6c9e3f44992b755d1d69edbb2f6fb3fb2",
+      "size_bytes": 2602
+    },
+    {
+      "path": "paper/experiments/results/independent_causal_full_milp_history_matched/seed_20261021.json",
+      "sha256": "2d78ac6b18b7f59e151db9ca3c0c4af5a9006373ebcfee027fed2a48b32ef8df",
+      "size_bytes": 4735
+    },
+    {
+      "path": "paper/experiments/results/risk_signal_ablation/seed_20261021/risk_ablation_result.json",
+      "sha256": "b4ed2718482f8869d971b38733ddb05eb574d06762e0e5b3daa4b2ec42e5bb9b",
+      "size_bytes": 3294
+    },
+    {
+      "path": "paper/experiments/results/uncertainty_envelope_ablation/seed_20261021/uncertainty_ablation_result.json",
+      "sha256": "af2d6069d6ffe713bde363933e13d7024c8aadae151a64d401ab04f6f6e25791",
+      "size_bytes": 3253
+    }
+  ],
+  "reproduction_command": "conda run -n qz-rig-energy-ml python paper/experiments/run_registered_extension_pipeline.py --workers 4",
+  "claim_boundary": "Internal evidence for the registered public-evidence-constrained synthetic holdout population; not field validation."
+}

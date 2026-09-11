@@ -1,0 +1,114 @@
+{
+  "analysis": "frozen_evidential_risk_prospective_holdout",
+  "seed": 20261022,
+  "eligible_before_controller_execution": true,
+  "source_root": "artifacts/v19_evidential_risk/prospective_source/seed_20261022",
+  "selected_candidate_index": 59,
+  "baseline_rss": {
+    "unserved_energy_kwh": 5.2088127168067695,
+    "risk_adjusted_cost_yuan": 1939.8805437526207,
+    "diesel_fuel_l": 65.99147867828631,
+    "generator_startups": 18.0,
+    "max_decision_seconds": 0.2012766049992933
+  },
+  "evidential_rss": {
+    "unserved_energy_kwh": 5.2088127168067695,
+    "risk_adjusted_cost_yuan": 1940.470064275562,
+    "diesel_fuel_l": 66.1004165154915,
+    "generator_startups": 18.0,
+    "max_decision_seconds": 0.2021067950008728
+  },
+  "evidential_minus_baseline": {
+    "unserved_energy_kwh": 0.0,
+    "risk_adjusted_cost_yuan": 0.5895205229412568,
+    "diesel_fuel_l": 0.10893783720518968,
+    "generator_startups": 0.0,
+    "max_decision_seconds": 0.000830190001579495
+  },
+  "risk_recognition": {
+    "baseline_prediction": {
+      "accuracy": 0.9758388272991787,
+      "balanced_accuracy": 0.7395025698777757,
+      "macro_f1": 0.756129155451506,
+      "high_risk_recall": 0.9760141829179267,
+      "severe_recall": 0.9807982740021575,
+      "severity_mae": 0.030090972708187544,
+      "log_loss": 0.09811936373875421,
+      "multiclass_brier": 0.04588341480709982
+    },
+    "baseline_dispatch_guard": {
+      "accuracy": 0.9746970645648411,
+      "balanced_accuracy": 0.7384760104953045,
+      "macro_f1": 0.7430680098149784,
+      "high_risk_recall": 0.9818542079466055,
+      "severe_recall": 0.9840345199568501,
+      "severity_mae": 0.030864424883061396,
+      "log_loss": 0.14598469333582959,
+      "multiclass_brier": 0.049762694744208316
+    },
+    "evidential_prediction": {
+      "accuracy": 0.9766859415859452,
+      "balanced_accuracy": 0.7803446355192418,
+      "macro_f1": 0.7832323955671341,
+      "high_risk_recall": 0.9833142142037752,
+      "severe_recall": 0.9812297734627832,
+      "severity_mae": 0.028986041029796326,
+      "log_loss": 0.2790585885820709,
+      "multiclass_brier": 0.10189736368074068
+    },
+    "evidential_dispatch_guard": {
+      "accuracy": 0.97734890059298,
+      "balanced_accuracy": 0.7713512536715466,
+      "macro_f1": 0.7832784470848495,
+      "high_risk_recall": 0.9839399311711335,
+      "severe_recall": 0.984789644012945,
+      "severity_mae": 0.02847040624654709,
+      "log_loss": 0.2790585885820709,
+      "multiclass_brier": 0.10189736368074068
+    },
+    "diagnostics": {
+      "mean_ignorance": 0.19667299049740675,
+      "p95_ignorance": 0.5281532444225958,
+      "mean_conflict": 0.0640038354308607,
+      "p95_conflict": 0.435454306718595,
+      "dispatch_escalation_rate_vs_baseline": 0.0067400832381864385,
+      "dispatch_deescalation_rate_vs_baseline": 0.012154248462303414
+    },
+    "dispatch_risk_changed_rows": 513,
+    "dispatch_risk_change_rate": 0.018894331700489854
+  },
+  "action_audit": {
+    "trajectory_count": 3,
+    "row_count": 1080,
+    "physical_action_changed_rows": 4,
+    "physical_action_change_rate": 0.003703703703703704,
+    "maximum_absolute_change": {
+      "grid_kw": 0.0,
+      "generator_kw": 160.2709615459599,
+      "generator_units_on": 1.0,
+      "storage_kw": 160.27096154595984,
+      "unserved_kw": 0.0,
+      "generator_startup_units": 1.0,
+      "generator_shutdown_units": 0.0
+    }
+  },
+  "physical_audit": {
+    "trajectory_count": 21,
+    "max_power_balance_error_kw": 4.547473508864641e-13,
+    "max_grid_capacity_violation_kw": 2.2737367544323206e-13,
+    "max_generator_capacity_violation_kw": 0.0,
+    "max_storage_capacity_violation_kw": 0.0,
+    "soc_violation_count": 0,
+    "simultaneous_charge_discharge_count": 0,
+    "noninteger_commitment_count": 0,
+    "physical_pass": true
+  },
+  "checks": {
+    "scenario_selection_match": true,
+    "unserved_not_worse_on_seed": true,
+    "cost_ratio_within_seed_cap": true,
+    "physical_feasibility": true
+  },
+  "seed_gate_pass": true,
+  "claim_boundary": "Prospective synthetic holdout; classification, action, and outcome effects are reported separately."
+}

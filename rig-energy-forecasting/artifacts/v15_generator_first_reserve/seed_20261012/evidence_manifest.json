@@ -1,0 +1,45 @@
+{
+  "seed": 20261012,
+  "files": [
+    {
+      "path": "configs/v15_generator_first_reserve_acceptance.yaml",
+      "sha256": "ccb67a597846008fbe1cb9dbebde72bfbad45decdcde1eb37927572cb16cd074",
+      "size_bytes": 3591
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/eligibility.json",
+      "sha256": "b1cc30f4894a28089cc8ed9b23371200ac1a64623e1ec231f294c21db09210fc",
+      "size_bytes": 1100
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/resolved_dispatch_config.yaml",
+      "sha256": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+      "size_bytes": 3958
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/risk/run_metadata.json",
+      "sha256": "a67d252daf8335fef86aee6cd7ccf2148368199ee4d359ad7c8f8cde8527f768",
+      "size_bytes": 1673
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/risk/risk_predictions.csv",
+      "sha256": "3e826f9f4fe31c3872492bc840de3a39c7812872e16f0e939826cc79dcccc724",
+      "size_bytes": 11253222
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/dispatch/dispatch_metrics.csv",
+      "sha256": "40b779d8529d6aa5f9088d04037f0c4e4835e73031f58112318c33dd9c8b8a53",
+      "size_bytes": 8117
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/method_summary.csv",
+      "sha256": "e92c318cace2f300dd3e60710b84be653c287f14e84a013122664401586f7a45",
+      "size_bytes": 1073
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/seed_20261012/result.json",
+      "sha256": "f3a71c387fba5b849338b88a1e23101da5aa2948ed11ed57e0c77a471e7c436c",
+      "size_bytes": 2443
+    }
+  ]
+}

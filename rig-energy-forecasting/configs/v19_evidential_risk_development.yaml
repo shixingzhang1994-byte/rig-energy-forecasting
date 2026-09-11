@@ -1,0 +1,83 @@
+protocol:
+  id: V19-EVIDENTIAL-RISK-SUPERVISION-20260908
+  status: candidate_space_declared_before_development_search
+  purpose: replace the masked discrete risk interface with an auditable evidential fusion signal
+  frozen_parent_controller: V15
+  parent_artifacts_must_not_be_modified: true
+  development_seed_order: [20261008, 20261009]
+  development_source: existing V15 development artifacts only
+  external_v17_role: post-selection diagnostic_only_not_candidate_selection
+  prospective_holdout_seed_order: [20261022, 20261023, 20261024, 20261025, 20261026, 20261027, 20261028, 20261029, 20261030, 20261031, 20261032, 20261033]
+  required_eligible_holdouts: 6
+  stopping_rule: stop after the first six upstream-eligible seeds; retain every ineligible seed before controller execution
+  candidate_count: 128
+  candidate_generator_seed: 20260908
+
+fusion:
+  frame: [normal, watch, warning, severe]
+  combination_rule: generalized_conjunctive_then_Yager_conflict_to_ignorance
+  causal_inputs:
+    - learned risk probabilities available at the forecast origin
+    - forecast supply-margin interval
+    - forecast-member disagreement
+    - current storage SOC
+    - current grid capacity
+    - causal forecast ramp
+  forbidden_inputs:
+    - true_risk_level
+    - actual_peak_kw
+    - future operation-state labels
+    - future realized supply
+  fixed_margin_thresholds:
+    normal_margin_ratio: 0.15
+    watch_margin_ratio: 0.05
+    warning_margin_ratio: 0.00
+  fixed_operational_thresholds:
+    soc_warning_pct: 35.00
+    soc_healthy_pct: 65.00
+    grid_derating_threshold_kw: 700.00
+    ramp_threshold_kw_per_s: 25.00
+  search_ranges:
+    learned_probability_discount: [0.45, 0.90]
+    margin_interval_discount: [0.45, 0.90]
+    low_soc_discount: [0.20, 0.60]
+    healthy_soc_discount: [0.10, 0.40]
+    grid_derating_discount: [0.15, 0.50]
+    rapid_ramp_discount: [0.15, 0.50]
+    uncertainty_interval_scale: [0.25, 1.50]
+    high_score_threshold: [0.25, 0.65]
+    severe_score_threshold: [0.15, 0.55]
+    conflict_weight: [0.00, 0.50]
+
+selection:
+  primary_unit: seed
+  require_each_development_seed:
+    evidential_macro_f1_minimum: 0.70
+    dispatch_high_risk_recall_minimum: 0.98
+    dispatch_severe_recall_minimum: 0.95
+  score: 0.40*worst_seed_macro_f1 + 0.20*worst_seed_balanced_accuracy + 0.20*worst_seed_high_recall + 0.20*worst_seed_severe_recall - 0.05*mean_dispatch_escalation_rate
+  tie_breakers:
+    - lower mean ignorance
+    - lower mean conflict
+    - lower candidate index
+  test_labels_may_not_select_or_modify_the_candidate: true
+
+holdout_acceptance:
+  risk_recognition:
+    compare_against: frozen V15 dispatch guard
+    report: [macro_f1, balanced_accuracy, high_risk_recall, severe_recall, Brier_score, ignorance, conflict]
+  control:
+    primary_contrast: evidential_RSS_minus_frozen_RSS_unserved_energy
+    require_aggregate_unserved_not_worse_than_frozen_RSS_kwh: 1.0e-9
+    require_risk_adjusted_cost_ratio_vs_frozen_RSS_maximum: 1.005
+    require_zero_physical_violations: true
+    report_seed_level_exact_sign_flip_and_bootstrap: true
+    require_nonzero_physical_action_change_for_mechanism_claim: true
+
+claim_boundary:
+  - Evidence theory is exploratory until the candidate is frozen and prospective holdouts pass.
+  - Classification improvement alone is not a control-performance improvement.
+  - Conflict and ignorance are reported, not hidden by normalization.
+  - Existing V15 and paper extension artifacts remain authoritative and immutable.
+  - Any failed gate or null control effect is retained as a negative result.
+  - Results remain synthetic-simulation evidence, not field validation.

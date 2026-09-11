@@ -1,0 +1,138 @@
+% Working manuscript shell for Energy Reports.
+% Based on the official Elsevier elsarticle bundle downloaded to
+% paper/templates/elsevier-elsarticle/.
+% Before submission, re-check the journal Guide for Authors and the current
+% Editorial Manager instructions.
+
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{calc}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+
+\providecommand{\tightlist}{}
+\providecommand{\real}[1]{#1}
+% Single-symbol wrappers preserve bibliographic diacritics while remaining
+% compatible with BibTeX's 8-bit processing path.
+\DeclareRobustCommand{\?}[1]{\u{#1}}
+\DeclareRobustCommand{\>}[1]{\c{#1}}
+
+\journal{Energy Reports}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Reserve--SOC supervisory energy management for grid--diesel--battery drilling rig power systems under forecast uncertainty}
+
+\author[aff1,aff2]{Shixing Zhang\fnref{equal}\corref{cor1}}
+\ead{shixingzhang@cnpc.com.cn}
+\author[aff1,aff2]{Pengchong Wei\fnref{equal}}
+\author[aff1,aff2]{Lei Luo}
+\author[aff1,aff2]{Pengfei Zhang}
+\author[aff1,aff2]{Xingjun Yu}
+\fntext[equal]{Shixing Zhang and Pengchong Wei contributed equally to this work and share first authorship.}
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[aff1]{organization={Baoji Oilfield Machinery Co., Ltd.},
+            addressline={Weiyang District},
+            city={Xi'an},
+            postcode={710016},
+            state={Shaanxi},
+            country={China}}
+
+\affiliation[aff2]{organization={CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd.},
+            addressline={Weiyang District},
+            city={Xi'an},
+            postcode={710016},
+            state={Shaanxi},
+            country={China}}
+
+\begin{abstract}
+We evaluate reserve--SOC supervisory model predictive control (RSS) for
+grid--diesel--battery coordination during abrupt load transitions. Evaluation
+uses a 72 h record and ten independently
+generated holdouts from a single mechanistic drilling-load and power-system
+simulator; no synchronized measurements from the target rig are used. Seven
+online controllers follow a declared comparison protocol; the main contrasts
+use rule-based control (RB), deterministic margin-loaded
+reference MPC (MLR), and an independently implemented causal full-MILP (CR).
+RSS records 813.43 kWh of unserved energy, compared with 840.96 kWh for RB,
+906.04 kWh for MLR, and 1,165.81 kWh for CR. These reductions are
+3.27\%, 10.22\%, and 30.23\%, with Holm-adjusted exact sign-flip $p$-values of
+0.02, 0.01, and 0.01. Risk-adjusted cost, a shortage-dominated composite rather
+than independent economic evidence, falls by 3.85\% relative to RB and 9.34\%
+relative to MLR. CR uses one point forecast without the forecast-error envelope
+or reserve--SOC supervisor. Because CR is weaker than RB under
+this protocol, the 30.23\% RSS--CR gap is interpreted as a bundled boundary
+comparison, not an isolated component effect. Component interventions associate
+SOC supervision with a 2.86--4.11 kWh mean per-holdout reduction and the
+forecast-envelope bundle with a further 2.12 kWh reduction. An auxiliary raw
+evidential risk interface improves selected classification metrics but worsens
+the Brier score and does not change unserved energy. These findings are limited
+to the simulated system and do not establish performance for the target rig or
+drilling rigs generally.
+\end{abstract}
+
+\begin{highlights}
+\item Evidence uses one mechanistic simulator; no target-rig measurements.
+\item Seven online controllers follow the declared simulation and audit protocol.
+\item RSS cuts unserved energy 3.27\% vs RB and 10.22\% vs MLR.
+\item Composite risk-adjusted cost falls 3.85\% vs RB; it is shortage-dominated.
+\item CR is an independent point-forecast MILP, not a component ablation.
+\end{highlights}
+
+\begin{keyword}
+drilling rig power system \sep multi-source energy management \sep battery energy storage \sep model predictive control \sep unit commitment \sep supply reliability
+\end{keyword}
+
+\end{frontmatter}
+
+% Keep the body separate so the Markdown remains the author-facing source.
+\input{body.tex}
+
+\section*{CRediT authorship contribution statement}
+\noindent\textbf{Shixing Zhang}: Conceptualization, Methodology, Software,
+Formal analysis, Investigation, Visualization, Writing--original draft, Project
+administration.\\
+\textbf{Pengchong Wei}: Methodology, Validation, Investigation, Data curation,
+Writing--review \& editing.\\
+\textbf{Lei Luo}: Resources, Validation, Writing--review \& editing.\\
+\textbf{Pengfei Zhang}: Investigation, Validation, Writing--review \& editing.\\
+\textbf{Xingjun Yu}: Supervision, Project administration, Funding acquisition,
+Resources, Writing--review \& editing.
+
+\section*{Declaration of competing interest}
+All authors are employees of companies affiliated with China National Petroleum
+Corporation (CNPC). This work was supported by the CNPC Youth Science and
+Technology Special Project (Project No.~2026DQ03150). The funder had no role in
+the study design, data generation, analysis and interpretation, manuscript
+preparation, or the decision to submit the article. The authors declare no other
+competing financial interests or personal relationships that could have
+influenced the work reported in this paper.
+
+\section*{Data availability}
+The compact reproducibility package is available in the public GitHub repository
+at \url{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v1}.
+It contains the permitted mechanistic simulator and data generator, controller
+and experiment configurations, environment specification, the simulated 72~h
+record, selected trajectory-level audit outputs, result manifests, analysis
+scripts, and manuscript sources supporting the reported comparisons. Large
+development intermediates, duplicate plots, and model weights are excluded as
+documented in the repository README. A DOI-bearing archival release and its
+reuse license will be added after author and institutional confirmation.
+
+\section*{Acknowledgements}
+This work was carried out under the China National Petroleum Corporation
+(CNPC) Youth Science and Technology Special Project (Project
+No.~2026DQ03150).
+
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\end{document}

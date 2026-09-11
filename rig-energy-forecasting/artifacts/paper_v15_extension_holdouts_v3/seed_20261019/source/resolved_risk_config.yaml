@@ -1,0 +1,163 @@
+project:
+  seed: 20261019
+input:
+  forecast_model: Validation-Weighted-Ensemble
+  uncertainty_members:
+  - XGBoost
+  - TCN
+  - StateAware-TCN-Attention
+split:
+  train_fraction: 0.3
+  val_fraction: 0.2
+label:
+  reserve_ratio: 0.05
+  reserve_floor_kw: 50.0
+  normal_margin_ratio: 0.15
+  watch_margin_ratio: 0.05
+  warning_margin_ratio: 0.0
+synthetic_supply:
+  grid_rated_capacity_kw: 1300.0
+  generator_rated_power_kw: 1200.0
+  storage_rated_power_kw: 500.0
+  soc_min_pct: 15.0
+  soc_max_pct: 90.0
+  soc_full_power_above_pct: 30.0
+  block_length_steps:
+  - 240
+  - 360
+  regime_cycle:
+  - normal
+  - constrained
+  - weak
+  - emergency
+  regimes:
+    normal:
+      target_forecast_margin_ratio: 0.28
+      margin_sigma_ratio: 0.025
+      firm_supply_sigma_kw: 20.0
+      grid_share: 0.58
+      generator_share: 0.24
+      storage_soc_pct: 72.0
+      soc_sigma_pct: 4.0
+      grid_capacity_kw: 1200.0
+      generator_capacity_kw: 800.0
+    constrained:
+      target_forecast_margin_ratio: 0.1
+      margin_sigma_ratio: 0.02
+      firm_supply_sigma_kw: 18.0
+      grid_share: 0.54
+      generator_share: 0.27
+      storage_soc_pct: 50.0
+      soc_sigma_pct: 5.0
+      grid_capacity_kw: 750.0
+      generator_capacity_kw: 500.0
+    weak:
+      target_forecast_margin_ratio: 0.025
+      margin_sigma_ratio: 0.018
+      firm_supply_sigma_kw: 15.0
+      grid_share: 0.49
+      generator_share: 0.31
+      storage_soc_pct: 32.0
+      soc_sigma_pct: 5.0
+      grid_capacity_kw: 420.0
+      generator_capacity_kw: 360.0
+    emergency:
+      target_forecast_margin_ratio: -0.14
+      margin_sigma_ratio: 0.035
+      firm_supply_sigma_kw: 18.0
+      grid_share: 0.44
+      generator_share: 0.36
+      storage_soc_pct: 22.0
+      soc_sigma_pct: 4.0
+      grid_capacity_kw: 150.0
+      generator_capacity_kw: 240.0
+  generation_mode: independent_process
+  grid_noise_sigma_kw: 18.0
+  generator_noise_sigma_kw: 12.0
+  storage_noise_sigma_kw: 8.0
+  soc_noise_sigma_pct: 2.5
+models:
+  logistic_regression:
+    C: 1.0
+    max_iter: 1200
+  xgboost:
+    n_estimators: 260
+    max_depth: 7
+    learning_rate: 0.04
+    subsample: 0.85
+    colsample_bytree: 0.85
+    min_child_weight: 2.0
+    reg_lambda: 1.0
+  temporal_transformer:
+    hidden_size: 64
+    attention_heads: 4
+    layers: 2
+    dropout: 0.12
+    learning_rate: 0.0008
+    weight_decay: 0.0001
+    batch_size: 384
+    max_epochs: 24
+    patience: 5
+ensemble:
+  l2_penalty: 0.0001
+conformal:
+  coverage: 0.9
+ordinal_calibration:
+  threshold_candidates:
+  - 0.3
+  - 0.35
+  - 0.4
+  - 0.45
+  - 0.5
+  - 0.55
+  - 0.6
+  - 0.65
+  - 0.7
+balanced_ordinal_hybrid:
+  balanced_weight_candidates:
+  - 0.0
+  - 0.25
+  - 0.5
+  - 0.75
+  - 1.0
+causal_filter:
+  source_models:
+  - Ordinal-XGBoost
+  - Safety-Union-Ensemble
+  - Severe-Guarded-Logistic
+  smoothing_candidates:
+  - 0.0
+  - 0.2
+  - 0.5
+  - 0.8
+  - 0.9
+operational_selection:
+  minimum_validation_high_risk_recall: 0.8
+  minimum_validation_macro_f1: 0.7
+  minimum_validation_severe_recall: 0.8
+  severe_sentinel_validation_recall_target: 0.85
+  dispatch_guard_model: Balanced-Ordinal-Safety-Max
+  candidate_models:
+  - Balanced-Ordinal-Safety-Max
+  - Balanced-Ordinal-Hybrid
+  - Balanced-Multiclass-XGBoost
+  - Severe-Guarded-Multiclass-XGBoost
+  - Causal-Risk-Filter
+  - Validation-Calibrated-Ordinal
+  - Ordinal-XGBoost
+  - Severe-Guarded-Logistic
+  - Validation-Weighted-Ensemble
+  - Evidence-Guided-Ensemble
+  - Safety-Union-Ensemble
+  score_tie_tolerance: 0.005
+evidence:
+  grid_derating_threshold_kw: 700.0
+  low_soc_threshold_pct: 35.0
+  uncertainty_threshold_kw: 80.0
+  ramp_threshold_kw_per_s: 25.0
+dispatch_signal:
+  reserve_adder_kw:
+    '0': 0.0
+    '1': 30.0
+    '2': 80.0
+    '3': 150.0

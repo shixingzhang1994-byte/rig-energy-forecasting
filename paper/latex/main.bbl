@@ -1,0 +1,462 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{jokar2022bilevel}
+H.~Jokar, B.~Bahmani-Firouzi, M.~Simab,
+  \href{https://doi.org/10.1016/j.egyr.2022.01.137}{Bilevel model for
+  security-constrained and reliability transmission and distribution substation
+  energy management considering large-scale energy storage and demand side
+  management}, Energy Reports 8 (2022) 2617--2629.
+\newblock \href {https://doi.org/10.1016/j.egyr.2022.01.137}
+  {\path{doi:10.1016/j.egyr.2022.01.137}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.egyr.2022.01.137}
+
+\bibitem{vafamand2020predictive}
+N.~Vafamand, J.~Boudjadar, M.~H. Khooban,
+  \href{https://doi.org/10.1016/j.egyr.2019.11.118}{Model predictive energy
+  management in hybrid ferry grids}, Energy Reports 6 (2020) 550--557.
+\newblock \href {https://doi.org/10.1016/j.egyr.2019.11.118}
+  {\path{doi:10.1016/j.egyr.2019.11.118}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.egyr.2019.11.118}
+
+\bibitem{vergine2022optimal}
+S.~Vergine, C.~{\'Alvarez-Arroyo}, G.~D'Amico, J.~M. Esca\~no,
+  L.~Alvarado-Barrios,
+  \href{https://doi.org/10.1016/j.egyr.2022.07.044}{Optimal management of a
+  hybrid and isolated microgrid in a random setting}, Energy Reports 8 (2022)
+  9402--9419.
+\newblock \href {https://doi.org/10.1016/j.egyr.2022.07.044}
+  {\path{doi:10.1016/j.egyr.2022.07.044}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.egyr.2022.07.044}
+
+\bibitem{pavkovic2016oil}
+D.~Pavkovi\'c, A.~Sedi\'c, Z.~Guzovi\'c,
+  \href{https://doi.org/10.1016/j.enconman.2016.05.022}{Oil drilling rig diesel
+  power-plant fuel efficiency improvement potentials through rule-based
+  generator scheduling and utilization of battery energy storage system},
+  Energy Conversion and Management 121 (2016) 194--211.
+\newblock \href {https://doi.org/10.1016/j.enconman.2016.05.022}
+  {\path{doi:10.1016/j.enconman.2016.05.022}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.enconman.2016.05.022}
+
+\bibitem{chupin2021drillingstorage}
+E.~Chupin, K.~Frolov, M.~Korzhavin, O.~Zhdaneev,
+  \href{https://doi.org/10.1007/s13202-021-01248-5}{Energy storage systems for
+  drilling rigs}, Journal of Petroleum Exploration and Production Technology
+  12~(2) (2021) 341--350.
+\newblock \href {https://doi.org/10.1007/s13202-021-01248-5}
+  {\path{doi:10.1007/s13202-021-01248-5}}.
+\newline\urlprefix\url{https://doi.org/10.1007/s13202-021-01248-5}
+
+\bibitem{huang2019drilling}
+Y.~Huang, H.~Lan, Y.-Y. Hong, S.~Wen, H.~Yin,
+  \href{https://doi.org/10.1016/j.energy.2019.05.157}{Optimal generation
+  scheduling for a deep-water semi-submersible drilling platform with uncertain
+  renewable power generation and loads}, Energy 181 (2019) 897--907.
+\newblock \href {https://doi.org/10.1016/j.energy.2019.05.157}
+  {\path{doi:10.1016/j.energy.2019.05.157}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.energy.2019.05.157}
+
+\bibitem{peixoto2024psv}
+C.~S. Peixoto, G.~G. T.~T. Vieira, M.~B.~C. Salles, B.~S. Carmo,
+  \href{https://doi.org/10.1016/j.apenergy.2023.122476}{Assessing the impact of
+  power dispatch optimization and energy storage systems in diesel-electric
+  {PSVs}: A case study based on real field data}, Applied Energy 357 (2024)
+  122476.
+\newblock \href {https://doi.org/10.1016/j.apenergy.2023.122476}
+  {\path{doi:10.1016/j.apenergy.2023.122476}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.apenergy.2023.122476}
+
+\bibitem{banihabib2023offshore}
+R.~Banihabib, M.~Assadi,
+  \href{https://doi.org/10.1016/j.jclepro.2023.138742}{Towards a low-carbon
+  future for offshore oil and gas industry: A smart integrated energy
+  management system with floating wind turbines and gas turbines}, Journal of
+  Cleaner Production 423 (2023) 138742.
+\newblock \href {https://doi.org/10.1016/j.jclepro.2023.138742}
+  {\path{doi:10.1016/j.jclepro.2023.138742}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.jclepro.2023.138742}
+
+\bibitem{zamora2010controls}
+R.~Zamora, A.~K. Srivastava,
+  \href{https://doi.org/10.1016/j.rser.2010.03.019}{Controls for microgrids
+  with storage: Review, challenges, and research needs}, Renewable and
+  Sustainable Energy Reviews 14~(7) (2010) 2009--2018.
+\newblock \href {https://doi.org/10.1016/j.rser.2010.03.019}
+  {\path{doi:10.1016/j.rser.2010.03.019}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.rser.2010.03.019}
+
+\bibitem{meng2016supervisory}
+L.~Meng, E.~R. Sanseverino, A.~Luna, T.~Dragicevic, J.~C. Vasquez, J.~M.
+  Guerrero, \href{https://doi.org/10.1016/j.rser.2016.03.003}{Microgrid
+  supervisory controllers and energy management systems: A literature review},
+  Renewable and Sustainable Energy Reviews 60 (2016) 1263--1273.
+\newblock \href {https://doi.org/10.1016/j.rser.2016.03.003}
+  {\path{doi:10.1016/j.rser.2016.03.003}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.rser.2016.03.003}
+
+\bibitem{zia2018microgrid}
+M.~F. Zia, E.~Elbouchikhi, M.~Benbouzid,
+  \href{https://doi.org/10.1016/j.apenergy.2018.04.103}{Microgrids energy
+  management systems: A critical review on methods, solutions, and prospects},
+  Applied Energy 222 (2018) 1033--1055.
+\newblock \href {https://doi.org/10.1016/j.apenergy.2018.04.103}
+  {\path{doi:10.1016/j.apenergy.2018.04.103}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.apenergy.2018.04.103}
+
+\bibitem{abbasi2023emsreview}
+A.~R. Abbasi, D.~Baleanu,
+  \href{https://doi.org/10.1016/j.enconman.2023.117723}{Recent developments of
+  energy management strategies in microgrids: An updated and comprehensive
+  review and classification}, Energy Conversion and Management 297 (2023)
+  117723.
+\newblock \href {https://doi.org/10.1016/j.enconman.2023.117723}
+  {\path{doi:10.1016/j.enconman.2023.117723}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.enconman.2023.117723}
+
+\bibitem{onsomu2024bessreview}
+O.~N. Onsomu, E.~Terciyanl{\i}, B.~Ye{\>{s}}ilata,
+  \href{https://doi.org/10.1002/eng2.12995}{Comprehensive review of energy
+  management strategies: Considering battery energy storage system and
+  renewable energy sources}, Engineering Reports 6~(11) (2024).
+\newblock \href {https://doi.org/10.1002/eng2.12995}
+  {\path{doi:10.1002/eng2.12995}}.
+\newline\urlprefix\url{https://doi.org/10.1002/eng2.12995}
+
+\bibitem{pamulapati2023trilemma}
+T.~Pamulapati, M.~Cavus, I.~Odigwe, A.~Allahham, S.~Walker, D.~Giaouris,
+  \href{https://doi.org/10.3390/en16010289}{A review of microgrid energy
+  management strategies from the energy trilemma perspective}, Energies 16~(1)
+  (2023) 289.
+\newblock \href {https://doi.org/10.3390/en16010289}
+  {\path{doi:10.3390/en16010289}}.
+\newline\urlprefix\url{https://doi.org/10.3390/en16010289}
+
+\bibitem{joshal2023mpcreview}
+K.~S. Joshal, N.~Gupta, \href{https://doi.org/10.3390/en16134851}{Microgrids
+  with model predictive control: A critical review}, Energies 16~(13) (2023)
+  4851.
+\newblock \href {https://doi.org/10.3390/en16134851}
+  {\path{doi:10.3390/en16134851}}.
+\newline\urlprefix\url{https://doi.org/10.3390/en16134851}
+
+\bibitem{hu2024empc}
+J.~Hu, Y.~Shan, Y.~Yang, A.~Parisio, Y.~Li, N.~Amjady, S.~Islam, K.~W. Cheng,
+  J.~M. Guerrero, J.~Rodr{\'i}guez,
+  \href{https://doi.org/10.1109/TSG.2023.3266253}{Economic model predictive
+  control for microgrid optimization: A review}, IEEE Transactions on Smart
+  Grid 15~(1) (2024) 472--484.
+\newblock \href {https://doi.org/10.1109/TSG.2023.3266253}
+  {\path{doi:10.1109/TSG.2023.3266253}}.
+\newline\urlprefix\url{https://doi.org/10.1109/TSG.2023.3266253}
+
+\bibitem{vivas2025hierarchical}
+F.~J. Vivas, A.~Pajares, X.~Blasco, J.~M. Herrero, F.~Segura, J.~M.
+  And{\'u}jar, \href{https://doi.org/10.1016/j.ecmx.2025.101027}{A novel energy
+  management system based on two-level hierarchical economic model predictive
+  control for use in microgrid control}, Energy Conversion and Management: X 26
+  (2025) 101027.
+\newblock \href {https://doi.org/10.1016/j.ecmx.2025.101027}
+  {\path{doi:10.1016/j.ecmx.2025.101027}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.ecmx.2025.101027}
+
+\bibitem{lim2026twolayer}
+D.~Lim, J.~Cha, C.~Seo, G.~Jang,
+  \href{https://doi.org/10.1016/j.ijepes.2025.111516}{A two-layer robust model
+  predictive control-based energy management system for a zero-carbon {DC}
+  microgrid with hybrid hydrogen-battery energy storage}, International Journal
+  of Electrical Power \& Energy Systems 174 (2026) 111516.
+\newblock \href {https://doi.org/10.1016/j.ijepes.2025.111516}
+  {\path{doi:10.1016/j.ijepes.2025.111516}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.ijepes.2025.111516}
+
+\bibitem{hu2021mpcoverview}
+J.~Hu, Y.~Shan, J.~M. Guerrero, A.~Ioinovici, K.~W. Chan, J.~Rodriguez,
+  \href{https://doi.org/10.1016/j.rser.2020.110422}{Model predictive control of
+  microgrids -- an overview}, Renewable and Sustainable Energy Reviews 136
+  (2021) 110422.
+\newblock \href {https://doi.org/10.1016/j.rser.2020.110422}
+  {\path{doi:10.1016/j.rser.2020.110422}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.rser.2020.110422}
+
+\bibitem{zhang2015smartmicrogrid}
+Y.~Zhang, T.~Zhang, R.~Wang, Y.~Liu, B.~Guo,
+  \href{https://doi.org/10.1016/j.solener.2015.10.027}{Optimal operation of a
+  smart residential microgrid based on model predictive control by considering
+  uncertainties and storage impacts}, Solar Energy 122 (2015) 1052--1065.
+\newblock \href {https://doi.org/10.1016/j.solener.2015.10.027}
+  {\path{doi:10.1016/j.solener.2015.10.027}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.solener.2015.10.027}
+
+\bibitem{dao2019hierarchical}
+L.~A. Dao, A.~Dehghani-Pilehvarani, A.~Markou, L.~Ferrarini,
+  \href{https://doi.org/10.1016/j.scs.2019.101536}{A hierarchical distributed
+  predictive control approach for microgrids energy management}, Sustainable
+  Cities and Society 48 (2019) 101536.
+\newblock \href {https://doi.org/10.1016/j.scs.2019.101536}
+  {\path{doi:10.1016/j.scs.2019.101536}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.scs.2019.101536}
+
+\bibitem{garciatorres2019network}
+F.~Garcia-Torres, C.~Bordons, M.~A. Ridao,
+  \href{https://doi.org/10.1109/TIE.2018.2826476}{Optimal economic schedule for
+  a network of microgrids with hybrid energy storage system using distributed
+  model predictive control}, IEEE Transactions on Industrial Electronics 66~(3)
+  (2019) 1919--1929.
+\newblock \href {https://doi.org/10.1109/TIE.2018.2826476}
+  {\path{doi:10.1109/TIE.2018.2826476}}.
+\newline\urlprefix\url{https://doi.org/10.1109/TIE.2018.2826476}
+
+\bibitem{tobajas2022resilience}
+J.~Tobajas, F.~Garcia-Torres, P.~Roncero-Sanchez, J.~Vazquez, L.~Bellatreche,
+  E.~Nieto,
+  \href{https://doi.org/10.1016/j.apenergy.2021.118092}{Resilience-oriented
+  schedule of microgrids with hybrid energy storage system using model
+  predictive control}, Applied Energy 306 (2022) 118092.
+\newblock \href {https://doi.org/10.1016/j.apenergy.2021.118092}
+  {\path{doi:10.1016/j.apenergy.2021.118092}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.apenergy.2021.118092}
+
+\bibitem{franke2020stochasticmilp}
+G.~Franke, M.~Schneider, T.~Weitzel, S.~Rinderknecht,
+  \href{https://doi.org/10.1016/j.ifacol.2020.12.2132}{Stochastic optimization
+  model for energy management of a hybrid microgrid using mixed integer linear
+  programming}, IFAC-PapersOnLine 53~(2) (2020) 12948--12955.
+\newblock \href {https://doi.org/10.1016/j.ifacol.2020.12.2132}
+  {\path{doi:10.1016/j.ifacol.2020.12.2132}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.ifacol.2020.12.2132}
+
+\bibitem{ji2018robustcvar}
+L.~Ji, G.~Huang, Y.~Xie, Y.~Zhou, J.~Zhou,
+  \href{https://doi.org/10.1016/j.energy.2018.04.037}{Robust cost-risk tradeoff
+  for day-ahead schedule optimization in residential microgrid system under
+  worst-case conditional value-at-risk consideration}, Energy 153 (2018)
+  324--337.
+\newblock \href {https://doi.org/10.1016/j.energy.2018.04.037}
+  {\path{doi:10.1016/j.energy.2018.04.037}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.energy.2018.04.037}
+
+\bibitem{rockafellar2000cvar}
+R.~T. Rockafellar, S.~Uryasev,
+  \href{https://doi.org/10.21314/JOR.2000.038}{Optimization of conditional
+  value-at-risk}, The Journal of Risk 2~(3) (2000) 21--41.
+\newblock \href {https://doi.org/10.21314/JOR.2000.038}
+  {\path{doi:10.21314/JOR.2000.038}}.
+\newline\urlprefix\url{https://doi.org/10.21314/JOR.2000.038}
+
+\bibitem{vasquez2023mpcmultiobjective}
+L.~O.~P. V{\'a}squez, J.~L. Redondo, J.~D.~{\'A}. Herv{\'a}s, V.~M.
+  Ram{\'i}rez, J.~L. Torres,
+  \href{https://doi.org/10.1016/j.apenergy.2023.120998}{Balancing {CO2}
+  emissions and economic cost in a microgrid through an energy management
+  system using {MPC} and multi-objective optimization}, Applied Energy 347
+  (2023) 120998.
+\newblock \href {https://doi.org/10.1016/j.apenergy.2023.120998}
+  {\path{doi:10.1016/j.apenergy.2023.120998}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.apenergy.2023.120998}
+
+\bibitem{pajares2023mpcmethodology}
+A.~Pajares, F.~J. Vivas, X.~Blasco, J.~M. Herrero, F.~Segura, J.~M.
+  And{\'u}jar,
+  \href{https://doi.org/10.1016/j.apenergy.2023.121809}{Methodology for energy
+  management strategies design based on predictive control techniques for smart
+  grids}, Applied Energy 351 (2023) 121809.
+\newblock \href {https://doi.org/10.1016/j.apenergy.2023.121809}
+  {\path{doi:10.1016/j.apenergy.2023.121809}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.apenergy.2023.121809}
+
+\bibitem{sepehrzad2023dcmicrogrid}
+R.~Sepehrzad, J.~Ghafourian, A.~Hedayatnia, A.~Al-Durrad, M.~H. Khooban,
+  \href{https://doi.org/10.1016/j.est.2023.109282}{Experimental and developed
+  {DC} microgrid energy management integrated with battery energy storage based
+  on multiple dynamic matrix model predictive control}, Journal of Energy
+  Storage 74 (2023) 109282.
+\newblock \href {https://doi.org/10.1016/j.est.2023.109282}
+  {\path{doi:10.1016/j.est.2023.109282}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.est.2023.109282}
+
+\bibitem{alarcon2023scenariompc}
+M.~A. Alarc{\'o}n, R.~G. Alarc{\'o}n, A.~H. Gonz{\'a}lez, A.~Ferramosca,
+  \href{https://doi.org/10.1016/j.segan.2023.101205}{A scenario-based
+  economic-stochastic model predictive control for the management of
+  microgrids}, Sustainable Energy, Grids and Networks 36 (2023) 101205.
+\newblock \href {https://doi.org/10.1016/j.segan.2023.101205}
+  {\path{doi:10.1016/j.segan.2023.101205}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.segan.2023.101205}
+
+\bibitem{tereza2023riskaware}
+T.~{\'A}belov{\'a}, R.~Koh{\'u}t, K.~Fedorov{\'a}, M.~Kvasnica,
+  \href{https://doi.org/10.1016/j.ifacol.2023.10.1042}{Risk-aware stochastic
+  energy management of microgrid with battery storage and renewables},
+  IFAC-PapersOnLine 56~(2) (2023) 8445--8450.
+\newblock \href {https://doi.org/10.1016/j.ifacol.2023.10.1042}
+  {\path{doi:10.1016/j.ifacol.2023.10.1042}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.ifacol.2023.10.1042}
+
+\bibitem{zhang2023drcvar}
+C.~Zhang, H.~Liang, L.~Yang,
+  \href{https://doi.org/10.1016/j.segan.2023.101172}{A distributionally robust
+  approximate framework consider {CVaR} constraints for energy management of
+  microgrid}, Sustainable Energy, Grids and Networks 36 (2023) 101172.
+\newblock \href {https://doi.org/10.1016/j.segan.2023.101172}
+  {\path{doi:10.1016/j.segan.2023.101172}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.segan.2023.101172}
+
+\bibitem{yager1987dempster}
+R.~R. Yager, \href{https://doi.org/10.1016/0020-0255(87)90007-7}{On the
+  {Dempster--Shafer} framework and new combination rules}, Information Sciences
+  41~(2) (1987) 93--137.
+\newblock \href {https://doi.org/10.1016/0020-0255(87)90007-7}
+  {\path{doi:10.1016/0020-0255(87)90007-7}}.
+\newline\urlprefix\url{https://doi.org/10.1016/0020-0255(87)90007-7}
+
+\bibitem{denoeux2019decision}
+T.~Den{\oe}ux,
+  \href{https://doi.org/10.1016/j.ijar.2019.03.009}{Decision-making with belief
+  functions: A review}, International Journal of Approximate Reasoning 109
+  (2019) 87--110.
+\newblock \href {https://doi.org/10.1016/j.ijar.2019.03.009}
+  {\path{doi:10.1016/j.ijar.2019.03.009}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.ijar.2019.03.009}
+
+\bibitem{demirci2022transformer}
+M.~Demirci, M.~Saka, H.~Gozde, M.~Dursun, M.~C. Taplamacioglu,
+  \href{https://doi.org/10.1109/ICEEE55327.2022.9772608}{{Dempster--Shafer}
+  evidence theory application for fault diagnosis of power transformers}, in:
+  2022 9th International Conference on Electrical and Electronics Engineering
+  (ICEEE), IEEE, 2022, pp. 40--44.
+\newblock \href {https://doi.org/10.1109/ICEEE55327.2022.9772608}
+  {\path{doi:10.1109/ICEEE55327.2022.9772608}}.
+\newline\urlprefix\url{https://doi.org/10.1109/ICEEE55327.2022.9772608}
+
+\bibitem{wu2024distribution}
+X.~Wu, H.~Zhao, W.~Xu, W.~Pan, Q.~Ji, X.~Hua,
+  \href{https://doi.org/10.3389/fenrg.2024.1422639}{Fault diagnosis of the
+  distribution network based on the {D--S} evidence theory {Bayesian} network},
+  Frontiers in Energy Research 12 (2024) 1422639.
+\newblock \href {https://doi.org/10.3389/fenrg.2024.1422639}
+  {\path{doi:10.3389/fenrg.2024.1422639}}.
+\newline\urlprefix\url{https://doi.org/10.3389/fenrg.2024.1422639}
+
+\bibitem{guan2025optimized}
+X.~Guan, H.~Yu, X.~Yi,
+  \href{https://doi.org/10.1016/j.engappai.2025.111737}{Optimized methods for
+  basic probability assignments in evidence theory: Applications to fault
+  diagnosis}, Engineering Applications of Artificial Intelligence 160 (2025)
+  111737.
+\newblock \href {https://doi.org/10.1016/j.engappai.2025.111737}
+  {\path{doi:10.1016/j.engappai.2025.111737}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.engappai.2025.111737}
+
+\bibitem{esmaeili2023critical}
+M.~Esmaeili, A.~A. Ahmadi, A.~Nateghi, M.~Shafie-khah,
+  \href{https://doi.org/10.1016/j.jclepro.2022.135490}{Robust power management
+  system with generation and demand prediction and critical loads in {DC}
+  microgrid}, Journal of Cleaner Production 384 (2023) 135490.
+\newblock \href {https://doi.org/10.1016/j.jclepro.2022.135490}
+  {\path{doi:10.1016/j.jclepro.2022.135490}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.jclepro.2022.135490}
+
+\bibitem{erenoglu2023restoration}
+A.~K. Ereno{\?{g}}lu, O.~Erdin{\>{c}},
+  \href{https://doi.org/10.1109/TPWRD.2022.3206272}{Real-time allocation of
+  multi-mobile resources in integrated distribution and transportation systems
+  for resilient electrical grid}, IEEE Transactions on Power Delivery 38~(2)
+  (2023) 1108--1119.
+\newblock \href {https://doi.org/10.1109/TPWRD.2022.3206272}
+  {\path{doi:10.1109/TPWRD.2022.3206272}}.
+\newline\urlprefix\url{https://doi.org/10.1109/TPWRD.2022.3206272}
+
+\bibitem{niknami2024resilient}
+A.~Niknami, M.~Tolou~Askari, M.~Amir~Ahmadi, M.~Babaei~Nik,
+  M.~Samiei~Moghaddam,
+  \href{https://doi.org/10.1016/j.clet.2024.100763}{Resilient day-ahead
+  microgrid energy management with uncertain demand, {EVs}, storage, and
+  renewables}, Cleaner Engineering and Technology 20 (2024) 100763.
+\newblock \href {https://doi.org/10.1016/j.clet.2024.100763}
+  {\path{doi:10.1016/j.clet.2024.100763}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.clet.2024.100763}
+
+\bibitem{maslak2024switchedmpc}
+G.~Ma{\'s}lak, P.~Or{\l}owski,
+  \href{https://doi.org/10.1016/j.rser.2024.114685}{Operational optimisation of
+  a microgrid using non-stationary hybrid switched model predictive control
+  with virtual storage-based demand management}, Renewable and Sustainable
+  Energy Reviews 202 (2024) 114685.
+\newblock \href {https://doi.org/10.1016/j.rser.2024.114685}
+  {\path{doi:10.1016/j.rser.2024.114685}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.rser.2024.114685}
+
+\bibitem{lim2021tft}
+B.~Lim, S.~{\"O}. Ar{\i}k, N.~Loeff, T.~Pfister,
+  \href{https://doi.org/10.1016/j.ijforecast.2021.03.012}{Temporal fusion
+  transformers for interpretable multi-horizon time series forecasting},
+  International Journal of Forecasting 37~(4) (2021) 1748--1764.
+\newblock \href {https://doi.org/10.1016/j.ijforecast.2021.03.012}
+  {\path{doi:10.1016/j.ijforecast.2021.03.012}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.ijforecast.2021.03.012}
+
+\bibitem{nie2023patchtst}
+Y.~Nie, N.~H. Nguyen, P.~Sinthong, J.~Kalagnanam,
+  \href{https://arxiv.org/abs/2211.14730}{A time series is worth 64 words:
+  Long-term forecasting with transformers} (2023).
+\newblock \href {http://arxiv.org/abs/2211.14730} {\path{arXiv:2211.14730}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2211.14730}
+
+\bibitem{liu2024itransformer}
+Y.~Liu, T.~Hu, H.~Zhang, H.~Wu, S.~Wang, L.~Ma, M.~Long,
+  \href{https://arxiv.org/abs/2310.06625}{itransformer: Inverted transformers
+  are effective for time series forecasting} (2024).
+\newblock \href {http://arxiv.org/abs/2310.06625} {\path{arXiv:2310.06625}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2310.06625}
+
+\bibitem{eren2024stlfreview}
+Y.~Eren, {\.I}.~K{\"u}{\>{c}}{\"u}kdemiral,
+  \href{https://doi.org/10.1016/j.rser.2023.114031}{A comprehensive review on
+  deep learning approaches for short-term load forecasting}, Renewable and
+  Sustainable Energy Reviews 189 (2024) 114031.
+\newblock \href {https://doi.org/10.1016/j.rser.2023.114031}
+  {\path{doi:10.1016/j.rser.2023.114031}}.
+\newline\urlprefix\url{https://doi.org/10.1016/j.rser.2023.114031}
+
+\bibitem{zhou2021informer}
+H.~Zhou, S.~Zhang, J.~Peng, S.~Zhang, J.~Li, H.~Xiong, W.~Zhang,
+  \href{https://doi.org/10.1609/AAAI.V35I12.17325}{Informer: Beyond efficient
+  transformer for long sequence time-series forecasting}, Proceedings of the
+  AAAI Conference on Artificial Intelligence 35~(12) (2021) 11106--11115.
+\newblock \href {https://doi.org/10.1609/AAAI.V35I12.17325}
+  {\path{doi:10.1609/AAAI.V35I12.17325}}.
+\newline\urlprefix\url{https://doi.org/10.1609/AAAI.V35I12.17325}
+
+\bibitem{wu2021autoformer}
+H.~Wu, J.~Xu, J.~Wang, M.~Long,
+  \href{https://proceedings.neurips.cc/paper_files/paper/2021/hash/bcc0d400288793e8bdcd7c19a8ac0c2b-Abstract.html}{Autoformer:
+  Decomposition transformers with auto-correlation for long-term series
+  forecasting}, in: M.~Ranzato, A.~Beygelzimer, Y.~Dauphin, P.~S. Liang,
+  J.~Wortman~Vaughan (Eds.), Advances in Neural Information Processing Systems,
+  Vol.~34, Curran Associates, Inc., 2021, pp. 22419--22430.
+\newline\urlprefix\url{https://proceedings.neurips.cc/paper_files/paper/2021/hash/bcc0d400288793e8bdcd7c19a8ac0c2b-Abstract.html}
+
+\bibitem{zhou2022fedformer}
+T.~Zhou, Z.~Ma, Q.~Wen, X.~Wang, L.~Sun, R.~Jin,
+  \href{https://proceedings.mlr.press/v162/zhou22g.html}{{FED}former: Frequency
+  enhanced decomposed transformer for long-term series forecasting}, in:
+  K.~Chaudhuri, S.~Jegelka, L.~Song, C.~Szepesvari, G.~Niu, S.~Sabato (Eds.),
+  Proceedings of the 39th International Conference on Machine Learning, Vol.
+  162 of Proceedings of Machine Learning Research, PMLR, 2022, pp.
+  27268--27286.
+\newline\urlprefix\url{https://proceedings.mlr.press/v162/zhou22g.html}
+
+\bibitem{wu2023timesnet}
+H.~Wu, T.~Hu, Y.~Liu, H.~Zhou, J.~Wang, M.~Long,
+  \href{https://arxiv.org/abs/2210.02186}{Timesnet: Temporal 2d-variation
+  modeling for general time series analysis}, Published at the Eleventh
+  International Conference on Learning Representations (2023).
+\newblock \href {http://arxiv.org/abs/2210.02186} {\path{arXiv:2210.02186}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2210.02186}
+
+\end{thebibliography}

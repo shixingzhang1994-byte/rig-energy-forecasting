@@ -1,0 +1,45 @@
+{
+  "seed": 20261018,
+  "files": [
+    {
+      "path": "configs/paper_v15_extension_holdouts_v3.yaml",
+      "sha256": "5ee28c1cb36fd160409e5b0ef950e7e8a84a93a6f9abaa55aed653c12de7699e",
+      "size_bytes": 4240
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/eligibility.json",
+      "sha256": "54b3b7164e88bb5099e30d6df19588aa881df395e31e4a8fe3ff3c75679d83af",
+      "size_bytes": 1113
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/resolved_dispatch_config.yaml",
+      "sha256": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+      "size_bytes": 3958
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/risk/run_metadata.json",
+      "sha256": "95d537361bffd8711cbfeafa0c42640a41b10f4834c37eacdab73ddb7707a2e1",
+      "size_bytes": 1677
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/risk/risk_predictions.csv",
+      "sha256": "78af544178113999f7e86c0e77c4984b58a79b6d0d8bf10b1ebcf88bcd0ec77a",
+      "size_bytes": 10700291
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/dispatch/dispatch_metrics.csv",
+      "sha256": "e51db0899be928a136dc8171429b2cb5e1842d6542852a46d549ca264d161b33",
+      "size_bytes": 8183
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/method_summary.csv",
+      "sha256": "90956d985800e3cbac76fbcd62798a455ba46032358f49c8660566567ec4891f",
+      "size_bytes": 1059
+    },
+    {
+      "path": "artifacts/paper_v15_extension_holdouts_v3/seed_20261018/result.json",
+      "sha256": "b21db349a1f7b4c908888f525d72d05d19a57f3fdc65ac89c43650d8837df518",
+      "size_bytes": 2513
+    }
+  ]
+}

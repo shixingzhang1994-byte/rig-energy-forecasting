@@ -1,0 +1,108 @@
+{
+  "seed": "seed_20261012",
+  "purpose": "exact shared pre-window transition histories for independent paper baselines",
+  "scenarios": {
+    "A_stable_drilling": {
+      "warmup_steps": 120,
+      "policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 19.474737128043465,
+      "comparison_initial_generator_kw": 0.0,
+      "comparison_initial_generator_units": 0,
+      "startup_history": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "checks": {
+        "soc_matches_frozen_metadata": true,
+        "generator_kw_matches_frozen_metadata": true,
+        "units_match_frozen_metadata": true
+      }
+    },
+    "B_connection_transition": {
+      "warmup_steps": 120,
+      "policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 75.02403367073208,
+      "comparison_initial_generator_kw": 0.0,
+      "comparison_initial_generator_units": 0,
+      "startup_history": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "checks": {
+        "soc_matches_frozen_metadata": true,
+        "generator_kw_matches_frozen_metadata": true,
+        "units_match_frozen_metadata": true
+      }
+    },
+    "C_tripping_impact": {
+      "warmup_steps": 120,
+      "policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 27.947618789215856,
+      "comparison_initial_generator_kw": 120.0,
+      "comparison_initial_generator_units": 1,
+      "startup_history": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "shutdown_history": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "checks": {
+        "soc_matches_frozen_metadata": true,
+        "generator_kw_matches_frozen_metadata": true,
+        "units_match_frozen_metadata": true
+      }
+    }
+  },
+  "source_hashes": {
+    "config": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+    "risk_signals": "3e826f9f4fe31c3872492bc840de3a39c7812872e16f0e939826cc79dcccc724",
+    "forecast_predictions": "000777231ed949c0deb81cb73f3a886a702e7ba46c5658360872dfe291611e3e",
+    "scenario_selection": "3b33a1d6fa1aca751a6e5678e356ccb09deb3104bbff7406f8e63758d8ec7fde"
+  }
+}

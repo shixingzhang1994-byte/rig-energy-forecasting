@@ -1,0 +1,83 @@
+protocol:
+  name: v21-probability-calibration-prospective-holdouts
+  purpose: test a frozen probability-calibration candidate on new synthetic holdouts
+  artifact_namespace: v21_probability_calibration/prospective_source
+  simulation_days: 21
+  expected_effective_dispatch_hours: 37.70
+  development_seed_order: []
+  holdout_seed_order: [20261040, 20261041, 20261042, 20261043, 20261044, 20261045, 20261046, 20261047, 20261048, 20261049, 20261050, 20261051]
+  required_eligible_seeds_per_phase: 6
+  stop_rule: process in queue order and retain the first six upstream-eligible seeds
+  eligibility_timing: before_dispatch_and_before_any_controller_outcome
+  eligibility_inputs: [public_calibration_audit, operation_state_codes, transition_flags, supply_regime]
+  calibration_locked_from: configs/v14_public_evidence_calibration.yaml
+  frozen_parent_controller: V15
+  frozen_parent_manifest: artifacts/v15_generator_first_reserve/freeze_manifest.json
+  frozen_probability_candidate: configs/v21_selected_probability_candidate.yaml
+  extension_status: prospective_no_tuning_probability_calibration
+
+fixed_unit_commitment:
+  unit_count: 4
+  unit_rated_power_kw: 240.00
+  unit_minimum_stable_power_kw: 120.00
+  unit_ramp_kw_per_step: 30.00
+  minimum_up_steps: 12
+  minimum_down_steps: 6
+  startup_cost_yuan_per_unit: 5.00
+
+plant_and_cost_overrides:
+  plant:
+    grid:
+      rated_capacity_kw: 1300.00
+    generator:
+      rated_power_kw: 960.00
+      minimum_stable_power_kw: 480.00
+      ramp_kw_per_step: 120.00
+    storage:
+      rated_power_kw: 500.00
+      energy_capacity_kwh: 133.00
+      soc_initial: 0.65
+      soc_min: 0.15
+      soc_max: 0.90
+      charge_efficiency: 0.95
+      discharge_efficiency: 0.95
+  cost:
+    grid_price_yuan_per_kwh: 0.710425
+    diesel_price_yuan_per_l: 7.50
+    storage_degradation_yuan_per_kwh: 0.15
+    unserved_energy_penalty_yuan_per_kwh: 100.00
+
+supervisor:
+  enabled: true
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.30
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+  low_soc_minimum_committed_units: 2
+  low_soc_forecast_deficit_guard_enabled: true
+  low_soc_forecast_deficit_margin_kw: 0.00
+  grid_headroom_reserve_enabled: true
+  grid_headroom_reserve_target_soc: 0.75
+  grid_headroom_reserve_max_storage_power_fraction: 0.20
+  generator_first_storage_reserve_enabled: true
+
+performance_gate:
+  safety_reference_methods: [Rule-Based, ML-Robust-MPC]
+  aggregate_unserved_tolerance_kwh: 1.0e-9
+  scenario_regret_reference_methods: [Rule-Based, ML-Robust-MPC]
+  maximum_single_scenario_unserved_regret_kwh: 0.50
+  maximum_risk_adjusted_cost_ratio_vs_ml_robust: 1.005
+  maximum_decision_seconds: 5.00
+  require_zero_physical_violations: true
+  require_not_dominated_by_ml_robust: true
+
+claim_boundary:
+  - This queue was frozen before any V21 holdout result.
+  - V20 failed its original development gates; V21 tests calibration only.
+  - Upstream eligibility precedes V21 candidate and controller execution.
+  - Calibration does not enter dispatch.
+  - Dempster rule, calibration, action, and outcome effects are reported separately.
+  - Results remain synthetic simulation evidence.

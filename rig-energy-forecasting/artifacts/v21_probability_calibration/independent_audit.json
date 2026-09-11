@@ -1,0 +1,899 @@
+{
+  "analysis": "independent read-only reconstruction of V21 prospective holdouts",
+  "protocol_id": "V21-PROBABILITY-CALIBRATION-HOLDOUT-20260909",
+  "run_freeze_sha256": "994249a7ddc30aeaea95c082289425488901ad85f7a4a1fe70d23fa2b663cdfb",
+  "screened_seed_queue_prefix": [
+    {
+      "seed": 20261040,
+      "eligible": true
+    },
+    {
+      "seed": 20261041,
+      "eligible": true
+    },
+    {
+      "seed": 20261042,
+      "eligible": true
+    },
+    {
+      "seed": 20261043,
+      "eligible": false
+    },
+    {
+      "seed": 20261044,
+      "eligible": false
+    },
+    {
+      "seed": 20261045,
+      "eligible": true
+    },
+    {
+      "seed": 20261046,
+      "eligible": true
+    },
+    {
+      "seed": 20261047,
+      "eligible": true
+    }
+  ],
+  "eligible_seeds": [
+    20261040,
+    20261041,
+    20261042,
+    20261045,
+    20261046,
+    20261047
+  ],
+  "n": 6,
+  "per_seed": [
+    {
+      "seed": 20261040,
+      "metrics": {
+        "RSS": {
+          "row_count": 27151,
+          "multiclass_brier": 0.02681767910067595,
+          "macro_f1": 0.793580961865531,
+          "high_risk_recall": 0.9934721440630275,
+          "severe_recall": 0.9928887852646304,
+          "maximum_absolute_row_sum_error": 1.5624000004876848e-07,
+          "minimum_probability": 5.6783388e-06,
+          "maximum_probability": 0.9999249,
+          "probability_valid": false
+        },
+        "Yager_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.09606230896748795,
+          "macro_f1": 0.8206744098738264,
+          "high_risk_recall": 0.9947101857062465,
+          "severe_recall": 0.9917230123571928,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.0231904765685879,
+          "maximum_probability": 0.8634515106229929,
+          "probability_valid": true
+        },
+        "Dempster_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.06582114429848436,
+          "macro_f1": 0.8206744098738264,
+          "high_risk_recall": 0.9947101857062465,
+          "severe_recall": 0.9917230123571928,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.023183268130755,
+          "maximum_probability": 0.8634710072782078,
+          "probability_valid": true
+        },
+        "Dempster_calibrated": {
+          "row_count": 27151,
+          "multiclass_brier": 0.025756152946042454,
+          "macro_f1": 0.8206744098738264,
+          "high_risk_recall": 0.9947101857062465,
+          "severe_recall": 0.9917230123571928,
+          "maximum_absolute_row_sum_error": 6.661338147750939e-16,
+          "minimum_probability": 0.0007139552428218,
+          "maximum_probability": 0.9907102219781578,
+          "probability_valid": true
+        }
+      },
+      "calibration_brier_delta": -0.0400649913524419,
+      "rule_brier_delta": -0.03024116466900359,
+      "total_brier_delta_vs_yager": -0.07030615602144549,
+      "candidate_brier_delta_vs_rss": -0.0010615261546334971,
+      "macro_f1_delta_vs_rss": 0.027093448008295495,
+      "calibration_argmax_changed_rows": 0,
+      "action_vs_rss": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 2.842170943040401e-14,
+          "generator_units_on": 0.0,
+          "storage_kw": 8.526512829121202e-14,
+          "unserved_kw": 1.1368683772161603e-13,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "action_vs_yager": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 0.0,
+          "generator_units_on": 0.0,
+          "storage_kw": 0.0,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "candidate_dispatch": {
+        "unserved_energy_kwh": 30.267416768716007,
+        "risk_adjusted_cost_yuan": 4394.769767102876
+      },
+      "baseline_dispatch": {
+        "unserved_energy_kwh": 30.267416768716007,
+        "risk_adjusted_cost_yuan": 4394.769767102876
+      },
+      "candidate_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 2.2737367544323206e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "yager_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 2.2737367544323206e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      }
+    },
+    {
+      "seed": 20261041,
+      "metrics": {
+        "RSS": {
+          "row_count": 27151,
+          "multiclass_brier": 0.051284926322647625,
+          "macro_f1": 0.7157969671098153,
+          "high_risk_recall": 0.9886877828054299,
+          "severe_recall": 0.9655670332111519,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 6.852268109759876e-05,
+          "maximum_probability": 0.9986310738946724,
+          "probability_valid": true
+        },
+        "Yager_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.11320752782020026,
+          "macro_f1": 0.7658164073643154,
+          "high_risk_recall": 0.9898728722258134,
+          "severe_recall": 0.972897922914584,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0232301482198986,
+          "maximum_probability": 0.8627596549532462,
+          "probability_valid": true
+        },
+        "Dempster_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.0841633714884187,
+          "macro_f1": 0.7658164073643154,
+          "high_risk_recall": 0.9898728722258134,
+          "severe_recall": 0.972897922914584,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.0232019768182387,
+          "maximum_probability": 0.8630276203436913,
+          "probability_valid": true
+        },
+        "Dempster_calibrated": {
+          "row_count": 27151,
+          "multiclass_brier": 0.03785815392132223,
+          "macro_f1": 0.7658164073643154,
+          "high_risk_recall": 0.9898728722258134,
+          "severe_recall": 0.972897922914584,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0007158959282774,
+          "maximum_probability": 0.9904561783849818,
+          "probability_valid": true
+        }
+      },
+      "calibration_brier_delta": -0.04630521756709646,
+      "rule_brier_delta": -0.029044156331781562,
+      "total_brier_delta_vs_yager": -0.07534937389887802,
+      "candidate_brier_delta_vs_rss": -0.013426772401325393,
+      "macro_f1_delta_vs_rss": 0.050019440254500114,
+      "calibration_argmax_changed_rows": 0,
+      "action_vs_rss": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 34,
+        "physical_action_change_rate": 0.03148148148148148,
+        "maximum_absolute_change": {
+          "grid_kw": 156.94406651779843,
+          "generator_kw": 120.0,
+          "generator_units_on": 1.0,
+          "storage_kw": 167.27215741606204,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 1.0,
+          "generator_shutdown_units": 1.0
+        }
+      },
+      "action_vs_yager": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 9,
+        "physical_action_change_rate": 0.008333333333333333,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 41.71996338135557,
+          "generator_units_on": 0.0,
+          "storage_kw": 41.71996338135557,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "candidate_dispatch": {
+        "unserved_energy_kwh": 0.2055853980836953,
+        "risk_adjusted_cost_yuan": 1483.4617988016812
+      },
+      "baseline_dispatch": {
+        "unserved_energy_kwh": 0.2055853980836953,
+        "risk_adjusted_cost_yuan": 1483.021275183198
+      },
+      "candidate_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 2.2737367544323206e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "yager_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 2.2737367544323206e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      }
+    },
+    {
+      "seed": 20261042,
+      "metrics": {
+        "RSS": {
+          "row_count": 27151,
+          "multiclass_brier": 0.03306362451247934,
+          "macro_f1": 0.7477510789549707,
+          "high_risk_recall": 0.9861716027874564,
+          "severe_recall": 0.9901982875168995,
+          "maximum_absolute_row_sum_error": 1.226750001581678e-07,
+          "minimum_probability": 1.5009987e-05,
+          "maximum_probability": 0.9999137,
+          "probability_valid": false
+        },
+        "Yager_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.09562851843934835,
+          "macro_f1": 0.7670840088460421,
+          "high_risk_recall": 0.9850827526132404,
+          "severe_recall": 0.9876070301937809,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0231900460726,
+          "maximum_probability": 0.8634453648730018,
+          "probability_valid": true
+        },
+        "Dempster_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.06877236538100692,
+          "macro_f1": 0.7670840088460421,
+          "high_risk_recall": 0.9850827526132404,
+          "severe_recall": 0.9876070301937809,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.0231821204388618,
+          "maximum_probability": 0.8634667021602411,
+          "probability_valid": true
+        },
+        "Dempster_calibrated": {
+          "row_count": 27151,
+          "multiclass_brier": 0.031936876326643014,
+          "macro_f1": 0.7670840088460421,
+          "high_risk_recall": 0.9850827526132404,
+          "severe_recall": 0.9876070301937809,
+          "maximum_absolute_row_sum_error": 6.661338147750939e-16,
+          "minimum_probability": 0.0007138922635345,
+          "maximum_probability": 0.9907093088449952,
+          "probability_valid": true
+        }
+      },
+      "calibration_brier_delta": -0.03683548905436391,
+      "rule_brier_delta": -0.026856153058341423,
+      "total_brier_delta_vs_yager": -0.06369164211270534,
+      "candidate_brier_delta_vs_rss": -0.0011267481858363224,
+      "macro_f1_delta_vs_rss": 0.019332929891071382,
+      "calibration_argmax_changed_rows": 0,
+      "action_vs_rss": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 2.842170943040401e-14,
+          "generator_units_on": 0.0,
+          "storage_kw": 0.0,
+          "unserved_kw": 1.1368683772161603e-13,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "action_vs_yager": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 0.0,
+          "generator_units_on": 0.0,
+          "storage_kw": 0.0,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "candidate_dispatch": {
+        "unserved_energy_kwh": 71.6183640562995,
+        "risk_adjusted_cost_yuan": 8418.410172575826
+      },
+      "baseline_dispatch": {
+        "unserved_energy_kwh": 71.6183640562995,
+        "risk_adjusted_cost_yuan": 8418.410172575826
+      },
+      "candidate_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "yager_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      }
+    },
+    {
+      "seed": 20261045,
+      "metrics": {
+        "RSS": {
+          "row_count": 27151,
+          "multiclass_brier": 0.027794238294674964,
+          "macro_f1": 0.7707293920477701,
+          "high_risk_recall": 0.9920092646207296,
+          "severe_recall": 0.9808314364442314,
+          "maximum_absolute_row_sum_error": 1.571859999938141e-07,
+          "minimum_probability": 1.4663433e-05,
+          "maximum_probability": 0.99990034,
+          "probability_valid": false
+        },
+        "Yager_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.09997952896819733,
+          "macro_f1": 0.777909500236944,
+          "high_risk_recall": 0.9920092646207296,
+          "severe_recall": 0.9798730082664431,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.0231911769070823,
+          "maximum_probability": 0.863430081257448,
+          "probability_valid": true
+        },
+        "Dempster_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.06899590720315155,
+          "macro_f1": 0.777909500236944,
+          "high_risk_recall": 0.9920092646207296,
+          "severe_recall": 0.9798730082664431,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.0231815217674102,
+          "maximum_probability": 0.8634561061484486,
+          "probability_valid": true
+        },
+        "Dempster_calibrated": {
+          "row_count": 27151,
+          "multiclass_brier": 0.029746674712759227,
+          "macro_f1": 0.777909500236944,
+          "high_risk_recall": 0.9920092646207296,
+          "severe_recall": 0.9798730082664431,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0007138723058028,
+          "maximum_probability": 0.9907084334562196,
+          "probability_valid": true
+        }
+      },
+      "calibration_brier_delta": -0.03924923249039232,
+      "rule_brier_delta": -0.03098362176504578,
+      "total_brier_delta_vs_yager": -0.0702328542554381,
+      "candidate_brier_delta_vs_rss": 0.0019524364180842635,
+      "macro_f1_delta_vs_rss": 0.007180108189173917,
+      "calibration_argmax_changed_rows": 0,
+      "action_vs_rss": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 23,
+        "physical_action_change_rate": 0.021296296296296296,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 189.38687910981315,
+          "generator_units_on": 2.0,
+          "storage_kw": 189.3868791098132,
+          "unserved_kw": 1.007549599307822e-11,
+          "generator_startup_units": 2.0,
+          "generator_shutdown_units": 1.0
+        }
+      },
+      "action_vs_yager": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 0.0,
+          "generator_units_on": 0.0,
+          "storage_kw": 0.0,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "candidate_dispatch": {
+        "unserved_energy_kwh": 133.10887017345732,
+        "risk_adjusted_cost_yuan": 14779.952700111115
+      },
+      "baseline_dispatch": {
+        "unserved_energy_kwh": 133.10887017345732,
+        "risk_adjusted_cost_yuan": 14785.100091148053
+      },
+      "candidate_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 2.2737367544323206e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "yager_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 2.2737367544323206e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      }
+    },
+    {
+      "seed": 20261046,
+      "metrics": {
+        "RSS": {
+          "row_count": 27151,
+          "multiclass_brier": 0.01866355866137389,
+          "macro_f1": 0.7419478175084162,
+          "high_risk_recall": 0.9929757343550447,
+          "severe_recall": 0.992184626700993,
+          "maximum_absolute_row_sum_error": 1.1427499990723788e-07,
+          "minimum_probability": 1.6965036e-05,
+          "maximum_probability": 0.99988246,
+          "probability_valid": false
+        },
+        "Yager_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.06682501478722264,
+          "macro_f1": 0.7508557666610891,
+          "high_risk_recall": 0.9931581828133552,
+          "severe_recall": 0.9923685178374403,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.0231888429999077,
+          "maximum_probability": 0.8634280092233417,
+          "probability_valid": true
+        },
+        "Dempster_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.05165923673915731,
+          "macro_f1": 0.7508557666610891,
+          "high_risk_recall": 0.9931581828133552,
+          "severe_recall": 0.9923685178374403,
+          "maximum_absolute_row_sum_error": 4.440892098500626e-16,
+          "minimum_probability": 0.023178991114525,
+          "maximum_probability": 0.8634537492314955,
+          "probability_valid": true
+        },
+        "Dempster_calibrated": {
+          "row_count": 27151,
+          "multiclass_brier": 0.019674382128616535,
+          "macro_f1": 0.7508557666610891,
+          "high_risk_recall": 0.9931581828133552,
+          "severe_recall": 0.9923685178374403,
+          "maximum_absolute_row_sum_error": 6.661338147750939e-16,
+          "minimum_probability": 0.0007137326700096,
+          "maximum_probability": 0.9907053635265224,
+          "probability_valid": true
+        }
+      },
+      "calibration_brier_delta": -0.03198485461054078,
+      "rule_brier_delta": -0.015165778048065327,
+      "total_brier_delta_vs_yager": -0.0471506326586061,
+      "candidate_brier_delta_vs_rss": 0.0010108234672426449,
+      "macro_f1_delta_vs_rss": 0.0089079491526729,
+      "calibration_argmax_changed_rows": 0,
+      "action_vs_rss": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 5.684341886080802e-14,
+          "generator_units_on": 0.0,
+          "storage_kw": 5.684341886080802e-14,
+          "unserved_kw": 1.1368683772161603e-13,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "action_vs_yager": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 0.0,
+          "generator_units_on": 0.0,
+          "storage_kw": 0.0,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "candidate_dispatch": {
+        "unserved_energy_kwh": 80.7553796311485,
+        "risk_adjusted_cost_yuan": 9420.925776888933
+      },
+      "baseline_dispatch": {
+        "unserved_energy_kwh": 80.7553796311485,
+        "risk_adjusted_cost_yuan": 9420.925776888933
+      },
+      "candidate_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "yager_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      }
+    },
+    {
+      "seed": 20261047,
+      "metrics": {
+        "RSS": {
+          "row_count": 27151,
+          "multiclass_brier": 0.03086545583726889,
+          "macro_f1": 0.7792752704052537,
+          "high_risk_recall": 0.9881937548273199,
+          "severe_recall": 0.9825402259500171,
+          "maximum_absolute_row_sum_error": 1.5203500003391213e-07,
+          "minimum_probability": 1.808156e-05,
+          "maximum_probability": 0.99990964,
+          "probability_valid": false
+        },
+        "Yager_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.09846077112584595,
+          "macro_f1": 0.7886600133581122,
+          "high_risk_recall": 0.9885247710471147,
+          "severe_recall": 0.9821978774392331,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0231900111779668,
+          "maximum_probability": 0.8634358219458828,
+          "probability_valid": true
+        },
+        "Dempster_raw": {
+          "row_count": 27151,
+          "multiclass_brier": 0.06949488652666921,
+          "macro_f1": 0.7886600133581122,
+          "high_risk_recall": 0.9885247710471147,
+          "severe_recall": 0.9821978774392331,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0231808724741935,
+          "maximum_probability": 0.8634594291777529,
+          "probability_valid": true
+        },
+        "Dempster_calibrated": {
+          "row_count": 27151,
+          "multiclass_brier": 0.03196059307663678,
+          "macro_f1": 0.7886600133581122,
+          "high_risk_recall": 0.9885247710471147,
+          "severe_recall": 0.9821978774392331,
+          "maximum_absolute_row_sum_error": 5.551115123125783e-16,
+          "minimum_probability": 0.0007138409090917,
+          "maximum_probability": 0.9907085182160568,
+          "probability_valid": true
+        }
+      },
+      "calibration_brier_delta": -0.03753429345003243,
+      "rule_brier_delta": -0.028965884599176733,
+      "total_brier_delta_vs_yager": -0.06650017804920916,
+      "candidate_brier_delta_vs_rss": 0.001095137239367893,
+      "macro_f1_delta_vs_rss": 0.009384742952858516,
+      "calibration_argmax_changed_rows": 0,
+      "action_vs_rss": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 5.684341886080802e-14,
+          "generator_units_on": 0.0,
+          "storage_kw": 4.263256414560601e-14,
+          "unserved_kw": 1.2789769243681803e-13,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "action_vs_yager": {
+        "trajectory_count": 3,
+        "row_count": 1080,
+        "physical_action_changed_rows": 0,
+        "physical_action_change_rate": 0.0,
+        "maximum_absolute_change": {
+          "grid_kw": 0.0,
+          "generator_kw": 0.0,
+          "generator_units_on": 0.0,
+          "storage_kw": 0.0,
+          "unserved_kw": 0.0,
+          "generator_startup_units": 0.0,
+          "generator_shutdown_units": 0.0
+        }
+      },
+      "candidate_dispatch": {
+        "unserved_energy_kwh": 150.09209856134865,
+        "risk_adjusted_cost_yuan": 16537.46093233007
+      },
+      "baseline_dispatch": {
+        "unserved_energy_kwh": 150.09209856134865,
+        "risk_adjusted_cost_yuan": 16537.46093233007
+      },
+      "candidate_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      },
+      "yager_physical": {
+        "trajectory_count": 21,
+        "max_power_balance_error_kw": 4.547473508864641e-13,
+        "max_grid_capacity_violation_kw": 0.0,
+        "max_generator_capacity_violation_kw": 0.0,
+        "max_storage_capacity_violation_kw": 0.0,
+        "soc_violation_count": 0,
+        "simultaneous_charge_discharge_count": 0,
+        "noninteger_commitment_count": 0,
+        "physical_pass": true
+      }
+    }
+  ],
+  "effects": {
+    "calibration_calibrated_minus_raw_dempster": {
+      "direction": "lower_is_better",
+      "mean": -0.0386623464208113,
+      "sample_sd": 0.004688798047262679,
+      "median": -0.03839176297021238,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.04222507109302127,
+        -0.03535071278813675
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    },
+    "conflict_rule_raw_dempster_minus_raw_yager": {
+      "direction": "lower_is_better",
+      "mean": -0.0268761264119024,
+      "sample_sd": 0.005905846278051852,
+      "median": -0.029005020465479148,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.030063557011075364,
+        -0.022050498927793316
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    },
+    "total_calibrated_dempster_minus_raw_yager": {
+      "direction": "lower_is_better",
+      "mean": -0.0655384728327137,
+      "sample_sd": 0.009833312021496387,
+      "median": -0.06836651615232363,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.07155910563608299,
+        -0.05761375839423453
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    },
+    "candidate_minus_rss_brier": {
+      "direction": "lower_is_better",
+      "mean": -0.0019261082695167353,
+      "sample_sd": 0.00576972019415995,
+      "median": -2.5351343695426132e-05,
+      "favorable_tied_adverse": [
+        3,
+        0,
+        3
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.00675269252106029,
+        0.0011362383390174306
+      ],
+      "exact_two_sided_sign_flip_p": 0.6875
+    },
+    "candidate_minus_rss_macro_f1": {
+      "direction": "higher_is_better",
+      "mean": 0.020319769741428722,
+      "sample_sd": 0.016440086158306964,
+      "median": 0.014358836421964949,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        0.010148964587937256,
+        0.03344202573749302
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    }
+  },
+  "recognition": {
+    "mean_high_risk_recall": 0.9905596715044167,
+    "minimum_high_risk_recall": 0.9850827526132404,
+    "mean_severe_recall": 0.9844445615014458,
+    "minimum_severe_recall": 0.972897922914584
+  },
+  "control": {
+    "baseline_unserved_energy_kwh": 466.0477145890537,
+    "candidate_unserved_energy_kwh": 466.0477145890537,
+    "candidate_minus_baseline_unserved_energy_kwh": 0.0,
+    "baseline_risk_adjusted_cost_yuan": 55039.68801522895,
+    "candidate_risk_adjusted_cost_yuan": 55034.9811478105,
+    "candidate_minus_baseline_cost_yuan": -4.7068674184556585,
+    "candidate_to_baseline_cost_ratio": 0.9999144823019863,
+    "candidate_vs_rss_action_changed_rows": 57,
+    "candidate_vs_yager_action_changed_rows": 9
+  },
+  "numerical_and_physical": {
+    "total_conflict_fallback_rows": 0,
+    "candidate_probability_rows_valid": true,
+    "all_compared_exported_probability_rows_valid_at_1e_12": false,
+    "maximum_rss_export_row_sum_error": 1.571859999938141e-07,
+    "rss_export_rows_valid_at_2e_7_serialization_tolerance": true,
+    "all_physical_audits_pass": true,
+    "maximum_power_balance_error_kw": 4.547473508864641e-13
+  },
+  "checks": {
+    "frozen_input_hashes_pass": true,
+    "runner_evidence_hashes_pass": true,
+    "execution_clarification_hashes_pass": true,
+    "exact_first_six_eligible_seeds": true,
+    "calibration_improves_at_least_five_seeds": true,
+    "mean_calibration_brier_improves": true,
+    "mean_candidate_brier_vs_rss_within_margin": true,
+    "macro_f1_noninferior": true,
+    "every_seed_high_risk_recall_at_least_0_97": true,
+    "every_seed_severe_recall_at_least_0_95": true,
+    "aggregate_unserved_not_worse": true,
+    "aggregate_cost_ratio_within_cap": true,
+    "all_physical_audits_pass": true,
+    "candidate_probability_rows_valid": true,
+    "zero_total_conflict_fallback_rows": true,
+    "zero_calibration_argmax_changes": true
+  },
+  "status": "pass_with_nonblocking_reporting_findings",
+  "runner_reporting_issue": {
+    "field": "recognition.macro_f1_delta_vs_RSS.improved_tied_worse",
+    "runner_value": [
+      0,
+      0,
+      6
+    ],
+    "corrected_value": [
+      6,
+      0,
+      0
+    ],
+    "cause": "generic lower-is-better label applied to a higher-is-better endpoint",
+    "effect_on_gate_or_status": "none; the gate used the signed mean directly"
+  },
+  "extended_export_precision_finding": {
+    "scope": "frozen RSS probabilities exported by the upstream source pipeline",
+    "maximum_absolute_row_sum_error": 1.571859999938141e-07,
+    "strict_1e_12_pass": false,
+    "serialization_tolerance_2e_7_pass": true,
+    "candidate_outputs_affected": false,
+    "effect_on_protocol_gate_or_reported_metrics": "none; V21's frozen numerical gate applies to candidate output, and independently reconstructed RSS metrics match the frozen reports"
+  },
+  "claim_boundary": [
+    "V20 failed its original composite development gates and remains a retained negative result.",
+    "V21 supports probability-calibration improvement relative to raw Dempster evidence fusion.",
+    "The calibrated candidate is not established as better than frozen RSS probability output: only three of six seeds improved and the bootstrap interval crosses zero.",
+    "Temperature calibration changed no argmax or dispatch input; it cannot be credited with action or control changes.",
+    "The 57 candidate-versus-RSS and 9 candidate-versus-Yager changed action rows are attributable to raw Dempster conflict handling, not scalar calibration.",
+    "Endpoint-wise p-values are descriptive and unadjusted; n=6 has a minimum attainable two-sided p-value of 0.03125.",
+    "Evidence is synthetic simulation, not field, HIL, or causal-effect validation."
+  ]
+}

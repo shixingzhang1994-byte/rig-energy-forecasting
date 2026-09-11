@@ -1,0 +1,57 @@
+{
+  "analysis_type": "orthogonal_forecast_uncertainty_envelope_ablation",
+  "seed": 20261014,
+  "status": "preregistered_paper_extension_not_original_v15_acceptance",
+  "held_constant": [
+    "causal point forecast",
+    "online risk signal and SOC supervisory switching",
+    "generator-first and grid-headroom reserve actions",
+    "supply regime, scenario windows, plant, costs, and solver settings"
+  ],
+  "intervention": [
+    "set robust fixed reserve and disagreement weight to zero",
+    "replace all seven CVaR members by the same causal point forecast"
+  ],
+  "scenario_selection_match": true,
+  "envelope_on": {
+    "unserved_energy_kwh": 138.80520838673425,
+    "risk_adjusted_cost_yuan": 15291.706572915957,
+    "diesel_fuel_l": 84.31161446009415,
+    "generator_startups": 26.0,
+    "max_decision_seconds": 0.151043566998851
+  },
+  "envelope_off": {
+    "unserved_energy_kwh": 140.48432306914037,
+    "risk_adjusted_cost_yuan": 15466.401597295953,
+    "diesel_fuel_l": 83.20722141783335,
+    "generator_startups": 29.0,
+    "max_decision_seconds": 0.1488274440052919
+  },
+  "envelope_on_minus_off": {
+    "unserved_energy_kwh": -1.679114682406123,
+    "risk_adjusted_cost_yuan": -174.69502437999654,
+    "diesel_fuel_l": 1.1043930422607957,
+    "generator_startups": -3.0,
+    "max_decision_seconds": 0.002216122993559083
+  },
+  "physical_audit": {
+    "max_power_balance_error_kw": 2.2737367544323206e-13,
+    "max_capacity_violation_kw": 0.0,
+    "max_soc_violation": 0.0,
+    "max_integer_commitment_error": 0.0,
+    "trajectory_count": 21,
+    "row_count": 7560,
+    "simultaneous_charge_discharge_count": 0,
+    "all_numeric_values_finite": true,
+    "physical_checks_pass": true
+  },
+  "source_hashes": {
+    "source_config": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+    "ablation_config": "f82d744359d4b46c4394c2a7428617a9823b2b9f0aac177a2e6e02ab9b2eae6a",
+    "original_selection": "e09de4ba83a031864ec7393d95abb42fc153f5fecb113ab6dae890437a045967",
+    "ablated_selection": "6c904854baa38389e5311d272ff27ac7453624d034a7523cab50c94ed4900e7d",
+    "new_metrics": "bcf6663ee45feee15027bc9fd0b860413c7a5f51966af7dee9ac89f2816cca79"
+  },
+  "interpretation": "Paired mechanism intervention. A negative unserved-energy delta means the uncertainty envelope reduced shortage relative to the otherwise identical point-forecast controller.",
+  "reproduction_command": "python ./rig-energy-forecasting/scripts/run_v15_dispatch_benchmark.py --predictions ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v2/seed_20261014/source/forecast/forecast_predictions.npz --prediction-keys ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v2/seed_20261014/source/forecast/forecast_prediction_keys.json --config ./paper/experiments/results/uncertainty_envelope_ablation/seed_20261014/no_uncertainty_envelope_config.yaml --artifact-dir ./paper/experiments/results/uncertainty_envelope_ablation/seed_20261014/dispatch --risk-signals ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v2/seed_20261014/risk/risk_predictions.csv"
+}

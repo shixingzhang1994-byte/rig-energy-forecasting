@@ -1,0 +1,105 @@
+protocol:
+  id: V17-TARGET-DOMAIN-ADAPTATION-20260902
+  status: preregistered_before_target_domain_training
+  purpose: target_rig_domain_adaptation_after_frozen_v15_external_failure
+  data_usage_class: USER_DESIGNATED_TARGET_RIG_ACCEPTANCE_DATA
+  original_data_sha256: 2d58aef196e19c7ba59ec60a13cd2857c49870dce7bb26895736f92f85b605b0
+  evaluation_status: retrospective_chronological_holdout_not_blind_external
+  reason_not_blind: complete_72h_dataset_was_already_scored_by_frozen_v15
+  test_targets_excluded_from_training_and_validation_selection: true
+  field_origin_claim_allowed: false
+  sota_claim_allowed: false
+project:
+  seed: 20260902
+  start_time: '2026-09-01 00:00:00+08:00'
+  days: 3
+  frequency_seconds: 5
+forecast:
+  history_steps: 120
+  horizon_steps: 12
+  train_fraction: 0.50
+  val_fraction: 0.1666666667
+  train_stride: 1
+  eval_stride: 1
+  batch_size: 512
+  max_epochs: 20
+  patience: 5
+  learning_rate: 0.0008
+  weight_decay: 0.0001
+  num_workers: 2
+  peak_quantile: 0.9
+models:
+  xgboost:
+    n_estimators: 300
+    max_depth: 8
+    learning_rate: 0.035
+    subsample: 0.90
+    colsample_bytree: 0.90
+  lstm:
+    hidden_size: 96
+    num_layers: 2
+    dropout: 0.12
+  tcn:
+    hidden_size: 96
+    levels: 6
+    kernel_size: 3
+    dropout: 0.10
+  patchtst:
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 128
+    attention_heads: 8
+    layers: 3
+    dropout: 0.08
+  itransformer:
+    hidden_size: 128
+    attention_heads: 8
+    layers: 3
+    dropout: 0.08
+  state_aware_patch_transformer:
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 128
+    state_embedding_dim: 16
+    attention_heads: 8
+    layers: 3
+    dropout: 0.08
+    peak_weight: 0.75
+  state_aware_dual_branch_patch_transformer:
+    enabled: true
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 160
+    state_embedding_dim: 24
+    transition_embedding_dim: 12
+    attention_heads: 8
+    layers: 4
+    dropout: 0.08
+    learning_rate: 0.0005
+    max_epochs: 36
+    patience: 7
+    peak_weight: 0.75
+    transition_weight: 0.75
+  state_aware_tcn_attention:
+    hidden_size: 96
+    state_embedding_dim: 16
+    levels: 6
+    kernel_size: 3
+    attention_heads: 8
+    dropout: 0.10
+    peak_weight: 1.5
+ensemble:
+  l2_penalty: 0.0001
+error_feedback:
+  feedback_delay_steps: 12
+  smoothing_candidates: [0.01, 0.02, 0.05, 0.10, 0.20]
+  correction_clip_candidates_kw: [25.0, 50.0, 100.0, 150.0]
+dispatch_uncertainty:
+  enabled: true
+  coverage_candidates: [0.8, 0.9, 0.95, 0.975]
+engineering_gates:
+  primary_model: Causal-ErrorFeedback-Ensemble
+  r2_min: 0.95
+  mae_improvement_over_persistence_min: 0.30
+  transition_mae_improvement_over_persistence_min: 0.10
+  final_acceptance_requires_new_post_freeze_data: true

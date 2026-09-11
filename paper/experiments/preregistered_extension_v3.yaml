@@ -1,0 +1,25 @@
+registration_time_local: "2026-09-07 before any seed-20261016-or-later controller outcome"
+source_protocol: ../../rig-energy-forecasting/configs/paper_v15_extension_holdouts_v3.yaml
+frozen_method: Risk-SOC-Supervisory-MPC
+reader_facing_abbreviation: RSS
+new_seed_queue: [20261016, 20261017, 20261018, 20261019, 20261020, 20261021, 20261022, 20261023, 20261024, 20261025, 20261026, 20261027]
+required_new_eligible_seeds: 6
+stopping_rule: first six eligible seeds, with every pre-dispatch ineligible seed retained
+independent_unit: seed
+clustered_repeated_units: three scenarios within each seed
+primary_estimands:
+  - paired RSS minus RB unserved energy
+  - paired RSS minus MLR unserved energy
+  - paired RSS minus history-matched independent causal rolling full-MILP unserved energy
+primary_inference:
+  - exact two-sided sign-flip test
+  - 20000-resample seed bootstrap interval for the paired mean
+  - Holm correction across the three primary controller contrasts
+secondary_mechanism_interventions:
+  - neutralize only the online risk signal and reserve adder
+  - remove forecast-envelope diversity while retaining the causal point forecast
+fixed_exclusions:
+  - no threshold relaxation after an ineligible or unfavorable seed
+  - no scenario-level pseudoreplication
+  - no field-effectiveness or universal-SOTA claim
+  - no replacement of the original two-holdout V15 acceptance result

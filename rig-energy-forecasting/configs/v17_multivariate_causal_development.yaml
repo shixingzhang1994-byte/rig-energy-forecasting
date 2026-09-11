@@ -1,0 +1,81 @@
+protocol:
+  id: V17-MULTIVARIATE-CAUSAL-DEVELOPMENT-20260902
+  status: iterative_development_after_holdout_inspection
+  acceptance_claim_allowed: false
+  final_freeze_requires_new_post_development_data: true
+  test_targets_excluded_from_gradient_and_validation_selection: true
+project:
+  seed: 20260902
+  frequency_seconds: 5
+data:
+  path: artifacts/v17_target_domain_adaptation/data/canonical_72h.parquet
+  train_fraction: 0.50
+  validation_fraction: 0.1666666667
+  history_steps: 120
+  horizon_steps: 12
+  train_stride: 1
+  evaluation_stride: 1
+  causal_numeric_features:
+    - total_active_power_kw
+    - mud_pump_power_kw
+    - topdrive_power_kw
+    - drawworks_power_kw
+    - auxiliary_power_kw
+    - other_power_kw
+    - pump_strokes_per_min
+    - standpipe_pressure_mpa
+    - topdrive_rpm
+    - hookload_pct
+    - hook_speed_m_per_s
+    - rate_of_penetration_m_per_h
+    - bus_frequency_hz
+    - bus_voltage_v
+training:
+  batch_size: 512
+  num_workers: 2
+  max_epochs: 32
+  patience: 7
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  peak_weight: 0.75
+  transition_weight: 1.5
+models:
+  multivariate_itransformer:
+    hidden_size: 160
+    attention_heads: 8
+    layers: 4
+    dropout: 0.08
+  multivariate_patchtst:
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 160
+    attention_heads: 8
+    layers: 4
+    dropout: 0.08
+  multivariate_stateaware_dualbranch:
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 192
+    state_embedding_dim: 24
+    transition_embedding_dim: 12
+    attention_heads: 8
+    layers: 4
+    dropout: 0.08
+  multivariate_stateaware_tcn_attention:
+    hidden_size: 128
+    state_embedding_dim: 16
+    levels: 6
+    kernel_size: 3
+    attention_heads: 8
+    dropout: 0.08
+ensemble:
+  l2_penalty: 0.0001
+error_feedback:
+  feedback_delay_steps: 12
+  smoothing_candidates: [0.01, 0.02, 0.05, 0.10, 0.20]
+  correction_clip_candidates_kw: [25.0, 50.0, 100.0, 150.0]
+development_gates:
+  primary_model: Multivariate-Causal-ErrorFeedback-Ensemble
+  r2_min: 0.95
+  mae_improvement_over_persistence_min: 0.30
+  transition_mae_improvement_over_persistence_min: 0.10

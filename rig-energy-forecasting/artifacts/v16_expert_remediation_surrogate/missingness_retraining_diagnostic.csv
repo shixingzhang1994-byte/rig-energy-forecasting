@@ -1,0 +1,4 @@
+﻿condition,model,target_missing_fraction,realized_missing_fraction,mae_kw,rmse_kw,peak_mae_kw,training_seconds,training_device,xgboost_version,train_windows,test_windows,claim_boundary,mae_degradation_vs_reference_pct,diagnostic_gate_pass
+reference,XGBoost-missing-aware-multi-horizon-diagnostic,0.0,0.0,83.93631957244642,150.28853114508382,52.31285438831628,5.547907755000097,cuda,3.2.0,7237,1551,诊断重训，不代表V15主模型或现场缺失分布,0.0,True
+moderate_blocks,XGBoost-missing-aware-multi-horizon-diagnostic,0.005,0.00503598510428927,84.33185955713479,150.4656783899012,50.242113851007616,5.1332152620000215,cuda,3.2.0,7237,1551,诊断重训，不代表V15主模型或现场缺失分布,0.47123817997163364,True
+severe_blocks,XGBoost-missing-aware-multi-horizon-diagnostic,0.02,0.02018253034132788,90.66072378331603,157.613975587716,55.29809958422669,5.239911299999903,cuda,3.2.0,7237,1551,诊断重训，不代表V15主模型或现场缺失分布,8.011316489836906,True

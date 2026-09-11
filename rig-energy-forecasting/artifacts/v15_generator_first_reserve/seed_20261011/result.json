@@ -1,0 +1,50 @@
+{
+  "seed": 20261011,
+  "phase": "holdout",
+  "eligible": true,
+  "risk_transition_feature": {
+    "source": "history_transition_flags",
+    "causal": true,
+    "future_transition_flags_excluded": true
+  },
+  "proposed_method": "Risk-SOC-Supervisory-MPC",
+  "proposed_unserved_energy_kwh": 104.55804005437258,
+  "rule_unserved_energy_kwh": 104.81141640342344,
+  "ml_robust_unserved_energy_kwh": 104.77690744239827,
+  "risk_adjusted_cost_ratio_vs_ml_robust": 0.9914150305513239,
+  "scenario_regret_reference_methods": [
+    "Rule-Based",
+    "ML-Robust-MPC"
+  ],
+  "scenario_unserved_regret_kwh_vs_best_reference": {
+    "A_stable_drilling": 0.0,
+    "B_connection_transition": 0.0,
+    "C_tripping_impact": -0.2092337898441201
+  },
+  "worst_scenario_unserved_regret_kwh_vs_ml_robust": 0.0,
+  "max_decision_seconds": 0.2122524800001883,
+  "physical_audit": {
+    "trajectory_count": 21,
+    "max_power_balance_error_kw": 4.547473508864641e-13,
+    "max_grid_capacity_violation_kw": 0.0,
+    "max_generator_capacity_violation_kw": 0.0,
+    "max_storage_capacity_violation_kw": 0.0,
+    "soc_violation_count": 0,
+    "simultaneous_charge_discharge_count": 0,
+    "noninteger_commitment_count": 0,
+    "physical_pass": true
+  },
+  "checks": {
+    "aggregate_safety_noninferiority": true,
+    "single_scenario_regret_cap": true,
+    "risk_adjusted_cost_cap": true,
+    "real_time_latency": true,
+    "not_dominated_by_ml_robust": true,
+    "physical_feasibility": true
+  },
+  "overall_pass": true,
+  "reproduction_command": "python scripts/run_v15_dispatch_benchmark.py --predictions ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/source/forecast/forecast_predictions.npz --prediction-keys ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/source/forecast/forecast_prediction_keys.json --config ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/resolved_dispatch_config.yaml --risk-signals ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/risk/risk_predictions.csv --artifact-dir ./rig-energy-forecasting/artifacts/v15_generator_first_reserve/seed_20261011/dispatch",
+  "controller_delta": "committed_generator_before_storage",
+  "diagnostic_seed_excluded": 20261004,
+  "field_scada_claimed": false
+}

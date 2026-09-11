@@ -1,0 +1,43 @@
+{
+  "path": "./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/10_canonical_observed_5s.csv.gz",
+  "provenance_class": "synthetic_surrogate",
+  "record_origins": [
+    "MECHANISTIC_SYNTHETIC_V15_ALIGNED"
+  ],
+  "row_count_raw": 51840,
+  "row_count_canonical": 51840,
+  "start_time": "2026-09-01 00:00:00+08:00",
+  "end_time": "2026-09-03 23:59:55+08:00",
+  "median_interval_seconds": 5.0,
+  "duplicate_timestamps_raw": 0,
+  "raw_quality_counts": {
+    "GOOD": 51825,
+    "COMM_LOSS": 10,
+    "BAD_SENSOR": 5
+  },
+  "final_quality_counts": {
+    "observed": 51825,
+    "COMM_LOSS": 10,
+    "BAD_SENSOR": 5
+  },
+  "missing_before": {
+    "grid_active_power_kw": 4,
+    "generator_active_power_kw": 3,
+    "storage_soc_pct": 6,
+    "imputed_fields": 51838
+  },
+  "missing_after": {
+    "grid_active_power_kw": 4,
+    "generator_active_power_kw": 3,
+    "storage_soc_pct": 6,
+    "imputed_fields": 5868
+  },
+  "total_power_imputed_rows": 0,
+  "acceptance_usage_class": "USER_DESIGNATED_TARGET_RIG_ACCEPTANCE_DATA",
+  "original_provenance_preserved": true,
+  "field_origin_claim_allowed": false,
+  "source_sha256": "2d58aef196e19c7ba59ec60a13cd2857c49870dce7bb26895736f92f85b605b0",
+  "output": "./rig-energy-forecasting/artifacts/v17_target_domain_adaptation/data/canonical_72h.parquet",
+  "output_sha256": "8050a55fa108eb9cf9ce5e03d1a85b12ebeddf12969fd53602a1d0ccbf2d0804",
+  "target_interpolation_performed_by_this_step": false
+}

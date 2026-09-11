@@ -1,0 +1,316 @@
+{
+  "protocol": "v15-generator-first-storage-reserve",
+  "status": "frozen_before_holdout",
+  "artifact_namespace": "v15_generator_first_reserve",
+  "diagnostic_seed_excluded_from_evidence": 20261004,
+  "development_seed_order": [
+    20261008,
+    20261009,
+    20261010
+  ],
+  "holdout_seed_order": [
+    20261011,
+    20261012,
+    20261013,
+    20261014
+  ],
+  "required_eligible_seeds_per_phase": 2,
+  "accepted_development_records": [
+    {
+      "seed": 20261008,
+      "eligibility_path": "artifacts/v15_generator_first_reserve/seed_20261008/eligibility.json",
+      "eligibility_sha256": "9f4fcc0e86e66cf10d50960fb641568a48ea8c7a8c9715588137a59d4ff5dc7b",
+      "result_path": "artifacts/v15_generator_first_reserve/seed_20261008/result.json",
+      "result_sha256": "7ccdd971f768047f7fa35cf3fe33afbee5e7ec33c34daec01669deff279b9e7c"
+    },
+    {
+      "seed": 20261009,
+      "eligibility_path": "artifacts/v15_generator_first_reserve/seed_20261009/eligibility.json",
+      "eligibility_sha256": "5d40bbffa2e7a498dbfc028f03dc1ce6de834c67c3762f84da53f52fa312d0cf",
+      "result_path": "artifacts/v15_generator_first_reserve/seed_20261009/result.json",
+      "result_sha256": "6c9df5f0e41cd7ec829ca2c0d3e90e05d07d03f8c5a761af618c4fd912023a6c"
+    }
+  ],
+  "only_controller_delta_from_v14": "对监督方案的所有模式，实时安全层用已承诺机组可用裕量替代可避免的储能放电；不为充电额外启机",
+  "fixed_unit_commitment": {
+    "unit_count": 4,
+    "unit_rated_power_kw": 240.0,
+    "unit_minimum_stable_power_kw": 120.0,
+    "unit_ramp_kw_per_step": 30.0,
+    "minimum_up_steps": 12,
+    "minimum_down_steps": 6,
+    "startup_cost_yuan_per_unit": 5.0
+  },
+  "plant_and_cost_overrides": {
+    "plant": {
+      "grid": {
+        "rated_capacity_kw": 1300.0
+      },
+      "generator": {
+        "rated_power_kw": 960.0,
+        "minimum_stable_power_kw": 480.0,
+        "ramp_kw_per_step": 120.0
+      },
+      "storage": {
+        "rated_power_kw": 500.0,
+        "energy_capacity_kwh": 133.0,
+        "soc_initial": 0.65,
+        "soc_min": 0.15,
+        "soc_max": 0.9,
+        "charge_efficiency": 0.95,
+        "discharge_efficiency": 0.95
+      }
+    },
+    "cost": {
+      "grid_price_yuan_per_kwh": 0.710425,
+      "diesel_price_yuan_per_l": 7.5,
+      "storage_degradation_yuan_per_kwh": 0.15,
+      "unserved_energy_penalty_yuan_per_kwh": 100.0
+    }
+  },
+  "supervisor": {
+    "enabled": true,
+    "economic_controller": "Risk-Adaptive-CVaR-MPC",
+    "protection_controller": "ML-Robust-MPC",
+    "risk_enter_level": 2,
+    "risk_exit_level": 1,
+    "soc_enter": 0.3,
+    "soc_exit": 0.35,
+    "exit_dwell_steps": 12,
+    "low_soc_minimum_committed_units": 2,
+    "low_soc_forecast_deficit_guard_enabled": true,
+    "low_soc_forecast_deficit_margin_kw": 0.0,
+    "grid_headroom_reserve_enabled": true,
+    "grid_headroom_reserve_target_soc": 0.75,
+    "grid_headroom_reserve_max_storage_power_fraction": 0.2,
+    "generator_first_storage_reserve_enabled": true
+  },
+  "performance_gate": {
+    "safety_reference_methods": [
+      "Rule-Based",
+      "ML-Robust-MPC"
+    ],
+    "aggregate_unserved_tolerance_kwh": 1e-09,
+    "scenario_regret_reference_methods": [
+      "Rule-Based",
+      "ML-Robust-MPC"
+    ],
+    "maximum_single_scenario_unserved_regret_kwh": 0.5,
+    "maximum_risk_adjusted_cost_ratio_vs_ml_robust": 1.005,
+    "maximum_decision_seconds": 5.0,
+    "require_zero_physical_violations": true,
+    "require_not_dominated_by_ml_robust": true
+  },
+  "claim_boundary": [
+    "20261004只用于复现V14失败和单变量诊断，不计入V15开发或留出证据。",
+    "V15相对V14只增加已承诺机组优先的储能保留动作；预测、风险、SOC阈值、机组、价格和场景均不变。",
+    "新动作只使用当前实测负荷、已承诺机组及其当前可达上限，不使用未来真值。",
+    "新动作不得为储能充电额外启动机组，也不得超过已承诺机组的爬坡可达功率。",
+    "首个可评估开发种子失败时停止，不得再调参或挑种子。",
+    "开发通过后必须先冻结，再按顺序运行最先两个可评估留出种子。",
+    "仍只是公开证据约束的合成仿真，不代表现场SCADA或硬件闭环有效性。"
+  ],
+  "frozen_files": [
+    {
+      "path": "configs/v15_generator_first_reserve_acceptance.yaml",
+      "sha256": "ccb67a597846008fbe1cb9dbebde72bfbad45decdcde1eb37927572cb16cd074",
+      "size_bytes": 3591
+    },
+    {
+      "path": "configs/v14_public_evidence_calibration.yaml",
+      "sha256": "5776df93932cff79fd576384c8b94f37c136b0fcce568d9e1b125320ca7c0c4d",
+      "size_bytes": 14763
+    },
+    {
+      "path": "configs/v5_acceptance.yaml",
+      "sha256": "0ad4f84b7f0e6b513d9f93ebfe623c15f3b1427a4548cea9560d5495acc1e730",
+      "size_bytes": 3226
+    },
+    {
+      "path": "configs/v6_dispatch_development.yaml",
+      "sha256": "eb3a0e99c203c046fbbe1ab7f2de4e84110ec0ce681dfb6f951e3d1d9ec16aa9",
+      "size_bytes": 1054
+    },
+    {
+      "path": "configs/synthetic_default.yaml",
+      "sha256": "18d0704c07ba486d65ecfb4c1b51a36cfd77f807f4097e909035fa6465a3d86a",
+      "size_bytes": 3907
+    },
+    {
+      "path": "configs/risk_default.yaml",
+      "sha256": "38a17b32e1d4447d01297bc6cd82f84a4742fe235061de4b709d04170ceef9c2",
+      "size_bytes": 4762
+    },
+    {
+      "path": "configs/dispatch_default.yaml",
+      "sha256": "dcc230cb726dfc3b4269431b989a0196945d8b8c16dc82b5d15d3cee482b1b8a",
+      "size_bytes": 3629
+    },
+    {
+      "path": "environment.yml",
+      "sha256": "df6f47541fd5b6769630a718e8aa54e219566d5af151ceb5840faea8aa2b0754",
+      "size_bytes": 406
+    },
+    {
+      "path": "scripts/generate_v14_calibrated.py",
+      "sha256": "0bff52af4c03880eece0c0eea3bde5cf8ea0e6ae233d0980725f09add0e8d461",
+      "size_bytes": 4488
+    },
+    {
+      "path": "scripts/audit_v14_calibration.py",
+      "sha256": "7225611466a2f9427a73276d9d41335250fca5612c01ed99a4ac7728d9aa268c",
+      "size_bytes": 6830
+    },
+    {
+      "path": "scripts/run_v14_dispatch_benchmark.py",
+      "sha256": "368268e0ce40383f5cd6367e53dc1905635564d75dbfc03a3c5664d3c333a2a7",
+      "size_bytes": 1582
+    },
+    {
+      "path": "scripts/run_v15_generator_first_diagnostic.py",
+      "sha256": "a27d8e8e56934feadadc82a5c228a624baf3b0f8012afe807331112e73cbcae2",
+      "size_bytes": 2184
+    },
+    {
+      "path": "scripts/run_v15_dispatch_benchmark.py",
+      "sha256": "eeda73330170d026d80b2d5a9309504cfada4d0da105cdc3f30bc032aa842e37",
+      "size_bytes": 369
+    },
+    {
+      "path": "scripts/run_v15_protocol_seed.py",
+      "sha256": "3cab9c6ca66657b785cb251af837cb84a51ed1839cbd9cd6c7d4545d5ffddb24",
+      "size_bytes": 2814
+    },
+    {
+      "path": "scripts/run_v14_protocol_seed.py",
+      "sha256": "b7ba1d9ba6507a97cdc675b1b283b06dd0a1ec2437a02d342bae0a518f28ff9e",
+      "size_bytes": 7747
+    },
+    {
+      "path": "scripts/run_v10_protocol_seed.py",
+      "sha256": "e7baa82972e148934f7d54e7976bfa788e69f81f09b6cea344cf0ea5229ba03e",
+      "size_bytes": 18166
+    },
+    {
+      "path": "scripts/run_benchmark.py",
+      "sha256": "cbc14c2a053802c81f7d44720212770f75268229dfc25e588b4900d482aac5a2",
+      "size_bytes": 1281
+    },
+    {
+      "path": "scripts/run_risk_benchmark.py",
+      "sha256": "7e51bc4ff1c6103675bb5e2e1eb1d03e67cf0b8ed03b82714efa21da05fab9a5",
+      "size_bytes": 1906
+    },
+    {
+      "path": "scripts/freeze_v15_for_holdout.py",
+      "sha256": "9be49cc4a8e7089b4575c24650ee65b58cff0aad5948ea58cf644c03397d6281",
+      "size_bytes": 4736
+    },
+    {
+      "path": "src/rig_energy/__init__.py",
+      "sha256": "0933eef7ac6169b8a92b871e99cb43f4158770e40f9725ae37d568046c6c6723",
+      "size_bytes": 78
+    },
+    {
+      "path": "src/rig_energy/analysis/__init__.py",
+      "sha256": "f9bb2d1b3ab09436fffb3edb67a4802751b62eb1808ec7b00bc988aac313627b",
+      "size_bytes": 86
+    },
+    {
+      "path": "src/rig_energy/analysis/load_features.py",
+      "sha256": "e00869a32d5590ee4da362a7e1a6e85d0fc3a2c5fcec7c956e3da86b522ea92a",
+      "size_bytes": 17895
+    },
+    {
+      "path": "src/rig_energy/data/__init__.py",
+      "sha256": "a690a2819a5e7922cf8e40e2dd39e0c290e45216ef9f4e86fcb27b55431a634d",
+      "size_bytes": 254
+    },
+    {
+      "path": "src/rig_energy/data/adapters.py",
+      "sha256": "7188bbb6a3d38addd3a1ef7a69c107253da415ab66d51e30528b9a8b83556ed8",
+      "size_bytes": 4683
+    },
+    {
+      "path": "src/rig_energy/data/public_calibration.py",
+      "sha256": "3021e901088792e6a3f8b14a141cfcd88c490f858e7368166262f04a9e82b727",
+      "size_bytes": 9550
+    },
+    {
+      "path": "src/rig_energy/data/schema.py",
+      "sha256": "020a2a0428763febd92be1c0ad916eb99c614e04f50a3d5bdcca6fb4366abfb5",
+      "size_bytes": 4448
+    },
+    {
+      "path": "src/rig_energy/data/synthetic.py",
+      "sha256": "acc7d0dca2ce17f12e20dfe023e74c8c2d5d0636a5cf432106f0d112a4dfe9a8",
+      "size_bytes": 15632
+    },
+    {
+      "path": "src/rig_energy/data/windowing.py",
+      "sha256": "f60d3983c6dc0b2b1939cd393edabda0eeceecea46d0db65ec69c1e585ce7708",
+      "size_bytes": 5762
+    },
+    {
+      "path": "src/rig_energy/experiment.py",
+      "sha256": "b8b408e7a2e9a3df0cfd289ecb7059ccf5100a5802bb64006dc68d6b4e0a6bde",
+      "size_bytes": 28263
+    },
+    {
+      "path": "src/rig_energy/metrics.py",
+      "sha256": "a51036700f1ad407e7873b865cea03719468da9f6a9fad651a7798acea0c61b7",
+      "size_bytes": 1451
+    },
+    {
+      "path": "src/rig_energy/models/__init__.py",
+      "sha256": "b3955587cffa1828915c7091b26ecddd0976fff936370fe66f8bf09a3642483c",
+      "size_bytes": 671
+    },
+    {
+      "path": "src/rig_energy/models/ensemble.py",
+      "sha256": "6403a3869bbc8e7a3b2ba16c21f5cbe6b728ae94465a6e622b8ca94798b53842",
+      "size_bytes": 4913
+    },
+    {
+      "path": "src/rig_energy/models/neural.py",
+      "sha256": "ee3d4e12d44fb706e745841a39671fff5fe6fb7992ec7d8d2331fa2162ee1a52",
+      "size_bytes": 18866
+    },
+    {
+      "path": "src/rig_energy/optimization/__init__.py",
+      "sha256": "f9c3e772b8f04016f7c2daa7050f70d42f3b142518cd8ee42c104e04e7ff87a0",
+      "size_bytes": 83
+    },
+    {
+      "path": "src/rig_energy/optimization/dispatch.py",
+      "sha256": "64ae001e3a1237cdb78cf53641111a28afa143ad47347b75c482ad6db10fd49f",
+      "size_bytes": 105321
+    },
+    {
+      "path": "src/rig_energy/risk/__init__.py",
+      "sha256": "c9574ea5d5ca4a87b66a16441b3dd201e68cae067326491fb86d91257ae30d74",
+      "size_bytes": 227
+    },
+    {
+      "path": "src/rig_energy/risk/experiment.py",
+      "sha256": "8a5118a6f8c76050a3bc14436a0cdc60a76c2808f2e85cf47d2d8c87f7a8dbd8",
+      "size_bytes": 65381
+    },
+    {
+      "path": "src/rig_energy/risk/labels.py",
+      "sha256": "e34e02c27e9956c05bb6d6780898a6292557c7a22c8d90b22e7b782f9da58c73",
+      "size_bytes": 3037
+    },
+    {
+      "path": "src/rig_energy/risk/models.py",
+      "sha256": "736bc462b635f335b0813b8e2292e5aef257b8d3bb890cbddc5730716c6fe28c",
+      "size_bytes": 7845
+    },
+    {
+      "path": "src/rig_energy/training.py",
+      "sha256": "c6571789b3f1d3964966aaf72a3e7894685055ef6222cb73f20e3f7aaa6e8012",
+      "size_bytes": 5769
+    }
+  ],
+  "post_freeze_rule": "任一冻结文件哈希变化均使留出无效；必须连续报告最先两个可评估留出种子。"
+}

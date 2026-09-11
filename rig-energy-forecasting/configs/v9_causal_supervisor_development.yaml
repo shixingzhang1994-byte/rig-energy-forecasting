@@ -1,0 +1,43 @@
+protocol:
+  name: v9-causal-risk-soc-supervisor
+  development_seeds: [20260901, 20260902]
+  holdout_seeds: [20260903, 20260904]
+  first_seed_only_until_gate_passes: 20260901
+  forecast_source: v6-pipeline-retrained-independently-per-seed
+  risk_source: v9-causal-history-transition-risk
+
+fixed_unit_commitment:
+  unit_count: 4
+  unit_rated_power_kw: 300.0
+  unit_minimum_stable_power_kw: 60.0
+  unit_ramp_kw_per_step: 30.0
+  minimum_up_steps: 12
+  minimum_down_steps: 6
+  startup_cost_yuan_per_unit: 0.5
+
+supervisor:
+  enabled: true
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.30
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+
+first_seed_gate:
+  safety_reference_methods: [Rule-Based, ML-Robust-MPC]
+  unserved_tolerance_kwh: 1.0e-9
+  maximum_risk_adjusted_cost_ratio_vs_ml_robust: 1.005
+  maximum_decision_seconds: 5.0
+  require_zero_physical_violations: true
+  require_not_dominated_by_ml_robust: true
+
+claim_boundary:
+  - "风险输入只允许历史切换、当前状态、预测轨迹和当前可用供能，不使用未来真实工况或未来真实负荷作为特征。"
+  - "监督器只有一个预声明候选，不在20260901上搜索阈值。"
+  - "首开发种子未过硬门槛时，禁止生成20260902和任何留出种子结果。"
+  - "两个开发种子过门后必须冻结代码与配置；留出阶段不得改参数。"
+  - "留出种子20260903和20260904必须完整报告，不得选择性停止或隐藏。"
+  - "ML-Robust-MPC是必须正面对比的强基线；仅压过Rule-Based不足以证明监督器价值。"
+  - "当前仍为公开证据约束的合成仿真，不代表现场有效性。"

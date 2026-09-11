@@ -1,0 +1,162 @@
+project:
+  seed: 20260827
+
+input:
+  forecast_model: Validation-Weighted-Ensemble
+  uncertainty_members:
+    - XGBoost
+    - TCN
+    - StateAware-TCN-Attention
+
+split:
+  # 在预测模型从未训练过的测试时段内，再按时间切分风险分类数据。
+  train_fraction: 0.60
+  val_fraction: 0.20
+
+label:
+  # 所需功率 = 未来1分钟实际峰值 + max(5%峰值, 50 kW)。
+  reserve_ratio: 0.05
+  reserve_floor_kw: 50.0
+  normal_margin_ratio: 0.15
+  watch_margin_ratio: 0.05
+  warning_margin_ratio: 0.0
+
+synthetic_supply:
+  grid_rated_capacity_kw: 1300.0
+  generator_rated_power_kw: 1200.0
+  storage_rated_power_kw: 500.0
+  soc_min_pct: 15.0
+  soc_max_pct: 90.0
+  soc_full_power_above_pct: 30.0
+  # 40—60分钟连续供能状态块，确保30分钟验收窗口不混入相反供能工况。
+  block_length_steps: [480, 720]
+  regime_cycle:
+    - normal
+    - constrained
+    - weak
+    - emergency
+    - normal
+    - constrained
+    - weak
+    - emergency
+  regimes:
+    normal:
+      target_forecast_margin_ratio: 0.28
+      margin_sigma_ratio: 0.025
+      firm_supply_sigma_kw: 20.0
+      grid_share: 0.58
+      generator_share: 0.24
+      storage_soc_pct: 70.0
+      soc_sigma_pct: 4.0
+    constrained:
+      target_forecast_margin_ratio: 0.10
+      margin_sigma_ratio: 0.020
+      firm_supply_sigma_kw: 18.0
+      grid_share: 0.54
+      generator_share: 0.27
+      storage_soc_pct: 55.0
+      soc_sigma_pct: 5.0
+    weak:
+      target_forecast_margin_ratio: 0.025
+      margin_sigma_ratio: 0.018
+      firm_supply_sigma_kw: 15.0
+      grid_share: 0.49
+      generator_share: 0.31
+      storage_soc_pct: 38.0
+      soc_sigma_pct: 5.0
+    emergency:
+      target_forecast_margin_ratio: -0.14
+      margin_sigma_ratio: 0.035
+      firm_supply_sigma_kw: 18.0
+      grid_share: 0.44
+      generator_share: 0.36
+      storage_soc_pct: 24.0
+      soc_sigma_pct: 4.0
+
+models:
+  logistic_regression:
+    C: 1.0
+    max_iter: 1200
+  xgboost:
+    n_estimators: 260
+    max_depth: 7
+    learning_rate: 0.04
+    subsample: 0.85
+    colsample_bytree: 0.85
+    min_child_weight: 2.0
+    reg_lambda: 1.0
+  temporal_transformer:
+    hidden_size: 64
+    attention_heads: 4
+    layers: 2
+    dropout: 0.12
+    learning_rate: 0.0008
+    weight_decay: 0.0001
+    batch_size: 384
+    max_epochs: 24
+    patience: 5
+
+ensemble:
+  # 仅使用验证集最小化类别平衡的多分类对数损失，测试集不参与调权。
+  l2_penalty: 0.0001
+
+conformal:
+  # 用风险训练段的单侧峰值残差建立90%有限样本上界，防止负荷低估。
+  coverage: 0.90
+
+ordinal_calibration:
+  # 统一阈值作用于 P(Y>=1/2/3)，保持序数边界单调性。
+  threshold_candidates: [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70]
+
+balanced_ordinal_hybrid:
+  # 多分类模型区分相邻等级，序数模型保留高风险边界。
+  balanced_weight_candidates: [0.0, 0.25, 0.50, 0.75, 1.0]
+
+causal_filter:
+  # 供能工况具有持续性；升级立即生效，只对降级做因果平滑。
+  source_models:
+    - Ordinal-XGBoost
+    - Safety-Union-Ensemble
+    - Severe-Guarded-Logistic
+  smoothing_candidates: [0.0, 0.2, 0.5, 0.8, 0.9]
+
+operational_selection:
+  # 最终输出模型只能由验证集选择，测试集仅用于一次性报告。
+  # Safety-Union 是“学习集成 OR 裕度证据 OR 线性鲁棒基线”的保守证据集成，
+  # 其任一成员判为更高风险时，运行等级不得被平均概率稀释。
+  minimum_validation_high_risk_recall: 0.80
+  minimum_validation_macro_f1: 0.70
+  # 警告级和严重级触发不同调度强度，因此严重级必须单独过门槛。
+  minimum_validation_severe_recall: 0.80
+  # 仅用验证集校准 Ordinal-XGBoost 的严重级哨兵阈值，测试集不参与。
+  severe_sentinel_validation_recall_target: 0.85
+  # 分类等级用于解释；调度保护等级只对高/严重风险安全动作负责。
+  dispatch_guard_model: Balanced-Ordinal-Safety-Max
+  # 只在同时过三道验证门槛的候选中选择；无合格候选时直接报错。
+  candidate_models:
+    - Balanced-Ordinal-Safety-Max
+    - Balanced-Ordinal-Hybrid
+    - Balanced-Multiclass-XGBoost
+    - Severe-Guarded-Multiclass-XGBoost
+    - Causal-Risk-Filter
+    - Validation-Calibrated-Ordinal
+    - Ordinal-XGBoost
+    - Severe-Guarded-Logistic
+    - Validation-Weighted-Ensemble
+    - Evidence-Guided-Ensemble
+    - Safety-Union-Ensemble
+  # 综合分数差异小于0.01视为无实质差别，此时选择验证集LogLoss更低者。
+  score_tie_tolerance: 0.005
+
+evidence:
+  grid_derating_threshold_kw: 700.0
+  low_soc_threshold_pct: 35.0
+  uncertainty_threshold_kw: 80.0
+  ramp_threshold_kw_per_s: 25.0
+
+dispatch_signal:
+  reserve_adder_kw:
+    "0": 0.0
+    "1": 30.0
+    "2": 80.0
+    "3": 150.0

@@ -1,0 +1,155 @@
+{
+  "forecast_model": "Causal-ErrorFeedback-Ensemble",
+  "scenario_cvar": {
+    "forecast_members": [
+      "Persistence",
+      "Validation-Weighted-Ensemble",
+      "PatchTST",
+      "iTransformer",
+      "StateAware-TCN-Attention",
+      "StateAware-Patch-Transformer",
+      "StateAware-DualBranch-Patch-Transformer"
+    ],
+    "alpha": 0.9,
+    "weight": 1.0,
+    "power_nonanticipativity": "first_control_action_only",
+    "commitment_nonanticipativity": "shared_generator_on_off_schedule"
+  },
+  "risk_signal_path": "./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261017/risk/risk_predictions.csv",
+  "selection_mode": "operation_aligned",
+  "scenarios": {
+    "A_stable_drilling": {
+      "start": 3762,
+      "stop": 4122,
+      "score": 960.5889547701267,
+      "primary_fraction": 1.0,
+      "anchor_fraction": 0.0,
+      "acceptable_supply_fraction": 0.6027777777777777,
+      "emergency_supply_fraction": 0.0,
+      "transition_count": 0,
+      "load_mean_kw": 1132.0083333333334,
+      "load_std_kw": 39.411045229873196,
+      "load_range_kw": 211.5,
+      "state_fractions": {
+        "drilling": 1.0
+      },
+      "primary_states": [
+        "drilling"
+      ],
+      "anchor_states": [],
+      "acceptable_supply_regimes": [
+        "normal"
+      ],
+      "selection_rule": "stable",
+      "start_index": 30912,
+      "stop_index": 31272,
+      "warmup_steps": 120,
+      "warmup_policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 23.82061878831026,
+      "comparison_initial_generator_kw": 120.0,
+      "comparison_initial_generator_units": 1,
+      "grid_capacity_kw": {
+        "mean": 1020.8881924885623,
+        "minimum": 735.5843323606523,
+        "maximum": 1221.128944161293
+      },
+      "supply_regime_fractions": {
+        "normal": 0.6027777777777777,
+        "constrained": 0.3972222222222222
+      },
+      "mean_load_kw": 1133.0625,
+      "max_load_kw": 1237.0
+    },
+    "B_connection_transition": {
+      "start": 9810,
+      "stop": 10170,
+      "score": 2158.8888888888887,
+      "primary_fraction": 1.0,
+      "anchor_fraction": 0.3638888888888889,
+      "acceptable_supply_fraction": 1.0,
+      "emergency_supply_fraction": 0.0,
+      "transition_count": 24,
+      "load_mean_kw": 871.5402777777778,
+      "load_std_kw": 192.91147700703024,
+      "load_range_kw": 835.0,
+      "state_fractions": {
+        "drilling": 0.6361111111111111,
+        "connection": 0.3638888888888889
+      },
+      "primary_states": [
+        "drilling",
+        "connection"
+      ],
+      "anchor_states": [
+        "connection"
+      ],
+      "acceptable_supply_regimes": [
+        "constrained",
+        "weak"
+      ],
+      "selection_rule": "transition",
+      "start_index": 36960,
+      "stop_index": 37320,
+      "warmup_steps": 120,
+      "warmup_policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 74.8596315033002,
+      "comparison_initial_generator_kw": 242.47952036472702,
+      "comparison_initial_generator_units": 2,
+      "grid_capacity_kw": {
+        "mean": 697.4135614214791,
+        "minimum": 400.3524316835067,
+        "maximum": 770.7044818388881
+      },
+      "supply_regime_fractions": {
+        "constrained": 0.8388888888888889,
+        "weak": 0.16111111111111112
+      },
+      "mean_load_kw": 815.472900390625,
+      "max_load_kw": 1236.5
+    },
+    "C_tripping_impact": {
+      "start": 13680,
+      "stop": 14040,
+      "score": 2203.1666666666665,
+      "primary_fraction": 0.9666666666666667,
+      "anchor_fraction": 0.0,
+      "acceptable_supply_fraction": 0.5333333333333333,
+      "emergency_supply_fraction": 0.0,
+      "transition_count": 12,
+      "load_mean_kw": 662.5430555555556,
+      "load_std_kw": 252.42351472299094,
+      "load_range_kw": 876.5,
+      "state_fractions": {
+        "idle": 0.03333333333333333,
+        "tripping": 0.9666666666666667
+      },
+      "primary_states": [
+        "tripping"
+      ],
+      "anchor_states": [],
+      "acceptable_supply_regimes": [
+        "emergency",
+        "weak"
+      ],
+      "selection_rule": "impact",
+      "start_index": 40830,
+      "stop_index": 41190,
+      "warmup_steps": 120,
+      "warmup_policy": "shared_rule_based_state_initialization",
+      "comparison_initial_soc_pct": 75.01451329955385,
+      "comparison_initial_generator_kw": 0.0,
+      "comparison_initial_generator_units": 0,
+      "grid_capacity_kw": {
+        "mean": 580.0174692571603,
+        "minimum": 400.2967271838413,
+        "maximum": 782.8068801578748
+      },
+      "supply_regime_fractions": {
+        "weak": 0.5333333333333333,
+        "constrained": 0.4666666666666667
+      },
+      "mean_load_kw": 660.6791381835938,
+      "max_load_kw": 1249.5
+    }
+  }
+}

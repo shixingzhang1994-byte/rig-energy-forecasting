@@ -1,0 +1,410 @@
+{
+  "protocol": {
+    "seed_list": [
+      "20261008",
+      "20261009",
+      "20261011",
+      "20261012"
+    ],
+    "bootstrap_draws": 20000,
+    "bootstrap_rng_seed": 20260903,
+    "interpretation": "Descriptive paired stability analysis; the four-seed pooled result is exploratory because two seeds were development runs.",
+    "confirmatory_holdout_n": 2,
+    "scenario_level_interpretation": "The 12 seed-by-scenario rows are paired descriptive observations clustered within four seeds, not 12 independent replicates."
+  },
+  "per_seed": [
+    {
+      "seed": "20261008",
+      "phase": "development",
+      "proposed_unserved_kwh": 33.030988893815454,
+      "rule_unserved_kwh": 39.97271233002043,
+      "ml_robust_unserved_kwh": 42.70269149550541,
+      "causal_full_milp_unserved_kwh": 79.36921636647085,
+      "delta_unserved_vs_rule_kwh": -6.941723436204974,
+      "delta_unserved_vs_ml_kwh": -9.671702601689958,
+      "delta_unserved_vs_causal_full_milp_kwh": -46.3382274726554,
+      "risk_adjusted_cost_ratio_vs_ml": 0.8308647236124955,
+      "max_decision_seconds": 0.353847862000066
+    },
+    {
+      "seed": "20261009",
+      "phase": "development",
+      "proposed_unserved_kwh": 10.712676681181641,
+      "rule_unserved_kwh": 10.71267668118164,
+      "ml_robust_unserved_kwh": 22.307082367809663,
+      "causal_full_milp_unserved_kwh": 48.543046565106,
+      "delta_unserved_vs_rule_kwh": 1.7763568394002505e-15,
+      "delta_unserved_vs_ml_kwh": -11.594405686628022,
+      "delta_unserved_vs_causal_full_milp_kwh": -37.83036988392436,
+      "risk_adjusted_cost_ratio_vs_ml": 0.689526745381037,
+      "max_decision_seconds": 0.282530523999867
+    },
+    {
+      "seed": "20261011",
+      "phase": "holdout",
+      "proposed_unserved_kwh": 104.55804005437258,
+      "rule_unserved_kwh": 104.81141640342344,
+      "ml_robust_unserved_kwh": 104.77690744239827,
+      "causal_full_milp_unserved_kwh": 118.88684326991248,
+      "delta_unserved_vs_rule_kwh": -0.2533763490508534,
+      "delta_unserved_vs_ml_kwh": -0.21886738802568573,
+      "delta_unserved_vs_causal_full_milp_kwh": -14.328803215539892,
+      "risk_adjusted_cost_ratio_vs_ml": 0.9914150305513239,
+      "max_decision_seconds": 0.2122524800001883
+    },
+    {
+      "seed": "20261012",
+      "phase": "holdout",
+      "proposed_unserved_kwh": 104.49349422272442,
+      "rule_unserved_kwh": 107.02551675350271,
+      "ml_robust_unserved_kwh": 105.81561814056666,
+      "causal_full_milp_unserved_kwh": 116.47980638091504,
+      "delta_unserved_vs_rule_kwh": -2.532022530778292,
+      "delta_unserved_vs_ml_kwh": -1.3221239178422337,
+      "delta_unserved_vs_causal_full_milp_kwh": -11.986312158190614,
+      "risk_adjusted_cost_ratio_vs_ml": 0.9863081758260768,
+      "max_decision_seconds": 0.187886355000046
+    }
+  ],
+  "development_summary": {
+    "seed_count": 2,
+    "seeds": [
+      "20261008",
+      "20261009"
+    ],
+    "delta_unserved_vs_rule_kwh": {
+      "n": 2,
+      "mean": -3.470861718102486,
+      "sd_sample": 4.908539714862121,
+      "median": -3.470861718102486,
+      "min": -6.941723436204974,
+      "max": 1.7763568394002505e-15,
+      "bootstrap_95ci_mean": [
+        -6.941723436204974,
+        1.7763568394002505e-15
+      ],
+      "nonpositive_count": 1
+    },
+    "delta_unserved_vs_ml_kwh": {
+      "n": 2,
+      "mean": -10.63305414415899,
+      "sd_sample": 1.3595563895679994,
+      "median": -10.63305414415899,
+      "min": -11.594405686628022,
+      "max": -9.671702601689958,
+      "bootstrap_95ci_mean": [
+        -11.594405686628022,
+        -9.671702601689958
+      ],
+      "nonpositive_count": 2
+    },
+    "delta_unserved_vs_causal_full_milp_kwh": {
+      "n": 2,
+      "mean": -42.08429867828988,
+      "sd_sample": 6.015963794361143,
+      "median": -42.08429867828988,
+      "min": -46.3382274726554,
+      "max": -37.83036988392436,
+      "bootstrap_95ci_mean": [
+        -46.3382274726554,
+        -37.83036988392436
+      ],
+      "nonpositive_count": 2
+    },
+    "risk_adjusted_cost_ratio_vs_ml": {
+      "n": 2,
+      "mean": -0.23980426550323375,
+      "sd_sample": 0.09994104284666097,
+      "median": -0.23980426550323375,
+      "min": -0.310473254618963,
+      "max": -0.16913527638750447,
+      "bootstrap_95ci_mean": [
+        -0.310473254618963,
+        -0.16913527638750447
+      ],
+      "nonpositive_count": 2
+    },
+    "risk_adjusted_cost_ratio_vs_ml_raw": {
+      "mean": 0.7601957344967663,
+      "sd_sample": 0.09994104284666097,
+      "min": 0.689526745381037,
+      "max": 0.8308647236124955
+    },
+    "max_decision_seconds": {
+      "max": 0.353847862000066
+    }
+  },
+  "holdout_summary": {
+    "seed_count": 2,
+    "seeds": [
+      "20261011",
+      "20261012"
+    ],
+    "delta_unserved_vs_rule_kwh": {
+      "n": 2,
+      "mean": -1.3926994399145727,
+      "sd_sample": 1.611246167024306,
+      "median": -1.3926994399145727,
+      "min": -2.532022530778292,
+      "max": -0.2533763490508534,
+      "bootstrap_95ci_mean": [
+        -2.532022530778292,
+        -0.2533763490508534
+      ],
+      "nonpositive_count": 2
+    },
+    "delta_unserved_vs_ml_kwh": {
+      "n": 2,
+      "mean": -0.7704956529339597,
+      "sd_sample": 0.7801201736216196,
+      "median": -0.7704956529339597,
+      "min": -1.3221239178422337,
+      "max": -0.21886738802568573,
+      "bootstrap_95ci_mean": [
+        -1.3221239178422337,
+        -0.21886738802568573
+      ],
+      "nonpositive_count": 2
+    },
+    "delta_unserved_vs_causal_full_milp_kwh": {
+      "n": 2,
+      "mean": -13.157557686865253,
+      "sd_sample": 1.6563913115205204,
+      "median": -13.157557686865253,
+      "min": -14.328803215539892,
+      "max": -11.986312158190614,
+      "bootstrap_95ci_mean": [
+        -14.328803215539892,
+        -11.986312158190614
+      ],
+      "nonpositive_count": 2
+    },
+    "risk_adjusted_cost_ratio_vs_ml": {
+      "n": 2,
+      "mean": -0.011138396811299689,
+      "sd_sample": 0.0036110916067567723,
+      "median": -0.011138396811299689,
+      "min": -0.013691824173923228,
+      "max": -0.00858496944867615,
+      "bootstrap_95ci_mean": [
+        -0.013691824173923228,
+        -0.00858496944867615
+      ],
+      "nonpositive_count": 2
+    },
+    "risk_adjusted_cost_ratio_vs_ml_raw": {
+      "mean": 0.9888616031887003,
+      "sd_sample": 0.0036110916067567723,
+      "min": 0.9863081758260768,
+      "max": 0.9914150305513239
+    },
+    "max_decision_seconds": {
+      "max": 0.2122524800001883
+    }
+  },
+  "all_four_seed_summary": {
+    "seed_count": 4,
+    "seeds": [
+      "20261008",
+      "20261009",
+      "20261011",
+      "20261012"
+    ],
+    "delta_unserved_vs_rule_kwh": {
+      "n": 4,
+      "mean": -2.4317805790085294,
+      "sd_sample": 3.2149979158942132,
+      "median": -1.3926994399145727,
+      "min": -6.941723436204974,
+      "max": 1.7763568394002505e-15,
+      "bootstrap_95ci_mean": [
+        -5.269636664416444,
+        -0.1266881745254258
+      ],
+      "nonpositive_count": 3
+    },
+    "delta_unserved_vs_ml_kwh": {
+      "n": 4,
+      "mean": -5.701774898546475,
+      "sd_sample": 5.765617661463559,
+      "median": -5.496913259766096,
+      "min": -11.594405686628022,
+      "max": -0.21886738802568573,
+      "bootstrap_95ci_mean": [
+        -10.63305414415899,
+        -0.7704956529339597
+      ],
+      "nonpositive_count": 4
+    },
+    "delta_unserved_vs_causal_full_milp_kwh": {
+      "n": 4,
+      "mean": -27.62092818257757,
+      "sd_sample": 17.085001189512305,
+      "median": -26.079586549732127,
+      "min": -46.3382274726554,
+      "max": -11.986312158190614,
+      "bootstrap_95ci_mean": [
+        -42.08429867828988,
+        -13.157557686865253
+      ],
+      "nonpositive_count": 4
+    },
+    "risk_adjusted_cost_ratio_vs_ml": {
+      "n": 4,
+      "mean": -0.12547133115726672,
+      "sd_sample": 0.14409410297037065,
+      "median": -0.09141355028071385,
+      "min": -0.310473254618963,
+      "max": -0.00858496944867615,
+      "bootstrap_95ci_mean": [
+        -0.23980426550323375,
+        -0.011138396811299689
+      ],
+      "nonpositive_count": 4
+    },
+    "risk_adjusted_cost_ratio_vs_ml_raw": {
+      "mean": 0.8745286688427332,
+      "sd_sample": 0.14409410297037065,
+      "min": 0.689526745381037,
+      "max": 0.9914150305513239
+    },
+    "max_decision_seconds": {
+      "max": 0.353847862000066
+    }
+  },
+  "development_scenario_summary": {
+    "paired_observation_count": 6,
+    "seed_count": 2,
+    "scenario_count": 3,
+    "interpretation": "Clustered descriptive seed-by-scenario observations; n is not an independent inferential sample size.",
+    "delta_unserved_vs_rule_kwh": {
+      "n": 6,
+      "mean": -1.156953906034162,
+      "sd_sample": 2.8339467257036115,
+      "median": -3.3306690738754696e-16,
+      "min": -6.9417234362049705,
+      "max": 0.0,
+      "bootstrap_95ci_mean": [
+        -3.4708617181024857,
+        -1.1102230246251565e-16
+      ],
+      "nonpositive_count": 6
+    },
+    "delta_unserved_vs_ml_kwh": {
+      "n": 6,
+      "mean": -3.54435138138633,
+      "sd_sample": 5.52444592974241,
+      "median": 0.0,
+      "min": -11.594405686628024,
+      "max": 0.0,
+      "bootstrap_95ci_mean": [
+        -7.409153276929004,
+        0.0
+      ],
+      "nonpositive_count": 6
+    },
+    "delta_unserved_vs_causal_full_milp_kwh": {
+      "n": 6,
+      "mean": -14.028099559429961,
+      "sd_sample": 11.12504999204408,
+      "median": -10.902294878024588,
+      "min": -29.59680979675733,
+      "max": -3.4082846747504343,
+      "bootstrap_95ci_mean": [
+        -22.09580954158605,
+        -6.162972061234072
+      ],
+      "nonpositive_count": 6
+    }
+  },
+  "holdout_scenario_summary": {
+    "paired_observation_count": 6,
+    "seed_count": 2,
+    "scenario_count": 3,
+    "interpretation": "Clustered descriptive seed-by-scenario observations; n is not an independent inferential sample size.",
+    "delta_unserved_vs_rule_kwh": {
+      "n": 6,
+      "mean": -0.4642331466381968,
+      "sd_sample": 1.0168964048679132,
+      "median": -0.013059777714548804,
+      "min": -2.532022530778306,
+      "max": 0.0,
+      "bootstrap_95ci_mean": [
+        -1.3038873976594492,
+        -0.004353259238182934
+      ],
+      "nonpositive_count": 6
+    },
+    "delta_unserved_vs_ml_kwh": {
+      "n": 6,
+      "mean": -0.25683188431132126,
+      "sd_sample": 0.5284141440884293,
+      "median": -0.00481679909077965,
+      "min": -1.3221239178422337,
+      "max": 0.0,
+      "bootstrap_95ci_mean": [
+        -0.6959342572284726,
+        -0.0016055996969265502
+      ],
+      "nonpositive_count": 6
+    },
+    "delta_unserved_vs_causal_full_milp_kwh": {
+      "n": 6,
+      "mean": -4.3858525622884175,
+      "sd_sample": 0.9464608686567164,
+      "median": -4.3613324333976,
+      "min": -5.635158503607358,
+      "max": -3.2636472913953996,
+      "bootstrap_95ci_mean": [
+        -5.073475770248418,
+        -3.726975715110393
+      ],
+      "nonpositive_count": 6
+    }
+  },
+  "all_seed_scenario_summary": {
+    "paired_observation_count": 12,
+    "seed_count": 4,
+    "scenario_count": 3,
+    "interpretation": "Clustered descriptive seed-by-scenario observations; n is not an independent inferential sample size.",
+    "delta_unserved_vs_rule_kwh": {
+      "n": 12,
+      "mean": -0.8105935263361794,
+      "sd_sample": 2.0619110258401268,
+      "median": -3.3306690738754696e-16,
+      "min": -6.9417234362049705,
+      "max": 0.0,
+      "bootstrap_95ci_mean": [
+        -2.1596112438000516,
+        -0.004353259238183231
+      ],
+      "nonpositive_count": 12
+    },
+    "delta_unserved_vs_ml_kwh": {
+      "n": 12,
+      "mean": -1.9005916328488255,
+      "sd_sample": 4.116673138509099,
+      "median": 0.0,
+      "min": -11.594405686628024,
+      "max": 0.0,
+      "bootstrap_95ci_mean": [
+        -4.462109191044271,
+        -0.03647789800428227
+      ],
+      "nonpositive_count": 12
+    },
+    "delta_unserved_vs_causal_full_milp_kwh": {
+      "n": 12,
+      "mean": -9.206976060859189,
+      "sd_sample": 9.056546647533974,
+      "median": -4.980446991819349,
+      "min": -29.59680979675733,
+      "max": -3.2636472913953996,
+      "bootstrap_95ci_mean": [
+        -14.502718944819298,
+        -4.887486513787954
+      ],
+      "nonpositive_count": 12
+    }
+  }
+}

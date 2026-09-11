@@ -1,0 +1,170 @@
+{
+  "baseline": "Independent causal rolling full-MILP-MPC",
+  "claim_boundary": "Causal 12-step point-forecast comparator using the same plant/capacity traces, cost terms, and shared pre-window unit-transition histories; no risk signal, uncertainty envelope, or SOC supervisory layer.",
+  "model_independence": "Standalone scipy.optimize.milp re-encoding; does not import rig_energy.optimization.dispatch.",
+  "forecast": {
+    "model": "Causal-ErrorFeedback-Ensemble",
+    "source": "./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v2/seed_20261014/source/forecast/forecast_predictions.npz",
+    "horizon_steps": 12,
+    "decision_rule": "solve at every 5 s and apply the first action",
+    "terminal_soc_drop": 0.005
+  },
+  "initial_history": {
+    "source": "./paper/experiments/results/shared_initial_histories/seed_20261014.json",
+    "matched_shared_warmup": true
+  },
+  "solver": {
+    "backend": "HiGHS via scipy.optimize.milp",
+    "scipy_version": "1.17.1",
+    "time_limit_seconds": 5.0,
+    "mip_rel_gap": 1e-06
+  },
+  "config": {
+    "interval_seconds": 5.0,
+    "rated_power_kw": 960.0,
+    "unit_count": 4.0,
+    "unit_rated_power_kw": 240.0,
+    "unit_minimum_stable_power_kw": 120.0,
+    "ramp_kw_per_step": 120.0,
+    "minimum_up_steps": 12.0,
+    "minimum_down_steps": 6.0,
+    "energy_capacity_kwh": 133.0,
+    "charge_efficiency": 0.95,
+    "discharge_efficiency": 0.95,
+    "soc_initial": 0.65,
+    "soc_min": 0.15,
+    "soc_max": 0.9,
+    "grid_price": 0.710425,
+    "diesel_price": 7.5,
+    "storage_degradation": 0.15,
+    "unserved_penalty": 100.0,
+    "startup_cost": 5.0,
+    "fuel_lph_at_rated": 62.5,
+    "terminal_soc_drop": 0.005,
+    "spill_penalty": 0.01,
+    "time_limit_seconds": 30.0,
+    "mip_rel_gap": 1e-06
+  },
+  "trajectories": [
+    {
+      "unserved_energy_kwh": 3.3454793294270835,
+      "objective_yuan": 699.580992900487,
+      "grid_energy_kwh": 407.16080617758166,
+      "generator_energy_kwh": 144.25,
+      "generator_startups": 1,
+      "mean_solve_seconds": 0.004736800611216394,
+      "max_solve_seconds": 0.09328108400222845,
+      "terminal_soc": 0.15,
+      "min_soc": 0.15,
+      "max_power_balance_error_kw": 0.0,
+      "max_charge_discharge_product": 0.0,
+      "steps": 360,
+      "seed": "seed_20261014",
+      "scenario": "A_stable_drilling",
+      "source_start": 37824,
+      "initial_startup_history": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "initial_shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "unserved_energy_kwh": 76.83437187119631,
+      "objective_yuan": 7908.174245754933,
+      "grid_energy_kwh": 185.11333783497108,
+      "generator_energy_kwh": 180.5660368213885,
+      "generator_startups": 0,
+      "mean_solve_seconds": 0.0060696981862040245,
+      "max_solve_seconds": 0.015487468001083471,
+      "terminal_soc": 0.2573157688460155,
+      "min_soc": 0.25704705564115243,
+      "max_power_balance_error_kw": 0.0,
+      "max_charge_discharge_product": 0.0,
+      "steps": 360,
+      "seed": "seed_20261014",
+      "scenario": "B_connection_transition",
+      "source_start": 42054,
+      "initial_startup_history": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "initial_shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "unserved_energy_kwh": 88.4616927444617,
+      "objective_yuan": 8991.276468670329,
+      "grid_energy_kwh": 73.27835024681748,
+      "generator_energy_kwh": 124.60722106654778,
+      "generator_startups": 6,
+      "mean_solve_seconds": 0.0068032837723270255,
+      "max_solve_seconds": 0.06467212999996264,
+      "terminal_soc": 0.15399941182718824,
+      "min_soc": 0.15399941182718824,
+      "max_power_balance_error_kw": 0.0,
+      "max_charge_discharge_product": 0.0,
+      "steps": 360,
+      "seed": "seed_20261014",
+      "scenario": "C_tripping_impact",
+      "source_start": 49524,
+      "initial_startup_history": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "initial_shutdown_history": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "aggregate": {
+    "scenario_count": 3,
+    "total_unserved_energy_kwh": 168.6415439450851,
+    "total_objective_yuan": 17599.031707325747,
+    "mean_solve_seconds": 0.0058699275232491485,
+    "max_solve_seconds": 0.09328108400222845,
+    "max_power_balance_error_kw": 0.0,
+    "max_charge_discharge_product": 0.0
+  }
+}

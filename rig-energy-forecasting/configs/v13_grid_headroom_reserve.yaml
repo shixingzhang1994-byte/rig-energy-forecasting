@@ -1,0 +1,66 @@
+protocol:
+  name: v13-causal-grid-headroom-storage-reserve
+  purpose: final_acceptance_controller_repair
+  artifact_namespace: v13_grid_headroom_reserve
+  simulation_days: 28
+  expected_effective_dispatch_hours: 50.2
+  diagnostic_seeds_excluded_from_evidence: [20260905, 20260910, 20260912]
+  development_seed_order: [20260913, 20260914, 20260915]
+  holdout_seed_order: [20260916, 20260917, 20260918, 20260919]
+  required_eligible_seeds_per_phase: 2
+  eligibility_timing: before_dispatch_and_before_any_controller_outcome
+  eligibility_inputs: [operation_state_codes, transition_flags, supply_regime]
+  stop_if_first_eligible_development_seed_fails: true
+
+fixed_unit_commitment:
+  unit_count: 4
+  unit_rated_power_kw: 300.0
+  unit_minimum_stable_power_kw: 60.0
+  unit_ramp_kw_per_step: 30.0
+  minimum_up_steps: 12
+  minimum_down_steps: 6
+  startup_cost_yuan_per_unit: 0.5
+
+supervisor:
+  enabled: true
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.30
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+  low_soc_minimum_committed_units: 2
+  low_soc_forecast_deficit_guard_enabled: true
+  low_soc_forecast_deficit_margin_kw: 0.0
+  grid_headroom_reserve_enabled: true
+  grid_headroom_reserve_target_soc: 0.75
+  grid_headroom_reserve_max_storage_power_fraction: 0.20
+
+performance_gate:
+  safety_reference_methods: [Rule-Based, ML-Robust-MPC]
+  aggregate_unserved_tolerance_kwh: 1.0e-9
+  scenario_regret_reference_methods: [Rule-Based, ML-Robust-MPC]
+  maximum_single_scenario_unserved_regret_kwh: 0.50
+  maximum_risk_adjusted_cost_ratio_vs_ml_robust: 1.005
+  maximum_decision_seconds: 5.0
+  require_zero_physical_violations: true
+  require_not_dominated_by_ml_robust: true
+
+final_acceptance:
+  required_reported_holdouts: 2
+  require_every_holdout_gate_pass: true
+  report_scenario_level_regret: true
+  report_all_ineligible_seeds: true
+  statistical_claim: descriptive_only_due_to_small_holdout_count
+
+claim_boundary:
+  - "20260905、20260910和20260912只用于失效机理诊断，不计入V13开发或留出证据。"
+  - "V13相对V12只增加网电余量储能储备屏障；其他监督阈值、缺口门、机组参数和硬门不变。"
+  - "75%储备目标和20%储能功率上限直接复用预注册强基线Rule-Based既有参数，不从诊断结果搜索。"
+  - "屏障只使用当前SOC、当前实测负荷和当前网电余量；不得为充电启动或增发柴油机。"
+  - "屏障先用闲置网电替代可避免的储能放电，再在目标SOC以下用剩余网电余量充电。"
+  - "首个可评估开发种子性能硬门失败时，停止该路线并不运行后续种子。"
+  - "总未供能量必须不劣于Rule-Based和ML-Robust-MPC中更优者；每个场景相对更优基线的后悔不超过0.50 kWh。"
+  - "留出阶段不得改任何冻结文件，必须完整报告最先两个可评估种子。"
+  - "当前仍为公开证据约束的合成仿真，不代表现场SCADA有效性。"

@@ -1,0 +1,20 @@
+{
+  "analysis": "V21 manuscript evidence package",
+  "files": [
+    {
+      "path": "rig-energy-forecasting/artifacts/v21_probability_calibration/independent_audit.json",
+      "sha256": "1954645519947298c8a02d6c0ad5025460af3c5f02ef4d47005c3fb8dbf53f72",
+      "size_bytes": 33042
+    },
+    {
+      "path": "paper/experiments/results/v21_probability_calibration/v21_seed_metrics.csv",
+      "sha256": "af5b6ae541d429711340da5624b56d32be1893a96b39528404434fbf75605b3f",
+      "size_bytes": 2545
+    },
+    {
+      "path": "paper/experiments/results/v21_probability_calibration/v21_paper_audit.json",
+      "sha256": "c6fd2f5278474bf45cc47fcd1371dd47fe360114e1ef1f45747c7022d9addfa8",
+      "size_bytes": 5828
+    }
+  ]
+}

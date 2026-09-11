@@ -1,0 +1,315 @@
+{
+  "analysis_type": "risk_trigger_action_overlap",
+  "window_count": 30,
+  "total_steps": 10800,
+  "per_window": [
+    {
+      "seed": "20261011",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261011",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.05277777777777778,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.05277777777777778,
+      "action_changed_fraction": 0.013888888888888888,
+      "mode_changed_fraction": 0.05277777777777778
+    },
+    {
+      "seed": "20261011",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.7722222222222223,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261012",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261012",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261012",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.975,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261014",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261014",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.5638888888888889,
+      "soc_low_fraction": 0.7333333333333333,
+      "risk_only_fraction": 0.18333333333333332,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.18611111111111112
+    },
+    {
+      "seed": "20261014",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.9138888888888889,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261015",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261015",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.6277777777777778,
+      "soc_low_fraction": 0.44166666666666665,
+      "risk_only_fraction": 0.29444444444444445,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.19444444444444445
+    },
+    {
+      "seed": "20261015",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.8388888888888889,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261016",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261016",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.35555555555555557,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.35555555555555557,
+      "action_changed_fraction": 0.013888888888888888,
+      "mode_changed_fraction": 0.36944444444444446
+    },
+    {
+      "seed": "20261016",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.5416666666666666,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261017",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261017",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.09444444444444444,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.09444444444444444,
+      "action_changed_fraction": 0.06944444444444445,
+      "mode_changed_fraction": 0.1388888888888889
+    },
+    {
+      "seed": "20261017",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.20555555555555555,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.20555555555555555,
+      "action_changed_fraction": 0.1361111111111111,
+      "mode_changed_fraction": 0.2972222222222222
+    },
+    {
+      "seed": "20261018",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261018",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261018",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.6305555555555555,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261019",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261019",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261019",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.3388888888888889,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.3388888888888889,
+      "action_changed_fraction": 0.21944444444444444,
+      "mode_changed_fraction": 0.49166666666666664
+    },
+    {
+      "seed": "20261020",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261020",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.5333333333333333,
+      "soc_low_fraction": 0.41944444444444445,
+      "risk_only_fraction": 0.2833333333333333,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.2861111111111111
+    },
+    {
+      "seed": "20261020",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.7916666666666666,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261021",
+      "scenario": "A_stable_drilling",
+      "steps": 360,
+      "high_risk_fraction": 0.0,
+      "soc_low_fraction": 1.0,
+      "risk_only_fraction": 0.0,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.0
+    },
+    {
+      "seed": "20261021",
+      "scenario": "B_connection_transition",
+      "steps": 360,
+      "high_risk_fraction": 0.35,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.35,
+      "action_changed_fraction": 0.0,
+      "mode_changed_fraction": 0.3527777777777778
+    },
+    {
+      "seed": "20261021",
+      "scenario": "C_tripping_impact",
+      "steps": 360,
+      "high_risk_fraction": 0.17222222222222222,
+      "soc_low_fraction": 0.0,
+      "risk_only_fraction": 0.17222222222222222,
+      "action_changed_fraction": 0.06388888888888888,
+      "mode_changed_fraction": 0.2638888888888889
+    }
+  ],
+  "aggregate": {
+    "high_risk_fraction": 0.29194444444444445,
+    "soc_low_fraction": 0.6198148148148148,
+    "risk_only_fraction": 0.07768518518518519,
+    "action_changed_fraction": 0.017222222222222222,
+    "mode_changed_fraction": 0.08777777777777777
+  },
+  "interpretation": "A nonzero mode-change fraction with a zero action-change fraction means the risk channel changes the internal supervisory label but is behaviorally masked by the constrained optimizer and reserve layer on these windows."
+}

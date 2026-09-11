@@ -1,0 +1,161 @@
+{
+  "analysis": "manuscript-side reconstruction of independently audited V21 evidence",
+  "source": "rig-energy-forecasting/artifacts/v21_probability_calibration/independent_audit.json",
+  "source_sha256": "1954645519947298c8a02d6c0ad5025460af3c5f02ef4d47005c3fb8dbf53f72",
+  "eligible_seeds": [
+    20261040,
+    20261041,
+    20261042,
+    20261045,
+    20261046,
+    20261047
+  ],
+  "reconstructed_effects": {
+    "mean_calibration_brier_delta": -0.0386623464208113,
+    "mean_rule_brier_delta": -0.0268761264119024,
+    "mean_total_brier_delta_vs_yager": -0.0655384728327137,
+    "mean_candidate_brier_delta_vs_rss": -0.0019261082695167353,
+    "mean_macro_f1_delta_vs_rss": 0.020319769741428722
+  },
+  "reported_effects": {
+    "calibration_calibrated_minus_raw_dempster": {
+      "direction": "lower_is_better",
+      "mean": -0.0386623464208113,
+      "sample_sd": 0.004688798047262679,
+      "median": -0.03839176297021238,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.04222507109302127,
+        -0.03535071278813675
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    },
+    "conflict_rule_raw_dempster_minus_raw_yager": {
+      "direction": "lower_is_better",
+      "mean": -0.0268761264119024,
+      "sample_sd": 0.005905846278051852,
+      "median": -0.029005020465479148,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.030063557011075364,
+        -0.022050498927793316
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    },
+    "total_calibrated_dempster_minus_raw_yager": {
+      "direction": "lower_is_better",
+      "mean": -0.0655384728327137,
+      "sample_sd": 0.009833312021496387,
+      "median": -0.06836651615232363,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.07155910563608299,
+        -0.05761375839423453
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    },
+    "candidate_minus_rss_brier": {
+      "direction": "lower_is_better",
+      "mean": -0.0019261082695167353,
+      "sample_sd": 0.00576972019415995,
+      "median": -2.5351343695426132e-05,
+      "favorable_tied_adverse": [
+        3,
+        0,
+        3
+      ],
+      "seed_bootstrap_95_interval": [
+        -0.00675269252106029,
+        0.0011362383390174306
+      ],
+      "exact_two_sided_sign_flip_p": 0.6875
+    },
+    "candidate_minus_rss_macro_f1": {
+      "direction": "higher_is_better",
+      "mean": 0.020319769741428722,
+      "sample_sd": 0.016440086158306964,
+      "median": 0.014358836421964949,
+      "favorable_tied_adverse": [
+        6,
+        0,
+        0
+      ],
+      "seed_bootstrap_95_interval": [
+        0.010148964587937256,
+        0.03344202573749302
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125
+    }
+  },
+  "recognition": {
+    "mean_high_risk_recall": 0.9905596715044167,
+    "minimum_high_risk_recall": 0.9850827526132404,
+    "mean_severe_recall": 0.9844445615014458,
+    "minimum_severe_recall": 0.972897922914584
+  },
+  "control": {
+    "baseline_unserved_energy_kwh": 466.0477145890537,
+    "candidate_unserved_energy_kwh": 466.0477145890537,
+    "candidate_minus_baseline_unserved_energy_kwh": 0.0,
+    "baseline_risk_adjusted_cost_yuan": 55039.68801522895,
+    "candidate_risk_adjusted_cost_yuan": 55034.9811478105,
+    "candidate_minus_baseline_cost_yuan": -4.7068674184556585,
+    "candidate_to_baseline_cost_ratio": 0.9999144823019863,
+    "candidate_vs_rss_action_changed_rows": 57,
+    "candidate_vs_yager_action_changed_rows": 9
+  },
+  "numerical_and_physical": {
+    "total_conflict_fallback_rows": 0,
+    "candidate_probability_rows_valid": true,
+    "all_compared_exported_probability_rows_valid_at_1e_12": false,
+    "maximum_rss_export_row_sum_error": 1.571859999938141e-07,
+    "rss_export_rows_valid_at_2e_7_serialization_tolerance": true,
+    "all_physical_audits_pass": true,
+    "maximum_power_balance_error_kw": 4.547473508864641e-13
+  },
+  "runner_reporting_issue": {
+    "field": "recognition.macro_f1_delta_vs_RSS.improved_tied_worse",
+    "runner_value": [
+      0,
+      0,
+      6
+    ],
+    "corrected_value": [
+      6,
+      0,
+      0
+    ],
+    "cause": "generic lower-is-better label applied to a higher-is-better endpoint",
+    "effect_on_gate_or_status": "none; the gate used the signed mean directly"
+  },
+  "extended_export_precision_finding": {
+    "scope": "frozen RSS probabilities exported by the upstream source pipeline",
+    "maximum_absolute_row_sum_error": 1.571859999938141e-07,
+    "strict_1e_12_pass": false,
+    "serialization_tolerance_2e_7_pass": true,
+    "candidate_outputs_affected": false,
+    "effect_on_protocol_gate_or_reported_metrics": "none; V21's frozen numerical gate applies to candidate output, and independently reconstructed RSS metrics match the frozen reports"
+  },
+  "claim_boundary": [
+    "V20 failed its original composite development gates and remains a retained negative result.",
+    "V21 supports probability-calibration improvement relative to raw Dempster evidence fusion.",
+    "The calibrated candidate is not established as better than frozen RSS probability output: only three of six seeds improved and the bootstrap interval crosses zero.",
+    "Temperature calibration changed no argmax or dispatch input; it cannot be credited with action or control changes.",
+    "The 57 candidate-versus-RSS and 9 candidate-versus-Yager changed action rows are attributable to raw Dempster conflict handling, not scalar calibration.",
+    "Endpoint-wise p-values are descriptive and unadjusted; n=6 has a minimum attainable two-sided p-value of 0.03125.",
+    "Evidence is synthetic simulation, not field, HIL, or causal-effect validation."
+  ],
+  "pass": true
+}

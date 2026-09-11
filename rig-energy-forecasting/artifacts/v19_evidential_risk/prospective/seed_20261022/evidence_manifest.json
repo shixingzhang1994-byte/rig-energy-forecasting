@@ -1,0 +1,50 @@
+{
+  "seed": 20261022,
+  "files": [
+    {
+      "path": "artifacts/v19_evidential_risk/prospective_source/seed_20261022/eligibility.json",
+      "sha256": "9e39f154709ab984adee86e61fcf803d4868f1de8eccf382368a82f270360fb1",
+      "size_bytes": 1114
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective_source/seed_20261022/result.json",
+      "sha256": "32bacfb5bee69ee1a60a9ec73ec47fc32e8944e944cfc71d56126d6669bec4df",
+      "size_bytes": 2555
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective_source/seed_20261022/resolved_dispatch_config.yaml",
+      "sha256": "04ce4d7e3a576adcf633d8a65df343855ce58269aaebf3348a44291ae3043bf0",
+      "size_bytes": 3958
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective_source/seed_20261022/risk/risk_predictions.csv",
+      "sha256": "a70e530993df4aa0db68fd5276228202b8a2c62d00853abca29cf325e015a71f",
+      "size_bytes": 11319874
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/risk/evidential_risk_metrics.json",
+      "sha256": "a0300535efcab30efe07f5e3624c272bb3d6a9f810d2990cfd7db9e044d3f21d",
+      "size_bytes": 2108
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/risk/evidential_risk_predictions.csv",
+      "sha256": "6b8d0ce15fa2496d32ad3c5594ea8ab68f5df429ff1c21ae9478b1a106400103",
+      "size_bytes": 16862345
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/dispatch/dispatch_metrics.csv",
+      "sha256": "22b2b5b699c0c7c1748fd4763543a4726d149e9c7918dfcd05852718f6dd5891",
+      "size_bytes": 8341
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/dispatch/scenario_selection.json",
+      "sha256": "4c3c140f09da865857702ecb87f4b13fe82a139b7f95be600d1eaf25b61f685c",
+      "size_bytes": 4808
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/prospective/seed_20261022/result.json",
+      "sha256": "14e09c1ac794375549d87b5e4816e2bcb99e776ba40c0ca29c5992ca04dcb7dc",
+      "size_bytes": 4123
+    }
+  ]
+}

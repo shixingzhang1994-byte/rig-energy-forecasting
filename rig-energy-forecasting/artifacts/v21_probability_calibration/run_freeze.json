@@ -1,0 +1,102 @@
+{
+  "protocol_id": "V21-PROBABILITY-CALIBRATION-HOLDOUT-20260909",
+  "status": "frozen_before_any_V21_holdout_result",
+  "seed_queue": [
+    20261040,
+    20261041,
+    20261042,
+    20261043,
+    20261044,
+    20261045,
+    20261046,
+    20261047,
+    20261048,
+    20261049,
+    20261050,
+    20261051
+  ],
+  "required_eligible_seeds": 6,
+  "candidate_id": "V21-Dempster-T050",
+  "files": [
+    {
+      "path": "configs/v21_probability_calibration_protocol.yaml",
+      "sha256": "27d142af279934058908abfb57449a3d24432aa90c81ffd044d88871f15be206",
+      "size_bytes": 3413
+    },
+    {
+      "path": "configs/v21_probability_calibration_holdouts.yaml",
+      "sha256": "b3284841187f5b2e16c659c5228270839afe6457c0be953e1fcdce8ee37559cd",
+      "size_bytes": 3215
+    },
+    {
+      "path": "configs/v21_selected_probability_candidate.yaml",
+      "sha256": "75a22a40e44eabb9aa61e3333d7bbf0bffbacd33211caa45dc38427e1af64a58",
+      "size_bytes": 1287
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/development_search/selected_evidential_config.yaml",
+      "sha256": "403f85ea31476183bd9808ee5b076e5115a99c697cf01a68872f3d70856a9a10",
+      "size_bytes": 1073
+    },
+    {
+      "path": "scripts/run_v21_probability_holdouts.py",
+      "sha256": "2d7bac26c9ad2246641329080bbada03ef5c170b089e708033ee63954a3dc452",
+      "size_bytes": 23828
+    },
+    {
+      "path": "src/rig_energy/risk/evidence_theory_v20.py",
+      "sha256": "e728c5d95193e0c3963e8fa4ecd2780ca05991618482daefd96a3b379e7369a0",
+      "size_bytes": 6580
+    },
+    {
+      "path": "scripts/run_v20_evidential_calibration.py",
+      "sha256": "d14964295364724ea25f321952d0a85533417dec01b4173b4751c554baa29ddf",
+      "size_bytes": 6711
+    },
+    {
+      "path": "scripts/run_evidential_risk_fusion.py",
+      "sha256": "807eaf42ec779d1f0476e3d3c2e2768ddb5401d92fa131244e9238f2767ab5c9",
+      "size_bytes": 5184
+    },
+    {
+      "path": "tests/test_v21_probability_holdouts.py",
+      "sha256": "b2ecb6474fe3a1eb6a6e560733707eef43b65a6f390f6c081a707e4daa342d88",
+      "size_bytes": 1702
+    },
+    {
+      "path": "artifacts/v20_evidential_calibration/development_freeze.json",
+      "sha256": "6f3dff8c8acf714222195697d3153748f1ddf652d7eb82dd1db8463cce553b6a",
+      "size_bytes": 2259
+    },
+    {
+      "path": "artifacts/v20_evidential_calibration/development_audit.json",
+      "sha256": "73c77c2f37d1efc068172a7a4d591225fd76ed7dffe8c04115c4df19aef324f2",
+      "size_bytes": 2873
+    },
+    {
+      "path": "artifacts/v20_evidential_calibration/development_search/candidate_results.json",
+      "sha256": "c1baf7ac615f6222626e3a17c51d45f53021a76ff77fe36b70a495c97a8263ef",
+      "size_bytes": 87056
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/risk_candidate_freeze.json",
+      "sha256": "db9a8d35937fbae12b186a08d1faf0960e1fd8ab545aecdccbbee3393875f8a0",
+      "size_bytes": 2206
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/freeze_manifest.json",
+      "sha256": "f67853d06504ac93c478b26146acee76503b8f00085f15f63952779256a08f6d",
+      "size_bytes": 11332
+    }
+  ],
+  "claim_boundary": [
+    "V20 failed its original composite development gates and that negative result remains authoritative.",
+    "V21 is a distinct, post-development, prospectively frozen calibration study.",
+    "V21 does not test or claim classification superiority.",
+    "Scalar calibration does not enter dispatch and cannot be credited with action or control changes.",
+    "Dempster rule effects and scalar-calibration effects are decomposed rather than conflated.",
+    "Raw conflict remains visible despite Dempster normalization.",
+    "Null, adverse, and failed-gate outcomes are retained.",
+    "Evidence remains synthetic simulation, not field, HIL, or causal-effect validation."
+  ]
+}

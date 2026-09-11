@@ -1,0 +1,17 @@
+{
+  "prediction_0": "Persistence",
+  "prediction_1": "XGBoost",
+  "prediction_2": "LSTM",
+  "prediction_3": "StateAware-DualBranch-Patch-Transformer",
+  "prediction_4": "TCN",
+  "prediction_5": "PatchTST",
+  "prediction_6": "iTransformer",
+  "prediction_7": "StateAware-Patch-Transformer",
+  "prediction_8": "StateAware-TCN-Attention",
+  "prediction_9": "Validation-Weighted-Ensemble",
+  "prediction_10": "Causal-ErrorFeedback-Ensemble",
+  "prediction_11": "Validation-Calibrated-Upper-Envelope-q800",
+  "prediction_12": "Validation-Calibrated-Upper-Envelope-q900",
+  "prediction_13": "Validation-Calibrated-Upper-Envelope-q950",
+  "prediction_14": "Validation-Calibrated-Upper-Envelope-q975"
+}

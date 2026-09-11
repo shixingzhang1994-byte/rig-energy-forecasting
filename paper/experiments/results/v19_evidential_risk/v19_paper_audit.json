@@ -1,0 +1,186 @@
+{
+  "analysis": "independent paper-side V19 evidential-risk audit",
+  "unit_of_analysis": "seed; scenarios remain clustered within seed",
+  "seeds": [
+    20261022,
+    20261024,
+    20261025,
+    20261027,
+    20261028,
+    20261029
+  ],
+  "n": 6,
+  "bootstrap": {
+    "seed": 20260908,
+    "replicates": 20000,
+    "interval": "percentile 95%"
+  },
+  "paired_deltas": {
+    "prediction_macro_f1": {
+      "mean": 0.024637917434388906,
+      "sample_sd": 0.03003106362317129,
+      "bootstrap_95_interval": [
+        0.006285030568668248,
+        0.04937798849169189
+      ],
+      "exact_two_sided_sign_flip_p": 0.0625,
+      "improved_tied_worse": [
+        5,
+        0,
+        1
+      ]
+    },
+    "prediction_balanced_accuracy": {
+      "mean": 0.04088420079449782,
+      "sample_sd": 0.03413724783232887,
+      "bootstrap_95_interval": [
+        0.02244764255595144,
+        0.06973834349896472
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125,
+      "improved_tied_worse": [
+        6,
+        0,
+        0
+      ]
+    },
+    "prediction_brier": {
+      "mean": 0.06344927709099783,
+      "sample_sd": 0.009420110445295784,
+      "bootstrap_95_interval": [
+        0.056171861908484666,
+        0.07002009944355415
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125,
+      "improved_tied_worse": [
+        6,
+        0,
+        0
+      ]
+    },
+    "dispatch_macro_f1": {
+      "mean": 0.028057347574907115,
+      "sample_sd": 0.017271015316480485,
+      "bootstrap_95_interval": [
+        0.015799692488918122,
+        0.0408616991684172
+      ],
+      "exact_two_sided_sign_flip_p": 0.03125,
+      "improved_tied_worse": [
+        6,
+        0,
+        0
+      ]
+    },
+    "dispatch_high_risk_recall": {
+      "mean": -0.0003385737389233571,
+      "sample_sd": 0.0021822846565642626,
+      "bootstrap_95_interval": [
+        -0.002041274626838304,
+        0.0010622986177587872
+      ],
+      "exact_two_sided_sign_flip_p": 0.8125,
+      "improved_tied_worse": [
+        3,
+        1,
+        2
+      ]
+    },
+    "unserved_delta_kwh": {
+      "mean": 0.0,
+      "sample_sd": 0.0,
+      "bootstrap_95_interval": [
+        0.0,
+        0.0
+      ],
+      "exact_two_sided_sign_flip_p": 1.0,
+      "improved_tied_worse": [
+        0,
+        6,
+        0
+      ]
+    },
+    "cost_delta_yuan": {
+      "mean": -0.2166156390466464,
+      "sample_sd": 0.690796265249969,
+      "bootstrap_95_interval": [
+        -0.7349366796258133,
+        0.26170028591407873
+      ],
+      "exact_two_sided_sign_flip_p": 0.4375,
+      "improved_tied_worse": [
+        2,
+        1,
+        3
+      ]
+    }
+  },
+  "probability_audit": {
+    "20261022": {
+      "row_count": 27151,
+      "sum_tolerance": 1e-06,
+      "baseline_max_abs_sum_error": 4.440892098500626e-16,
+      "evidential_max_abs_sum_error": 3.3306690738754696e-16,
+      "baseline_brier_change_after_normalization": 0.0,
+      "pass": true
+    },
+    "20261024": {
+      "row_count": 27151,
+      "sum_tolerance": 1e-06,
+      "baseline_max_abs_sum_error": 5.551115123125783e-16,
+      "evidential_max_abs_sum_error": 3.3306690738754696e-16,
+      "baseline_brier_change_after_normalization": 0.0,
+      "pass": true
+    },
+    "20261025": {
+      "row_count": 27151,
+      "sum_tolerance": 1e-06,
+      "baseline_max_abs_sum_error": 1.1486200013344217e-07,
+      "evidential_max_abs_sum_error": 3.3306690738754696e-16,
+      "baseline_brier_change_after_normalization": 6.835322823344729e-11,
+      "pass": true
+    },
+    "20261027": {
+      "row_count": 27151,
+      "sum_tolerance": 1e-06,
+      "baseline_max_abs_sum_error": 5.551115123125783e-16,
+      "evidential_max_abs_sum_error": 3.3306690738754696e-16,
+      "baseline_brier_change_after_normalization": 0.0,
+      "pass": true
+    },
+    "20261028": {
+      "row_count": 27151,
+      "sum_tolerance": 1e-06,
+      "baseline_max_abs_sum_error": 5.551115123125783e-16,
+      "evidential_max_abs_sum_error": 3.3306690738754696e-16,
+      "baseline_brier_change_after_normalization": -8.37441256098236e-18,
+      "pass": true
+    },
+    "20261029": {
+      "row_count": 27151,
+      "sum_tolerance": 1e-06,
+      "baseline_max_abs_sum_error": 5.551115123125783e-16,
+      "evidential_max_abs_sum_error": 3.3306690738754696e-16,
+      "baseline_brier_change_after_normalization": 0.0,
+      "pass": true
+    }
+  },
+  "manifest_audit": {
+    "manifest": "rig-energy-forecasting/artifacts/v19_evidential_risk/prospective/prospective_evidence_manifest.json",
+    "declared_file_count": 20,
+    "hash_failures": [],
+    "pass": true
+  },
+  "checks": {
+    "exact_seed_set": true,
+    "all_probability_rows_normalized": true,
+    "evidence_manifest_hashes_match": true,
+    "all_seed_gates_pass": true
+  },
+  "claim_boundary": [
+    "Positive classification deltas do not imply a control-outcome improvement.",
+    "Pignistic scores failed to improve Brier calibration and are not claimed as calibrated probabilities.",
+    "The evidence is synthetic prospective holdout evidence, not field validation."
+  ],
+  "status": "pass"
+}

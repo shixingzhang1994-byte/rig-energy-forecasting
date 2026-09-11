@@ -1,0 +1,36 @@
+candidate_index: 59
+combination_rule: generalized_conjunctive_then_Yager_conflict_to_ignorance
+discounts:
+  learned_probability: 0.6130381031216257
+  margin_interval: 0.47163329729867787
+  low_soc: 0.2206718206205288
+  healthy_soc: 0.3084098826700752
+  grid_derating: 0.4182307892098369
+  rapid_ramp: 0.18391741584370205
+margin_thresholds:
+  normal_margin_ratio: 0.15
+  watch_margin_ratio: 0.05
+  warning_margin_ratio: 0.0
+uncertainty_interval_scale: 1.2752330633292377
+soc_warning_pct: 35.0
+soc_healthy_pct: 65.0
+grid_derating_threshold_kw: 700.0
+ramp_threshold_kw_per_s: 25.0
+decision:
+  high_score_threshold: 0.5641617263380043
+  severe_score_threshold: 0.308562007330501
+  conflict_weight: 0.27106826627104563
+reserve_adder_kw:
+  0: 0.0
+  1: 30.0
+  2: 80.0
+  3: 150.0
+selection_provenance:
+  protocol: configs/v19_evidential_risk_development.yaml
+  protocol_sha256: 6b12d7bd060833e71416a231ffe3497f820e9402e2597ba7cf1eb44aa3af909b
+  development_seeds:
+  - 20261008
+  - 20261009
+  candidate_count: 128
+  selected_candidate_index: 59
+  test_or_holdout_labels_used: false

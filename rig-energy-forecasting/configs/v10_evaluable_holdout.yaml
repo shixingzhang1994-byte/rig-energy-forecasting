@@ -1,0 +1,53 @@
+protocol:
+  name: v10-covariate-qualified-causal-supervisor
+  purpose: protocol_repair_without_controller_retuning
+  simulation_days: 28
+  expected_effective_dispatch_hours: 50.2
+  development_seed_order: [20260905, 20260906, 20260907, 20260908]
+  holdout_seed_order: [20260909, 20260910, 20260911, 20260912, 20260913, 20260914]
+  required_eligible_seeds_per_phase: 2
+  eligibility_timing: before_dispatch_and_before_any_controller_outcome
+  eligibility_inputs: [operation_state_codes, transition_flags, supply_regime]
+  controller_parameters_locked_from: v9-causal-risk-soc-supervisor
+
+fixed_unit_commitment:
+  unit_count: 4
+  unit_rated_power_kw: 300.0
+  unit_minimum_stable_power_kw: 60.0
+  unit_ramp_kw_per_step: 30.0
+  minimum_up_steps: 12
+  minimum_down_steps: 6
+  startup_cost_yuan_per_unit: 0.5
+
+supervisor:
+  enabled: true
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.30
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+
+performance_gate:
+  safety_reference_methods: [Rule-Based, ML-Robust-MPC]
+  aggregate_unserved_tolerance_kwh: 1.0e-9
+  maximum_single_scenario_unserved_regret_kwh_vs_ml_robust: 0.50
+  maximum_risk_adjusted_cost_ratio_vs_ml_robust: 1.005
+  maximum_decision_seconds: 5.0
+  require_zero_physical_violations: true
+  require_not_dominated_by_ml_robust: true
+
+final_acceptance:
+  required_reported_holdouts: 2
+  require_every_holdout_gate_pass: true
+  report_scenario_level_regret: true
+  report_all_ineligible_seeds: true
+  statistical_claim: descriptive_only_due_to_small_holdout_count
+
+claim_boundary:
+  - "V10不搜索控制器、监督阈值、机组参数或场景纯度阈值。"
+  - "种子必须按预声明顺序处理；只允许根据控制器运行前的协变量可评估性跳过。"
+  - "不可评估种子必须留存原因和候选窗口证据，不得删除或隐藏。"
+  - "留出阶段必须连续报告最先两个可评估种子，不得因性能失败替换。"
+  - "当前仍为公开证据约束的合成仿真，不代表现场SCADA有效性。"

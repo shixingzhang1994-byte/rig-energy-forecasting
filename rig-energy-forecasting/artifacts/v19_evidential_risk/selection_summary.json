@@ -1,0 +1,71 @@
+{
+  "candidate_index": 59,
+  "eligible": true,
+  "selection_score": 0.8652359791023269,
+  "worst_seed": {
+    "macro_f1": 0.7799171557601383,
+    "balanced_accuracy": 0.7960186637107993,
+    "high_risk_recall": 0.9878896882494005,
+    "severe_recall": 0.9848542700776378
+  },
+  "means": {
+    "mean_ignorance": 0.20791160558643168,
+    "mean_conflict": 0.07472899977163516,
+    "dispatch_escalation_rate": 0.00966815218592317
+  },
+  "per_seed": [
+    {
+      "seed": 20261008,
+      "macro_f1": 0.794499018164499,
+      "balanced_accuracy": 0.7960186637107993,
+      "high_risk_recall": 0.9898652411181647,
+      "severe_recall": 0.9912770411723657,
+      "mean_ignorance": 0.20092556521738816,
+      "mean_conflict": 0.06756619394468816,
+      "dispatch_escalation_rate": 0.004751206217082244
+    },
+    {
+      "seed": 20261009,
+      "macro_f1": 0.7799171557601383,
+      "balanced_accuracy": 0.7987672893816298,
+      "high_risk_recall": 0.9878896882494005,
+      "severe_recall": 0.9848542700776378,
+      "mean_ignorance": 0.21489764595547517,
+      "mean_conflict": 0.08189180559858215,
+      "dispatch_escalation_rate": 0.014585098154764097
+    }
+  ],
+  "config": {
+    "candidate_index": 59,
+    "combination_rule": "generalized_conjunctive_then_Yager_conflict_to_ignorance",
+    "discounts": {
+      "learned_probability": 0.6130381031216257,
+      "margin_interval": 0.47163329729867787,
+      "low_soc": 0.2206718206205288,
+      "healthy_soc": 0.3084098826700752,
+      "grid_derating": 0.4182307892098369,
+      "rapid_ramp": 0.18391741584370205
+    },
+    "margin_thresholds": {
+      "normal_margin_ratio": 0.15,
+      "watch_margin_ratio": 0.05,
+      "warning_margin_ratio": 0.0
+    },
+    "uncertainty_interval_scale": 1.2752330633292377,
+    "soc_warning_pct": 35.0,
+    "soc_healthy_pct": 65.0,
+    "grid_derating_threshold_kw": 700.0,
+    "ramp_threshold_kw_per_s": 25.0,
+    "decision": {
+      "high_score_threshold": 0.5641617263380043,
+      "severe_score_threshold": 0.308562007330501,
+      "conflict_weight": 0.27106826627104563
+    },
+    "reserve_adder_kw": {
+      "0": 0.0,
+      "1": 30.0,
+      "2": 80.0,
+      "3": 150.0
+    }
+  }
+}

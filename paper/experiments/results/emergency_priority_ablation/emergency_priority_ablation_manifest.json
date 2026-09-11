@@ -1,0 +1,27 @@
+{
+  "analysis_type": "paper_side_existing_v16_emergency_priority_ablation",
+  "source": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/emergency_load_metrics.csv",
+  "source_sha256": "4faf90279a4fdd00f21decbe4668cfdb31d93ae72f3a37d88c31ee05fccd6660",
+  "data_claim": "mechanistic_synthetic_v15_aligned",
+  "status": "diagnostic_not_field_protection_validation",
+  "methods": [
+    "proportional-curtailment",
+    "priority-greedy"
+  ],
+  "scenarios": [
+    "base_v15_normalized",
+    "grid_derate_25pct",
+    "one_generator_unavailable",
+    "storage_derate_350kw",
+    "joint_extreme"
+  ],
+  "critical_unserved_reduction_kwh_proportional_minus_priority": {
+    "base_v15_normalized": 208.16231521527783,
+    "grid_derate_25pct": 252.27850676909725,
+    "one_generator_unavailable": 542.0259609930556,
+    "storage_derate_350kw": 208.16231521527783,
+    "joint_extreme": 803.7478190689237
+  },
+  "highs_equivalence_max_kw": 1.1368683772161603e-13,
+  "approval_boundary": "load priority fractions remain NOT_OPERATIONALLY_APPROVED pending drilling/electrical/HSE review"
+}

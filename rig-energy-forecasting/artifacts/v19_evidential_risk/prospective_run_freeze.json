@@ -1,0 +1,72 @@
+{
+  "protocol_id": "V19-EVIDENTIAL-RISK-SUPERVISION-20260908",
+  "status": "frozen_before_any_prospective_seed_result",
+  "seed_queue": [
+    20261022,
+    20261023,
+    20261024,
+    20261025,
+    20261026,
+    20261027,
+    20261028,
+    20261029,
+    20261030,
+    20261031,
+    20261032,
+    20261033
+  ],
+  "required_eligible_seeds": 6,
+  "selected_candidate_index": 59,
+  "files": [
+    {
+      "path": "configs/v19_evidential_risk_holdouts.yaml",
+      "sha256": "41770585b846ef310933018f55ee7c25db0989bf48b3664dc61fe4054ff250c3",
+      "size_bytes": 4394
+    },
+    {
+      "path": "scripts/run_v19_evidential_holdouts.py",
+      "sha256": "74443605422230da4fa7ada9143fa303f616a43631bff5c106b2d1ff5d989d71",
+      "size_bytes": 24326
+    },
+    {
+      "path": "scripts/run_evidential_risk_fusion.py",
+      "sha256": "807eaf42ec779d1f0476e3d3c2e2768ddb5401d92fa131244e9238f2767ab5c9",
+      "size_bytes": 5184
+    },
+    {
+      "path": "tests/test_evidence_theory.py",
+      "sha256": "04b21d08b798875f242bd51f57d4bb51743a00af3c1e85534c8b015f6842e108",
+      "size_bytes": 3550
+    },
+    {
+      "path": "tests/test_v19_evidential_holdouts.py",
+      "sha256": "846f9e805ad783553df5084280a993656d01b0b948e6365707963ce31f0f2530",
+      "size_bytes": 3135
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/development_search/selected_evidential_config.yaml",
+      "sha256": "403f85ea31476183bd9808ee5b076e5115a99c697cf01a68872f3d70856a9a10",
+      "size_bytes": 1073
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/risk_candidate_freeze.json",
+      "sha256": "db9a8d35937fbae12b186a08d1faf0960e1fd8ab545aecdccbbee3393875f8a0",
+      "size_bytes": 2206
+    },
+    {
+      "path": "artifacts/v15_generator_first_reserve/freeze_manifest.json",
+      "sha256": "f67853d06504ac93c478b26146acee76503b8f00085f15f63952779256a08f6d",
+      "size_bytes": 11332
+    }
+  ],
+  "claim_boundary": [
+    "本执行配置在20261022及后续种子任何预测、风险或控制结果揭示前创建。",
+    "V19候选已在V17诊断和未来留出前冻结；留出不得重选折扣系数、阈值、冲突权重或备用容量。",
+    "先判定上游可评估性，后运行基线和证据融合控制；不得因结果不利替换可评估种子。",
+    "风险分类改善不等于调度改善；必须分别报告识别指标、动作变化和控制结果。",
+    "冲突量和无知质量必须显式报告，不得通过归一化隐藏。",
+    "失败门、不利结果或零控制效应均保留。",
+    "所有结果仍是公开证据约束的合成仿真，不是现场SCADA、实机或HIL验证。"
+  ],
+  "created_utc": "2026-09-08T04:07:39.611624+00:00"
+}

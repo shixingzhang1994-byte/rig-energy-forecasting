@@ -1,0 +1,51 @@
+{
+  "seed": 20261016,
+  "phase": "holdout",
+  "eligible": true,
+  "risk_transition_feature": {
+    "source": "history_transition_flags",
+    "causal": true,
+    "future_transition_flags_excluded": true
+  },
+  "proposed_method": "Risk-SOC-Supervisory-MPC",
+  "proposed_unserved_energy_kwh": 65.1934897034694,
+  "rule_unserved_energy_kwh": 65.23143349624698,
+  "ml_robust_unserved_energy_kwh": 83.23044365482154,
+  "risk_adjusted_cost_ratio_vs_ml_robust": 0.8128707580717687,
+  "scenario_regret_reference_methods": [
+    "Rule-Based",
+    "ML-Robust-MPC"
+  ],
+  "scenario_unserved_regret_kwh_vs_best_reference": {
+    "A_stable_drilling": 0.0,
+    "B_connection_transition": -0.03794379277758653,
+    "C_tripping_impact": 0.0
+  },
+  "worst_scenario_unserved_regret_kwh_vs_ml_robust": 0.0,
+  "max_decision_seconds": 0.2739257939974777,
+  "physical_audit": {
+    "trajectory_count": 21,
+    "max_power_balance_error_kw": 2.2737367544323206e-13,
+    "max_grid_capacity_violation_kw": 0.0,
+    "max_generator_capacity_violation_kw": 0.0,
+    "max_storage_capacity_violation_kw": 0.0,
+    "soc_violation_count": 0,
+    "simultaneous_charge_discharge_count": 0,
+    "noninteger_commitment_count": 0,
+    "physical_pass": true
+  },
+  "checks": {
+    "aggregate_safety_noninferiority": true,
+    "single_scenario_regret_cap": true,
+    "risk_adjusted_cost_cap": true,
+    "real_time_latency": true,
+    "not_dominated_by_ml_robust": true,
+    "physical_feasibility": true
+  },
+  "overall_pass": true,
+  "reproduction_command": "python scripts/run_v15_dispatch_benchmark.py --predictions ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/source/forecast/forecast_predictions.npz --prediction-keys ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/source/forecast/forecast_prediction_keys.json --config ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/resolved_dispatch_config.yaml --risk-signals ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/risk/risk_predictions.csv --artifact-dir ./rig-energy-forecasting/artifacts/paper_v15_extension_holdouts_v3/seed_20261016/dispatch",
+  "controller_delta": "committed_generator_before_storage",
+  "frozen_controller": "V15",
+  "extension_status": "prospective_paper_extension_no_tuning",
+  "field_scada_claimed": false
+}

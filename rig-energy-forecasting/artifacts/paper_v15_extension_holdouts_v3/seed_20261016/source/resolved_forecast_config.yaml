@@ -1,0 +1,151 @@
+project:
+  seed: 20261016
+  start_time: '2025-09-01 00:00:00'
+  days: 21
+  frequency_seconds: 5
+simulation:
+  total_power_clip_kw:
+  - 180.0
+  - 2000.0
+  rig_class: representative_250_375_ton_ac_land_rig
+  equipment:
+    mud_pump_rated_kw: 1193.0
+    topdrive_rated_kw: 858.0
+    drawworks_continuous_rated_kw: 1119.0
+    drawworks_short_time_peak_kw: 1492.0
+  well:
+    start_depth_m: 800.0
+    target_depth_m: 4000.0
+    initial_formation_hardness_index: 0.95
+  auxiliary:
+    mean_kw: 230.0
+    daily_amplitude_kw: 25.0
+    ar_noise_sigma_kw: 8.0
+    ar_phi: 0.985
+  states:
+    idle:
+      duration_minutes:
+      - 12
+      - 45
+    circulation:
+      duration_minutes:
+      - 25
+      - 100
+    drilling:
+      duration_minutes:
+      - 20
+      - 70
+    connection:
+      duration_minutes:
+      - 5
+      - 12
+    tripping:
+      duration_minutes:
+      - 35
+      - 180
+    maintenance:
+      duration_minutes:
+      - 20
+      - 90
+  measurement_noise_sigma_kw: 12.0
+  sensor_bias_sigma_kw: 8.0
+  measurement_quantization_kw: 0.5
+  transient_events_per_day: 18
+  missing_block_probability_per_day: 0.35
+  missing_block_duration_seconds:
+  - 15
+  - 90
+forecast:
+  history_steps: 120
+  horizon_steps: 12
+  train_fraction: 0.7
+  val_fraction: 0.15
+  train_stride: 2
+  eval_stride: 1
+  batch_size: 512
+  max_epochs: 12
+  patience: 3
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_workers: 2
+  peak_quantile: 0.9
+models:
+  xgboost:
+    n_estimators: 180
+    max_depth: 7
+    learning_rate: 0.05
+    subsample: 0.85
+    colsample_bytree: 0.85
+  lstm:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.15
+  tcn:
+    hidden_size: 64
+    levels: 5
+    kernel_size: 3
+    dropout: 0.12
+  patchtst:
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    attention_heads: 4
+    layers: 2
+    dropout: 0.1
+  itransformer:
+    hidden_size: 64
+    attention_heads: 4
+    layers: 2
+    dropout: 0.1
+  state_aware_patch_transformer:
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    state_embedding_dim: 8
+    attention_heads: 4
+    layers: 2
+    dropout: 0.1
+    peak_weight: 0.75
+  state_aware_dual_branch_patch_transformer:
+    enabled: true
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 128
+    state_embedding_dim: 16
+    transition_embedding_dim: 8
+    attention_heads: 8
+    layers: 3
+    dropout: 0.1
+    learning_rate: 0.0006
+    max_epochs: 24
+    patience: 5
+    peak_weight: 0.5
+    transition_weight: 0.5
+  state_aware_tcn_attention:
+    hidden_size: 64
+    state_embedding_dim: 8
+    levels: 5
+    kernel_size: 3
+    attention_heads: 4
+    dropout: 0.12
+    peak_weight: 1.5
+ensemble:
+  l2_penalty: 0.0001
+error_feedback:
+  feedback_delay_steps: 12
+  smoothing_candidates:
+  - 0.02
+  - 0.05
+  - 0.1
+  - 0.2
+  correction_clip_candidates_kw:
+  - 50.0
+  - 100.0
+  - 150.0
+dispatch_uncertainty:
+  enabled: true
+  coverage_candidates:
+  - 0.8
+  - 0.9
+  - 0.95
+  - 0.975

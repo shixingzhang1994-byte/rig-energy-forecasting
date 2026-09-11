@@ -1,0 +1,23 @@
+{
+  "input_rows_after_resampling": 51836,
+  "analysis_eligible_rows": 51827,
+  "excluded_rows": 9,
+  "selection_rule": "all emergency-allocation and parameter-identification fields finite",
+  "missing_by_required_column": {
+    "total_active_power_kw": 0,
+    "pre_shed_demand_kw": 9,
+    "grid_available_capacity_kw": 9,
+    "generator_available_capacity_kw": 9,
+    "storage_available_discharge_power_kw": 9,
+    "storage_soc_pct": 9,
+    "genset_1_active_power_kw": 9,
+    "genset_2_active_power_kw": 9,
+    "genset_3_active_power_kw": 9,
+    "genset_4_active_power_kw": 9,
+    "genset_1_run_status": 0,
+    "genset_2_run_status": 0,
+    "genset_3_run_status": 0,
+    "genset_4_run_status": 0
+  },
+  "truth_used_for_repair": false
+}

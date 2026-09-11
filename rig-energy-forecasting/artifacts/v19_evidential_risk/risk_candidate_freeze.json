@@ -1,0 +1,50 @@
+{
+  "protocol_id": "V19-EVIDENTIAL-RISK-SUPERVISION-20260908",
+  "status": "risk_candidate_frozen_before_external_diagnostic_and_prospective_holdouts",
+  "created_utc": "2026-09-08T00:57:54.779021+00:00",
+  "selected_candidate_index": 59,
+  "target_v17_labels_used_for_selection": false,
+  "prospective_holdout_labels_used_for_selection": false,
+  "files": [
+    {
+      "path": "configs/v19_evidential_risk_development.yaml",
+      "sha256": "6b12d7bd060833e71416a231ffe3497f820e9402e2597ba7cf1eb44aa3af909b",
+      "size_bytes": 3629
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/development_search/selected_evidential_config.yaml",
+      "sha256": "403f85ea31476183bd9808ee5b076e5115a99c697cf01a68872f3d70856a9a10",
+      "size_bytes": 1073
+    },
+    {
+      "path": "artifacts/v19_evidential_risk/development_search/selection_summary.json",
+      "sha256": "dad52afc27fd0423ed02441c6bbe35d84e4b0b5d68b5db0d6abcf1c14a14b86a",
+      "size_bytes": 2169
+    },
+    {
+      "path": "src/rig_energy/risk/evidence_theory.py",
+      "sha256": "1420c32b5cd5516c707eaaedda4fd3dd237d65508bb46ae32f01b884928e6d92",
+      "size_bytes": 9448
+    },
+    {
+      "path": "scripts/run_evidential_risk_fusion.py",
+      "sha256": "807eaf42ec779d1f0476e3d3c2e2768ddb5401d92fa131244e9238f2767ab5c9",
+      "size_bytes": 5184
+    },
+    {
+      "path": "tests/test_evidence_theory.py",
+      "sha256": "04b21d08b798875f242bd51f57d4bb51743a00af3c1e85534c8b015f6842e108",
+      "size_bytes": 3550
+    }
+  ],
+  "parent_v15_freeze": "artifacts/v15_generator_first_reserve/freeze_manifest.json",
+  "parent_v15_freeze_sha256": "f67853d06504ac93c478b26146acee76503b8f00085f15f63952779256a08f6d",
+  "claim_boundary": [
+    "Evidence theory is exploratory until the candidate is frozen and prospective holdouts pass.",
+    "Classification improvement alone is not a control-performance improvement.",
+    "Conflict and ignorance are reported, not hidden by normalization.",
+    "Existing V15 and paper extension artifacts remain authoritative and immutable.",
+    "Any failed gate or null control effect is retained as a negative result.",
+    "Results remain synthetic-simulation evidence, not field validation."
+  ]
+}

@@ -1,0 +1,134 @@
+protocol:
+  name: v4-state-aware-patch-gpu-search
+  development_seeds: [20260828, 20260829]
+  holdout_seeds: [20260830, 20260831]
+  history_steps: 120
+  horizon_steps: 12
+  train_fraction: 0.70
+  val_fraction: 0.15
+  train_stride: 2
+  eval_stride: 2
+  batch_size: 1024
+  num_workers: 2
+  max_epochs: 24
+  patience: 5
+  weight_decay: 0.0001
+  peak_quantile: 0.90
+  selection_weights:
+    mae: 0.60
+    transition_mae: 0.40
+
+patchtst_anchor:
+  patch_length: 16
+  patch_stride: 8
+  hidden_size: 64
+  attention_heads: 4
+  layers: 2
+  dropout: 0.10
+  learning_rate: 0.001
+
+# 有界候选集：先验证结构和训练目标，不进行不可审计的无限网格搜索。
+candidates:
+  - name: current_p16_h64
+    architecture: fused
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    state_embedding_dim: 8
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    learning_rate: 0.001
+    peak_weight: 0.75
+    transition_weight: 0.0
+  - name: dual_p16_h64_plain
+    architecture: dual_branch
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    state_embedding_dim: 8
+    transition_embedding_dim: 4
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    learning_rate: 0.001
+    peak_weight: 0.75
+    transition_weight: 0.0
+  - name: dual_p16_h64_tw05
+    architecture: dual_branch
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    state_embedding_dim: 8
+    transition_embedding_dim: 4
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    learning_rate: 0.001
+    peak_weight: 0.50
+    transition_weight: 0.50
+  - name: dual_p16_h96_tw05
+    architecture: dual_branch
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 96
+    state_embedding_dim: 12
+    transition_embedding_dim: 4
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    learning_rate: 0.0008
+    peak_weight: 0.50
+    transition_weight: 0.50
+  - name: dual_p24s8_h96_tw05
+    architecture: dual_branch
+    patch_length: 24
+    patch_stride: 8
+    hidden_size: 96
+    state_embedding_dim: 12
+    transition_embedding_dim: 4
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    learning_rate: 0.0008
+    peak_weight: 0.50
+    transition_weight: 0.50
+  - name: dual_p24s12_h96_tw025
+    architecture: dual_branch
+    patch_length: 24
+    patch_stride: 12
+    hidden_size: 96
+    state_embedding_dim: 12
+    transition_embedding_dim: 4
+    attention_heads: 4
+    layers: 2
+    dropout: 0.08
+    learning_rate: 0.0008
+    peak_weight: 0.50
+    transition_weight: 0.25
+  - name: dual_p12s6_h96_tw05
+    architecture: dual_branch
+    patch_length: 12
+    patch_stride: 6
+    hidden_size: 96
+    state_embedding_dim: 12
+    transition_embedding_dim: 4
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    learning_rate: 0.0008
+    peak_weight: 0.50
+    transition_weight: 0.50
+  - name: dual_p16_h128_l3_tw05
+    architecture: dual_branch
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 128
+    state_embedding_dim: 16
+    transition_embedding_dim: 8
+    attention_heads: 8
+    layers: 3
+    dropout: 0.10
+    learning_rate: 0.0006
+    peak_weight: 0.50
+    transition_weight: 0.50

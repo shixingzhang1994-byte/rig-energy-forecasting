@@ -1,0 +1,172 @@
+{
+  "dataset_id": "rig_industrial_dataset_v2",
+  "record_origin": "MECHANISTIC_SYNTHETIC_V15_ALIGNED",
+  "target_rig_field_data": false,
+  "expected_file_count": 23,
+  "checked_file_count": 23,
+  "all_declared_files_valid": true,
+  "failures": [],
+  "records": [
+    {
+      "name": "01_scada_wide_raw.csv.gz",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "02_operation_intervals.csv",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "03_event_log.csv",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "04_tag_dictionary.csv",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "05_equipment_parameters.csv",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "06_risk_distribution.csv",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "07_dataset_quality_report.json",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "08_source_register.csv",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "10_canonical_observed_5s.csv.gz",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "11_evaluation_ready_5s.csv.gz",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "12_adapter_quality_report.json",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "13_cleaning_lineage_report.json",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "14_原始需求规范.md",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "README.md",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "configs/risk_formula_reference.yaml",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "configs/scada_mapping.v15_synthetic.yaml",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "generate_v15_dataset_v2.py",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "generator_load_model_v1.py",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "integration_patch/__pycache__/adapters_v15_patch.cpython-312.pyc",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "integration_patch/adapters_v15_patch.py",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "integration_patch/smoke_test_adapter.py",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "reference_only/09_generator_reference_truth.csv.gz",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    },
+    {
+      "name": "钻机工业数据总览_V15_v2.xlsx",
+      "exists": true,
+      "bytes_match": true,
+      "sha256_match": true,
+      "valid": true
+    }
+  ]
+}

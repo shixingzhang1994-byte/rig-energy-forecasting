@@ -1,0 +1,141 @@
+project:
+  seed: 20260825
+  start_time: "2025-09-01 00:00:00"
+  days: 7
+  frequency_seconds: 5
+
+simulation:
+  # 所有功率单位均为 kW。范围依据公开论文、专利和设备资料设置，详见 docs/research_basis.md。
+  total_power_clip_kw: [180.0, 2200.0]
+  rig_class: "representative_250_375_ton_ac_land_rig"
+  equipment:
+    # NOV 12-P-160 / FD-1600：1600 hp = 1193 kW。这里按一台等效运行泵建模。
+    mud_pump_rated_kw: 1193.0
+    # NOV TDS-1000/TDS-8S：1150 hp ≈ 858 kW。
+    topdrive_rated_kw: 858.0
+    # NOV DSGD-375陆地绞车：1500 hp ≈ 1119 kW；瞬时脉冲允许短时接近更大型号。
+    drawworks_continuous_rated_kw: 1119.0
+    drawworks_short_time_peak_kw: 1492.0
+  well:
+    start_depth_m: 800.0
+    target_depth_m: 4000.0
+    initial_formation_hardness_index: 0.95
+  auxiliary:
+    mean_kw: 230.0
+    daily_amplitude_kw: 25.0
+    ar_noise_sigma_kw: 8.0
+    ar_phi: 0.985
+  states:
+    idle:
+      duration_minutes: [10, 35]
+    circulation:
+      duration_minutes: [25, 100]
+    drilling:
+      duration_minutes: [35, 140]
+    connection:
+      duration_minutes: [5, 12]
+    tripping:
+      duration_minutes: [35, 180]
+    maintenance:
+      duration_minutes: [15, 75]
+  measurement_noise_sigma_kw: 12.0
+  sensor_bias_sigma_kw: 8.0
+  measurement_quantization_kw: 0.5
+  transient_events_per_day: 18
+  missing_block_probability_per_day: 0.35
+  missing_block_duration_seconds: [15, 90]
+
+forecast:
+  history_steps: 120       # 5 秒采样下为 10 分钟历史窗口
+  horizon_steps: 12        # 预测未来 1 分钟，共 12 个点
+  train_fraction: 0.70
+  val_fraction: 0.15
+  train_stride: 2
+  eval_stride: 1
+  batch_size: 512
+  max_epochs: 12
+  patience: 3
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_workers: 2
+  peak_quantile: 0.90
+
+models:
+  xgboost:
+    n_estimators: 180
+    max_depth: 7
+    learning_rate: 0.05
+    subsample: 0.85
+    colsample_bytree: 0.85
+  lstm:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.15
+  tcn:
+    hidden_size: 64
+    levels: 5
+    kernel_size: 3
+    dropout: 0.12
+  patchtst:
+    # ICLR 2023 PatchTST的核心结构：时间片段化 + 通道独立共享编码器。
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+  itransformer:
+    # ICLR 2024 iTransformer的核心结构：将每个变量的完整历史序列作为 token。
+    hidden_size: 64
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+  state_aware_patch_transformer:
+    # 本项目改进：在时间 patch 内融合钻井工况嵌入，而非将强基线结果直接混入。
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 64
+    state_embedding_dim: 8
+    attention_heads: 4
+    layers: 2
+    dropout: 0.10
+    peak_weight: 0.75
+  state_aware_dual_branch_patch_transformer:
+    # V4探索分支默认关闭，避免改变已冻结的V3复现实验。
+    enabled: false
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 128
+    state_embedding_dim: 16
+    transition_embedding_dim: 8
+    attention_heads: 8
+    layers: 3
+    dropout: 0.10
+    learning_rate: 0.0006
+    max_epochs: 24
+    patience: 5
+    peak_weight: 0.50
+    transition_weight: 0.50
+  state_aware_tcn_attention:
+    hidden_size: 64
+    state_embedding_dim: 8
+    levels: 5
+    kernel_size: 3
+    attention_heads: 4
+    dropout: 0.12
+    peak_weight: 1.5
+
+# 可选集成层：只使用验证集学习非负且和为1的权重，测试集不参与调权。
+ensemble:
+  l2_penalty: 0.0001
+
+# 因果在线误差反馈：延迟至少等于12步预测时域，确保残差已完整可见。
+error_feedback:
+  feedback_delay_steps: 12
+  smoothing_candidates: [0.02, 0.05, 0.10, 0.20]
+  correction_clip_candidates_kw: [50.0, 100.0, 150.0]
+
+# V6调度不确定性增强默认关闭，不改变V2/V3/V5冻结复现口径。
+dispatch_uncertainty:
+  enabled: false
+  coverage: 0.90

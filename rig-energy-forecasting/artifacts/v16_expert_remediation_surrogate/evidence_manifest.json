@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-09-02T08:52:58.352132+08:00",
+  "status": "surrogate_engineering_preflight_not_acceptance",
+  "files": [
+    {
+      "path": "./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/00_manifest.yaml",
+      "bytes": 3570,
+      "sha256": "ed0e5829dee0916d5c85c5ee4265c281e1bc02d2ad29a15187399852ab8c6edc"
+    },
+    {
+      "path": "./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/03_event_log.csv",
+      "bytes": 1951,
+      "sha256": "8c24da9da1c268bcfd3479b0e2b9b2fecd1bca1654a891780f253849cbf88a46"
+    },
+    {
+      "path": "./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/05_equipment_parameters.csv",
+      "bytes": 943,
+      "sha256": "59efe8441253472d2d182f9ca4b9a0e352108fb9beee647f7c27d3c92fa56b29"
+    },
+    {
+      "path": "./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/11_evaluation_ready_5s.csv.gz",
+      "bytes": 6598436,
+      "sha256": "df2a22fd48c6db515d733383d64bf08ccbb9089ac3347e07fe160a8757407efd"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/analysis_eligibility_audit.json",
+      "bytes": 735,
+      "sha256": "869d6f30600a61e4e1783eb6649db8f56748f7d52cb1c29c14bad6e68d1ee2b7"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/data_provenance_and_quality_audit.json",
+      "bytes": 3162,
+      "sha256": "652f25c6a1cf198c6d4671e665a167ef2f9c3978ad73491af37efa6b8f9dd9c8"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/emergency_load_audit.json",
+      "bytes": 103224,
+      "sha256": "011df5515b9aa0f09805a9bf38aaf6d5e5f804c44ae441fe5750cde05f1956c4"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/emergency_load_metrics.csv",
+      "bytes": 5161,
+      "sha256": "4faf90279a4fdd00f21decbe4668cfdb31d93ae72f3a37d88c31ee05fccd6660"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/emergency_load_state_metrics.csv",
+      "bytes": 20119,
+      "sha256": "d10e7036006b2030ace397c8e44786dd40a1a0f19ff2e544e653dd229dda5944"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/expert_remediation_report.md",
+      "bytes": 3990,
+      "sha256": "535d5b7132e4f501b976d93962b77de8604dd5121b7868cbbf2edf3a258f6e4d"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/final_summary.json",
+      "bytes": 10512,
+      "sha256": "ab28bfc25f936ee3a2a816f1923a297830e29a2ebf956956e4c4af27f3dc4ea4"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/joint_extreme_critical_load_protection.png",
+      "bytes": 336148,
+      "sha256": "7aa9d6a36d75adf0078ce5dc3b9bb76e26d35cb665bde97f0fa87f35a87d705a"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/missingness_model_moderate_blocks.joblib",
+      "bytes": 16566644,
+      "sha256": "2b0f543439814008bdd689ed2f2bfaf38207189b84cbe311e8743940e54ea0cb"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/missingness_model_reference.joblib",
+      "bytes": 17001644,
+      "sha256": "3ce0c16c8ec36a0108f835bec1cccc5908d0840df7f2d81cfb5ef17f7c2a068b"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/missingness_model_severe_blocks.joblib",
+      "bytes": 16558149,
+      "sha256": "3bbbb15107996f4736217cff55c6a82c9fd5bbac663490090ea62e7528e2aa54"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/missingness_retraining_diagnostic.csv",
+      "bytes": 993,
+      "sha256": "5a05f851071dc7c04b36068cb5bebf6bbed853a49300f6507c844af13de1786d"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/source_dataset_manifest_audit.json",
+      "bytes": 3910,
+      "sha256": "1b79147a51a59256f0a2dfa0fd43d21ca81694e932646e2890a6572d8873cdd5"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/surrogate_parameter_identification.csv",
+      "bytes": 2475,
+      "sha256": "34c31d8b577912d5a98d463289f0e77f04a0c87a6e1a21de9904a82249297bd5"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/target_parameter_evidence_gap_register.csv",
+      "bytes": 881,
+      "sha256": "f9704fa9a353075c149573c569b0af44eb24e40176d6b239c50bc271702997ac"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/v15_paired_scenario_differences.csv",
+      "bytes": 536,
+      "sha256": "45610be425f67ef56f4b740dab25de1e3f6261abd7b76d86a659172821e2a79e"
+    },
+    {
+      "path": "./rig-energy-forecasting/artifacts/v16_expert_remediation_surrogate/v15_statistical_claim_audit.json",
+      "bytes": 487,
+      "sha256": "bd621ea04cefd561ffe5e50e525623daf5ab99a642b6d3f2a43c0e1d9bc19c06"
+    },
+    {
+      "path": "./rig-energy-forecasting/configs/v16_expert_remediation_surrogate.yaml",
+      "bytes": 5605,
+      "sha256": "9e43c05a12962a8f3ef6fba653455432eb2cfc982f1c48e116744320ddbe56e2"
+    },
+    {
+      "path": "./rig-energy-forecasting/scripts/run_expert_remediation_v16.py",
+      "bytes": 35900,
+      "sha256": "3c595cd833e608e50bbe75a871c9c77bb706cfa0082497bc08e215094527a064"
+    }
+  ]
+}

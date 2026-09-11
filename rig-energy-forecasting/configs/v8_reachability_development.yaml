@@ -1,0 +1,33 @@
+protocol:
+  name: v8-risk-conditioned-commitment-reachability
+  development_seeds: [20260901, 20260902]
+  holdout_seeds: [20260903, 20260904]
+  fixed_unit_commitment:
+    unit_count: 4
+    unit_rated_power_kw: 300.0
+    unit_minimum_stable_power_kw: 60.0
+    unit_ramp_kw_per_step: 30.0
+    minimum_up_steps: 12
+    minimum_down_steps: 6
+    startup_cost_yuan_per_unit: 0.5
+
+candidates:
+  - name: floor_0133
+    minimum_committed_units_by_level: {"0": 0, "1": 1, "2": 3, "3": 3}
+  - name: floor_0124
+    minimum_committed_units_by_level: {"0": 0, "1": 1, "2": 2, "3": 4}
+  - name: floor_0234
+    minimum_committed_units_by_level: {"0": 0, "1": 2, "2": 3, "3": 4}
+
+selection:
+  safety_metric: unserved_energy_kwh
+  safety_rule: proposed_must_not_exceed_rule_based_under_same_unit_constraints
+  primary_metric: risk_adjusted_cost_yuan
+  aggregation: mean_across_development_seeds
+  holdout_labels_used_for_selection: false
+
+claim_boundary:
+  - "机组预启下限只由在线四级风险信号触发，不读取当前实测负荷真值做优化。"
+  - "候选映射在运行前预声明；留出种子在冻结前不得运行。"
+  - "可用容量低于下限时自动按物理可用台数截断，不制造虚拟机组。"
+  - "固定启停参数仍是合成开发口径，必须由现场机组时序标定。"

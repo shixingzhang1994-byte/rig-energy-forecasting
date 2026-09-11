@@ -1,0 +1,311 @@
+{
+  "protocol": {
+    "name": "v16-expert-remediation-surrogate-preflight",
+    "status": "engineering_preflight_not_acceptance",
+    "data_claim": "mechanistic_synthetic_v15_aligned",
+    "forbid_field_claim": true,
+    "interval_seconds": 5,
+    "random_seed": 20260902
+  },
+  "data_audit": {
+    "path": "./data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/11_evaluation_ready_5s.csv.gz",
+    "provenance_class": "synthetic_surrogate",
+    "record_origins": [
+      "MECHANISTIC_SYNTHETIC_V15_ALIGNED"
+    ],
+    "row_count_raw": 51827,
+    "row_count_canonical": 51836,
+    "start_time": "2026-09-01 00:00:00+08:00",
+    "end_time": "2026-09-03 23:59:55+08:00",
+    "median_interval_seconds": 5.0,
+    "duplicate_timestamps_raw": 0,
+    "raw_quality_counts": {
+      "GOOD": 51825,
+      "BAD_SENSOR": 2
+    },
+    "final_quality_counts": {
+      "observed": 51825,
+      "imputed": 9,
+      "BAD_SENSOR": 2
+    },
+    "missing_before": {
+      "imputed_fields": 51825
+    },
+    "missing_after": {
+      "pre_shed_demand_kw": 9,
+      "total_reactive_power_kvar": 9,
+      "total_apparent_power_kva": 9,
+      "power_factor": 9,
+      "bus_voltage_v": 9,
+      "bus_frequency_hz": 9,
+      "bus_current_a": 9,
+      "bus_voltage_thd_pct": 9,
+      "grid_reactive_power_kvar": 9,
+      "generator_reactive_power_kvar": 9,
+      "storage_reactive_power_kvar": 9,
+      "grid_active_power_kw": 9,
+      "grid_available_capacity_kw": 9,
+      "generator_active_power_kw": 9,
+      "generator_available_capacity_kw": 9,
+      "storage_active_power_kw": 9,
+      "storage_power_command_kw": 9,
+      "storage_soc_pct": 9,
+      "storage_soh_pct": 9,
+      "storage_available_charge_power_kw": 9,
+      "storage_available_discharge_power_kw": 9,
+      "load_shed_kw": 9,
+      "counterfactual_no_storage_unserved_kw": 9,
+      "storage_avoided_unserved_kw": 9,
+      "supply_available_capacity_kw": 9,
+      "supply_margin_kw": 9,
+      "supply_margin_ratio": 9,
+      "risk_level_reference": 9,
+      "mud_pump_power_kw": 9,
+      "topdrive_power_kw": 9,
+      "drawworks_power_kw": 9,
+      "auxiliary_power_kw": 9,
+      "other_power_kw": 9,
+      "well_depth_m": 9,
+      "pump_strokes_per_min": 9,
+      "standpipe_pressure_mpa": 9,
+      "topdrive_rpm": 9,
+      "hookload_kn": 9,
+      "hookload_pct": 9,
+      "hook_speed_m_per_s": 9,
+      "rate_of_penetration_m_per_h": 9,
+      "ambient_temperature_c": 9,
+      "time_sync_offset_ms": 9,
+      "storage_dc_voltage_v": 9,
+      "storage_dc_current_a": 9,
+      "storage_max_cell_temperature_c": 9,
+      "genset_1_active_power_kw": 9,
+      "genset_1_power_command_kw": 9,
+      "genset_1_available_power_kw": 9,
+      "genset_1_fuel_rate_lph": 9,
+      "genset_1_fuel_total_l": 9,
+      "genset_1_engine_speed_rpm": 9,
+      "genset_2_active_power_kw": 9,
+      "genset_2_power_command_kw": 9,
+      "genset_2_available_power_kw": 9,
+      "genset_2_fuel_rate_lph": 9,
+      "genset_2_fuel_total_l": 9,
+      "genset_2_engine_speed_rpm": 9,
+      "genset_3_active_power_kw": 9,
+      "genset_3_power_command_kw": 9,
+      "genset_3_available_power_kw": 9,
+      "genset_3_fuel_rate_lph": 9,
+      "genset_3_fuel_total_l": 9,
+      "genset_3_engine_speed_rpm": 9,
+      "genset_4_active_power_kw": 9,
+      "genset_4_power_command_kw": 9,
+      "genset_4_available_power_kw": 9,
+      "genset_4_fuel_rate_lph": 9,
+      "genset_4_fuel_total_l": 9,
+      "genset_4_engine_speed_rpm": 9,
+      "imputed_flag": 9,
+      "unresolved_required_missing_flag": 9,
+      "evaluation_eligible": 9,
+      "imputed_fields": 5868
+    },
+    "total_power_imputed_rows": 9
+  },
+  "source_dataset_manifest_audit": {
+    "dataset_id": "rig_industrial_dataset_v2",
+    "record_origin": "MECHANISTIC_SYNTHETIC_V15_ALIGNED",
+    "target_rig_field_data": false,
+    "expected_file_count": 23,
+    "checked_file_count": 23,
+    "all_declared_files_valid": true,
+    "failures": []
+  },
+  "analysis_eligibility": {
+    "input_rows_after_resampling": 51836,
+    "analysis_eligible_rows": 51827,
+    "excluded_rows": 9,
+    "selection_rule": "all emergency-allocation and parameter-identification fields finite",
+    "missing_by_required_column": {
+      "total_active_power_kw": 0,
+      "pre_shed_demand_kw": 9,
+      "grid_available_capacity_kw": 9,
+      "generator_available_capacity_kw": 9,
+      "storage_available_discharge_power_kw": 9,
+      "storage_soc_pct": 9,
+      "genset_1_active_power_kw": 9,
+      "genset_2_active_power_kw": 9,
+      "genset_3_active_power_kw": 9,
+      "genset_4_active_power_kw": 9,
+      "genset_1_run_status": 0,
+      "genset_2_run_status": 0,
+      "genset_3_run_status": 0,
+      "genset_4_run_status": 0
+    },
+    "truth_used_for_repair": false
+  },
+  "closure_boundary": {
+    "target_rig_scada": "OPEN_EXTERNAL_DEPENDENCY",
+    "statistical_sota": "CLOSED_BY_RESTRICTING_CLAIM_NOT_BY_PROVING_SOTA",
+    "independent_solver_baseline": "PARTIAL_SAFETY_LAYER_HIGHS",
+    "emergency_load_protection": "IMPLEMENTED_SOFTWARE_PLACEHOLDER_NEEDS_HAZOP",
+    "target_equipment_parameters": "OPEN_EXTERNAL_DEPENDENCY",
+    "missingness_retraining": "PARTIAL_DIAGNOSTIC_MODEL",
+    "joint_extreme": "IMPLEMENTED_SURROGATE_SIL",
+    "hardware_in_loop": "OPEN_EXTERNAL_DEPENDENCY"
+  },
+  "solver_lock": {
+    "success": true,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "scipy_version": "1.17.1",
+    "highs_version": "1.12.0",
+    "method": "scipy.optimize.linprog(method='highs')"
+  },
+  "runtime_lock": {
+    "python": "3.11.16 | packaged by conda-forge | (main, Aug 21 2026, 22:44:51) [GCC 14.4.0]",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.9.0",
+    "xgboost": "3.2.0"
+  },
+  "statistical_claim_audit": {
+    "paired_units": 6,
+    "positive_units": 2,
+    "ties": 4,
+    "mean_improvement_kwh": 0.2552262846143923,
+    "median_improvement_kwh": 0.0,
+    "bootstrap_mean_ci_kwh": [
+      0.0,
+      0.6959342572284702
+    ],
+    "exact_two_sided_sign_flip_pvalue": 0.5,
+    "statistically_significant_at_0p05": false,
+    "sota_claim_allowed": false,
+    "allowed_claim": "冻结V15在两个合成留出上安全非劣并取得描述性小幅改善",
+    "forbidden_claim": "统计显著SOTA或普遍优于强基线"
+  },
+  "missingness_retraining": [
+    {
+      "condition": "reference",
+      "model": "XGBoost-missing-aware-multi-horizon-diagnostic",
+      "target_missing_fraction": 0.0,
+      "realized_missing_fraction": 0.0,
+      "mae_kw": 83.93631957244642,
+      "rmse_kw": 150.28853114508382,
+      "peak_mae_kw": 52.31285438831628,
+      "training_seconds": 5.547907755000097,
+      "training_device": "cuda",
+      "xgboost_version": "3.2.0",
+      "train_windows": 7237,
+      "test_windows": 1551,
+      "claim_boundary": "诊断重训，不代表V15主模型或现场缺失分布",
+      "mae_degradation_vs_reference_pct": 0.0,
+      "diagnostic_gate_pass": true
+    },
+    {
+      "condition": "moderate_blocks",
+      "model": "XGBoost-missing-aware-multi-horizon-diagnostic",
+      "target_missing_fraction": 0.005,
+      "realized_missing_fraction": 0.00503598510428927,
+      "mae_kw": 84.33185955713479,
+      "rmse_kw": 150.4656783899012,
+      "peak_mae_kw": 50.242113851007616,
+      "training_seconds": 5.1332152620000215,
+      "training_device": "cuda",
+      "xgboost_version": "3.2.0",
+      "train_windows": 7237,
+      "test_windows": 1551,
+      "claim_boundary": "诊断重训，不代表V15主模型或现场缺失分布",
+      "mae_degradation_vs_reference_pct": 0.47123817997163364,
+      "diagnostic_gate_pass": true
+    },
+    {
+      "condition": "severe_blocks",
+      "model": "XGBoost-missing-aware-multi-horizon-diagnostic",
+      "target_missing_fraction": 0.02,
+      "realized_missing_fraction": 0.02018253034132788,
+      "mae_kw": 90.66072378331603,
+      "rmse_kw": 157.613975587716,
+      "peak_mae_kw": 55.29809958422669,
+      "training_seconds": 5.239911299999903,
+      "training_device": "cuda",
+      "xgboost_version": "3.2.0",
+      "train_windows": 7237,
+      "test_windows": 1551,
+      "claim_boundary": "诊断重训，不代表V15主模型或现场缺失分布",
+      "mae_degradation_vs_reference_pct": 8.011316489836906,
+      "diagnostic_gate_pass": true
+    }
+  ],
+  "parameter_evidence_gaps": [
+    {
+      "asset": "genset",
+      "parameter": "ramp_up_limit",
+      "current_evidence": "surrogate_trace_only",
+      "required_evidence": "target_SCADA_or_OEM_curve",
+      "status": "OPEN"
+    },
+    {
+      "asset": "genset",
+      "parameter": "ramp_down_limit",
+      "current_evidence": "surrogate_trace_only",
+      "required_evidence": "target_SCADA_or_OEM_curve",
+      "status": "OPEN"
+    },
+    {
+      "asset": "genset",
+      "parameter": "minimum_on_time",
+      "current_evidence": "surrogate_trace_only",
+      "required_evidence": "target_controller_setting",
+      "status": "OPEN"
+    },
+    {
+      "asset": "genset",
+      "parameter": "minimum_off_time",
+      "current_evidence": "surrogate_trace_only",
+      "required_evidence": "target_controller_setting",
+      "status": "OPEN"
+    },
+    {
+      "asset": "genset",
+      "parameter": "minimum_stable_power",
+      "current_evidence": "project_spec_example",
+      "required_evidence": "target_OEM_or_commissioning_test",
+      "status": "OPEN"
+    },
+    {
+      "asset": "genset",
+      "parameter": "fuel_curve",
+      "current_evidence": "public_700kW_reference_not_target_240kW",
+      "required_evidence": "target_OEM_curve_or_fuel_meter",
+      "status": "OPEN"
+    },
+    {
+      "asset": "storage",
+      "parameter": "charge_discharge_efficiency",
+      "current_evidence": "engineering_assumption",
+      "required_evidence": "PCS_BMS_test",
+      "status": "OPEN"
+    },
+    {
+      "asset": "storage",
+      "parameter": "usable_energy_and_SOH",
+      "current_evidence": "public_prototype_plus_surrogate_trace",
+      "required_evidence": "target_BMS_export",
+      "status": "OPEN"
+    },
+    {
+      "asset": "storage",
+      "parameter": "degradation_coefficients",
+      "current_evidence": "absent",
+      "required_evidence": "cell_OEM_curve_plus_cycle_history",
+      "status": "OPEN"
+    },
+    {
+      "asset": "storage",
+      "parameter": "SOC_operating_limits",
+      "current_evidence": "benchmark_assumption",
+      "required_evidence": "target_BMS_setting_and_safety_signoff",
+      "status": "OPEN"
+    }
+  ]
+}

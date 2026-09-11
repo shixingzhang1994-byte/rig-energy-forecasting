@@ -1,0 +1,50 @@
+{
+  "schema_report": {
+    "row_count": 51840,
+    "start_time": "2026-09-01 00:00:00+08:00",
+    "end_time": "2026-09-03 23:59:55+08:00",
+    "median_interval_seconds": 5.0,
+    "missing_power_rows": 0,
+    "unknown_state_rows": 0,
+    "min_power_kw": 120.0,
+    "max_power_kw": 1609.6247
+  },
+  "data_path": "artifacts/v17_target_domain_adaptation/data/canonical_72h.parquet",
+  "config_path": "configs/v17_target_domain_adaptation.yaml",
+  "train_rows": 25920,
+  "val_rows": 8640,
+  "test_rows": 17280,
+  "history_steps": 120,
+  "horizon_steps": 12,
+  "peak_threshold_kw": 1322.7230000000002,
+  "quick": false,
+  "seed": 20260902,
+  "device": {
+    "python": "3.11.16",
+    "torch": "2.9.1+cu128",
+    "xgboost": "3.2.0",
+    "device": "cuda",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "gpu_memory_gb": 7.53,
+    "cuda_runtime": "12.8",
+    "compute_capability": "12.0"
+  },
+  "comparison_protocol": {
+    "same_chronological_split": true,
+    "same_history_and_horizon": true,
+    "same_numeric_inputs": true,
+    "modern_comparators": [
+      "PatchTST",
+      "iTransformer"
+    ],
+    "modern_comparators_in_project_ensemble": false,
+    "project_models": [
+      "StateAware-TCN-Attention",
+      "StateAware-Patch-Transformer",
+      "StateAware-DualBranch-Patch-Transformer"
+    ],
+    "project_specific_extra_input": "operation_state_code",
+    "transition_metric_definition": "operation-state change within the future forecast horizon only"
+  }
+}

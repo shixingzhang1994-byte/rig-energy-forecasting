@@ -1,0 +1,11 @@
+{
+  "python": "3.11.16",
+  "torch": "2.9.1+cu128",
+  "xgboost": "3.2.0",
+  "device": "cuda",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "gpu_memory_gb": 7.53,
+  "cuda_runtime": "12.8",
+  "compute_capability": "12.0"
+}

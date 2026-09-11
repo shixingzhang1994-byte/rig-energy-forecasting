@@ -1,0 +1,44 @@
+protocol:
+  name: v7-clustered-unit-commitment
+  development_seeds: [20260901, 20260902]
+  holdout_seeds: [20260903, 20260904]
+  source_forecast_protocol: v6-validation-calibrated-dispatch-envelope
+  use_validation_envelope: false
+  unit_model:
+    unit_count: 4
+    unit_rated_power_kw: 300.0
+    unit_minimum_stable_power_kw: 60.0
+    unit_ramp_kw_per_step: 30.0
+
+candidates:
+  - name: uc_30s_s0p5
+    minimum_up_steps: 6
+    minimum_down_steps: 3
+    startup_cost_yuan_per_unit: 0.5
+  - name: uc_60s_s0p5
+    minimum_up_steps: 12
+    minimum_down_steps: 6
+    startup_cost_yuan_per_unit: 0.5
+  - name: uc_60s_s1p0
+    minimum_up_steps: 12
+    minimum_down_steps: 6
+    startup_cost_yuan_per_unit: 1.0
+  - name: uc_120s_s1p0
+    minimum_up_steps: 24
+    minimum_down_steps: 12
+    startup_cost_yuan_per_unit: 1.0
+
+selection:
+  safety_metric: unserved_energy_kwh
+  safety_rule: proposed_must_not_exceed_rule_based_under_same_unit_constraints
+  primary_metric: risk_adjusted_cost_yuan
+  secondary_metrics: [generator_startups, diesel_fuel_l]
+  aggregation: mean_across_development_seeds
+  holdout_labels_used_for_selection: false
+
+claim_boundary:
+  - "四台机组按同型机组聚合启停建模，不等于已完成现场机组级参数标定。"
+  - "0.5/1.0元启动代价仅为开发期有界正则候选，不冒充现场磨损成本。"
+  - "开发种子只用于结构和参数选择；留出种子在冻结前不得运行。"
+  - "所有方法使用相同多机组物理约束、预热状态和场景窗口。"
+  - "仅限合成数据，不代表现场SCADA有效性。"

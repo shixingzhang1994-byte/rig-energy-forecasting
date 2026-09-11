@@ -1,0 +1,19 @@
+forecast:
+  minimum_seed_count: 3
+  project_mae_win_rate_minimum: 1.0
+  project_transition_win_rate_minimum: 1.0
+  worst_mae_improvement_ratio_minimum: 0.02
+
+risk:
+  macro_f1_minimum: 0.60
+  high_risk_recall_minimum: 0.85
+  severe_recall_minimum: 0.80
+
+dispatch:
+  adequate_cost_degradation_tolerance_ratio: 0.001
+  constrained_cost_improvement_minimum: 0.10
+  emergency_unserved_degradation_tolerance_ratio: 0.001
+  aggregate_risk_adjusted_cost_degradation_tolerance_ratio: 0.001
+  capacity_tolerance_kw: 0.001
+  soc_minimum_pct: 15.0
+  soc_maximum_pct: 90.0
