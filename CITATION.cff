@@ -2,7 +2,9 @@ cff-version: 1.2.0
 message: "If you use this software or its accompanying evidence package, please cite the associated manuscript and the final archived release."
 title: "Reserve-SOC supervisory energy management for grid-diesel-battery drilling rig power systems under forecast uncertainty: reproducibility package"
 type: software
-version: "1.0.0-draft"
+version: "1.0.0"
+date-released: 2026-09-11
+repository-code: "https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v1"
 authors:
   - family-names: Zhang
     given-names: Shixing
@@ -14,4 +16,3 @@ authors:
     given-names: Pengfei
   - family-names: Yu
     given-names: Xingjun
-

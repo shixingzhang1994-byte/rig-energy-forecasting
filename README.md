@@ -42,4 +42,8 @@ Machine-specific absolute paths in copied text metadata were normalized to paths
 
 ## Release status
 
-This is a public pre-publication package. The DOI-bearing archival release and reuse license remain subject to author and institutional confirmation. See `RIGHTS_NOTICE.md`.
+This is a public pre-publication package prepared for a DOI-bearing archival release.
+
+## Licensing
+
+Source code, scripts, tests, and configurations are licensed under the MIT License. Author-generated simulated data, results, audit artifacts, and repository documentation are licensed under CC BY 4.0. Manuscript files and third-party material are excluded or separately licensed. See `LICENSE` for the controlling scope and `LICENSES/` for the full license texts.

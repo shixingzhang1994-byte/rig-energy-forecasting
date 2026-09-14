@@ -1,5 +1,5 @@
 # Rights notice
 
-This pre-publication package is made publicly accessible for manuscript review and research transparency. A reuse license has not yet been assigned.
+The authors have confirmed the scoped dual-license terms in `LICENSE`: MIT for the identified code, scripts, tests, and configurations, and CC BY 4.0 for the identified author-generated simulated data, results, audit artifacts, and repository documentation.
 
-Public accessibility does not itself grant permission to reproduce, modify, or redistribute the contents beyond rights provided by applicable law. The rights holder must approve the license for the final archival release.
+Manuscript files, the Elsevier class file, and other third-party material are excluded or separately licensed as specified in `LICENSE`.

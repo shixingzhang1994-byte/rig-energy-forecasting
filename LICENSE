@@ -1,0 +1,34 @@
+# Licensing
+
+Copyright (c) 2026 Shixing Zhang, Pengchong Wei, Lei Luo, Pengfei Zhang, and Xingjun Yu.
+
+This repository uses scoped dual licensing.
+
+## MIT License scope
+
+The MIT License in `LICENSES/MIT.txt` applies to source code, scripts, tests, and configuration files in:
+
+- `rig-energy-forecasting/src/`
+- `rig-energy-forecasting/scripts/`
+- `rig-energy-forecasting/tests/`
+- `rig-energy-forecasting/configs/`
+- `paper/experiments/`, except material under `paper/experiments/results/`
+
+## CC BY 4.0 scope
+
+The Creative Commons Attribution 4.0 International license in `LICENSES/CC-BY-4.0.txt` applies to the authors' simulated data, experiment results, audit artifacts, and repository documentation in:
+
+- `rig-energy-forecasting/artifacts/`
+- `paper/experiments/results/`
+- the repository documentation outside the manuscript directories
+
+Attribution should cite the associated manuscript and the archived software release.
+
+## Excluded or separately licensed material
+
+- Manuscript material under `paper/latex/` and manuscript figures under `paper/figures/` are not covered by the MIT or CC BY 4.0 grants above. All rights are reserved pending the applicable publication agreement.
+- `paper/latex/elsarticle.cls` is copyright Elsevier Ltd and is distributed under the LaTeX Project Public License stated in that file.
+- Any third-party material retains its original ownership and license.
+
+If a file could fall under more than one category, the more specific directory rule above controls.
+
