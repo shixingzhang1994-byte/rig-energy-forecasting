@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or its accompanying evidence package, please cite the associated manuscript and the final archived release."
+title: "Forecast-informed reserve-SOC supervision for drilling-rig power systems: V24/V28 reproducibility package"
+type: software
+version: "V24/V28-baseline-20260922"
+date-released: 2026-09-22
+repository-code: "https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v24-v28"
+authors:
+  - family-names: Zhang
+    given-names: Shixing
+  - family-names: Wei
+    given-names: Pengchong
+  - family-names: Luo
+    given-names: Lei
+  - family-names: Zhang
+    given-names: Pengfei
+  - family-names: Yu
+    given-names: Xingjun

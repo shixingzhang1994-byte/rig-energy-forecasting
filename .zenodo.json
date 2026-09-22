@@ -1,0 +1,40 @@
+{
+  "title": "Forecast-informed reserve-SOC supervision for drilling-rig power systems: V24/V28 reproducibility package",
+  "upload_type": "software",
+  "version": "V24/V28-baseline-20260922",
+  "language": "eng",
+  "access_right": "open",
+  "license": "other-open",
+  "description": "Compact code, configuration, manuscript, and evidence-audit package for the V24 same-simulator controller study and bounded V28 public real-data checks. Raw third-party datasets and bulk experiment outputs are excluded; source identities and compact audit evidence are retained. The package does not establish target-rig closed-loop efficacy, HIL validation, deployment safety, or cross-rig generalization. Code is licensed under MIT; author-generated documentation and evidence artifacts are licensed under CC BY 4.0; manuscript and third-party materials are excluded or separately licensed as stated in LICENSE. Supported by the CNPC Youth Science and Technology Special Project, No. 2026DQ03150.",
+  "creators": [
+    {
+      "name": "Zhang, Shixing",
+      "affiliation": "Baoji Oilfield Machinery Co., Ltd.; CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd."
+    },
+    {
+      "name": "Wei, Pengchong",
+      "affiliation": "Baoji Oilfield Machinery Co., Ltd.; CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd."
+    },
+    {
+      "name": "Luo, Lei",
+      "affiliation": "Baoji Oilfield Machinery Co., Ltd.; CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd."
+    },
+    {
+      "name": "Zhang, Pengfei",
+      "affiliation": "Baoji Oilfield Machinery Co., Ltd.; CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd."
+    },
+    {
+      "name": "Yu, Xingjun",
+      "affiliation": "Baoji Oilfield Machinery Co., Ltd.; CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd."
+    }
+  ],
+  "keywords": [
+    "drilling rig power system",
+    "energy management",
+    "model predictive control",
+    "battery state of charge",
+    "forecast uncertainty",
+    "mechanistic simulation",
+    "reproducibility"
+  ]
+}
