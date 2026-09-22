@@ -1,0 +1,67 @@
+{
+  "tool": "run_preflight",
+  "tex": "main.tex",
+  "venue": "energy-reports-2026",
+  "track": "Original Research",
+  "notes": [
+    "track: Original Research"
+  ],
+  "checks": {
+    "template": [
+      {
+        "severity": "INFO",
+        "check": "template/page-limit",
+        "file": "main.tex",
+        "line": null,
+        "message": "no hard page limit in the profile for this track \u2014 verify against the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors"
+      }
+    ],
+    "anonymization": [
+      {
+        "severity": "INFO",
+        "check": "anonymization/skipped",
+        "file": "main.tex",
+        "line": null,
+        "message": "energy-reports-2026 is SINGLE-blind: author names should be listed on the submission. Anonymization checks skipped (re-run with --force to scan anyway)."
+      }
+    ],
+    "sections": [
+      {
+        "severity": "WARN",
+        "check": "sections/missing:coi-declaration",
+        "file": "main.tex",
+        "line": null,
+        "message": "no conflict-of-interest declaration found in the paper \u2014 NOTE: many venues collect COI in the submission system (CMT/OpenReview forms) rather than in the PDF; verify where this venue wants it"
+      },
+      {
+        "severity": "ERROR",
+        "check": "sections/missing:ai-use-acknowledgement",
+        "file": "main.tex",
+        "line": null,
+        "message": "mandatory AI-use acknowledgement not found \u2014 e.g. ICDE requires an 'AI-Generated Content Acknowledgement' naming the AI system and affected sections; missing it risks desk reject"
+      }
+    ],
+    "abstract": [
+      {
+        "severity": "INFO",
+        "check": "abstract/length",
+        "file": "main.tex",
+        "line": 64,
+        "message": "abstract is 246 words; profile mandates no numeric bound (CS norm is roughly 150-250) \u2014 verify the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors"
+      },
+      {
+        "severity": "INFO",
+        "check": "keywords/unknown-style",
+        "file": "main.tex",
+        "line": null,
+        "message": "profile keyword style is 'unknown' \u2014 no automated format check; verify against the CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors"
+      }
+    ]
+  },
+  "summary": {
+    "ERROR": 1,
+    "WARN": 1,
+    "INFO": 4
+  },
+  "verdict": "FAIL"
+}

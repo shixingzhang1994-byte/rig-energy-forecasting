@@ -1,0 +1,24 @@
+==============================================================================
+PREFLIGHT REPORT  main.tex
+venue: energy-reports-2026   track: Original Research
+==============================================================================
+note: track: Original Research
+
+-- template ------------------------------------------------------------------
+   [INFO ] template/page-limit              main.tex — no hard page limit in the profile for this track — verify against the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
+
+-- anonymization -------------------------------------------------------------
+   [INFO ] anonymization/skipped            main.tex — energy-reports-2026 is SINGLE-blind: author names should be listed on the submission. Anonymization checks skipped (re-run with --force to scan anyway).
+
+-- sections ------------------------------------------------------------------
+   [ERROR] sections/missing:ai-use-acknowledgement main.tex — mandatory AI-use acknowledgement not found — e.g. ICDE requires an 'AI-Generated Content Acknowledgement' naming the AI system and affected sections; missing it risks desk reject
+   [WARN ] sections/missing:coi-declaration main.tex — no conflict-of-interest declaration found in the paper — NOTE: many venues collect COI in the submission system (CMT/OpenReview forms) rather than in the PDF; verify where this venue wants it
+
+-- abstract ------------------------------------------------------------------
+   [INFO ] keywords/unknown-style           main.tex — profile keyword style is 'unknown' — no automated format check; verify against the CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
+   [INFO ] abstract/length                  main.tex:64 — abstract is 246 words; profile mandates no numeric bound (CS norm is roughly 150-250) — verify the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
+
+==============================================================================
+VERDICT: FAIL — fix ERRORs before submitting   (1 error(s), 1 warning(s), 4 info)
+Profiles can go stale: re-verify limits/policies at https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
+==============================================================================

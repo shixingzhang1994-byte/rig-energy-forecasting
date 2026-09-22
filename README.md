@@ -8,6 +8,7 @@ This branch is the compact public audit package for the manuscript **“Forecast
 - Project baseline tag: `baseline-v24-v28-20260922`
 - Code and evidence snapshot: `3499ed37cb93684b90a30926be95400ac3f0a72c`
 - Package branch: `reproducibility-package-v24-v28`
+- Immutable archive tag: `v24-v28-reproducibility-20260922`
 
 The `rig-energy-forecasting` Git submodule is pinned to the code and evidence snapshot above. The historical `reproducibility-package-v1` branch and `v1.0.0` tag remain the separate V21 package.
 
@@ -49,4 +50,4 @@ This means the package supports source-level and compact-evidence audit immediat
 
 ## Licensing and citation
 
-Code, scripts, tests, and configurations are licensed under MIT. Author-generated documentation and evidence artifacts are licensed under CC BY 4.0. Manuscript and third-party materials follow the exclusions and notices in `LICENSE` and `RIGHTS_NOTICE.md`. Citation metadata mirrors the current manuscript and should be rechecked before a DOI-bearing archive is finalized.
+Code, scripts, tests, and configurations are licensed under MIT. Author-generated documentation and evidence artifacts are licensed under CC BY 4.0. Manuscript and third-party materials follow the exclusions and notices in `LICENSE` and `RIGHTS_NOTICE.md`. Citation metadata mirrors the technically preflighted manuscript. The manuscript, `CITATION.cff`, and `.zenodo.json` are internally consistent; factual authorship, CRediT, affiliation, funding, and declaration approval still require confirmation by all authors before DOI deposit.
