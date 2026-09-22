@@ -1,0 +1,12 @@
+{
+  "unit_id": "H11",
+  "seed": 20261310,
+  "load": "high",
+  "transition": "extended",
+  "plant": "nominal",
+  "calibration_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H11_seed_20261310/calibration.yaml",
+  "calibration_sha256": "e153edaf5fcd87a51a7041f16c548a1b8bded77e163988c204600fcd7baecb30",
+  "dispatch_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H11_seed_20261310/dispatch.yaml",
+  "dispatch_sha256": "7f1d3f60b5c436ca8293a307c63165d5b3aeebc192bca9deeab290465a05254e",
+  "outcomes_used": false
+}

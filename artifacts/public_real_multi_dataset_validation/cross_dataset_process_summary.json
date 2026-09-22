@@ -1,0 +1,27 @@
+[
+  {
+    "dataset": "Energistics-Well-B",
+    "one_minute_rows": 18597,
+    "state_fractions": {
+      "unknown": 0.853901166854869,
+      "idle_or_other": 0.08716459644028607,
+      "drilling": 0.058934236704844864
+    },
+    "state_run_count": 694,
+    "dwell_p50_minutes": 2.0,
+    "dwell_p95_minutes": 33.35000000000002
+  },
+  {
+    "dataset": "Utah-FORGE-58-32",
+    "one_minute_rows": 56682,
+    "state_fractions": {
+      "drilling": 0.3979217388236124,
+      "idle_or_other": 0.33384495959916727,
+      "circulation": 0.18342683744398575,
+      "hoisting": 0.08480646413323453
+    },
+    "state_run_count": 7235,
+    "dwell_p50_minutes": 2.0,
+    "dwell_p95_minutes": 34.29999999999927
+  }
+]

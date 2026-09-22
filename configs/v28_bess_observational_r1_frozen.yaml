@@ -1,0 +1,47 @@
+protocol:
+  id: V28-C-R1-PUBLIC-REAL-BESS-OBSERVATIONAL-20260921
+  status: frozen_before_metric_execution
+  purpose: >-
+    Audit whether measured public BESS trajectories exhibit physically coherent
+    power, SOC, conversion, and setpoint behavior. This is observational and
+    does not estimate the causal efficacy of the paper's controller.
+  revision_rationale: >-
+    R1 corrects only the M5BAT DC-power unit normalization exposed by the
+    retained zero-eligible-row technical failure. Annual raw-data checks show
+    the field is numerically in kW despite its W suffix and published codebook.
+  adjacency_minutes: 1
+  annual_sensitivity: true
+
+m5bat:
+  prepared_path: artifacts/v28_public_real_validation/prepared/m5bat_exide1_1min.parquet
+  prepared_sha256: 9273c24efe18ba0e8b26517d30f4e9e8539cca720b2a27a6490aa5e22996b456
+  active_power_threshold_kw: 20.0
+  soc_change_threshold_pct: 0.01
+  plausible_one_way_efficiency_range: [0.0, 1.2]
+  metrics:
+    - ac_dc_power_correlation
+    - discharge_energy_weighted_efficiency
+    - charge_energy_weighted_efficiency
+    - setpoint_tracking_mae_kw
+    - soc_direction_consistency
+    - imbalance_warning_and_alarm_minutes
+
+tsukuba:
+  prepared_path: artifacts/v28_public_real_validation/prepared/tsukuba_microgrid_1min.parquet
+  prepared_sha256: cfd066c8219fd317f8945c3bf9976d3094f18136892ba7a810e4b8c0055e9541
+  active_power_threshold_kw: 5.0
+  soc_change_threshold_pct: 0.01
+  metrics:
+    - battery_power_soc_change_correlation
+    - soc_direction_consistency
+    - active_battery_fraction
+    - quality_coverage
+
+claim_boundaries:
+  allow:
+    - real BESS physical-coherence and operating-behavior evidence
+    - separately reported technology and site results
+  prohibit:
+    - controller efficacy or optimality from observational trajectories
+    - target-rig BESS field validation
+    - pooling lead-acid M5BAT and Tsukuba as if they were one asset

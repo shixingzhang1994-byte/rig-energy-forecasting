@@ -55,6 +55,20 @@ def _numeric_features(frame: pd.DataFrame, scaler: PowerScaler) -> np.ndarray:
     return np.column_stack([power_z, delta_z, np.sin(phase), np.cos(phase)]).astype(np.float32)
 
 
+def _transition_flags(
+    states: np.ndarray, start: int, stop: int, target_stop: int
+) -> tuple[bool, bool]:
+    """Separate already-observed history changes from future target changes."""
+
+    history_transition = bool(
+        np.any(states[start + 1 : stop] != states[start : stop - 1])
+    )
+    future_transition = bool(
+        np.any(states[stop:target_stop] != states[stop - 1 : target_stop - 1])
+    )
+    return history_transition, future_transition
+
+
 class WindowedRigDataset(Dataset):
     def __init__(
         self,
@@ -87,12 +101,17 @@ class WindowedRigDataset(Dataset):
         x = torch.from_numpy(self.features[start:stop])
         state = torch.from_numpy(self.states[start:stop])
         y = torch.from_numpy(self.targets[stop:target_stop])
-        transition = bool(np.any(self.states[start + 1 : target_stop] != self.states[start: target_stop - 1]))
+        history_transition, future_transition = _transition_flags(
+            self.states, start, stop, target_stop
+        )
         return {
             "x": x,
             "state": state,
             "y": y,
-            "transition": torch.tensor(transition),
+            # transition保留为训练/预测接口别名，但语义严格限定为未来预测时域切换。
+            "transition": torch.tensor(future_transition),
+            "history_transition": torch.tensor(history_transition),
+            "future_transition": torch.tensor(future_transition),
         }
 
 
@@ -126,10 +145,12 @@ def make_tree_windows(
         row.extend([float(np.sin(phase)), float(np.cos(phase)), float(states[stop - 1])])
         features.append(row)
         targets.append(power[stop : stop + horizon_steps])
-        transitions.append(bool(np.any(states[stop - history_steps + 1 : stop + horizon_steps] != states[stop - history_steps : stop + horizon_steps - 1])))
+        _, future_transition = _transition_flags(
+            states, stop - history_steps, stop, stop + horizon_steps
+        )
+        transitions.append(future_transition)
     return (
         np.asarray(features, dtype=np.float32),
         np.asarray(targets, dtype=np.float32),
         np.asarray(transitions, dtype=bool),
     )
-

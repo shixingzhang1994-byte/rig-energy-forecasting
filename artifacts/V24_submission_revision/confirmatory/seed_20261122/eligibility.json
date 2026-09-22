@@ -1,0 +1,35 @@
+{
+  "seed": 20261122,
+  "phase": "confirmatory",
+  "timing": "before_dispatch_and_before_any_controller_outcome",
+  "effective_dispatch_samples": 27151,
+  "effective_dispatch_hours": 37.709722222222226,
+  "scenarios": {
+    "A_stable_drilling": {
+      "candidate_window_count": 1489,
+      "passing_window_count": 11,
+      "maximum_primary_fraction": 1.0,
+      "maximum_anchor_fraction": 0.0,
+      "maximum_acceptable_supply_fraction": 0.9916666666666667,
+      "minimum_emergency_supply_fraction": 0.0
+    },
+    "B_connection_transition": {
+      "candidate_window_count": 1489,
+      "passing_window_count": 69,
+      "maximum_primary_fraction": 1.0,
+      "maximum_anchor_fraction": 0.37777777777777777,
+      "maximum_acceptable_supply_fraction": 1.0,
+      "minimum_emergency_supply_fraction": 0.0
+    },
+    "C_tripping_impact": {
+      "candidate_window_count": 1489,
+      "passing_window_count": 95,
+      "maximum_primary_fraction": 1.0,
+      "maximum_anchor_fraction": 0.0,
+      "maximum_acceptable_supply_fraction": 1.0,
+      "minimum_emergency_supply_fraction": 0.0
+    }
+  },
+  "eligible": true,
+  "outcomes_inspected_before_eligibility": false
+}

@@ -1,0 +1,19 @@
+{
+  "seed": 20261304,
+  "phase": "heterogeneous_confirmatory",
+  "failure_stage": "eligibility_gate_before_controller_execution",
+  "technical_gate_pass": false,
+  "controller_outcomes_generated": false,
+  "retained_regardless_of_outcome_direction": true,
+  "eligibility_path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261304/eligibility.json",
+  "failed_scenarios": [
+    {
+      "scenario": "A_stable_drilling",
+      "candidate_window_count": 1489,
+      "passing_window_count": 0,
+      "reason": "No pre-dispatch window satisfied the frozen primary-state and supply-regime eligibility criteria."
+    }
+  ],
+  "outcomes_inspected_before_eligibility": false,
+  "interpretation": "Upstream-ineligible unit retained; no controller efficacy estimate is produced for this unit."
+}

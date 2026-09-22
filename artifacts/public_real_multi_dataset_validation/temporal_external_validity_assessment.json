@@ -1,0 +1,21 @@
+{
+  "question": "Do independently sourced real drilling records support the simulated state-persistence distribution used by the current experimental pipeline?",
+  "real_datasets": [
+    "Energistics-Well-B",
+    "Utah-FORGE-58-32"
+  ],
+  "real_dwell_p50_minutes": [
+    2.0,
+    2.0
+  ],
+  "real_dwell_p95_minutes": [
+    33.35000000000002,
+    34.29999999999927
+  ],
+  "simulation_dwell_p50_minutes": 43.0,
+  "simulation_dwell_p95_minutes": 155.64999999999986,
+  "simulation_to_real_median_ratio_p50": 21.5,
+  "simulation_to_real_median_ratio_p95": 4.601626016260207,
+  "simulator_temporal_state_persistence_supported": false,
+  "interpretation": "Both public real datasets show much shorter state runs than the current simulation. This is an external-validation failure that must be addressed by real-data-informed temporal calibration or robustness analysis; it is not evidence of real-site power or controller performance."
+}

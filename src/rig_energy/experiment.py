@@ -19,6 +19,7 @@ from .data.schema import STATE_TO_CODE, validate_canonical_frame
 from .data.windowing import (
     PowerScaler,
     WindowedRigDataset,
+    _transition_flags,
     make_tree_windows,
     split_frame_by_time,
 )
@@ -27,6 +28,7 @@ from .models import (
     ITransformerForecaster,
     LSTMForecaster,
     PatchTSTForecaster,
+    StateAwareDualBranchPatchTransformer,
     StateAwarePatchTransformer,
     StateAwareTCNAttention,
     TCNForecaster,
@@ -34,6 +36,7 @@ from .models import (
     apply_weighted_ensemble,
     fit_validation_weighted_ensemble,
 )
+from .optimization.scenario_calibration import write_validation_residual_artifact
 from .training import (
     predict_neural_model,
     save_torch_checkpoint,
@@ -44,6 +47,29 @@ from .training import (
 
 def load_config(path: Path) -> dict:
     return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+
+
+def _one_sided_horizon_correction(
+    actual: np.ndarray,
+    prediction: np.ndarray,
+    coverage: float,
+) -> np.ndarray:
+    """Finite-sample upper residual correction fitted independently by horizon."""
+
+    observed = np.asarray(actual, dtype=float)
+    forecast = np.asarray(prediction, dtype=float)
+    target = float(coverage)
+    if (
+        observed.ndim != 2
+        or forecast.shape != observed.shape
+        or len(observed) == 0
+    ):
+        raise ValueError("校准实测与预测必须是形状一致的非空二维数组")
+    if not 0.0 < target < 1.0:
+        raise ValueError("coverage 必须在 (0, 1) 内")
+    rank = min(len(observed), int(np.ceil((len(observed) + 1) * target)))
+    residual = np.sort(observed - forecast, axis=0)
+    return np.maximum(residual[rank - 1], 0.0).astype(np.float32)
 
 
 def _device_info(device: torch.device) -> dict:
@@ -129,6 +155,7 @@ def run_benchmark(
     quick: bool = False,
     force_cpu: bool = False,
     seed_override: int | None = None,
+    export_validation_residuals: bool = False,
 ) -> pd.DataFrame:
     artifact_dir.mkdir(parents=True, exist_ok=True)
     model_dir = artifact_dir / "models"
@@ -257,6 +284,46 @@ def run_benchmark(
             0.0,
         )
     )
+    dual_patch_cfg = config["models"].get("state_aware_dual_branch_patch_transformer")
+    if dual_patch_cfg and bool(dual_patch_cfg.get("enabled", False)):
+        model_specs.append(
+            (
+                "StateAware-DualBranch-Patch-Transformer",
+                StateAwareDualBranchPatchTransformer(
+                    numeric_input_size=4,
+                    num_states=len(STATE_TO_CODE),
+                    state_embedding_dim=int(dual_patch_cfg["state_embedding_dim"]),
+                    transition_embedding_dim=int(
+                        dual_patch_cfg["transition_embedding_dim"]
+                    ),
+                    history=history,
+                    horizon=horizon,
+                    patch_length=int(dual_patch_cfg["patch_length"]),
+                    patch_stride=int(dual_patch_cfg["patch_stride"]),
+                    hidden_size=int(dual_patch_cfg["hidden_size"]),
+                    attention_heads=int(dual_patch_cfg["attention_heads"]),
+                    layers=int(dual_patch_cfg["layers"]),
+                    dropout=float(dual_patch_cfg["dropout"]),
+                ),
+                float(dual_patch_cfg["peak_weight"]),
+                {
+                    "transition_weight": float(
+                        dual_patch_cfg.get("transition_weight", 0.0)
+                    ),
+                    "max_epochs": int(
+                        dual_patch_cfg.get("max_epochs", max_epochs)
+                    ),
+                    "patience": int(
+                        dual_patch_cfg.get("patience", forecast_cfg["patience"])
+                    ),
+                    "learning_rate": float(
+                        dual_patch_cfg.get(
+                            "learning_rate", forecast_cfg["learning_rate"]
+                        )
+                    ),
+                },
+            )
+        )
     tcn_cfg = config["models"]["tcn"]
     model_specs.append(
         (
@@ -346,17 +413,24 @@ def run_benchmark(
     )
 
     training_log: dict[str, dict] = {}
-    for name, model, peak_weight in model_specs:
+    for model_spec in model_specs:
+        name, model, peak_weight, *optional_training = model_spec
+        training_override = optional_training[0] if optional_training else {}
         model, info = train_neural_model(
             model,
             train_loader,
             val_loader,
             device=device,
-            max_epochs=max_epochs,
-            patience=int(forecast_cfg["patience"]),
-            learning_rate=float(forecast_cfg["learning_rate"]),
+            max_epochs=int(training_override.get("max_epochs", max_epochs)),
+            patience=int(
+                training_override.get("patience", forecast_cfg["patience"])
+            ),
+            learning_rate=float(
+                training_override.get("learning_rate", forecast_cfg["learning_rate"])
+            ),
             weight_decay=float(forecast_cfg["weight_decay"]),
             peak_weight=peak_weight,
+            transition_weight=float(training_override.get("transition_weight", 0.0)),
         )
         y_true_neural, pred, flags, inference_seconds = predict_neural_model(
             model, test_loader, scaler, device=device
@@ -404,6 +478,8 @@ def run_benchmark(
         "StateAware-TCN-Attention",
         "StateAware-Patch-Transformer",
     ]
+    if dual_patch_cfg and bool(dual_patch_cfg.get("enabled", False)):
+        ensemble_members.append("StateAware-DualBranch-Patch-Transformer")
     ensemble_val_predictions = {
         name: validation_prediction_store[name] for name in ensemble_members
     }
@@ -471,6 +547,13 @@ def run_benchmark(
                 }
             )
     selected_feedback = min(candidates, key=lambda item: item["validation_mae_kw"])
+    feedback_val_prediction, _ = apply_causal_error_feedback(
+        ensemble_val_prediction,
+        y_val,
+        feedback_delay_steps=delay,
+        smoothing=selected_feedback["smoothing"],
+        correction_clip_kw=selected_feedback["correction_clip_kw"],
+    )
     feedback_started = time.perf_counter()
     feedback_prediction, _ = apply_causal_error_feedback(
         ensemble_prediction,
@@ -523,6 +606,71 @@ def run_benchmark(
         encoding="utf-8",
     )
 
+    # V22可选校准产物：只导出验证段的完整多步残差向量。
+    # 测试目标不进入该文件，后续场景生成脚本会再次核验sidecar中的split标记。
+    scenario_calibration_cfg = config.get("scenario_calibration", {})
+    if bool(
+        scenario_calibration_cfg.get("enabled", False)
+        or export_validation_residuals
+    ):
+        write_validation_residual_artifact(
+            artifact_dir,
+            y_val,
+            feedback_val_prediction,
+            warmup_samples=delay,
+            source_model="Causal-ErrorFeedback-Ensemble",
+            source_config=str(config_path),
+        )
+
+    # V6可选调度不确定性轨迹：只用验证段的因果预测残差
+    # 拟合各预测步的单侧上包络，不读取测试目标来选覆盖率或修正量。
+    uncertainty_cfg = config.get("dispatch_uncertainty", {})
+    if bool(uncertainty_cfg.get("enabled", False)):
+        coverages = [
+            float(value)
+            for value in uncertainty_cfg.get(
+                "coverage_candidates",
+                [uncertainty_cfg.get("coverage", 0.90)],
+            )
+        ]
+        envelope_records = []
+        for coverage in coverages:
+            correction = _one_sided_horizon_correction(
+                y_val,
+                feedback_val_prediction,
+                coverage,
+            )
+            coverage_token = int(round(coverage * 1000.0))
+            envelope_name = (
+                f"Validation-Calibrated-Upper-Envelope-q{coverage_token:03d}"
+            )
+            prediction_store[envelope_name] = np.maximum(
+                feedback_prediction + correction[None, :], 0.0
+            )
+            envelope_records.append(
+                {
+                    "name": envelope_name,
+                    "coverage": coverage,
+                    "finite_sample_rank": min(
+                        len(y_val), int(np.ceil((len(y_val) + 1) * coverage))
+                    ),
+                    "horizon_correction_kw": correction.tolist(),
+                }
+            )
+        (artifact_dir / "dispatch_uncertainty_envelope.json").write_text(
+            json.dumps(
+                {
+                    "source_model": "Causal-ErrorFeedback-Ensemble",
+                    "fit_data": "validation_only; test targets excluded",
+                    "validation_sample_count": len(y_val),
+                    "candidates": envelope_records,
+                },
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+
     metrics = pd.DataFrame(results).sort_values("mae_kw").reset_index(drop=True)
     metrics.to_csv(artifact_dir / "benchmark_metrics.csv", index=False, encoding="utf-8-sig")
     (artifact_dir / "training_log.json").write_text(
@@ -550,17 +698,43 @@ def run_benchmark(
             "project_models": [
                 "StateAware-TCN-Attention",
                 "StateAware-Patch-Transformer",
-            ],
+            ]
+            + (
+                ["StateAware-DualBranch-Patch-Transformer"]
+                if dual_patch_cfg and bool(dual_patch_cfg.get("enabled", False))
+                else []
+            ),
             "project_specific_extra_input": "operation_state_code",
+            "transition_metric_definition": "operation-state change within the future forecast horizon only",
         },
     }
     (artifact_dir / "run_metadata.json").write_text(
         json.dumps(run_metadata, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     # 保留各模型的多步预测轨迹，供后续多源动力滚动优化直接复用。
+    test_window_stops = np.arange(
+        history,
+        len(test_frame) - horizon + 1,
+        max(1, eval_stride),
+        dtype=np.int64,
+    )
+    if len(test_window_stops) != len(y_test):
+        raise ValueError("测试窗口元数据与预测数组长度不一致")
+    test_states = test_frame["operation_state_code"].to_numpy(dtype=np.int16)
+    history_transition_test = np.asarray(
+        [
+            _transition_flags(test_states, stop - history, stop, stop + horizon)[0]
+            for stop in test_window_stops
+        ],
+        dtype=np.int8,
+    )
     prediction_arrays = {
         "y_true": y_test.astype(np.float32),
         "transition_flags": transition_test.astype(np.int8),
+        "future_transition_flags": transition_test.astype(np.int8),
+        "history_transition_flags": history_transition_test,
+        # 目标起点的实际作业工况，专供调度验收场景选取与审计。
+        "operation_state_codes": test_states[test_window_stops],
     }
     prediction_key_map = {}
     for index, (name, prediction) in enumerate(prediction_store.items()):

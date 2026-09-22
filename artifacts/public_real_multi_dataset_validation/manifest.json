@@ -1,0 +1,38 @@
+{
+  "protocol_id": "PUBLIC-REAL-MULTI-DATASET-EXTERNAL-VALIDATION-20260921",
+  "status": "partial_auth_blocked",
+  "completed_datasets": [
+    "Energistics-Well-B",
+    "Utah-FORGE-58-32",
+    "Petrobras-3W-2.0.0"
+  ],
+  "blocked_datasets": {
+    "Equinor-Volve": "Equinor's current distribution requires Get Access through a logged-in university or company Databricks account; no anonymous bulk file URL is offered."
+  },
+  "source_hashes": {
+    "energistics_well_b": "e68526fcfb26e23506e0be5fd1f69b585b5c6341cb3db0a359bbe160ca4a8904",
+    "utah_forge_58_32": "5af0241d325b9cf5b4d6a9d524218cb2cbc3694fa324816cfb879f1f556161c2",
+    "petrobras_3w_commit": "d717f0aadbe90b6dc6e15e29f6035e9630d22a5e"
+  },
+  "row_evidence": {
+    "energistics_total_rows": 232099,
+    "utah_raw_rows": 3397398,
+    "petrobras_3w_total_rows": 76587318,
+    "petrobras_3w_real_rows": 32872250
+  },
+  "core_power_validation_closed": false,
+  "simulator_temporal_state_persistence_supported": false,
+  "reason": "None of the completed public datasets contains measured total rig-bus active power synchronized with the required supply-side state.",
+  "claim_policy": {
+    "allow": [
+      "real drilling-process external validation",
+      "cross-dataset state and transition plausibility checks",
+      "mechanical and hydraulic proxy analysis with explicit units and caveats"
+    ],
+    "prohibit": [
+      "measured rig-bus power validation without an active-power channel",
+      "target-rig field validation",
+      "using Petrobras 3W production anomalies as power-system risk labels"
+    ]
+  }
+}

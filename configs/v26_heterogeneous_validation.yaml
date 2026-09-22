@@ -1,0 +1,118 @@
+protocol:
+  id: V26-HETEROGENEOUS-VALIDATION-20260916
+  status: declared_after_V25_development_failure_and_before_any_V26_prospective_outcome
+  artifact_namespace: V26_heterogeneous_validation/confirmatory
+  simulation_days: 21
+  purpose: prospective heterogeneous validation of the V24 controller with a predeclared real-time feasible-incumbent policy
+  historical_evidence_is_read_only: [V15, V19, V20, V21, V22, V23, V24, V25]
+  development_seed_order: [20261100]
+  prospective_holdout_seed_order: [20261220, 20261221, 20261222, 20261223, 20261224, 20261225, 20261226, 20261227, 20261228, 20261229, 20261230, 20261231]
+  required_eligible_holdouts: 12
+  stopping_rule: all twelve preassigned parameter-set-by-seed units are retained; any upstream-ineligible or technically failed unit makes the heterogeneous validation incomplete
+  eligibility_timing: after input construction but before controller execution and before any controller outcome is inspected
+  analysis_unit: preassigned_parameter_set_by_seed_with_three_scenarios_clustered
+  dispatch_execution_policy: serial full-unit execution with no concurrent benchmark job
+  failed_seed_policy: retain the failure and do not replace the parameter set or seed
+  preparation_exception_policy: retain every unexpected preparation failure
+  predecessor_status: V25_aborted_at_pre_freeze_development_gate
+  predecessor_failure_record: artifacts/V25_heterogeneous_validation/development/development_failure.json
+  prospective_outcomes_generated_at_declaration: false
+
+heterogeneous_family:
+  definition: configs/v26_heterogeneous_family.yaml
+  materialized_manifest: artifacts/V26_heterogeneous_validation/parameter_sets/manifest.json
+  factor_design: 3_load_levels_by_2_transition_structures_by_2_plant_conditions
+  factors:
+    load: [low, nominal, high]
+    transition: [frequent, extended]
+    plant: [nominal, joint_stress]
+  unit_assignment_frozen_before_outcomes: true
+  controller_retuning_per_unit: false
+  interpretation: simulator parameter-set robustness, not independent rigs, sites, field validation, or HIL
+
+risk_validation_fallback:
+  trigger: no learned candidate passes the frozen validation gates
+  action: set every dispatch-facing risk level to severe for that seed
+  seed_excluded_when_active: false
+  learned_model_certification_claimed_when_active: false
+
+data_boundary:
+  chronological_split: true
+  training_fraction: 0.60
+  validation_fraction: 0.20
+  scenario_calibration_split: validation_only
+  scenario_calibration_source_model: Causal-ErrorFeedback-Ensemble
+  test_targets_permitted_in_scenario_generation: false
+  field_scada_active_power_available: false
+  external_validation_status: heterogeneous_simulation_only
+
+scenario_generation:
+  method: stratified_empirical_complete_horizon_residual_vectors
+  scenario_count: 50
+  probabilities: equal
+  preserve_within_horizon_temporal_dependence: true
+  residual_definition: validation_actual_minus_validation_causal_point_forecast
+  nonnegative_load_floor_kw: 0.0
+  random_seed: 20260916
+  output_mode: generate_only_for_selected_dispatch_windows
+  prohibition: never fit, select, rescale, or rank residual scenarios using test targets
+
+cvar:
+  primary_alpha: 0.90
+  primary_weight: 1.0
+  minimum_effective_tail_scenarios: 5.0
+  risk_adaptive_alpha_by_level: {"0": 0.80, "1": 0.85, "2": 0.90, "3": 0.90}
+  degeneration_gate: reject any setting with fewer than five effective tail atoms
+  report_predicted_cvar_separately_from_realized_cost: true
+
+real_time_milp_policy:
+  controller_period_seconds: 5.0
+  solver_deadline_seconds: 4.5
+  reserved_python_and_safety_overhead_seconds: 0.5
+  applies_to: every MILP method in the matched comparison
+  deadline_action: accept only an available incumbent that independently passes bounds, integrality, and every linear constraint
+  feasibility_tolerance: 1.0e-6
+  missing_or_infeasible_incumbent_action: hard technical failure
+  optimality_claim_for_deadline_incumbent: prohibited
+  required_reporting: [count, method, solver_elapsed_seconds, mip_gap, maximum_constraint_violation]
+  development_origin: declared after the retained V25 development timeout and before any V26 prospective outcome
+
+matched_comparison:
+  methods:
+    - Rule-Based
+    - Persistence-MILP
+    - Point-Forecast-MILP
+    - Fixed-Reserve-MILP
+    - Residual-CVaR-MILP
+    - Risk-Adaptive-Residual-CVaR-MILP
+    - Full-Risk-SOC-Supervisory-MILP
+  primary_contrasts:
+    - Full-Risk-SOC-Supervisory-MILP_minus_Rule-Based_EENS
+    - Full-Risk-SOC-Supervisory-MILP_minus_Point-Forecast-MILP_EENS
+    - Full-Risk-SOC-Supervisory-MILP_minus_Risk-Adaptive-Residual-CVaR-MILP_EENS
+  common_terminal_soc_policy_for_all_milp_methods: true
+
+statistics:
+  primary_family: three_parameter-set-by-seed_level_paired_EENS_contrasts
+  interval: unit_cluster_bootstrap_95_percent
+  exact_test: two_sided_sign_flip
+  multiplicity: Holm_for_three_primary_contrasts
+  required_reporting: [mean, median, IQR, interval, improve_tie_worsen, leave_one_unit_out, factor_breakdown]
+
+hard_gates:
+  all_selected_scenarios_generated_without_test_targets: true
+  all_CVaR_settings_pass_discretization_audit: true
+  all_constraint_audits_pass: true
+  maximum_decision_seconds: 5.0
+  all_solver_deadline_events_have_feasible_incumbents: true
+  maximum_incumbent_constraint_violation: 1.0e-6
+  no_unit_removed_or_replaced_after_outcomes: true
+  all_null_adverse_and_failed_results_retained: true
+
+claim_boundary:
+  - V26 changes only the predeclared real-time MILP termination policy; physical controller logic and comparison definitions remain fixed and are not retuned per parameter set.
+  - A deadline incumbent is a feasible real-time action, not a proof of global optimality; its MIP gap is reported.
+  - Each unit is one preassigned parameter-set-by-seed combination, not a rig or site.
+  - Heterogeneous simulation improves parameter robustness evidence but does not provide field, HIL, voltage, frequency, or safety validation.
+  - A fallback unit remains in all estimates and is not evidence of a certified learned risk classifier.
+  - Reliability effects and realized operating-cost effects are reported separately.

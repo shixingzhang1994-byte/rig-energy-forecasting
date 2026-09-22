@@ -1,0 +1,60 @@
+{
+  "seed": 20261310,
+  "files": [
+    {
+      "path": "configs/v27_heterogeneous_validation.yaml",
+      "sha256": "a569d3b8e85802bd5f12d7c670c167dcf72996559b7c8a998f532c4607259ffb",
+      "size_bytes": 6580
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/parameter_sets/H11_seed_20261310/dispatch.yaml",
+      "sha256": "7f1d3f60b5c436ca8293a307c63165d5b3aeebc192bca9deeab290465a05254e",
+      "size_bytes": 4366
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/eligibility.json",
+      "sha256": "285c5b0e8e275abacceead7832fac26b0a66776a4b95dc219ad58351646eccf1",
+      "size_bytes": 1169
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/risk/run_metadata.json",
+      "sha256": "b75ed919b68f314683511a627f74c7d32cfe46c24234ecde18463b3f64865b63",
+      "size_bytes": 1855
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/risk/risk_predictions.csv",
+      "sha256": "4294002b41add5001fdf358a9b275839bd229879b2e9998aabb5bedf6266b508",
+      "size_bytes": 11369520
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/source/forecast/validation_residual_library.npz",
+      "sha256": "99e25b9c6622ac570ec5390f44a5be7eb65549c75ba02c16b5f1bc6c659271b9",
+      "size_bytes": 2160796
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/scenario_calibration_manifest.json",
+      "sha256": "851420c424491b4fb03f567abc334d649ef496469291b536c9058aaacc963c89",
+      "size_bytes": 3327
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/dispatch_matched/dispatch_metrics.csv",
+      "sha256": "6699b0b665266b272e116d0cf0c9a64972faf6750ee16bb855f3951f89af32a2",
+      "size_bytes": 11720
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/method_summary.csv",
+      "sha256": "7c5303224e4e76e32eeab31aa2f20bde2c48044120e1544107b17b2126094ddb",
+      "size_bytes": 1723
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/result.json",
+      "sha256": "e5d01deb435af549eaab25c55db7567dac0b97a17eb5161a10ccd38a2552ba29",
+      "size_bytes": 3239
+    },
+    {
+      "path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261310/dispatch_matched/deadline_audit.json",
+      "sha256": "657e63f8f2450ed4fa9fd595eb80692699dae812b6ff6dc9a484d80c14336436",
+      "size_bytes": 6112118
+    }
+  ]
+}

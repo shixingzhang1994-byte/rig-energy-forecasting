@@ -1,0 +1,66 @@
+protocol:
+  id: V17-ELAPSED-SUBSTATE-DEVELOPMENT-20260902
+  status: final_iterative_development_after_holdout_inspection
+  acceptance_claim_allowed: false
+  final_freeze_requires_new_post_development_data: true
+  hypothesis: state_run_length_and_current_substate_reduce_unpredictable_transition_error
+project:
+  seed: 20260903
+  frequency_seconds: 5
+data:
+  path: artifacts/v17_target_domain_adaptation/data/canonical_72h.parquet
+  train_fraction: 0.50
+  validation_fraction: 0.1666666667
+  history_steps: 120
+  horizon_steps: 12
+  train_stride: 1
+  evaluation_stride: 1
+  add_causal_derived_features: true
+  state_embedding_column: operation_substate_code
+  causal_numeric_features:
+    - total_active_power_kw
+    - total_power_delta_kw
+    - time_sin
+    - time_cos
+    - operation_state_elapsed_minutes
+    - operation_substate_elapsed_minutes
+    - mud_pump_power_kw
+    - topdrive_power_kw
+    - drawworks_power_kw
+training:
+  batch_size: 512
+  num_workers: 2
+  max_epochs: 36
+  patience: 8
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  peak_weight: 1.0
+  transition_weight: 2.0
+models:
+  multivariate_itransformer:
+    name: ElapsedSubstate-iTransformer
+    hidden_size: 192
+    attention_heads: 8
+    layers: 4
+    dropout: 0.06
+  multivariate_stateaware_dualbranch:
+    name: ElapsedSubstate-StateAware-DualBranch
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 192
+    state_embedding_dim: 24
+    transition_embedding_dim: 12
+    attention_heads: 8
+    layers: 4
+    dropout: 0.06
+ensemble:
+  l2_penalty: 0.0001
+error_feedback:
+  feedback_delay_steps: 12
+  smoothing_candidates: [0.01, 0.02, 0.05, 0.10, 0.20]
+  correction_clip_candidates_kw: [25.0, 50.0, 100.0, 150.0]
+development_gates:
+  primary_model: Multivariate-Causal-ErrorFeedback-Ensemble
+  r2_min: 0.95
+  mae_improvement_over_persistence_min: 0.30
+  transition_mae_improvement_over_persistence_min: 0.10

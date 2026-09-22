@@ -1,0 +1,127 @@
+protocol:
+  id: V28-B-PUBLIC-ELECTRICAL-JOINT-FORECAST-FROZEN-20260921
+  status: frozen_before_any_listed_test_target_was_read
+  frozen_date: '2026-09-21'
+  random_seed: 20260921
+  primary_horizon_minutes: 1
+  secondary_horizons_minutes: [15, 60]
+  split_rule: chronological_60_20_20_by_wall_clock_with_one_full_utc_day_gap
+  analysis_unit: utc_day_nested_within_dataset
+  tests_may_be_opened: true
+  open_once_policy: report_every_listed_dataset_and_horizon_regardless_of_direction
+  development_disclosure: >-
+    Training/validation portions of REFIT House4 and UCI were used for pipeline
+    development. No listed test target was read. The previously opened OpenCEM
+    test period is excluded from confirmation and retained as exploratory only.
+
+shared_forecast:
+  target: measured_load_kw
+  load_lags_minutes: [0, 1, 5, 15, 30, 60, 120]
+  rolling_windows_minutes: [5, 15, 60, 120]
+  candidate_models: [ridge, hist_gradient_boosting]
+  selection_rule: lowest_validation_mae_then_refit_on_train_plus_validation
+  mandatory_baselines: [persistence, rolling_mean_60]
+  primary_metric: mase
+  companion_metrics: [mae_kw, rmse_kw, nmae_mean_load, bias_kw]
+  mase_scale: mean_absolute_one_step_change_on_adjacent_quality_ok_training_minutes
+  paired_interval:
+    unit: utc_day
+    method: cluster_bootstrap
+    replicates: 2000
+    confidence_level: 0.95
+  multiplicity:
+    primary_family: selected_model_vs_persistence_at_1_minute_across_8_datasets
+    adjustment: holm
+    secondary_horizons: descriptive_with_unadjusted_intervals
+
+datasets:
+  refit_house1:
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house1_1min.parquet
+    prepared_sha256: 4049ac6b00ce8a32e6c966a04739c14b1c00ac7186de9f9e472a5a5b7aeafeb4
+    target_provenance: directly_measured_aggregate_active_power
+    train_target_end: '2014-10-27T23:59:00Z'
+    validation_target_start: '2014-10-29T00:00:00Z'
+    validation_target_end: '2015-03-04T23:59:00Z'
+    test_target_start: '2015-03-06T00:00:00Z'
+    test_target_end: '2015-07-10T11:56:00Z'
+  refit_house2:
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house2_1min.parquet
+    prepared_sha256: 7d85c19e1274bb44230b6281f88e8b0566f83d4536ae7bef9e80d05071d98dc1
+    target_provenance: directly_measured_aggregate_active_power
+    train_target_end: '2014-09-23T23:59:00Z'
+    validation_target_start: '2014-09-25T00:00:00Z'
+    validation_target_end: '2015-01-24T23:59:00Z'
+    test_target_start: '2015-01-26T00:00:00Z'
+    test_target_end: '2015-05-28T08:05:00Z'
+  refit_house3:
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house3_1min.parquet
+    prepared_sha256: 2ede893e6667d458eec1d8b3919ac36b0e863e3bd97e9d8a79bb3c86cde62da9
+    target_provenance: directly_measured_aggregate_active_power
+    train_target_end: '2014-09-29T23:59:00Z'
+    validation_target_start: '2014-10-01T00:00:00Z'
+    validation_target_end: '2015-01-30T23:59:00Z'
+    test_target_start: '2015-02-01T00:00:00Z'
+    test_target_end: '2015-06-02T10:55:00Z'
+  refit_house4:
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house4_1min.parquet
+    prepared_sha256: ecaf3b2904a98c3fbf111af62c80c5598388948ed1a65538b233c87a6815c998
+    target_provenance: directly_measured_aggregate_active_power
+    train_target_end: '2014-10-26T23:59:00Z'
+    validation_target_start: '2014-10-28T00:00:00Z'
+    validation_target_end: '2015-03-02T23:59:00Z'
+    test_target_start: '2015-03-04T00:00:00Z'
+    test_target_end: '2015-07-07T09:57:00Z'
+  refit_house5:
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house5_1min.parquet
+    prepared_sha256: 84f0b74b426904f01724036d63f047b815dcff289ecea59f03507a6d1e50d353
+    target_provenance: directly_measured_aggregate_active_power
+    train_target_end: '2014-10-20T23:59:00Z'
+    validation_target_start: '2014-10-22T00:00:00Z'
+    validation_target_end: '2015-02-27T23:59:00Z'
+    test_target_start: '2015-03-01T00:00:00Z'
+    test_target_end: '2015-07-06T17:48:00Z'
+  refit_house11:
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house11_1min.parquet
+    prepared_sha256: b40a8acd39f6313fb176669e27b43d5f8f0a53e0709dc07d38f60be7e8cb8e9b
+    target_provenance: directly_measured_aggregate_active_power
+    train_target_end: '2015-01-24T23:59:00Z'
+    validation_target_start: '2015-01-26T00:00:00Z'
+    validation_target_end: '2015-04-13T23:59:00Z'
+    test_target_start: '2015-04-15T00:00:00Z'
+    test_target_end: '2015-06-30T15:12:00Z'
+  uci_household:
+    prepared_path: artifacts/v28_public_real_validation/prepared/uci_household_1min.parquet
+    prepared_sha256: e2ec6a3344ee1068a1a822a92e494248ad4c8d188d770541eb4d709b56bd7ccb
+    target_provenance: directly_measured_global_active_power
+    train_target_end: '2009-04-29T23:59:00Z'
+    validation_target_start: '2009-05-01T00:00:00Z'
+    validation_target_end: '2010-02-11T23:59:00Z'
+    test_target_start: '2010-02-13T00:00:00Z'
+    test_target_end: '2010-11-26T21:02:00Z'
+  tsukuba_microgrid:
+    prepared_path: artifacts/v28_public_real_validation/prepared/tsukuba_microgrid_1min.parquet
+    prepared_sha256: cfd066c8219fd317f8945c3bf9976d3094f18136892ba7a810e4b8c0055e9541
+    target_provenance: derived_from_measured_grid_import_plus_pv_plus_battery_power
+    train_target_end: '2016-12-26T23:59:00Z'
+    validation_target_start: '2016-12-28T00:00:00Z'
+    validation_target_end: '2017-08-25T23:59:00Z'
+    test_target_start: '2017-08-27T00:00:00Z'
+    test_target_end: '2018-04-24T14:59:00Z'
+
+excluded_from_confirmation:
+  opencem:
+    reason: test period opened during pipeline development before joint freeze
+    permitted_use: exploratory_only
+  m5bat_exide1:
+    reason: no building or rig load target; reserved for observational BESS validation
+
+claim_boundaries:
+  allow:
+    - cross-domain point-forecast validation on named measured electrical datasets
+    - direct versus derived target provenance reported per dataset
+    - heterogeneous and adverse results retained without dataset substitution
+  prohibit:
+    - target-rig field validation
+    - target-rig closed-loop performance
+    - treating household or building loads as drilling-rig field power
+    - changing eligibility, splits, models, or metrics after opening any listed test target

@@ -12,6 +12,7 @@ sys.path.insert(0, str(PROJECT_DIR / "src"))
 from rig_energy.models import (  # noqa: E402
     ITransformerForecaster,
     PatchTSTForecaster,
+    StateAwareDualBranchPatchTransformer,
     StateAwarePatchTransformer,
 )
 
@@ -98,3 +99,30 @@ def test_state_aware_patch_transformer_uses_operation_state_and_keeps_shape():
         drilling_output = model(x, drilling)
     assert idle_output.shape == (2, 12)
     assert not torch.allclose(idle_output, drilling_output)
+
+
+def test_dual_branch_patch_uses_state_context_without_losing_power_shape():
+    torch.manual_seed(13)
+    model = StateAwareDualBranchPatchTransformer(
+        numeric_input_size=4,
+        num_states=6,
+        state_embedding_dim=8,
+        transition_embedding_dim=4,
+        history=120,
+        horizon=12,
+        patch_length=16,
+        patch_stride=8,
+        hidden_size=32,
+        attention_heads=4,
+        layers=1,
+        dropout=0.0,
+    ).eval()
+    x = torch.randn(2, 120, 4)
+    stable = torch.zeros(2, 120, dtype=torch.long)
+    changing = stable.clone()
+    changing[:, 60:] = 2
+    with torch.inference_mode():
+        stable_output = model(x, stable)
+        changing_output = model(x, changing)
+    assert stable_output.shape == (2, 12)
+    assert not torch.allclose(stable_output, changing_output)

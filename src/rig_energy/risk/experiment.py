@@ -39,6 +39,35 @@ def _load_yaml(path: Path) -> dict:
     return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
 
 
+def _causal_transition_feature(
+    arrays: object,
+    expected_length: int,
+) -> tuple[np.ndarray, str]:
+    """Load an online-available transition feature without future truth.
+
+    ``transition_flags`` and ``future_transition_flags`` are deliberately not
+    accepted: both describe whether a transition occurs inside the future
+    scoring horizon and are valid only for offline forecast metrics.
+    """
+
+    keys = set(arrays.keys())
+    if "history_transition_flags" in keys:
+        feature = np.asarray(arrays["history_transition_flags"], dtype=np.float32)
+        source = "history_transition_flags"
+    elif "operation_state_codes" in keys:
+        states = np.asarray(arrays["operation_state_codes"])
+        feature = np.zeros(len(states), dtype=np.float32)
+        feature[1:] = (states[1:] != states[:-1]).astype(np.float32)
+        source = "observed_operation_state_change"
+    else:
+        raise ValueError(
+            "风险模型缺少因果工况切换特征；禁止回退到未来transition_flags"
+        )
+    if feature.ndim != 1 or len(feature) != int(expected_length):
+        raise ValueError("因果工况切换特征与预测样本长度不一致")
+    return feature, source
+
+
 def _smooth_noise(rng: np.random.Generator, count: int, sigma: float) -> np.ndarray:
     raw = rng.normal(0.0, sigma, count)
     smooth = np.empty(count, dtype=float)
@@ -54,11 +83,12 @@ def _simulate_supply_context(
     config: dict,
     seed: int,
 ) -> pd.DataFrame:
-    """Generate auditable, margin-stratified supply stress-test regimes.
+    """Generate an auditable synthetic supply process.
 
-    Capacity is set from the *available forecast* rather than realized future
-    demand.  This produces coverage across four adequacy bands without leaking
-    the supervised label, while retaining blockwise derating and SOC regimes.
+    ``independent_process`` is the acceptance mode: supply capacity and SOC are
+    generated only from the declared regime process and random seed.  The
+    legacy ``forecast_margin_stratified`` mode remains available solely for
+    reproducing frozen V3 artifacts.
     """
 
     rng = np.random.default_rng(seed)
@@ -98,6 +128,72 @@ def _simulate_supply_context(
     required = np.asarray(forecast_required_kw, dtype=float)
     if len(required) != count:
         raise ValueError("forecast_required_kw 与时间戳行数不一致")
+    generation_mode = str(
+        supply_cfg.get("generation_mode", "forecast_margin_stratified")
+    )
+    if generation_mode == "independent_process":
+        grid_base = np.asarray(
+            [float(regimes[name]["grid_capacity_kw"]) for name in regime_array]
+        )
+        generator_base = np.asarray(
+            [
+                float(regimes[name]["generator_capacity_kw"])
+                for name in regime_array
+            ]
+        )
+        soc_base = np.asarray(
+            [float(regimes[name]["storage_soc_pct"]) for name in regime_array]
+        )
+        grid = grid_base + _smooth_noise(
+            rng, count, float(supply_cfg.get("grid_noise_sigma_kw", 18.0))
+        )
+        generator = generator_base + _smooth_noise(
+            rng,
+            count,
+            float(supply_cfg.get("generator_noise_sigma_kw", 12.0)),
+        )
+        soc = soc_base + _smooth_noise(
+            rng, count, float(supply_cfg.get("soc_noise_sigma_pct", 2.5))
+        )
+        grid = np.clip(grid, 0.0, float(supply_cfg["grid_rated_capacity_kw"]))
+        generator = np.clip(
+            generator, 0.0, float(supply_cfg["generator_rated_power_kw"])
+        )
+        soc = np.clip(
+            soc,
+            float(supply_cfg["soc_min_pct"]),
+            float(supply_cfg["soc_max_pct"]),
+        )
+        soc_availability = np.clip(
+            (soc - float(supply_cfg["soc_min_pct"]))
+            / float(supply_cfg["soc_full_power_above_pct"]),
+            0.0,
+            1.0,
+        )
+        storage = np.clip(
+            float(supply_cfg["storage_rated_power_kw"]) * soc_availability
+            + _smooth_noise(
+                rng,
+                count,
+                float(supply_cfg.get("storage_noise_sigma_kw", 8.0)),
+            ),
+            0.0,
+            float(supply_cfg["storage_rated_power_kw"]),
+        )
+        return pd.DataFrame(
+            {
+                "timestamp": pd.to_datetime(timestamps).to_numpy(),
+                "supply_regime": regime_array,
+                "grid_available_capacity_kw": grid,
+                "generator_available_capacity_kw": generator,
+                "storage_soc_pct": soc,
+                "storage_available_discharge_power_kw": storage,
+                "supply_source_type": "synthetic_independent_supply",
+            }
+        )
+    if generation_mode != "forecast_margin_stratified":
+        raise ValueError(f"未知合成供给生成模式: {generation_mode}")
+
     grid = np.zeros(count, dtype=float)
     generator = np.zeros(count, dtype=float)
     storage = np.zeros(count, dtype=float)
@@ -149,7 +245,7 @@ def _simulate_supply_context(
             "generator_available_capacity_kw": generator,
             "storage_soc_pct": soc,
             "storage_available_discharge_power_kw": storage,
-            "supply_source_type": "synthetic_scenario",
+            "supply_source_type": "synthetic_forecast_stratified_supply",
         }
     )
 
@@ -569,7 +665,9 @@ def run_risk_benchmark(
         raise ValueError(f"风险输入预测模型不存在: {model_name}; 可用: {sorted(name_to_key)}")
     forecast_sequence = arrays[name_to_key[model_name]].astype(np.float32)
     actual_future = arrays["y_true"].astype(np.float32)
-    transition_flags = arrays["transition_flags"].astype(np.float32)
+    transition_flags, transition_feature_source = _causal_transition_feature(
+        arrays, len(forecast_sequence)
+    )
     member_names = [
         name
         for name in risk_cfg["input"]["uncertainty_members"]
@@ -589,7 +687,12 @@ def run_risk_benchmark(
     )
     history = int(forecast_cfg["forecast"]["history_steps"])
     horizon = int(forecast_cfg["forecast"]["horizon_steps"])
-    origins = np.arange(history, len(test_frame) - horizon + 1)
+    eval_stride = int(forecast_cfg["forecast"]["eval_stride"])
+    origins = np.arange(
+        history,
+        len(test_frame) - horizon + 1,
+        max(1, eval_stride),
+    )
     if len(origins) != len(actual_future):
         raise ValueError(
             f"预测样本数 {len(actual_future)} 与按配置对齐的数据窗口数 {len(origins)} 不一致"
@@ -660,7 +763,7 @@ def run_risk_benchmark(
         "storage_discharge_available_kw",
         "firm_supply_kw",
         "forecast_margin_ratio",
-        "transition_flag",
+        "history_transition_flag",
         "operation_state_code",
         "time_sin",
         "time_cos",
@@ -1154,11 +1257,19 @@ def run_risk_benchmark(
         item for item in validation_selection if item["model"] in allowed_models
     ]
     eligible = [item for item in allowed_items if item["eligible"]]
+    gate_failure_policy = str(
+        selection_cfg.get("validation_gate_failure_policy", "error")
+    )
+    validation_gate_fallback_active = False
     if not eligible:
-        raise ValueError(
-            "无风险模型同时通过验证集 Macro-F1、高风险召回和严重风险召回门槛"
-        )
-    selection_pool = eligible
+        if gate_failure_policy != "always_severe_dispatch_guard":
+            raise ValueError(
+                "无风险模型同时通过验证集 Macro-F1、高风险召回和严重风险召回门槛"
+            )
+        if not allowed_items:
+            raise ValueError("风险模型候选集合为空，无法启用保守调度后备策略")
+        validation_gate_fallback_active = True
+    selection_pool = eligible or allowed_items
     best_score = max(item["selection_score"] for item in selection_pool)
     tie_tolerance = float(selection_cfg.get("score_tie_tolerance", 0.01))
     statistically_tied = [
@@ -1184,7 +1295,11 @@ def run_risk_benchmark(
         selection_mode = "predeclared_safety_policy_with_validation_gate"
     else:
         operational_model = selected_by_validation
-        selection_mode = "validation_only"
+        selection_mode = (
+            "validation_best_available_for_reporting"
+            if validation_gate_fallback_active
+            else "validation_only"
+        )
     selected_validation_family = operational_model
     dispatch_guard_model = str(
         selection_cfg.get(
@@ -1205,13 +1320,27 @@ def run_risk_benchmark(
         guard_validation_item["high_risk_recall"] < minimum_high_recall
         or guard_validation_item["severe_recall"] < minimum_severe_recall
     ):
-        raise ValueError("调度保护模型未通过验证集高风险/严重风险召回门槛")
+        if gate_failure_policy != "always_severe_dispatch_guard":
+            raise ValueError("调度保护模型未通过验证集高风险/严重风险召回门槛")
+        validation_gate_fallback_active = True
+    if validation_gate_fallback_active:
+        selection_mode = (
+            selection_mode + "_with_always_severe_dispatch_guard_fallback"
+        )
+        effective_dispatch_guard_model = "Always-Severe-Validation-Fallback"
+        dispatch_guard_probability = np.zeros((len(test_idx), 4), dtype=float)
+        dispatch_guard_probability[:, 3] = 1.0
+    else:
+        effective_dispatch_guard_model = dispatch_guard_model
+        dispatch_guard_probability = probabilities_test[dispatch_guard_model]
     metrics_rows = []
     for name, probability in probabilities_test.items():
         row = {
             "model": name,
             "operational_selected": name == operational_model,
-            "dispatch_guard_selected": name == dispatch_guard_model,
+            "dispatch_guard_selected": (
+                not validation_gate_fallback_active and name == dispatch_guard_model
+            ),
         }
         row.update(_classification_metrics(labels[test_idx], probability))
         training_match = next(
@@ -1219,6 +1348,17 @@ def run_risk_benchmark(
         )
         row["training_seconds"] = training_match
         metrics_rows.append(row)
+    if validation_gate_fallback_active:
+        fallback_row = {
+            "model": effective_dispatch_guard_model,
+            "operational_selected": False,
+            "dispatch_guard_selected": True,
+            "training_seconds": 0.0,
+        }
+        fallback_row.update(
+            _classification_metrics(labels[test_idx], dispatch_guard_probability)
+        )
+        metrics_rows.append(fallback_row)
     metrics = pd.DataFrame(metrics_rows).sort_values("macro_f1", ascending=False)
     metrics.to_csv(artifact_dir / "risk_metrics.csv", index=False, encoding="utf-8-sig")
     (artifact_dir / "ensemble_weights.json").write_text(
@@ -1229,10 +1369,13 @@ def run_risk_benchmark(
             {
                 "selected_model": operational_model,
                 "selected_validation_family": selected_validation_family,
-                "dispatch_guard_model": dispatch_guard_model,
+                "dispatch_guard_model": effective_dispatch_guard_model,
+                "configured_dispatch_guard_model": dispatch_guard_model,
                 "dispatch_guard_selection": (
                     "predeclared_model_with_validation_high_and_severe_recall_gates"
                 ),
+                "validation_gate_failure_policy": gate_failure_policy,
+                "validation_gate_fallback_active": validation_gate_fallback_active,
                 "validation_score_selected_model": selected_by_validation,
                 "selection_mode": selection_mode,
                 "minimum_validation_macro_f1": minimum_macro_f1,
@@ -1297,7 +1440,6 @@ def run_risk_benchmark(
 
     ensemble_probability = probabilities_test[operational_model]
     predicted = ensemble_probability.argmax(axis=1)
-    dispatch_guard_probability = probabilities_test[dispatch_guard_model]
     dispatch_guard_predicted = dispatch_guard_probability.argmax(axis=1)
     dispatch_guard_metrics = _classification_metrics(
         labels[test_idx], dispatch_guard_probability
@@ -1305,8 +1447,9 @@ def run_risk_benchmark(
     (artifact_dir / "dispatch_guard_metrics.json").write_text(
         json.dumps(
             {
-                "model": dispatch_guard_model,
+                "model": effective_dispatch_guard_model,
                 "selection_data": "validation_only; test labels excluded",
+                "validation_gate_fallback_active": validation_gate_fallback_active,
                 **dispatch_guard_metrics,
             },
             ensure_ascii=False,
@@ -1425,6 +1568,11 @@ def run_risk_benchmark(
         "validation_samples": len(val_idx),
         "test_samples": len(test_idx),
         "supply_source_type": str(supply["supply_source_type"].iloc[0]),
+        "synthetic_supply_generation_mode": str(
+            risk_cfg.get("synthetic_supply", {}).get(
+                "generation_mode", "forecast_margin_stratified"
+            )
+        ),
         "device": str(device),
         "cuda_available": torch.cuda.is_available(),
         "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
@@ -1434,8 +1582,16 @@ def run_risk_benchmark(
         "transformer_best_epoch": transformer_result.best_epoch,
         "transformer_validation_macro_f1": transformer_result.validation_macro_f1,
         "operational_model": operational_model,
-        "dispatch_guard_model": dispatch_guard_model,
+        "dispatch_guard_model": effective_dispatch_guard_model,
+        "configured_dispatch_guard_model": dispatch_guard_model,
+        "validation_gate_failure_policy": gate_failure_policy,
+        "validation_gate_fallback_active": validation_gate_fallback_active,
         "operational_model_selection": selection_mode,
+        "transition_feature": {
+            "source": transition_feature_source,
+            "causal": True,
+            "future_transition_flags_excluded": True,
+        },
         "conformal_peak_correction": {
             "coverage": conformal_coverage,
             "correction_kw": conformal_correction_kw,

@@ -1,0 +1,157 @@
+{
+  "source_class": "official_public_real_microgrid_measurements",
+  "source_name": "OpenCEM Dataset",
+  "source_repository": "https://github.com/OpenCEM-platform/opencem-dataset",
+  "repository_commit": "5884d253a5267fb240b7a8df6fa9e4d49a905167",
+  "license": "CC BY 4.0 (dataset metadata); repository code MIT",
+  "raw_files": [
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-07-a.csv",
+      "size_bytes": 429290,
+      "sha256": "9094f34779cc58046eab3a3ab0bb6a355db5ec0e0fccc254dfae762d0855f907",
+      "raw_rows": 1639
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-07-b.csv",
+      "size_bytes": 4231632,
+      "sha256": "593710374069bea412d99c523b5ffa0fa4b115783646a3ac1b7ce3785af18c0c",
+      "raw_rows": 14132
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-08-a.csv",
+      "size_bytes": 1920989,
+      "sha256": "8feffe51d78b2b5ce007b1b602670e04306e77c9162c7f53c38376bb3ad3e3c8",
+      "raw_rows": 6376
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-08-b.csv",
+      "size_bytes": 2493086,
+      "sha256": "d889a3b06693d76a5d04cc21b4c6d2ce4edf29710a021438a7979a6ad31ae041",
+      "raw_rows": 8152
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-09-a.csv",
+      "size_bytes": 14226760,
+      "sha256": "e2f60da5cfe3bb869b953704c9fbd9b735955cfb2f240dde867b0e6e8989bd84",
+      "raw_rows": 46716
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-09-b.csv",
+      "size_bytes": 11327265,
+      "sha256": "b7b53d639118bb15d51ace5f092a71b9051b04eabaed705aac8be03e4de1e99e",
+      "raw_rows": 37324
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-10-a.csv",
+      "size_bytes": 14261049,
+      "sha256": "6711448655ada9492f543e1222ea3b9a0dc4c476b6cbecba28e66aed99b167f3",
+      "raw_rows": 46792
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-10-b.csv",
+      "size_bytes": 56142062,
+      "sha256": "a7af421ed900183830881f48ec55ebacff78df4972fd355b924243b7f96dbeaa",
+      "raw_rows": 236976
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-11-a.csv",
+      "size_bytes": 58704649,
+      "sha256": "e2eb2b90f6efcf2e29db1b7c56c9ef262e7fd6a060bd7dcb2234abae9b37d7f5",
+      "raw_rows": 255614
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-11-b.csv",
+      "size_bytes": 61837765,
+      "sha256": "5318e04823af7557f567075c65a3eefeac8088e0e233411ed4aa994a8f4eba43",
+      "raw_rows": 264876
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-12-a.csv",
+      "size_bytes": 96147420,
+      "sha256": "ca5369ae988c0152f84a8d3b421dcc48550e76b134bbfcca103b00134cd6a6f1",
+      "raw_rows": 410224
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2025-12-b.csv",
+      "size_bytes": 101719386,
+      "sha256": "6210aee0684791bf72a6209ca67f95c3bfac38967b1ed1380380b24378219d71",
+      "raw_rows": 437384
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-01-a.csv",
+      "size_bytes": 90934053,
+      "sha256": "954f80274c12655e07cbcd6528eec93b5df91d531a4a5acf6d50e798a74973b7",
+      "raw_rows": 410447
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-01-b.csv",
+      "size_bytes": 87396902,
+      "sha256": "76d0c89bd6deb06aac5c6529d6492b15021727910667f6a25c207878c8017dc8",
+      "raw_rows": 437504
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-02-a.csv",
+      "size_bytes": 76040384,
+      "sha256": "52a984caf0b909447841b37e4df78b55319adab726213755cfa7cbfe5bf6554c",
+      "raw_rows": 381161
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-02-b.csv",
+      "size_bytes": 53416095,
+      "sha256": "977fb93d8e42bb112b9b9fc2b5d90b716b04662a3a403c370d8806f55f70c1c1",
+      "raw_rows": 266034
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-03-a.csv",
+      "size_bytes": 61157328,
+      "sha256": "acfa5c11ecc2ed5cc661d0848292393595f08cdfcaa812a54dbbf879bbd21c02",
+      "raw_rows": 306828
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-03-b.csv",
+      "size_bytes": 65873772,
+      "sha256": "7e6e9ea0d2ae8b5d37b4635c6a95db41338b27a36a4f206f9aecfeb4ed513a5f",
+      "raw_rows": 327279
+    },
+    {
+      "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/data/public_external/opencem/data/measurements/2026-04-a.csv",
+      "size_bytes": 25122811,
+      "sha256": "ff57d4d2d6e74c55338c0955191d6bf158e5786bfe99f6f5ab894363ea1effcd",
+      "raw_rows": 126177
+    }
+  ],
+  "raw_rows": 4021635,
+  "deduplicated_inverter_rows": 2731905,
+  "duplicate_rows_encountered": 2574580,
+  "duplicate_keys_encountered": 1287290,
+  "conflicting_duplicate_keys": 512525,
+  "invalid_values_replaced_with_null": {
+    "outsumw": 0,
+    "pv1power": 0,
+    "battvolt": 2,
+    "battcurr": 123293,
+    "battsoc": 0,
+    "battchgpower": 0,
+    "gridpowerw_a": 103,
+    "linepowerw_a": 8
+  },
+  "timestamp_rows": 1410648,
+  "one_minute_rows": 393419,
+  "quality_ok_rows": 217811,
+  "quality_ok_fraction": 0.5536361995734828,
+  "start": "2025-07-12T13:31:00+00:00",
+  "end": "2026-04-11T18:29:00+00:00",
+  "measured_total_active_power": true,
+  "measured_load_definition": "sum(outsumw across inverter IDs) / 1000",
+  "target_imputed": false,
+  "supports_real_electrical_load_forecasting": true,
+  "supports_target_rig_field_validation": false,
+  "endogenous_audit_only_channels": [
+    "measured_battery_charge_kw",
+    "measured_battery_soc_pct",
+    "measured_grid_power_kw"
+  ],
+  "evidence_boundary": "Real campus microgrid electrical measurements, not drilling-rig power. Storage/grid channels are endogenous and are not future-known forecast inputs.",
+  "prepared_path": "/home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/v28_public_real_validation/prepared/opencem_1min.parquet",
+  "prepared_size_bytes": 6244462
+}

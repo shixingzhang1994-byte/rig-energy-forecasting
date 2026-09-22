@@ -1,0 +1,46 @@
+{
+  "protocol_id": "V28-C-R1-PUBLIC-REAL-BESS-OBSERVATIONAL-20260921",
+  "config_sha256": "4a0aedc4d036df1425b8eea996c6070e0af9af2710c0c3feaedc07189313080c",
+  "causal_controller_efficacy_claimed": false,
+  "target_rig_field_validation_claimed": false,
+  "datasets": {
+    "m5bat": {
+      "prepared_sha256_verified": "9273c24efe18ba0e8b26517d30f4e9e8539cca720b2a27a6490aa5e22996b456",
+      "metrics": {
+        "rows": 4254560,
+        "quality_ok_rows": 4107826,
+        "quality_coverage": 0.9655113572261291,
+        "active_same_sign_minutes": 682949,
+        "ac_dc_power_correlation": 0.9990767598533697,
+        "discharge_minutes": 283333,
+        "discharge_energy_weighted_efficiency": 0.9867131613305988,
+        "charge_minutes": 387283,
+        "charge_energy_weighted_efficiency": 0.9480060236192458,
+        "setpoint_tracking_minutes": 758464,
+        "setpoint_tracking_mae_kw": 9.784203905352442,
+        "imbalance_warning_minutes": 633,
+        "imbalance_alarm_minutes": 672,
+        "eligible_adjacent_minutes": 219365,
+        "direction_consistent_minutes": 214937,
+        "soc_direction_consistency": 0.9798144644770131,
+        "power_soc_change_correlation": -0.6567805712888948
+      },
+      "interpretation_boundary": "Real grid-scale lead-acid BESS behavior; observational, not a test of the paper controller."
+    },
+    "tsukuba": {
+      "prepared_sha256_verified": "cfd066c8219fd317f8945c3bf9976d3094f18136892ba7a810e4b8c0055e9541",
+      "metrics": {
+        "rows": 1742400,
+        "quality_ok_rows": 1739881,
+        "quality_coverage": 0.9985542929292929,
+        "active_battery_minutes": 436347,
+        "active_battery_fraction": 0.2507912897491265,
+        "eligible_adjacent_minutes": 390151,
+        "direction_consistent_minutes": 371752,
+        "soc_direction_consistency": 0.9528413357905017,
+        "power_soc_change_correlation": -0.8223466769466878
+      },
+      "interpretation_boundary": "Real building-microgrid BESS behavior; observational and not target-rig controller validation."
+    }
+  }
+}

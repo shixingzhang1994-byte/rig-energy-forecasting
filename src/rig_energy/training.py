@@ -19,6 +19,33 @@ def seed_everything(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
+def weighted_forecast_loss(
+    pred: torch.Tensor,
+    target: torch.Tensor,
+    last_load: torch.Tensor,
+    transition: torch.Tensor,
+    *,
+    peak_weight: float = 0.0,
+    transition_weight: float = 0.0,
+) -> torch.Tensor:
+    """Smooth-L1 loss with optional peak-change and transition emphasis."""
+
+    raw_loss = torch.nn.functional.smooth_l1_loss(pred, target, reduction="none")
+    weights = torch.ones_like(raw_loss)
+    if peak_weight > 0:
+        weights = weights * (
+            1.0
+            + peak_weight
+            * torch.clamp(torch.abs(target - last_load), 0.0, 2.0)
+        )
+    if transition_weight > 0:
+        sample_weight = 1.0 + transition_weight * transition.to(
+            device=raw_loss.device, dtype=raw_loss.dtype
+        )
+        weights = weights * sample_weight.unsqueeze(-1)
+    return torch.mean(raw_loss * weights)
+
+
 def train_neural_model(
     model: nn.Module,
     train_loader: DataLoader,
@@ -30,6 +57,7 @@ def train_neural_model(
     learning_rate: float,
     weight_decay: float,
     peak_weight: float = 0.0,
+    transition_weight: float = 0.0,
 ) -> tuple[nn.Module, dict]:
     model = model.to(device)
     optimizer = torch.optim.AdamW(
@@ -51,16 +79,18 @@ def train_neural_model(
             x = batch["x"].to(device, non_blocking=True)
             state = batch["state"].to(device, non_blocking=True)
             y = batch["y"].to(device, non_blocking=True)
+            transition = batch["transition"].to(device, non_blocking=True)
             optimizer.zero_grad(set_to_none=True)
             with torch.amp.autocast("cuda", enabled=use_amp):
                 pred = model(x, state)
-                raw_loss = torch.nn.functional.smooth_l1_loss(pred, y, reduction="none")
-                if peak_weight > 0:
-                    last_load = x[:, -1, 0].unsqueeze(-1)
-                    weights = 1.0 + peak_weight * torch.clamp(torch.abs(y - last_load), 0.0, 2.0)
-                    loss = torch.mean(raw_loss * weights)
-                else:
-                    loss = torch.mean(raw_loss)
+                loss = weighted_forecast_loss(
+                    pred,
+                    y,
+                    x[:, -1, 0].unsqueeze(-1),
+                    transition,
+                    peak_weight=peak_weight,
+                    transition_weight=transition_weight,
+                )
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -138,4 +168,3 @@ def predict_neural_model(
 def save_torch_checkpoint(model: nn.Module, path: Path, metadata: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save({"state_dict": model.state_dict(), "metadata": metadata}, path)
-

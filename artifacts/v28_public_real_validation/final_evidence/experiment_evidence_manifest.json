@@ -1,0 +1,300 @@
+{
+  "protocol_family": "V24+V28 final experiment evidence ledger",
+  "status": "pass",
+  "integrity_checks": {
+    "dataset_stage_complete": true,
+    "ten_prepared_electrical_series": true,
+    "forecast_config_hash_matches": true,
+    "forecast_24_prediction_files_present": true,
+    "forecast_matrix_complete": true,
+    "bess_config_hash_matches": true,
+    "v24_freeze_hash_mismatch_count_zero": true,
+    "v24_seed_manifest_hash_mismatch_count_zero": true,
+    "v24_technical_failure_count_zero": true,
+    "v24_ablation_complete": true,
+    "real_temporal_mismatch_retained": true
+  },
+  "data_readiness": {
+    "public_dataset_families_prepared": 8,
+    "prepared_electrical_series": 10,
+    "prepared_minute_rows": 13571131,
+    "quality_ok_rows": 12351203,
+    "quality_ok_fraction": 0.9101085974337733,
+    "experimental_dataset_instances": 12,
+    "unique_families_used_in_completed_real_experiments": 6,
+    "note": "Twelve instances are 2 drilling-process records + 8 forecast series + 2 BESS records; Tsukuba appears in both forecast and BESS analyses."
+  },
+  "evidence_blocks": [
+    {
+      "id": "E1",
+      "claim": "The proposed controller changes EENS relative to matched baselines under the frozen V24 protocol.",
+      "evidence_type": "simulation",
+      "status": "complete",
+      "support": "12 frozen simulation seeds; all three primary mean EENS contrasts are negative with Holm-adjusted p < 0.05, while cost increases are retained.",
+      "artifact": "artifacts/V24_submission_revision/confirmatory/analysis/analysis_manifest.json"
+    },
+    {
+      "id": "E2",
+      "claim": "Generator-first execution and residual scenarios contribute to simulated reliability; the risk-adaptive CVaR component effect is unresolved.",
+      "evidence_type": "simulation",
+      "status": "complete",
+      "support": "Preregistered exploratory ablations across the same 12 seeds; adverse/null results retained.",
+      "artifact": "artifacts/V24_submission_revision/preregistered_ablations/component_effect_summary.csv"
+    },
+    {
+      "id": "E3",
+      "claim": "Public drilling records provide independent real-process state and dwell-time distributions.",
+      "evidence_type": "real_measurement",
+      "status": "complete",
+      "support": "Energistics Well B (18,597 one-minute rows) and Utah FORGE 58-32 (56,682 one-minute rows).",
+      "artifact": "artifacts/public_real_multi_dataset_validation/cross_dataset_process_summary.json"
+    },
+    {
+      "id": "E4",
+      "claim": "The simulator's temporal state persistence is not externally supported by the two public drilling records.",
+      "evidence_type": "real_measurement",
+      "status": "complete",
+      "support": "Real median dwell is 2 min in both datasets versus 43 min in simulation; the adverse external-validity result is retained.",
+      "artifact": "artifacts/public_real_multi_dataset_validation/temporal_external_validity_assessment.json"
+    },
+    {
+      "id": "E5",
+      "claim": "The forecasting pipeline transfers to independent public electrical measurements at multiple horizons.",
+      "evidence_type": "real_measurement",
+      "status": "complete",
+      "support": "Eight series and three horizons: 5/8 directional improvements at 1 min (3/8 Holm-significant), and 8/8 improvements at both 15 and 60 min.",
+      "artifact": "artifacts/v28_public_real_validation/forecast_confirmatory/forecast_confirmatory_analysis.json"
+    },
+    {
+      "id": "E6",
+      "claim": "Real BESS measurements exhibit physically consistent power/SOC behavior and provide a control-signal plausibility check.",
+      "evidence_type": "real_measurement",
+      "status": "complete",
+      "support": "M5BAT and Tsukuba observational analyses; this is not a causal test of the proposed controller.",
+      "artifact": "artifacts/v28_public_real_validation/bess_observational/bess_observational_report.json"
+    }
+  ],
+  "evidence_block_accounting": {
+    "completed_blocks": 6,
+    "real_measurement_supported_blocks": 4,
+    "simulation_supported_blocks": 2,
+    "real_measurement_supported_share": 0.6666666666666666,
+    "target_rig_closed_loop_field_validation_share": 0.0,
+    "definition": "Share of six explicitly enumerated, load-bearing manuscript evidence blocks supported primarily by measured public data. This accounting was finalized with the evidence synthesis and is not a preregistered endpoint, row-weighted percentage, dataset-count percentage, or field-validation percentage."
+  },
+  "forecast_results": {
+    "protocol_id": "V28-B-PUBLIC-ELECTRICAL-JOINT-FORECAST-FROZEN-20260921",
+    "config_sha256_before_test_open": "7e03761ca096a0d7366d268cd5502ffdcb69af1bd5533343bf422c557db139a4",
+    "all_8_datasets_and_3_horizons_present": true,
+    "horizon_summary": {
+      "1": {
+        "datasets": 8,
+        "datasets_beating_persistence": 5,
+        "median_selected_minus_persistence_mase": -0.007789551668151928,
+        "mean_selected_minus_persistence_mase_equal_dataset_weight": -0.004264684901849877
+      },
+      "15": {
+        "datasets": 8,
+        "datasets_beating_persistence": 8,
+        "median_selected_minus_persistence_mase": -0.7850704467125746,
+        "mean_selected_minus_persistence_mase_equal_dataset_weight": -0.7668251833253368
+      },
+      "60": {
+        "datasets": 8,
+        "datasets_beating_persistence": 8,
+        "median_selected_minus_persistence_mase": -1.377678504649328,
+        "mean_selected_minus_persistence_mase_equal_dataset_weight": -1.4409203610985366
+      }
+    },
+    "primary_family": {
+      "horizon_minutes": 1,
+      "datasets_with_holm_significant_improvement": 3,
+      "datasets_with_directional_improvement": 5,
+      "conclusion_rule": "Report dataset-specific effects; no universal-improvement claim unless all eight effects are negative and each Holm-adjusted tail probability < 0.05.",
+      "universal_improvement_supported": false
+    },
+    "claim_boundary": "Cross-domain public electrical forecasting only; not target-rig field forecasting or closed-loop controller validation."
+  },
+  "bess_results": {
+    "protocol_id": "V28-C-R1-PUBLIC-REAL-BESS-OBSERVATIONAL-20260921",
+    "config_sha256": "4a0aedc4d036df1425b8eea996c6070e0af9af2710c0c3feaedc07189313080c",
+    "causal_controller_efficacy_claimed": false,
+    "target_rig_field_validation_claimed": false,
+    "datasets": {
+      "m5bat": {
+        "prepared_sha256_verified": "9273c24efe18ba0e8b26517d30f4e9e8539cca720b2a27a6490aa5e22996b456",
+        "metrics": {
+          "rows": 4254560,
+          "quality_ok_rows": 4107826,
+          "quality_coverage": 0.9655113572261291,
+          "active_same_sign_minutes": 682949,
+          "ac_dc_power_correlation": 0.9990767598533697,
+          "discharge_minutes": 283333,
+          "discharge_energy_weighted_efficiency": 0.9867131613305988,
+          "charge_minutes": 387283,
+          "charge_energy_weighted_efficiency": 0.9480060236192458,
+          "setpoint_tracking_minutes": 758464,
+          "setpoint_tracking_mae_kw": 9.784203905352442,
+          "imbalance_warning_minutes": 633,
+          "imbalance_alarm_minutes": 672,
+          "eligible_adjacent_minutes": 219365,
+          "direction_consistent_minutes": 214937,
+          "soc_direction_consistency": 0.9798144644770131,
+          "power_soc_change_correlation": -0.6567805712888948
+        },
+        "interpretation_boundary": "Real grid-scale lead-acid BESS behavior; observational, not a test of the paper controller."
+      },
+      "tsukuba": {
+        "prepared_sha256_verified": "cfd066c8219fd317f8945c3bf9976d3094f18136892ba7a810e4b8c0055e9541",
+        "metrics": {
+          "rows": 1742400,
+          "quality_ok_rows": 1739881,
+          "quality_coverage": 0.9985542929292929,
+          "active_battery_minutes": 436347,
+          "active_battery_fraction": 0.2507912897491265,
+          "eligible_adjacent_minutes": 390151,
+          "direction_consistent_minutes": 371752,
+          "soc_direction_consistency": 0.9528413357905017,
+          "power_soc_change_correlation": -0.8223466769466878
+        },
+        "interpretation_boundary": "Real building-microgrid BESS behavior; observational and not target-rig controller validation."
+      }
+    }
+  },
+  "drilling_process_results": [
+    {
+      "dataset": "Energistics-Well-B",
+      "one_minute_rows": 18597,
+      "state_fractions": {
+        "unknown": 0.853901166854869,
+        "idle_or_other": 0.08716459644028607,
+        "drilling": 0.058934236704844864
+      },
+      "state_run_count": 694,
+      "dwell_p50_minutes": 2.0,
+      "dwell_p95_minutes": 33.35000000000002
+    },
+    {
+      "dataset": "Utah-FORGE-58-32",
+      "one_minute_rows": 56682,
+      "state_fractions": {
+        "drilling": 0.3979217388236124,
+        "idle_or_other": 0.33384495959916727,
+        "circulation": 0.18342683744398575,
+        "hoisting": 0.08480646413323453
+      },
+      "state_run_count": 7235,
+      "dwell_p50_minutes": 2.0,
+      "dwell_p95_minutes": 34.29999999999927
+    }
+  ],
+  "temporal_external_validity": {
+    "question": "Do independently sourced real drilling records support the simulated state-persistence distribution used by the current experimental pipeline?",
+    "real_datasets": [
+      "Energistics-Well-B",
+      "Utah-FORGE-58-32"
+    ],
+    "real_dwell_p50_minutes": [
+      2.0,
+      2.0
+    ],
+    "real_dwell_p95_minutes": [
+      33.35000000000002,
+      34.29999999999927
+    ],
+    "simulation_dwell_p50_minutes": 43.0,
+    "simulation_dwell_p95_minutes": 155.64999999999986,
+    "simulation_to_real_median_ratio_p50": 21.5,
+    "simulation_to_real_median_ratio_p95": 4.601626016260207,
+    "simulator_temporal_state_persistence_supported": false,
+    "interpretation": "Both public real datasets show much shorter state runs than the current simulation. This is an external-validation failure that must be addressed by real-data-informed temporal calibration or robustness analysis; it is not evidence of real-site power or controller performance."
+  },
+  "v24_primary_results": {
+    "protocol_id": "V24-ENERGY-REPORTS-SUBMISSION-REVISION-20260915",
+    "retained_seeds": [
+      20261120,
+      20261121,
+      20261122,
+      20261123,
+      20261124,
+      20261125,
+      20261126,
+      20261127,
+      20261128,
+      20261129,
+      20261130,
+      20261131
+    ],
+    "analysis_unit": "seed_with_three_scenarios_clustered",
+    "primary_endpoint": "EENS_kWh",
+    "primary_contrasts": [
+      {
+        "contrast": "Full-Risk-SOC-Supervisory-MILP_minus_Rule-Based",
+        "seed_count": 12,
+        "mean_eens_difference_kwh": -5.2392267778152375,
+        "sample_sd_kwh": 7.588122369213894,
+        "median_difference_kwh": -3.202638712747504,
+        "q25_kwh": -10.686885371403086,
+        "q75_kwh": 0.34662327731743964,
+        "bootstrap_95_low_kwh": -9.428490572470125,
+        "bootstrap_95_high_kwh": -1.294396952813877,
+        "exact_sign_flip_pvalue": 0.03955078125,
+        "improve_count": 8,
+        "tie_count": 0,
+        "worsen_count": 4,
+        "leave_one_seed_out_mean_min_kwh": -6.247494522505389,
+        "leave_one_seed_out_mean_max_kwh": -3.986663321819363,
+        "mean_operating_cost_difference_yuan": 195.98037962772779,
+        "holm_adjusted_pvalue": 0.03955078125
+      },
+      {
+        "contrast": "Full-Risk-SOC-Supervisory-MILP_minus_Point-Forecast-MILP",
+        "seed_count": 12,
+        "mean_eens_difference_kwh": -15.587853167591113,
+        "sample_sd_kwh": 10.571000014153897,
+        "median_difference_kwh": -16.881579248804776,
+        "q25_kwh": -19.932536626031855,
+        "q75_kwh": -7.243730796161221,
+        "bootstrap_95_low_kwh": -21.45408380422753,
+        "bootstrap_95_high_kwh": -9.975559331958777,
+        "exact_sign_flip_pvalue": 0.0009765625,
+        "improve_count": 11,
+        "tie_count": 0,
+        "worsen_count": 1,
+        "leave_one_seed_out_mean_min_kwh": -17.008814238131574,
+        "leave_one_seed_out_mean_max_kwh": -13.646673742110464,
+        "mean_operating_cost_difference_yuan": 280.17367904415903,
+        "holm_adjusted_pvalue": 0.0029296875
+      },
+      {
+        "contrast": "Full-Risk-SOC-Supervisory-MILP_minus_Risk-Adaptive-Residual-CVaR-MILP",
+        "seed_count": 12,
+        "mean_eens_difference_kwh": -5.491908412996918,
+        "sample_sd_kwh": 5.4704489496443385,
+        "median_difference_kwh": -4.856666677929814,
+        "q25_kwh": -7.805651780087971,
+        "q75_kwh": -1.53708999124922,
+        "bootstrap_95_low_kwh": -8.697856826167756,
+        "bootstrap_95_high_kwh": -2.7983217511832086,
+        "exact_sign_flip_pvalue": 0.0029296875,
+        "improve_count": 10,
+        "tie_count": 0,
+        "worsen_count": 2,
+        "leave_one_seed_out_mean_min_kwh": -6.007037656613326,
+        "leave_one_seed_out_mean_max_kwh": -4.294290404213419,
+        "mean_operating_cost_difference_yuan": 153.82712257672213,
+        "holm_adjusted_pvalue": 0.005859375
+      }
+    ],
+    "failed_or_adverse_results_retained": true
+  },
+  "claim_boundaries": [
+    "The proposed controller's efficacy is supported by simulation, not by a real closed-loop deployment.",
+    "The public electrical datasets are cross-domain stress tests, not target-rig power traces.",
+    "The BESS studies are observational physical/behavior checks and do not estimate causal controller efficacy.",
+    "The first M5BAT BESS run was technically invalid because the released DC-power field was numerically kW despite its W suffix; that failed run is retained, and R1 was frozen after annual raw-data unit checks.",
+    "The real drilling records falsify the current simulator's temporal-persistence assumption; this adverse result must remain in the paper.",
+    "At one minute, do not claim universal forecast improvement: only 5/8 effects are directionally favorable and 3/8 are Holm-significant.",
+    "The defensible real-data share is 4/6 evidence blocks (66.7%); direct target-rig closed-loop field validation remains 0%."
+  ]
+}

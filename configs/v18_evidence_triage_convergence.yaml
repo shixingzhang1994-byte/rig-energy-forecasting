@@ -1,0 +1,107 @@
+metadata:
+  version: V18
+  title: "现场采集困难条件下的证据分级与技术收敛协议"
+  frozen_on: "2026-09-02"
+  scope: "钻机多源动力系统负荷预测、供能风险评估、鲁棒调度和关键负荷保护"
+  prohibition:
+    - "不得把公开WITSML工艺通道写成目标钻机电功率SCADA"
+    - "不得把用户指定72小时数据的原始合成来源字段改写为现场实测"
+    - "不得在已查看的V17回顾性留出上继续选模型或调阈值"
+    - "不得宣称统计显著SOTA、现场有效或关键负荷保护已获运行批准"
+
+frozen_engineering_candidate:
+  forecast_model:
+    name: "target-domain iTransformer"
+    role: "下一批未见功率数据的冻结工程候选；不是项目独有创新"
+    path: "artifacts/v17_target_domain_adaptation/forecast/models/itransformer.pt"
+    sha256: "4c83b9d37ac4bb8b534876a26f2999833b4f595654827a4d7fcb7a78a6c53392"
+    retrospective_metrics:
+      mae_kw: 56.512
+      r2: 0.9395
+      transition_mae_kw: 361.817
+      mae_improvement_vs_persistence_pct: 52.55
+  uncertainty_envelope:
+    path: "artifacts/v17_target_domain_adaptation/forecast/dispatch_uncertainty_envelope.json"
+    sha256: "b374c83988d2a2b6ec0195136ec6036e861641744c5f264a8486da465cdc6993"
+  dispatch_and_safety:
+    controller: "Risk-SOC-Supervisory-MPC + priority load allocation"
+    solver: "SciPy 1.17.1 embedded HiGHS 1.12.0"
+    solver_lock_path: "artifacts/v17_user_designated_external_acceptance/dispatch_v15_frozen_data_aligned/multi_period_highs_solver_lock.json"
+    solver_lock_sha256: "bf64ca36927d51d93e76556bf5af0be2e8ee9cdb768030ab49cf66002c13aec6"
+    operating_boundary: "三级负荷比例未经HAZOP签字，仅用于SIL软件验证"
+
+evidence_classes:
+  - id: E_POWER_USER
+    source: "/home/zsx/桌面/QZ/data"
+    role: "72小时功率预测、风险和调度数值回放"
+    identity: "USER_DESIGNATED_TARGET_RIG_ACCEPTANCE_DATA"
+    preserved_origin: "MECHANISTIC_SYNTHETIC_V15_ALIGNED / synthetic_surrogate"
+    closes_field_power_gap: false
+  - id: E_PROCESS_PUBLIC
+    source: "Energistics Well B WITSML real-world example donated by Statoil"
+    role: "真实钻井工艺通道、工况信号、接口和转场方法锚定"
+    archive_sha256: "e68526fcfb26e23506e0be5fd1f69b585b5c6341cb3db0a359bbe160ca4a8904"
+    closes_field_power_gap: false
+  - id: E_OEM
+    source: "CAT generator and NOV drilling equipment official specifications"
+    role: "额定容量、燃油曲线、最低负荷和设备功率上限"
+    closes_target_parameter_signature_gap: false
+  - id: E_SIL
+    source: "V15-V17 frozen simulation, fault injection, HiGHS and physical audits"
+    role: "算法正确性、约束可行性、极端扰动和关键负荷软件保护"
+    closes_hil_gap: false
+
+public_real_data_search:
+  energistics_well_b:
+    status: downloaded_and_audited
+    rows: 232099
+    time_index_rows: 178812
+    measured_depth_rows: 53287
+    electrical_power_channels: 0
+  utah_forge_58_32:
+    status: header_and_metadata_audited
+    raw_size_bytes: 632712512
+    sampling: "1 Hz"
+    channels: "depth, block height, bit depth, ROP, hookload, pump pressure, torque, RPM, pumps, flow, temperature"
+    electrical_power_channels: 0
+  equinor_volve:
+    status: access_route_verified_not_downloaded
+    reason: "Databricks account required; inventory contains WITSML realtime drilling data but no confirmed synchronized rig-bus active-power channel"
+
+claim_gates:
+  taskbook_method_and_simulation:
+    status: TECHNICALLY_READY_WITH_LIMITATIONS
+    allowed_claim: "形成钻机源-荷-储协同优化原型，并在公开证据约束仿真和用户指定72小时数据上完成竞争性回放"
+  field_validated_power_forecasting:
+    status: NOT_PROVEN
+    unblock: "独立于当前开发的数据，至少一次班次的母线有功功率记录或有来源责任人的历史表计导出"
+  statistical_sota:
+    status: PROHIBITED
+  operational_load_shedding:
+    status: NOT_APPROVED
+    unblock: "钻井、机电和HSE共同签字的负荷分级/HAZOP"
+  target_equipment_parameters:
+    status: ROBUST_ENVELOPE_ONLY
+    unblock: "设备铭牌、说明书、调试记录或目标设备历史数据中的任一可追溯组合"
+
+minimum_external_confirmation:
+  preferred: "从现有电能表/保护装置/EMS历史库导出一次班次数据，不新增传感器"
+  fallback: "由持证电气人员在钻机总进线使用便携式三相功率质量记录仪，连续8-12小时，1秒记录后聚合到5秒"
+  required_fields:
+    - timestamp
+    - total_active_power_kw
+    - quality_flag
+    - operation_state_or_event_marker
+  optional_fields:
+    - grid_active_power_kw
+    - aggregate_genset_power_kw
+    - storage_power_kw
+    - storage_soc_pct
+    - available_supply_kw
+  safety: "不允许项目人员自行打开带电柜、钳接高压回路或绕过现场电气许可"
+
+stop_rules:
+  - "V17已见72小时不再用于模型选择"
+  - "在没有新独立功率数据前停止预测网络搜索"
+  - "公开真实过程数据只做真实性锚点，不制造功率性能数字"
+  - "后续论文/专利写作不得改变冻结指标、证据类别和失败记录"

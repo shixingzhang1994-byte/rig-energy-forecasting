@@ -1,0 +1,39 @@
+experiment:
+  id: exploratory-public-process-anchor-20260916
+  status: exploratory_external_validation_before_manuscript_revision
+  reviewer_concern: simulator operating states and transitions may be detached from real drilling operations
+  question: whether public real WITSML process channels support process-state and transition plausibility
+  analysis_unit: time-log fragment, with one-minute modal state aggregation
+  no_model_or_controller_tuning_from_result: true
+
+source:
+  archive: data/public_external/energistics_well_b/NA-NA-EnergisticsWell2016-B.zip
+  source_class: official_public_real_world_witsml
+  source_url: https://energistics.org/sites/default/files/2023-03/NA-NA-EnergisticsWell2016-B.zip
+  source_standard: WITSML 1.4.1.1
+  source_audit: artifacts/v18_public_real_drilling_anchor/archive_audit.json
+
+observed_channels:
+  - TIME
+  - TQA
+  - RPM
+  - TFLO
+  - SWOB
+  - ROP
+  - BPOS
+  - BONB
+  - MBOT
+  - STIS
+  - RIG_STATE_HSPM
+
+derived_measurements:
+  rotary_mechanical_power_proxy_kw: 2*pi*TQA[kN.m]*RPM[rpm]/60
+  process_state: BONB_or_MBOT_or_ROP_RPM_TFLO_BPOS_rules
+  missing_process_channels: unknown_and_excluded_from_known_state_fractions
+  threshold_sensitivity_grid: 2x2x2x2
+
+claim_boundary:
+  - supports real drilling-process, transition, and mechanical-proxy plausibility checks
+  - does not provide measured total active electrical power
+  - does not validate the target rig SCADA or multi-source dispatch controller
+  - proxy values must not be reported as electrical bus power

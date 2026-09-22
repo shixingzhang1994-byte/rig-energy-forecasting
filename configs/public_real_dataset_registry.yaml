@@ -1,0 +1,201 @@
+protocol:
+  id: PUBLIC-REAL-MULTI-DATASET-EXTERNAL-VALIDATION-20260921
+  purpose: >-
+    Connect every identified public real-world dataset through an auditable
+    adapter while keeping drilling-process, anomaly, and electrical-power
+    evidence classes separate.
+  data_readiness_manifest: artifacts/v28_public_real_validation/data_readiness/dataset_readiness_manifest.json
+  data_stage_status: complete
+
+datasets:
+  energistics_well_b:
+    source_url: https://energistics.org/sites/default/files/2023-03/NA-NA-EnergisticsWell2016-B.zip
+    local_path: data/public_external/energistics_well_b/NA-NA-EnergisticsWell2016-B.zip
+    sha256: e68526fcfb26e23506e0be5fd1f69b585b5c6341cb3db0a359bbe160ca4a8904
+    access: downloaded
+    role: drilling_process_and_transition_external_anchor
+    reviewer_question: Are simulated drilling states detached from a real WITSML process log?
+    measured_total_active_power: false
+
+  utah_forge_58_32:
+    source_url: https://gdr.openei.org/submissions/1113
+    source_doi: 10.15121/1495411
+    raw_download_url: https://gdr.openei.org/files/1113/Well_58-32_raw_pason_log.csv
+    processed_download_url: https://gdr.openei.org/files/1113/Well_58-32_processed_pason_log.csv
+    local_raw_path: data/public_external/utah_forge_58_32/Well_58-32_raw_pason_log.csv
+    local_processed_path: data/public_external/utah_forge_58_32/Well_58-32_processed_pason_log.csv
+    raw_sha256: 5af0241d325b9cf5b4d6a9d524218cb2cbc3694fa324816cfb879f1f556161c2
+    processed_sha256: 065468bf3c41098541fa7d0f3b8754b32e659b0877ed0a12efca6072f022189b
+    access: downloaded
+    role: independent_drilling_process_and_mechanical_hydraulic_proxy_anchor
+    reviewer_question: Does the process interpretation transfer to an independent 1 Hz drilling dataset?
+    measured_total_active_power: false
+
+  petrobras_3w:
+    source_url: https://github.com/petrobras/3W
+    local_path: data/public_external/petrobras_3w/dataset
+    repository_commit: d717f0aadbe90b6dc6e15e29f6035e9630d22a5e
+    access: downloaded_from_official_git_repository
+    role: production_well_anomaly_scope_audit
+    reviewer_question: Can this public well-event corpus validly test the paper's supply-risk claim?
+    measured_total_active_power: false
+    eligibility_decision: >-
+      Not eligible for drilling-load forecasting or power-system risk efficacy;
+      retain as a real-data scope audit rather than manufacture an unrelated score.
+
+  equinor_volve:
+    source_url: https://www.equinor.com/energy/volve-data-sharing
+    access: requires_authenticated_databricks_marketplace_account
+    role: prospective_independent_witsml_external_anchor
+    reviewer_question: Does the process interpretation transfer to a third independent field release?
+    measured_total_active_power: unconfirmed
+    blocking_condition: >-
+      Equinor's current distribution requires Get Access through a logged-in
+      university or company Databricks account; no anonymous bulk file URL is offered.
+
+  opencem:
+    source_url: https://github.com/OpenCEM-platform/opencem-dataset
+    repository_commit: 5884d253a5267fb240b7a8df6fa9e4d49a905167
+    local_path: data/public_external/opencem/data/measurements
+    access: downloaded_from_commit_pinned_official_repository
+    license: CC BY 4.0 for dataset metadata; MIT for repository code
+    raw_file_count: 19
+    raw_rows: 4021635
+    prepared_path: artifacts/v28_public_real_validation/prepared/opencem_1min.parquet
+    prepared_sha256: f33b8b6c9a5de61eaa45a3c3823bc43be07bfc0370a9dc3cdc3cbe1eb3fae725
+    role: measured_microgrid_forecast_and_hybrid_replay_pilot
+    measured_total_active_power: true
+    target_rig_measurement: false
+    status_note: >-
+      The 2026-03-02 through 2026-04-07 period was opened in a pipeline pilot
+      before the planned three-dataset joint freeze and is not confirmatory.
+
+  refit_house4:
+    source_url: https://zenodo.org/records/5063428
+    source_doi: 10.5281/zenodo.5063428
+    local_path: data/public_external/refit/CLEAN_House4.csv
+    sha256: a231e256a0c600a09c9f67103f665a55595b85b3cd54176aa9b503aa98153b41
+    access: downloaded_from_official_zenodo_record
+    license: CC BY 4.0
+    raw_rows: 6760511
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house4_1min.parquet
+    prepared_sha256: ecaf3b2904a98c3fbf111af62c80c5598388948ed1a65538b233c87a6815c998
+    role: independent_measured_load_forecast_stress_test
+    measured_total_active_power: true
+    target_rig_measurement: false
+
+  refit_additional_houses:
+    source_url: https://zenodo.org/records/5063428
+    source_doi: 10.5281/zenodo.5063428
+    local_paths:
+      - data/public_external/refit/CLEAN_House1.csv
+      - data/public_external/refit/CLEAN_House2.csv
+      - data/public_external/refit/CLEAN_House3.csv
+      - data/public_external/refit/CLEAN_House5.csv
+      - data/public_external/refit/CLEAN_House11.csv
+    prepared_paths:
+      - artifacts/v28_public_real_validation/prepared/refit_house1_1min.parquet
+      - artifacts/v28_public_real_validation/prepared/refit_house2_1min.parquet
+      - artifacts/v28_public_real_validation/prepared/refit_house3_1min.parquet
+      - artifacts/v28_public_real_validation/prepared/refit_house5_1min.parquet
+      - artifacts/v28_public_real_validation/prepared/refit_house11_1min.parquet
+    access: downloaded_cleaned_and_quality_audited
+    license: CC BY 4.0
+    role: multi_site_measured_load_forecast_stress_test
+    measured_total_active_power: true
+    target_rig_measurement: false
+
+  uci_household_power:
+    source_url: https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption
+    source_doi: 10.24432/C58K54
+    raw_download_url: https://archive.ics.uci.edu/static/public/235/individual+household+electric+power+consumption.zip
+    local_archive_path: data/public_external/uci_household_power/individual_household_electric_power_consumption.zip
+    archive_sha256: 9f84b46ade8a2d8e1286ec4b2b6c2987a45a755c59f263be3b3b3d10dfbda3ff
+    local_data_path: data/public_external/uci_household_power/household_power_consumption.txt
+    data_sha256: 4259c9d7ece5dbee9ab8d53682baac68d791c864f0f64a52b4043cb3b90894b7
+    access: downloaded_from_official_uci_repository
+    license: CC BY 4.0
+    raw_rows: 2075259
+    prepared_path: artifacts/v28_public_real_validation/prepared/uci_household_1min.parquet
+    prepared_sha256: e2ec6a3344ee1068a1a822a92e494248ad4c8d188d770541eb4d709b56bd7ccb
+    role: independent_long_duration_measured_load_forecast_stress_test
+    measured_total_active_power: true
+    target_rig_measurement: false
+
+  tsukuba_microgrid:
+    source_url: https://figshare.com/articles/dataset/_/7403954
+    source_doi: 10.6084/m9.figshare.7403954.v1
+    raw_download_url: https://ndownloader.figshare.com/files/13696403
+    local_archive_path: data/public_external/tsukuba_microgrid/figshare_v1/294ecef46cba01f6392560efe6c78a28.zip
+    archive_size_bytes: 2725973323
+    expected_md5: 0344850ce209537c795f5a9a848c8430
+    cleaned_seconds_zip: data/public_external/tsukuba_microgrid/figshare_v1/extracted/2 Cleaned_data_per_second.zip
+    prepared_path: artifacts/v28_public_real_validation/prepared/tsukuba_microgrid_1min.parquet
+    parent_archive_sha256: e06e301dcb8e885316d86ef93e3279d6ba54abb92b1099d35f0ec97541c92261
+    cleaned_seconds_zip_sha256: ba05dcfe0023d82116dce8e776ad0e8a0032398e5e54510b487175782c055511
+    prepared_sha256: cfd066c8219fd317f8945c3bf9976d3094f18136892ba7a810e4b8c0055e9541
+    access: downloaded_integrity_checked_cleaned_and_quality_audited
+    role: measured_microgrid_forecast_hybrid_replay_and_bess_physics
+    measured_total_active_power: false
+    load_target_note: >-
+      Native load is derived from measured grid import, PV generation, and
+      battery active power; it is not a direct load meter.
+    nims_mirror_note: >-
+      The NIMS mirror file matches its advertised MD5 but is truncated and
+      fails ZIP central-directory validation; the official versioned Figshare
+      archive is intact and is used instead.
+    target_rig_measurement: false
+
+  m5bat_exide1:
+    source_url: https://publications.rwth-aachen.de/record/1038622
+    source_doi: 10.18154/RWTH-2026-06637
+    raw_download_url: https://publications.rwth-aachen.de/record/1038622/files/Full_Dataset_M5BAT_Battery_Unit_Pb1.zip
+    local_archive_path: data/public_external/m5bat/full/Full_Dataset_M5BAT_Battery_Unit_Pb1.zip
+    archive_size_bytes: 4653774362
+    archive_sha256: 9355fa8b5d265dc051ba8fbbbc7b920542e101218269cb5357aea47de1322ad4
+    extracted_path: data/public_external/m5bat/full/extracted
+    prepared_path: artifacts/v28_public_real_validation/prepared/m5bat_exide1_1min.parquet
+    prepared_sha256: 9273c24efe18ba0e8b26517d30f4e9e8539cca720b2a27a6490aa5e22996b456
+    access: downloaded_integrity_checked_cleaned_and_quality_audited
+    license: CC BY 4.0
+    role: real_grid_scale_bess_power_soc_and_control_validation
+    measured_total_active_power: false
+    target_rig_measurement: false
+
+  spark:
+    source_url: https://www.radar-service.eu/radar/de/dataset/bjdg3m3rg5jv3skk
+    source_doi: 10.35097/bjdg3m3rg5jv3skk
+    access: metadata_only_excluded_from_frozen_core_due_archive_size
+    expected_size_bytes: 76200000000
+    license: CC BY 4.0
+    role: optional_industrial_machine_power_extension
+    measured_total_active_power: true
+    target_rig_measurement: false
+    exclusion_note: >-
+      The 76.2 GB curated archive is not required for the frozen core because
+      OpenCEM, Tsukuba, REFIT, UCI, and M5BAT already cover the predeclared
+      load, microgrid, and BESS evidence roles.
+
+  mesa_del_sol:
+    source_url: https://datadryad.org/dataset/doi:10.5061/dryad.fqz612jzb
+    source_doi: 10.5061/dryad.fqz612jzb
+    expected_size_bytes: 467746975
+    access: metadata_downloaded_data_download_blocked_by_current_network_validation
+    license: CC0 1.0
+    role: planned_measured_microgrid_forecast_and_hybrid_replay
+    measured_total_active_power: true
+    target_rig_measurement: false
+
+claim_policy:
+  allow:
+    - real drilling-process external validation
+    - cross-dataset state and transition plausibility checks
+    - mechanical and hydraulic proxy analysis with explicit units and caveats
+    - cross-domain electrical load forecasting on named measured datasets
+    - hybrid counterfactual replay driven by measured electrical load trajectories
+  prohibit:
+    - measured rig-bus power validation without an active-power channel
+    - target-rig field validation
+    - using Petrobras 3W production anomalies as power-system risk labels
+    - describing public household or microgrid power as drilling-rig field power
+    - reusing the opened OpenCEM pilot period as a confirmatory holdout

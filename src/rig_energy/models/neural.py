@@ -379,3 +379,119 @@ class StateAwarePatchTransformer(nn.Module):
         return normalized_prediction * std[:, 0, 0].unsqueeze(-1) + mean[
             :, 0, 0
         ].unsqueeze(-1)
+
+
+class StateAwareDualBranchPatchTransformer(nn.Module):
+    """Power-preserving patch encoder with gated operation-context fusion.
+
+    The power branch keeps the channel-independent inductive bias that makes
+    PatchTST a strong load-forecasting baseline.  A separate context branch
+    encodes process features, operation-state embeddings, and explicit state
+    changes.  A learned gate controls how much context is injected into each
+    power patch, so stable periods can retain the strong univariate pathway
+    while transition periods can use drilling-operation information.
+    """
+
+    def __init__(
+        self,
+        numeric_input_size: int,
+        num_states: int,
+        state_embedding_dim: int,
+        transition_embedding_dim: int,
+        history: int,
+        horizon: int,
+        patch_length: int,
+        patch_stride: int,
+        hidden_size: int,
+        attention_heads: int,
+        layers: int,
+        dropout: float,
+    ) -> None:
+        super().__init__()
+        if patch_length > history:
+            raise ValueError("patch_length 不能大于历史窗口")
+        self.numeric_input_size = int(numeric_input_size)
+        self.history = int(history)
+        self.patch_length = int(patch_length)
+        self.patch_stride = int(patch_stride)
+        self.patch_count = 1 + (history - patch_length) // patch_stride
+
+        self.state_embedding = nn.Embedding(num_states, state_embedding_dim)
+        self.transition_embedding = nn.Embedding(2, transition_embedding_dim)
+        self.power_projection = nn.Linear(patch_length, hidden_size)
+        context_width = (
+            numeric_input_size + state_embedding_dim + transition_embedding_dim
+        )
+        self.context_projection = nn.Linear(patch_length * context_width, hidden_size)
+        self.power_position = nn.Parameter(torch.zeros(1, self.patch_count, hidden_size))
+        self.context_position = nn.Parameter(torch.zeros(1, self.patch_count, hidden_size))
+
+        def make_encoder() -> nn.TransformerEncoder:
+            layer = nn.TransformerEncoderLayer(
+                d_model=hidden_size,
+                nhead=attention_heads,
+                dim_feedforward=hidden_size * 4,
+                dropout=dropout,
+                activation="gelu",
+                batch_first=True,
+                norm_first=True,
+            )
+            return nn.TransformerEncoder(layer, num_layers=layers)
+
+        self.power_encoder = make_encoder()
+        self.context_encoder = make_encoder()
+        self.context_gate = nn.Sequential(
+            nn.Linear(hidden_size * 2, hidden_size),
+            nn.Sigmoid(),
+        )
+        self.fusion_norm = nn.LayerNorm(hidden_size)
+        self.head = nn.Sequential(
+            nn.Flatten(start_dim=1),
+            nn.LayerNorm(self.patch_count * hidden_size),
+            nn.Linear(self.patch_count * hidden_size, horizon),
+        )
+
+    def forward(self, x: torch.Tensor, state: torch.Tensor | None = None) -> torch.Tensor:
+        if state is None:
+            raise ValueError("StateAwareDualBranchPatchTransformer 需要 operation_state_code")
+        if x.shape[1:] != (self.history, self.numeric_input_size):
+            raise ValueError(
+                "StateAwareDualBranchPatchTransformer 的输入形状与配置不一致"
+            )
+
+        mean = x.mean(dim=1, keepdim=True).detach()
+        std = torch.sqrt(x.var(dim=1, keepdim=True, unbiased=False) + 1e-5)
+        normalized = (x - mean) / std
+
+        power_patches = normalized[:, :, 0].unfold(
+            1, self.patch_length, self.patch_stride
+        )
+        power_tokens = self.power_projection(power_patches)
+        power_encoded = self.power_encoder(power_tokens + self.power_position)
+
+        transition = torch.zeros_like(state)
+        transition[:, 1:] = (state[:, 1:] != state[:, :-1]).long()
+        context = torch.cat(
+            [
+                normalized,
+                self.state_embedding(state),
+                self.transition_embedding(transition),
+            ],
+            dim=-1,
+        )
+        context_patches = context.unfold(1, self.patch_length, self.patch_stride)
+        batch, patch_count, feature_count, patch_length = context_patches.shape
+        context_tokens = self.context_projection(
+            context_patches.reshape(
+                batch, patch_count, feature_count * patch_length
+            )
+        )
+        context_encoded = self.context_encoder(context_tokens + self.context_position)
+
+        gate = self.context_gate(torch.cat([power_encoded, context_encoded], dim=-1))
+        fused = self.fusion_norm(power_encoded + gate * context_encoded)
+        residual = self.head(fused)
+        normalized_prediction = normalized[:, -1, 0].unsqueeze(-1) + residual
+        return normalized_prediction * std[:, 0, 0].unsqueeze(-1) + mean[
+            :, 0, 0
+        ].unsqueeze(-1)

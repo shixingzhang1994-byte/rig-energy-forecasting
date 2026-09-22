@@ -1,0 +1,155 @@
+protocol:
+  id: V22-ENERGY-REPORTS-SUBMISSION-REVISION-20260914
+  status: declared_before_any_V22_controller_outcome
+  artifact_namespace: V22_submission_revision/confirmatory
+  simulation_days: 21
+  required_completed_development_seeds_before_freeze: 1
+  purpose: replace the seven-model-member CVaR study with leakage-safe residual scenarios and matched controller comparisons
+  historical_evidence_is_read_only: [V15, V19, V20, V21]
+  development_seed_order: [20261008, 20261009, 20261011, 20261012, 20261014, 20261015, 20261016, 20261017, 20261018, 20261019, 20261020, 20261021]
+  development_seed_reuse_rule: previously revealed seeds may be used only for diagnostics, implementation checks, and design selection
+  prospective_holdout_seed_order: [20261060, 20261061, 20261062, 20261063, 20261064, 20261065, 20261066, 20261067, 20261068, 20261069, 20261070, 20261071, 20261072, 20261073, 20261074, 20261075, 20261076, 20261077, 20261078, 20261079]
+  required_eligible_holdouts: 12
+  stopping_rule: retain seeds in queue order and stop at the first twelve upstream-eligible seeds
+  eligibility_timing: before controller execution and before any controller outcome is inspected
+  analysis_unit: seed with dispatch windows clustered within seed
+
+data_boundary:
+  chronological_split: true
+  training_fraction: 0.60
+  validation_fraction: 0.20
+  scenario_calibration_split: validation_only
+  scenario_calibration_source_model: Causal-ErrorFeedback-Ensemble
+  causal_warmup_rule: discard at least feedback_delay_steps before constructing residual library
+  test_targets_permitted_in_scenario_generation: false
+  field_scada_active_power_available: false
+  external_validation_status: blocked_until_author_supplies_measured_target_rig_power_or_HIL_data
+
+scenario_generation:
+  method: stratified_empirical_complete_horizon_residual_vectors
+  scenario_count: 50
+  probabilities: equal
+  preserve_within_horizon_temporal_dependence: true
+  residual_definition: validation_actual_minus_validation_causal_point_forecast
+  nonnegative_load_floor_kw: 0.0
+  random_seed: 20260914
+  output_mode: generate_only_for_selected_dispatch_windows
+  prohibition: never fit, select, rescale, or rank residual scenarios using test targets
+
+cvar:
+  primary_alpha: 0.90
+  primary_weight: 1.0
+  minimum_effective_tail_scenarios: 5.0
+  risk_adaptive_alpha_by_level:
+    "0": 0.80
+    "1": 0.85
+    "2": 0.90
+    "3": 0.90
+  degeneration_gate: reject any alpha and probability combination whose tail_probability divided by largest_scenario_probability is below five
+  report_predicted_cvar_separately_from_realized_cost: true
+  offline_resolution_sensitivity:
+    scenario_count: 100
+    alpha: 0.95
+    use: offline development sensitivity only because measured single-step solves approached or exceeded the five-second online gate
+
+matched_comparison:
+  common_inputs:
+    - plant limits and availability trajectories
+    - initial SOC and generator state
+    - forecast horizon and rolling update rate
+    - solver, time limit, and optimality tolerance
+    - scenario windows and scoring warmup
+    - realized load trajectory
+  common_terminal_soc_policy_for_all_milp_methods: true
+  terminal_soc_drop_by_risk_level:
+    "0": 0.005
+    "1": 0.010
+    "2": 0.020
+    "3": 0.030
+  methods:
+    - Rule-Based
+    - Persistence-MILP
+    - Point-Forecast-MILP
+    - Fixed-Reserve-MILP
+    - Residual-CVaR-MILP
+    - Risk-Adaptive-Residual-CVaR-MILP
+    - Full-Risk-SOC-Supervisory-MILP
+  primary_contrasts:
+    - Full-Risk-SOC-Supervisory-MILP_minus_Rule-Based_EENS
+    - Full-Risk-SOC-Supervisory-MILP_minus_Point-Forecast-MILP_EENS
+    - Full-Risk-SOC-Supervisory-MILP_minus_Risk-Adaptive-Residual-CVaR-MILP_EENS
+
+component_ablation:
+  base: Full-Risk-SOC-Supervisory-MILP
+  leave_one_component_out:
+    - replace_residual_scenarios_with_point_forecast
+    - replace_risk_adaptive_cvar_with_fixed_cvar
+    - remove_SOC_supervisor
+    - remove_generator_first_storage_reserve
+  no_multi_component_bundle_may_be_described_as_a_single_component_effect: true
+
+cost_accounting:
+  realized_operating_cost_components:
+    - grid_energy
+    - diesel_fuel
+    - storage_degradation
+    - generator_startup
+  terminal_energy_adjustment_reported_separately: true
+  reliability_penalty_definition: VOLL_yuan_per_kWh_times_EENS_kWh
+  reliability_penalty_reported_separately: true
+  total_social_cost_definition: realized_operating_cost_plus_terminal_energy_adjustment_plus_reliability_penalty
+  prohibited_label: risk_adjusted_cost_if_it_does_not_include_realized_or_predicted_CVaR
+  one_at_a_time_development_sensitivity:
+    VOLL_yuan_per_kWh: [20, 50, 100, 200, 500]
+    diesel_price_yuan_per_l: [6.0, 7.5, 9.0]
+    grid_price_multiplier: [0.6, 1.0, 1.5]
+    storage_degradation_yuan_per_kWh: [0.05, 0.15, 0.30]
+
+physical_model_scope:
+  represented:
+    - active-power balance
+    - generator capacity, minimum stable power, ramp, commitment, minimum up and down times
+    - storage power, energy, SOC, and charge-discharge efficiency
+    - source availability trajectories
+  required_development_sensitivity:
+    generator_startup_delay_steps: [0, 6, 12, 24]
+  primary_generator_startup_delay_steps: 6
+  startup_delay_interpretation: command-to-synchronized-minimum-stable-output execution-layer delay shared by all controllers
+  not_represented:
+    - voltage and reactive-power constraints
+    - frequency dynamics and protection transients
+    - converter thermal and electromagnetic dynamics
+    - battery aging beyond a linear throughput charge
+  language_rule: use constraint-feasible active-power dispatch, not fully physically validated operation
+
+statistics:
+  primary_family: three_seed_level_paired_EENS_contrasts
+  interval: seed_cluster_bootstrap_95_percent
+  exact_test: two_sided_sign_flip
+  multiplicity: Holm_for_three_primary_contrasts
+  report_effect_size_and_seed_level_values: true
+  secondary_endpoints:
+    - loss_of_load_duration
+    - realized_operating_cost
+    - terminal_energy_adjustment
+    - reliability_penalty
+    - diesel_fuel
+    - minimum_SOC
+    - startups
+    - maximum_decision_time
+
+hard_gates:
+  all_selected_scenarios_generated_without_test_targets: true
+  all_CVaR_settings_pass_discretization_audit: true
+  all_constraint_audits_pass: true
+  maximum_decision_seconds: 5.0
+  no_holdout_seed_or_scenario_removed_after_controller_outcomes: true
+  all_null_adverse_and_failed_results_retained: true
+
+claim_boundary:
+  - V15, V19, V20, and V21 remain historical frozen evidence and are not relabeled as V22 evidence.
+  - The previously revealed 20261008 through 20261021 seeds are development-only in V22.
+  - Only the first twelve eligible seeds from the new 20261060 through 20261079 queue may support confirmatory V22 performance claims.
+  - Residual scenarios are generated only from validation residuals and preserve complete-horizon dependence.
+  - CVaR is an optimization risk measure; the paper reports predicted CVaR separately from realized operating cost and reliability penalty.
+  - Without measured target-rig active power or HIL results, conclusions remain limited to publicly constrained synthetic active-power simulation.

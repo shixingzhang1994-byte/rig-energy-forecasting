@@ -1,0 +1,78 @@
+protocol:
+  id: V20-CONFLICT-CALIBRATION-20260909
+  status: declared_before_any_v20_development_or_holdout_outcome
+  parent_candidate: artifacts/v19_evidential_risk/risk_candidate_freeze.json
+  frozen_parent_controller: V15
+  development_seed_order: [20261034, 20261035, 20261036, 20261037, 20261038, 20261039]
+  required_eligible_development_seeds: 4
+  prospective_holdout_seed_order: [20261040, 20261041, 20261042, 20261043, 20261044, 20261045, 20261046, 20261047, 20261048, 20261049, 20261050, 20261051]
+  required_eligible_holdouts: 6
+  stopping_rule: retain seeds in queue order and stop at the required number of upstream-eligible seeds
+  overlap_prohibited_with_v19_seeds: [20261008, 20261009, 20261022, 20261023, 20261024, 20261025, 20261026, 20261027, 20261028, 20261029, 20261030, 20261031, 20261032, 20261033]
+
+estimands:
+  primary: multiclass_Brier_of_development_selected_V20_probability_minus_uncalibrated_V19_Yager_probability
+  secondary:
+    - calibrated_log_loss_minus_uncalibrated_log_loss
+    - calibrated_top_label_ECE_minus_uncalibrated_ECE
+    - macro_F1_and_balanced_accuracy_vs_frozen_RSS_baseline
+    - high_risk_and_severe_recall
+    - physical_action_change_vs_frozen_RSS
+    - unserved_energy_and_risk_adjusted_cost_vs_frozen_RSS
+  analysis_unit: seed_with_three_dispatch_scenarios_clustered_within_seed
+
+candidate_space:
+  inherited_parameters: all V19 candidate 59 source discounts, thresholds, conflict weight, and reserve adders
+  combination_rules: [yager_conflict_to_ignorance, dempster_normalized]
+  scalar_temperature_grid: [0.20, 0.25, 0.35, 0.50, 0.75, 1.00]
+  candidate_count: 12
+  dispatch_uses: raw_pignistic_probability
+  calibrated_probability_uses: probability_quality_reporting_only
+  total_conflict_policy: full_ignorance_fallback_with_explicit_counter
+
+development_selection:
+  primary_unit: seed
+  hard_gates_each_development_seed:
+    macro_f1_gain_vs_frozen_RSS_minimum: 0.02
+    high_risk_recall_minimum: 0.98
+    severe_recall_minimum: 0.95
+    calibrated_brier_minus_frozen_RSS_maximum: 0.005
+    calibration_changed_argmax_rows_maximum: 0
+    total_conflict_fallback_rows_maximum: 0
+  ranking:
+    - lowest mean calibrated multiclass Brier
+    - lowest worst-seed calibrated Brier minus frozen RSS
+    - lowest mean calibrated log loss
+    - prefer Yager if numerically tied within 1.0e-12
+    - lower temperature-grid index
+  fail_closed: if no candidate passes every hard gate, do not open V20 holdouts
+
+prospective_acceptance:
+  calibration:
+    required_brier_improved_seeds_vs_uncalibrated_v19_yager: 5
+    require_mean_brier_delta_vs_uncalibrated_v19_yager_below: 0.00
+    require_mean_brier_not_worse_than_frozen_RSS_by_more_than: 0.005
+    log_loss_and_ECE: report_without_multiplicity_adjusted_confirmatory_claim
+  recognition:
+    require_mean_macro_f1_gain_vs_frozen_RSS_at_least: 0.02
+    require_every_seed_high_risk_recall_at_least: 0.98
+    require_every_seed_severe_recall_at_least: 0.95
+  control:
+    require_aggregate_unserved_not_worse_than_frozen_RSS_kwh: 1.0e-9
+    maximum_risk_adjusted_cost_ratio_vs_frozen_RSS: 1.005
+    require_zero_physical_violations: true
+    require_nonzero_action_change_only_for_control_mechanism_claim: true
+  statistics:
+    exact_two_sided_sign_flip_per_endpoint: true
+    seed_bootstrap_resamples: 20000
+    bootstrap_seed: 20260909
+    p_values_are_descriptive_endpoint_wise: true
+    minimum_attainable_two_sided_p_at_n6: 0.03125
+
+claim_boundary:
+  - V19 holdouts are historical benchmarks and may not select or modify V20.
+  - Scalar calibration is fitted on V20 development labels only and is frozen before V20 holdouts.
+  - Calibrated probabilities do not enter dispatch; probability calibration is not a control-performance claim.
+  - Dempster normalization is not allowed to hide raw conflict, which remains reported.
+  - Null, adverse, and failed-gate outcomes are retained.
+  - Evidence remains prospective synthetic simulation, not field, HIL, or causal-effect validation.

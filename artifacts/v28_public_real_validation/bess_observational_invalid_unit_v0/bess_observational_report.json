@@ -1,0 +1,46 @@
+{
+  "protocol_id": "V28-C-PUBLIC-REAL-BESS-OBSERVATIONAL-20260921",
+  "config_sha256": "641abe483c482b44c146ea5500092f00a30708643c2906f618e8141867d4fbd3",
+  "causal_controller_efficacy_claimed": false,
+  "target_rig_field_validation_claimed": false,
+  "datasets": {
+    "m5bat": {
+      "prepared_sha256_verified": "9d4f7c748d8f83f1591fb5a0a170d30e767686e735651aae1307509551cb55ef",
+      "metrics": {
+        "rows": 4254560,
+        "quality_ok_rows": 4107833,
+        "quality_coverage": 0.9655130025196496,
+        "active_same_sign_minutes": 0,
+        "ac_dc_power_correlation": NaN,
+        "discharge_minutes": 0,
+        "discharge_energy_weighted_efficiency": NaN,
+        "charge_minutes": 0,
+        "charge_energy_weighted_efficiency": NaN,
+        "setpoint_tracking_minutes": 758467,
+        "setpoint_tracking_mae_kw": 9.784170233988357,
+        "imbalance_warning_minutes": 636,
+        "imbalance_alarm_minutes": 675,
+        "eligible_adjacent_minutes": 0,
+        "direction_consistent_minutes": 0,
+        "soc_direction_consistency": NaN,
+        "power_soc_change_correlation": NaN
+      },
+      "interpretation_boundary": "Real grid-scale lead-acid BESS behavior; observational, not a test of the paper controller."
+    },
+    "tsukuba": {
+      "prepared_sha256_verified": "cfd066c8219fd317f8945c3bf9976d3094f18136892ba7a810e4b8c0055e9541",
+      "metrics": {
+        "rows": 1742400,
+        "quality_ok_rows": 1739881,
+        "quality_coverage": 0.9985542929292929,
+        "active_battery_minutes": 436347,
+        "active_battery_fraction": 0.2507912897491265,
+        "eligible_adjacent_minutes": 390151,
+        "direction_consistent_minutes": 371752,
+        "soc_direction_consistency": 0.9528413357905017,
+        "power_soc_change_correlation": -0.8223466769466878
+      },
+      "interpretation_boundary": "Real building-microgrid BESS behavior; observational and not target-rig controller validation."
+    }
+  }
+}

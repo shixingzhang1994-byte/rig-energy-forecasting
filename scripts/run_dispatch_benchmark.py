@@ -35,6 +35,18 @@ def main() -> None:
         default=PROJECT_DIR / "artifacts/v2_risk_acceptance/risk_predictions.csv",
         help="风险预测CSV；默认使用V2验收版以生成风险感知MPC对比",
     )
+    parser.add_argument(
+        "--scenario-residuals",
+        type=Path,
+        default=None,
+        help="可选V22验证集残差库；提供后替代多模型成员场景",
+    )
+    parser.add_argument(
+        "--scenario-seed",
+        type=int,
+        default=None,
+        help="V22残差场景分层抽样种子",
+    )
     args = parser.parse_args()
     metrics = run_dispatch_benchmark(
         args.predictions,
@@ -42,6 +54,8 @@ def main() -> None:
         args.config,
         args.artifact_dir,
         args.risk_signals,
+        args.scenario_residuals,
+        args.scenario_seed,
     )
     print(metrics.to_string(index=False))
 

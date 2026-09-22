@@ -1,0 +1,109 @@
+protocol:
+  name: v5-acceptance-rework
+  seed: 20260825
+  scope: "合成数据上的方法与物理可行性验收；不外推至现场SCADA"
+
+forecast_overrides:
+  models:
+    state_aware_dual_branch_patch_transformer:
+      enabled: true
+      # V4开发/留出种子封闭搜索选出，V5不用测试集改参。
+      patch_length: 16
+      patch_stride: 8
+      hidden_size: 128
+      state_embedding_dim: 16
+      transition_embedding_dim: 8
+      attention_heads: 8
+      layers: 3
+      dropout: 0.10
+      learning_rate: 0.0006
+      max_epochs: 24
+      patience: 5
+      peak_weight: 0.50
+      transition_weight: 0.50
+
+risk_overrides:
+  project:
+    seed: 20260825
+  split:
+    # 增大严格留出段，使调度场景在风险模型未见数据上覆盖三类典型作业。
+    train_fraction: 0.30
+    val_fraction: 0.10
+  synthetic_supply:
+    generation_mode: independent_process
+    block_length_steps: [240, 360]
+    grid_noise_sigma_kw: 18.0
+    generator_noise_sigma_kw: 12.0
+    storage_noise_sigma_kw: 8.0
+    soc_noise_sigma_pct: 2.5
+    regime_cycle: [normal, constrained, weak, emergency]
+    regimes:
+      normal:
+        grid_capacity_kw: 1200.0
+        generator_capacity_kw: 800.0
+        storage_soc_pct: 72.0
+      constrained:
+        grid_capacity_kw: 750.0
+        generator_capacity_kw: 500.0
+        storage_soc_pct: 50.0
+      weak:
+        grid_capacity_kw: 420.0
+        generator_capacity_kw: 360.0
+        storage_soc_pct: 32.0
+      emergency:
+        grid_capacity_kw: 150.0
+        generator_capacity_kw: 240.0
+        storage_soc_pct: 22.0
+
+dispatch_overrides:
+  dispatch:
+    interval_seconds: 5
+    scenario_steps: 360
+    warmup_steps: 120
+  scenario_selection:
+    mode: operation_aligned
+    scenarios:
+      A_stable_drilling:
+        primary_states: [drilling]
+        minimum_primary_fraction: 0.90
+        acceptable_supply_regimes: [normal]
+        minimum_supply_fraction: 0.60
+        maximum_emergency_fraction: 0.00
+        score: stable
+      B_connection_transition:
+        primary_states: [drilling, connection]
+        anchor_states: [connection]
+        minimum_primary_fraction: 0.75
+        minimum_anchor_fraction: 0.10
+        acceptable_supply_regimes: [constrained, weak]
+        minimum_supply_fraction: 0.50
+        maximum_emergency_fraction: 0.20
+        score: transition
+      C_tripping_impact:
+        primary_states: [tripping]
+        minimum_primary_fraction: 0.90
+        acceptable_supply_regimes: [weak, emergency]
+        minimum_supply_fraction: 0.50
+        maximum_emergency_fraction: 1.00
+        score: impact
+  scenario_cvar_mpc:
+    forecast_members:
+      - Persistence
+      - Validation-Weighted-Ensemble
+      - PatchTST
+      - iTransformer
+      - StateAware-TCN-Attention
+      - StateAware-Patch-Transformer
+      - StateAware-DualBranch-Patch-Transformer
+    risk_adaptive:
+      activation_level: 2
+  scenarios:
+    A_stable_drilling:
+      title: "场景A：稳定钻进作业"
+      grid_capacity_kw: 1300
+    B_connection_transition:
+      title: "场景B：钻进—接单根切换作业"
+      grid_capacity_kw: 900
+    C_tripping_impact:
+      title: "场景C：起下钻冲击作业"
+      grid_capacity_kw: 500

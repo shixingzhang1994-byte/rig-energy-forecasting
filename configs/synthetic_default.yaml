@@ -100,6 +100,22 @@ models:
     layers: 2
     dropout: 0.10
     peak_weight: 0.75
+  state_aware_dual_branch_patch_transformer:
+    # V4探索分支默认关闭，避免改变已冻结的V3复现实验。
+    enabled: false
+    patch_length: 16
+    patch_stride: 8
+    hidden_size: 128
+    state_embedding_dim: 16
+    transition_embedding_dim: 8
+    attention_heads: 8
+    layers: 3
+    dropout: 0.10
+    learning_rate: 0.0006
+    max_epochs: 24
+    patience: 5
+    peak_weight: 0.50
+    transition_weight: 0.50
   state_aware_tcn_attention:
     hidden_size: 64
     state_embedding_dim: 8
@@ -118,3 +134,8 @@ error_feedback:
   feedback_delay_steps: 12
   smoothing_candidates: [0.02, 0.05, 0.10, 0.20]
   correction_clip_candidates_kw: [50.0, 100.0, 150.0]
+
+# V6调度不确定性增强默认关闭，不改变V2/V3/V5冻结复现口径。
+dispatch_uncertainty:
+  enabled: false
+  coverage: 0.90

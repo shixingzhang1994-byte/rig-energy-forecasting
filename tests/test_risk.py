@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 from sklearn.metrics import recall_score
 
 
@@ -18,6 +19,8 @@ from rig_energy.risk.experiment import (  # noqa: E402
     _fit_minimum_recall_threshold,
     _one_sided_conformal_correction,
     _apply_ordinal_cumulative_threshold,
+    _simulate_supply_context,
+    _causal_transition_feature,
 )
 from rig_energy.risk.models import (  # noqa: E402
     apply_probability_ensemble,
@@ -130,6 +133,31 @@ def test_causal_risk_filter_cannot_be_changed_by_future_probabilities():
     assert safety_filtered[2].argmax() == 3
 
 
+def test_risk_transition_feature_uses_history_not_future_truth():
+    arrays = {
+        "history_transition_flags": np.array([0, 1, 0], dtype=np.int8),
+        "future_transition_flags": np.array([1, 0, 1], dtype=np.int8),
+        "transition_flags": np.array([1, 0, 1], dtype=np.int8),
+    }
+    feature, source = _causal_transition_feature(arrays, expected_length=3)
+    assert feature.tolist() == [0.0, 1.0, 0.0]
+    assert source == "history_transition_flags"
+
+    arrays["future_transition_flags"][:] = 0
+    arrays["transition_flags"][:] = 0
+    changed, _ = _causal_transition_feature(arrays, expected_length=3)
+    assert np.array_equal(feature, changed)
+
+
+def test_risk_transition_feature_can_fall_back_to_observed_state_changes():
+    feature, source = _causal_transition_feature(
+        {"operation_state_codes": np.array([2, 2, 3, 3], dtype=np.int16)},
+        expected_length=4,
+    )
+    assert feature.tolist() == [0.0, 0.0, 1.0, 0.0]
+    assert source == "observed_operation_state_change"
+
+
 def test_ordinal_threshold_uses_monotone_cumulative_boundaries():
     probability = np.array(
         [
@@ -141,3 +169,55 @@ def test_ordinal_threshold_uses_monotone_cumulative_boundaries():
     # Row 1 crosses Y>=1 and Y>=2 but not Y>=3; row 2 crosses none.
     assert calibrated.argmax(axis=1).tolist() == [2, 0]
     assert np.allclose(calibrated.sum(axis=1), 1.0)
+
+
+def test_independent_supply_process_does_not_change_with_load_forecast():
+    timestamps = pd.Series(pd.date_range("2026-01-01", periods=80, freq="5s"))
+    config = {
+        "split": {"train_fraction": 0.60, "val_fraction": 0.20},
+        "synthetic_supply": {
+            "generation_mode": "independent_process",
+            "grid_rated_capacity_kw": 1300.0,
+            "generator_rated_power_kw": 1200.0,
+            "storage_rated_power_kw": 500.0,
+            "soc_min_pct": 15.0,
+            "soc_max_pct": 90.0,
+            "soc_full_power_above_pct": 30.0,
+            "block_length_steps": [8, 8],
+            "regime_cycle": ["normal", "constrained", "weak", "emergency"],
+            "regimes": {
+                "normal": {
+                    "grid_capacity_kw": 1200.0,
+                    "generator_capacity_kw": 900.0,
+                    "storage_soc_pct": 72.0,
+                },
+                "constrained": {
+                    "grid_capacity_kw": 850.0,
+                    "generator_capacity_kw": 650.0,
+                    "storage_soc_pct": 55.0,
+                },
+                "weak": {
+                    "grid_capacity_kw": 500.0,
+                    "generator_capacity_kw": 480.0,
+                    "storage_soc_pct": 38.0,
+                },
+                "emergency": {
+                    "grid_capacity_kw": 180.0,
+                    "generator_capacity_kw": 300.0,
+                    "storage_soc_pct": 24.0,
+                },
+            },
+        },
+    }
+    low_forecast = np.full(len(timestamps), 300.0)
+    high_forecast = np.full(len(timestamps), 2000.0)
+    low = _simulate_supply_context(timestamps, low_forecast, config, seed=17)
+    high = _simulate_supply_context(timestamps, high_forecast, config, seed=17)
+    columns = [
+        "grid_available_capacity_kw",
+        "generator_available_capacity_kw",
+        "storage_soc_pct",
+        "storage_available_discharge_power_kw",
+    ]
+    assert np.allclose(low[columns], high[columns])
+    assert set(low["supply_source_type"]) == {"synthetic_independent_supply"}

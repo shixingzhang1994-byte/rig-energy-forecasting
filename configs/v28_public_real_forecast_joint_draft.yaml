@@ -1,0 +1,95 @@
+protocol:
+  id: V28-B-PUBLIC-ELECTRICAL-JOINT-FORECAST-DRAFT-20260921
+  status: draft_tests_locked
+  tests_may_be_opened: false
+  reason_not_frozen: tsukuba_download_and_channel_contract_pending
+  random_seed: 20260921
+  primary_horizon_minutes: 1
+  secondary_horizons_minutes: [15, 60]
+  split_rule: chronological_60_20_20_by_wall_clock_with_boundary_gap
+  analysis_unit: utc_day_nested_within_dataset
+
+shared_forecast:
+  target: measured_load_kw
+  load_lags_minutes: [0, 1, 5, 15, 30, 60, 120]
+  rolling_windows_minutes: [5, 15, 60, 120]
+  base_models:
+    ridge:
+      alpha: 10.0
+    hist_gradient_boosting:
+      loss: absolute_error
+      learning_rate: 0.06
+      max_iter: 250
+      max_leaf_nodes: 31
+      min_samples_leaf: 40
+      l2_regularization: 1.0
+      early_stopping: false
+  ensemble:
+    method: nonnegative_convex_validation_weighting
+    l2_penalty: 0.0001
+  causal_error_feedback:
+    release_rule: update_only_when_prior_target_timestamp_is_not_after_current_origin
+    smoothing: 0.05
+    correction_clip_training_mase_multipler: 5.0
+  mandatory_baselines: [persistence, rolling_mean_60, ridge, hist_gradient_boosting]
+  primary_metric: mase
+  companion_metrics: [mae_kw, rmse_kw, nmae_mean_load, bias_kw]
+  paired_interval:
+    unit: utc_day
+    method: cluster_bootstrap
+    replicates: 2000
+    confidence_level: 0.95
+  probability_scenarios:
+    status: pending_implementation_before_freeze
+    source: validation_residuals_only
+    preserve_complete_horizon_vectors: true
+
+datasets:
+  refit_house4:
+    eligibility: included
+    prepared_path: artifacts/v28_public_real_validation/prepared/refit_house4_1min.parquet
+    prepared_sha256: ecaf3b2904a98c3fbf111af62c80c5598388948ed1a65538b233c87a6815c998
+    train_target_end: '2014-10-26T23:59:00Z'
+    validation_target_start: '2014-10-28T00:00:00Z'
+    validation_target_end: '2015-03-02T23:59:00Z'
+    test_target_start: '2015-03-04T00:00:00Z'
+    test_target_end: '2015-07-07T09:57:00Z'
+    test_status: locked_unopened
+
+  uci_household_power:
+    eligibility: included
+    prepared_path: artifacts/v28_public_real_validation/prepared/uci_household_1min.parquet
+    prepared_sha256: e2ec6a3344ee1068a1a822a92e494248ad4c8d188d770541eb4d709b56bd7ccb
+    train_target_end: '2009-04-29T23:59:00Z'
+    validation_target_start: '2009-05-01T00:00:00Z'
+    validation_target_end: '2010-02-11T23:59:00Z'
+    test_target_start: '2010-02-13T00:00:00Z'
+    test_target_end: '2010-11-26T21:02:00Z'
+    test_status: locked_unopened
+
+  tsukuba_microgrid:
+    eligibility: pending_channel_contract
+    prepared_path: null
+    prepared_sha256: null
+    split_boundaries: pending_timestamp_only_audit
+    test_status: locked_unopened
+
+excluded_from_confirmation:
+  opencem:
+    reason: >-
+      The planned 2026-03-02 through 2026-04-07 test period was opened during
+      pipeline development before the joint three-dataset freeze.
+    permitted_use: exploratory_pipeline_pilot_and_dispatch_development_only
+  mesa_del_sol:
+    reason: current network validation blocks raw file acquisition
+    permitted_use: metadata_only_until_verified_download
+
+claim_boundaries:
+  allow:
+    - cross-domain point-forecast validation on named measured electrical datasets
+    - report heterogeneous or adverse results without dataset substitution
+  prohibit:
+    - target-rig field validation
+    - target-rig closed-loop performance
+    - treating household sites as microgrids or drilling rigs
+    - changing dataset eligibility after any locked test target is opened

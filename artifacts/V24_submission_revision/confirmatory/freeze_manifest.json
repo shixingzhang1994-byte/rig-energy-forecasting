@@ -1,0 +1,347 @@
+{
+  "protocol_id": "V24-ENERGY-REPORTS-SUBMISSION-REVISION-20260915",
+  "status": "frozen_before_any_prospective_V24_outcome",
+  "protocol_sha256": "c3a416bf9f61d3aa055cce52ab585751529868c07b8ddc6991e10a9d5280110a",
+  "prospective_seed_queue": [
+    20261120,
+    20261121,
+    20261122,
+    20261123,
+    20261124,
+    20261125,
+    20261126,
+    20261127,
+    20261128,
+    20261129,
+    20261130,
+    20261131,
+    20261132,
+    20261133,
+    20261134,
+    20261135,
+    20261136,
+    20261137,
+    20261138,
+    20261139,
+    20261140,
+    20261141,
+    20261142,
+    20261143,
+    20261144,
+    20261145,
+    20261146,
+    20261147,
+    20261148,
+    20261149,
+    20261150,
+    20261151,
+    20261152,
+    20261153,
+    20261154,
+    20261155,
+    20261156,
+    20261157,
+    20261158,
+    20261159
+  ],
+  "required_eligible_holdouts": 12,
+  "stopping_rule": "retain seeds in queue order and stop at the first twelve upstream-window-eligible seeds",
+  "primary_contrasts": [
+    "Full-Risk-SOC-Supervisory-MILP_minus_Rule-Based_EENS",
+    "Full-Risk-SOC-Supervisory-MILP_minus_Point-Forecast-MILP_EENS",
+    "Full-Risk-SOC-Supervisory-MILP_minus_Risk-Adaptive-Residual-CVaR-MILP_EENS"
+  ],
+  "development_record": {
+    "path": "artifacts/V24_submission_revision/development/seed_20261100/development_result.json",
+    "sha256": "e426aece2a04a6e8966211e73f1ba641b5f9c28bee5295b44745adf7f9127878",
+    "size_bytes": 1225
+  },
+  "development_calibration": {
+    "path": "artifacts/V24_submission_revision/development/seed_20261100/scenario_calibration_manifest.json",
+    "sha256": "26a46884d3c9d990d470151f9ab539dd9f43fcc0a5b246a0fc5b961b258881bf",
+    "size_bytes": 3322
+  },
+  "development_risk_metadata": {
+    "path": "artifacts/V24_submission_revision/development/seed_20261100/risk/run_metadata.json",
+    "sha256": "d7e12ba70c3a468e11ff7fd2c6f018aeb3313f81587909f5576d61971ea22c0b",
+    "size_bytes": 1916
+  },
+  "development_metrics": {
+    "path": "artifacts/V24_submission_revision/development/seed_20261100/dispatch_matched/dispatch_metrics.csv",
+    "sha256": "b57072889a9e9d22013256e736754fb7369f1b29247a0b42533a6b851159f92b",
+    "size_bytes": 11820
+  },
+  "frozen_files": [
+    {
+      "path": "configs/v24_submission_revision.yaml",
+      "sha256": "c3a416bf9f61d3aa055cce52ab585751529868c07b8ddc6991e10a9d5280110a",
+      "size_bytes": 8448
+    },
+    {
+      "path": "configs/v24_dispatch_matched.yaml",
+      "sha256": "7b4215fa0790b7feebf6f63f2d79370c2be2c01fae4e88aeeb528879abbc9d71",
+      "size_bytes": 4128
+    },
+    {
+      "path": "configs/v14_public_evidence_calibration.yaml",
+      "sha256": "5776df93932cff79fd576384c8b94f37c136b0fcce568d9e1b125320ca7c0c4d",
+      "size_bytes": 14763
+    },
+    {
+      "path": "configs/v5_acceptance.yaml",
+      "sha256": "0ad4f84b7f0e6b513d9f93ebfe623c15f3b1427a4548cea9560d5495acc1e730",
+      "size_bytes": 3226
+    },
+    {
+      "path": "configs/v6_dispatch_development.yaml",
+      "sha256": "eb3a0e99c203c046fbbe1ab7f2de4e84110ec0ce681dfb6f951e3d1d9ec16aa9",
+      "size_bytes": 1054
+    },
+    {
+      "path": "configs/synthetic_default.yaml",
+      "sha256": "18d0704c07ba486d65ecfb4c1b51a36cfd77f807f4097e909035fa6465a3d86a",
+      "size_bytes": 3907
+    },
+    {
+      "path": "configs/risk_default.yaml",
+      "sha256": "46ba902175308486b97b65cf6a661533071a021e39a32c4023682a1a483f3d5a",
+      "size_bytes": 5101
+    },
+    {
+      "path": "configs/dispatch_default.yaml",
+      "sha256": "dcc230cb726dfc3b4269431b989a0196945d8b8c16dc82b5d15d3cee482b1b8a",
+      "size_bytes": 3629
+    },
+    {
+      "path": "environment.yml",
+      "sha256": "df6f47541fd5b6769630a718e8aa54e219566d5af151ceb5840faea8aa2b0754",
+      "size_bytes": 406
+    },
+    {
+      "path": "scripts/generate_v14_calibrated.py",
+      "sha256": "0bff52af4c03880eece0c0eea3bde5cf8ea0e6ae233d0980725f09add0e8d461",
+      "size_bytes": 4488
+    },
+    {
+      "path": "scripts/audit_v14_calibration.py",
+      "sha256": "7225611466a2f9427a73276d9d41335250fca5612c01ed99a4ac7728d9aa268c",
+      "size_bytes": 6830
+    },
+    {
+      "path": "scripts/run_benchmark.py",
+      "sha256": "430244c256cad4c8422b5b51c3eb98cf910cbfe24d562f13008ee010b077d152",
+      "size_bytes": 1526
+    },
+    {
+      "path": "scripts/run_risk_benchmark.py",
+      "sha256": "7e51bc4ff1c6103675bb5e2e1eb1d03e67cf0b8ed03b82714efa21da05fab9a5",
+      "size_bytes": 1906
+    },
+    {
+      "path": "scripts/run_v14_dispatch_benchmark.py",
+      "sha256": "368268e0ce40383f5cd6367e53dc1905635564d75dbfc03a3c5664d3c333a2a7",
+      "size_bytes": 1582
+    },
+    {
+      "path": "scripts/run_v22_scenario_calibration.py",
+      "sha256": "f55e1f3a9d1aad8b9e68fba8d56e79f9fa149b05b5edb54abe5e8e8ed2658020",
+      "size_bytes": 8573
+    },
+    {
+      "path": "scripts/run_v22_dispatch_benchmark.py",
+      "sha256": "d92befc55c000ae050c8722dbe7a43a6ef7f7459dcbe69203a4ce715b5b00649",
+      "size_bytes": 1682
+    },
+    {
+      "path": "scripts/run_v23_protocol_seed.py",
+      "sha256": "f3a30c94b5c47bf9122ba36b92b187e425519258cbe74c7c11d289ac563d50cb",
+      "size_bytes": 17122
+    },
+    {
+      "path": "scripts/run_v24_protocol_seed.py",
+      "sha256": "7bcea0f85fcc7fb66e50cc575d6b523f7fe1f478764a8aae5bc47aee2bbc8ac1",
+      "size_bytes": 2507
+    },
+    {
+      "path": "scripts/analyze_v23_confirmatory.py",
+      "sha256": "50df38000d80ecb1334d807a07547f45ff15cfbeedee7bbad0b0df507a04ffb7",
+      "size_bytes": 10484
+    },
+    {
+      "path": "scripts/analyze_v24_confirmatory.py",
+      "sha256": "30849475d30bec9e4050a5da76ca3e21b772fac4dba146b142e38e6df705fc34",
+      "size_bytes": 458
+    },
+    {
+      "path": "scripts/freeze_v23_for_holdout.py",
+      "sha256": "4c94ae9a45f9ad967674236e5f4b722589515e0146827d8cd09255a4ebd9fd73",
+      "size_bytes": 7674
+    },
+    {
+      "path": "scripts/freeze_v24_for_holdout.py",
+      "sha256": "7cd36a3db7690324996da3b61ac337b72cadd8b27df36bd59435a6a30f063922",
+      "size_bytes": 1009
+    },
+    {
+      "path": "src/rig_energy/__init__.py",
+      "sha256": "0933eef7ac6169b8a92b871e99cb43f4158770e40f9725ae37d568046c6c6723",
+      "size_bytes": 78
+    },
+    {
+      "path": "src/rig_energy/analysis/__init__.py",
+      "sha256": "f9bb2d1b3ab09436fffb3edb67a4802751b62eb1808ec7b00bc988aac313627b",
+      "size_bytes": 86
+    },
+    {
+      "path": "src/rig_energy/analysis/load_features.py",
+      "sha256": "e00869a32d5590ee4da362a7e1a6e85d0fc3a2c5fcec7c956e3da86b522ea92a",
+      "size_bytes": 17895
+    },
+    {
+      "path": "src/rig_energy/data/__init__.py",
+      "sha256": "a690a2819a5e7922cf8e40e2dd39e0c290e45216ef9f4e86fcb27b55431a634d",
+      "size_bytes": 254
+    },
+    {
+      "path": "src/rig_energy/data/adapters.py",
+      "sha256": "7188bbb6a3d38addd3a1ef7a69c107253da415ab66d51e30528b9a8b83556ed8",
+      "size_bytes": 4683
+    },
+    {
+      "path": "src/rig_energy/data/external_adapter_v16.py",
+      "sha256": "e3a206f45f43151d2195f5f0510dc8c682e1c1b601bf69ab0abcb244c62ddc6d",
+      "size_bytes": 10192
+    },
+    {
+      "path": "src/rig_energy/data/public_calibration.py",
+      "sha256": "3021e901088792e6a3f8b14a141cfcd88c490f858e7368166262f04a9e82b727",
+      "size_bytes": 9550
+    },
+    {
+      "path": "src/rig_energy/data/schema.py",
+      "sha256": "020a2a0428763febd92be1c0ad916eb99c614e04f50a3d5bdcca6fb4366abfb5",
+      "size_bytes": 4448
+    },
+    {
+      "path": "src/rig_energy/data/synthetic.py",
+      "sha256": "acc7d0dca2ce17f12e20dfe023e74c8c2d5d0636a5cf432106f0d112a4dfe9a8",
+      "size_bytes": 15632
+    },
+    {
+      "path": "src/rig_energy/data/windowing.py",
+      "sha256": "f60d3983c6dc0b2b1939cd393edabda0eeceecea46d0db65ec69c1e585ce7708",
+      "size_bytes": 5762
+    },
+    {
+      "path": "src/rig_energy/data/witsml_external.py",
+      "sha256": "01e914c09b9fc8862cec878017dba119f4870aa852ab40277d1a28f7d7489b0b",
+      "size_bytes": 10855
+    },
+    {
+      "path": "src/rig_energy/experiment.py",
+      "sha256": "f50d62ab85757e14b79e4eaf13d1761a9ffc9de799ae511d175d416ddddc84c3",
+      "size_bytes": 29034
+    },
+    {
+      "path": "src/rig_energy/metrics.py",
+      "sha256": "a51036700f1ad407e7873b865cea03719468da9f6a9fad651a7798acea0c61b7",
+      "size_bytes": 1451
+    },
+    {
+      "path": "src/rig_energy/models/__init__.py",
+      "sha256": "b3955587cffa1828915c7091b26ecddd0976fff936370fe66f8bf09a3642483c",
+      "size_bytes": 671
+    },
+    {
+      "path": "src/rig_energy/models/ensemble.py",
+      "sha256": "6403a3869bbc8e7a3b2ba16c21f5cbe6b728ae94465a6e622b8ca94798b53842",
+      "size_bytes": 4913
+    },
+    {
+      "path": "src/rig_energy/models/neural.py",
+      "sha256": "ee3d4e12d44fb706e745841a39671fff5fe6fb7992ec7d8d2331fa2162ee1a52",
+      "size_bytes": 18866
+    },
+    {
+      "path": "src/rig_energy/optimization/__init__.py",
+      "sha256": "f9c3e772b8f04016f7c2daa7050f70d42f3b142518cd8ee42c104e04e7ff87a0",
+      "size_bytes": 83
+    },
+    {
+      "path": "src/rig_energy/optimization/dispatch.py",
+      "sha256": "e9f680078dd3fee36ee8d73f3d3afdd0d82a91868ad42d80aba4b4d47fa154c5",
+      "size_bytes": 125251
+    },
+    {
+      "path": "src/rig_energy/optimization/scenario_calibration.py",
+      "sha256": "11ab73ba6fac869375a710299daba5aad8059becb833dee1b1efa8b3692183bf",
+      "size_bytes": 7896
+    },
+    {
+      "path": "src/rig_energy/risk/__init__.py",
+      "sha256": "c9574ea5d5ca4a87b66a16441b3dd201e68cae067326491fb86d91257ae30d74",
+      "size_bytes": 227
+    },
+    {
+      "path": "src/rig_energy/risk/evidence_theory.py",
+      "sha256": "1420c32b5cd5516c707eaaedda4fd3dd237d65508bb46ae32f01b884928e6d92",
+      "size_bytes": 9448
+    },
+    {
+      "path": "src/rig_energy/risk/evidence_theory_v20.py",
+      "sha256": "e728c5d95193e0c3963e8fa4ecd2780ca05991618482daefd96a3b379e7369a0",
+      "size_bytes": 6580
+    },
+    {
+      "path": "src/rig_energy/risk/experiment.py",
+      "sha256": "fb79b2724f1afe8f9056d7c4f04a95711155f559f9ebbc35bba49fba8d2eb659",
+      "size_bytes": 67517
+    },
+    {
+      "path": "src/rig_energy/risk/labels.py",
+      "sha256": "e34e02c27e9956c05bb6d6780898a6292557c7a22c8d90b22e7b782f9da58c73",
+      "size_bytes": 3037
+    },
+    {
+      "path": "src/rig_energy/risk/models.py",
+      "sha256": "736bc462b635f335b0813b8e2292e5aef257b8d3bb890cbddc5730716c6fe28c",
+      "size_bytes": 7845
+    },
+    {
+      "path": "src/rig_energy/safety/__init__.py",
+      "sha256": "8ee6d34f62a8da8f91b718d7833956761596379a6e8343bca2c7e1ccaa5822ac",
+      "size_bytes": 75
+    },
+    {
+      "path": "src/rig_energy/safety/emergency_load.py",
+      "sha256": "3fd077a6a06fed49b88e3086507db8e4444d2c2df18b74e5f0478f8247a5b5a1",
+      "size_bytes": 4770
+    },
+    {
+      "path": "src/rig_energy/training.py",
+      "sha256": "c6571789b3f1d3964966aaf72a3e7894685055ef6222cb73f20e3f7aaa6e8012",
+      "size_bytes": 5769
+    },
+    {
+      "path": "src/rig_energy/validation/__init__.py",
+      "sha256": "034c1faa5be7de1e20e77ae94a6b56b6eabd53fd2113077951e1152669e6c4a7",
+      "size_bytes": 73
+    },
+    {
+      "path": "src/rig_energy/validation/frozen_v15_external.py",
+      "sha256": "ec3efc081b71af3d218c68e5273dd39b20404bec6c6869881fff872450cebdd0",
+      "size_bytes": 30065
+    },
+    {
+      "path": "src/rig_energy/validation/multivariate_causal.py",
+      "sha256": "e0b871d02aa41ffb5d0bf6a4617c44ad0520e5dfdbe28b81a21e571ad40d4a52",
+      "size_bytes": 22139
+    },
+    {
+      "path": "src/rig_energy/validation/statistical_claims.py",
+      "sha256": "4ef42df39699deb7e503ca00d67c91aa10ce5debc8fcd5c0e7be43de90ea0a78",
+      "size_bytes": 1445
+    }
+  ],
+  "post_freeze_rule": "Any frozen-file hash change invalidates prospective status. Retain every upstream-eligible seed in queue order regardless of outcome."
+}

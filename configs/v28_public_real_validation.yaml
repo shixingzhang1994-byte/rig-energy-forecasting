@@ -1,0 +1,46 @@
+protocol:
+  id: V28-PUBLIC-REAL-ELECTRICAL-20260921
+  status: frozen_before_test_evaluation
+  purpose: >-
+    Evaluate short-horizon load forecasting and real-trajectory dispatch on
+    measured public electrical data without presenting it as drilling-rig
+    field validation.
+  random_seed: 20260921
+
+opencem:
+  prepared_path: artifacts/v28_public_real_validation/prepared/opencem_1min.parquet
+  prepared_sha256: f33b8b6c9a5de61eaa45a3c3823bc43be07bfc0370a9dc3cdc3cbe1eb3fae725
+  source_commit: 5884d253a5267fb240b7a8df6fa9e4d49a905167
+  target: measured_load_kw
+  frequency_minutes: 1
+  horizons_minutes: [15, 60]
+  load_lags_minutes: [0, 1, 5, 15, 30, 60, 120]
+  rolling_windows_minutes: [5, 15, 60, 120]
+  train_target_end: '2026-01-15T23:59:00Z'
+  validation_target_start: '2026-01-17T00:00:00Z'
+  validation_target_end: '2026-02-28T23:59:00Z'
+  test_target_start: '2026-03-02T00:00:00Z'
+  test_target_end: '2026-04-07T08:23:00Z'
+  selection_metric: mae_kw
+  candidate_models:
+    - ridge
+    - hist_gradient_boosting
+  mandatory_baselines:
+    - persistence
+    - rolling_mean_60
+  bootstrap:
+    unit: utc_day
+    replicates: 2000
+    confidence_level: 0.95
+
+claim_boundaries:
+  measured_public_electrical_data: true
+  target_rig_measurements: false
+  target_rig_closed_loop_validation: false
+  future_storage_or_grid_channels_used_as_forecast_features: false
+  allowed: >-
+    Cross-domain validation on measured campus-microgrid load and hybrid
+    replay using real load trajectories.
+  prohibited: >-
+    Field-validated rig power forecasting, field-validated rig dispatch, or
+    direct operational deployment claims.

@@ -1,0 +1,59 @@
+{
+  "protocol_id": "V24-ENERGY-REPORTS-SUBMISSION-REVISION-20260915",
+  "status": "pass",
+  "retained_seeds": [
+    20261120,
+    20261121,
+    20261122,
+    20261123,
+    20261124,
+    20261125,
+    20261126,
+    20261127,
+    20261128,
+    20261129,
+    20261130,
+    20261131
+  ],
+  "freeze_hash_mismatch_count": 0,
+  "seed_manifest_hash_mismatch_count": 0,
+  "technical_failure_count": 0,
+  "exact_trajectory_paths_used": true,
+  "common_demand_denominator_verified_across_methods": true,
+  "legacy_normalized_eens_issue": {
+    "detected": true,
+    "affected_method": "Residual-CVaR-MILP",
+    "cause": "historical wildcard also matched Risk-Adaptive-Residual-CVaR-MILP",
+    "affected_fields": [
+      "Residual-CVaR-MILP demand_energy_kwh",
+      "Residual-CVaR-MILP normalized_eens_kwh_per_mwh"
+    ],
+    "unaffected_fields": [
+      "raw EENS",
+      "three preregistered primary EENS contrasts",
+      "exact sign-flip p-values"
+    ],
+    "correction_location": "artifacts/V24_submission_revision/confirmatory/postfreeze_audit"
+  },
+  "risk_validation_fallback": {
+    "seed_count": 12,
+    "learned_guard_seed_count": 11,
+    "fallback_seed_count": 1,
+    "fallback_seeds": [
+      20261131
+    ],
+    "learned_guard_macro_f1_mean": 0.7401292443440894,
+    "learned_guard_macro_f1_min": 0.6354685400180045,
+    "learned_guard_high_risk_recall_mean": 0.9911039787434697,
+    "learned_guard_high_risk_recall_min": 0.9835319609967498,
+    "learned_guard_severe_recall_mean": 0.9875075566235182,
+    "learned_guard_severe_recall_min": 0.9776155135264544,
+    "fallback_is_not_certified_learned_risk": true
+  },
+  "claim_boundaries": [
+    "V24 is publicly constrained synthetic active-power simulation, not field validation.",
+    "The fallback seed remains in every confirmatory dispatch estimate.",
+    "Component contrasts other than the preregistered supervisor contrast are exploratory.",
+    "Operating-cost increases must be reported separately from EENS reductions."
+  ]
+}

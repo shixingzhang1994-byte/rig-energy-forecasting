@@ -1,0 +1,55 @@
+{
+  "seed": 20261123,
+  "files": [
+    {
+      "path": "configs/v24_submission_revision.yaml",
+      "sha256": "c3a416bf9f61d3aa055cce52ab585751529868c07b8ddc6991e10a9d5280110a",
+      "size_bytes": 8448
+    },
+    {
+      "path": "configs/v24_dispatch_matched.yaml",
+      "sha256": "7b4215fa0790b7feebf6f63f2d79370c2be2c01fae4e88aeeb528879abbc9d71",
+      "size_bytes": 4128
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/eligibility.json",
+      "sha256": "26b183ea8ed8c507592f589bb9093e77c5427148188d903c339a9917e0d5b1ed",
+      "size_bytes": 1168
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/risk/run_metadata.json",
+      "sha256": "b08b7630a670dabb4d9354944ae609d40817e93887a57e565bda338dbab6acda",
+      "size_bytes": 1858
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/risk/risk_predictions.csv",
+      "sha256": "f3718f8226e5bb02090897818105d4f1af72818aaa047f462fc6933afddd3bf7",
+      "size_bytes": 10839254
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/source/forecast/validation_residual_library.npz",
+      "sha256": "5005a2a4fa759212af5006b776e904bac3ab2d2f73a92a5930e0e4e6f7416c19",
+      "size_bytes": 2176114
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/scenario_calibration_manifest.json",
+      "sha256": "b5e869f97bef8d7c3b4111a3876758dad3ca2c86d8be9d94c997af4cff276eab",
+      "size_bytes": 3326
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/dispatch_matched/dispatch_metrics.csv",
+      "sha256": "4453bb5a93b44a08ad88d5626aa7484771dfe577dcd2102a86bb0ebb9b2a1593",
+      "size_bytes": 11764
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/method_summary.csv",
+      "sha256": "616a57d99ca95a6c811ba61148f335a17e5f96bf8e51bf6b30828a42ab7a89fd",
+      "size_bytes": 1734
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261123/result.json",
+      "sha256": "5ef383e7c4354d39c23ec0f622ef61ae7fcff239461256f300ce4afe3efc0023",
+      "size_bytes": 2446
+    }
+  ]
+}

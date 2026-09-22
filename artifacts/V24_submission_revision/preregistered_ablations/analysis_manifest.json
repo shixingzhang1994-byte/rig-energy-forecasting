@@ -1,0 +1,28 @@
+{
+  "protocol_id": "V24-ENERGY-REPORTS-SUBMISSION-REVISION-20260915",
+  "status": "pass",
+  "completed_at_utc": "2026-09-15T17:47:14.653500+00:00",
+  "seed_count": 12,
+  "seeds": [
+    20261120,
+    20261121,
+    20261122,
+    20261123,
+    20261124,
+    20261125,
+    20261126,
+    20261127,
+    20261128,
+    20261129,
+    20261130,
+    20261131
+  ],
+  "methods": [
+    "Full-Point-Scenario-Ablation-MILP",
+    "Full-Fixed-CVaR-Ablation-MILP",
+    "Full-No-Generator-First-Ablation-MILP"
+  ],
+  "all_null_and_adverse_results_retained": true,
+  "claim_status": "preregistered_exploratory_outside_primary_family",
+  "summary_path": "artifacts/V24_submission_revision/preregistered_ablations/component_effect_summary.csv"
+}

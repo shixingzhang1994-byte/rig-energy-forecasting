@@ -1,0 +1,90 @@
+protocol:
+  name: paper-v15-frozen-extension-holdouts-v2
+  purpose: "在20261013仅因结果揭示前校准门不可评估后，锁定替补队列并取得两个可评估V15扩展留出"
+  artifact_namespace: paper_v15_extension_holdouts_v2
+  simulation_days: 21
+  expected_effective_dispatch_hours: 37.7
+  diagnostic_seed_excluded_from_evidence: 20261004
+  upstream_ineligible_seed: 20261013
+  upstream_ineligible_reason: public_evidence_calibration_gate_failed_before_dispatch
+  development_seed_order: []
+  holdout_seed_order: [20261014, 20261015, 20261016, 20261017]
+  required_eligible_seeds_per_phase: 2
+  eligibility_timing: before_dispatch_and_before_any_controller_outcome
+  eligibility_inputs: [public_calibration_audit, operation_state_codes, transition_flags, supply_regime]
+  calibration_locked_from: configs/v14_public_evidence_calibration.yaml
+  frozen_controller_source: artifacts/v15_generator_first_reserve/freeze_manifest.json
+  extension_status: prospective_paper_extension_no_tuning
+  only_controller_delta_from_v14: "对监督方案的所有模式，实时安全层用已承诺机组可用裕量替代可避免的储能放电；不为充电额外启机"
+
+fixed_unit_commitment:
+  unit_count: 4
+  unit_rated_power_kw: 240.0
+  unit_minimum_stable_power_kw: 120.0
+  unit_ramp_kw_per_step: 30.0
+  minimum_up_steps: 12
+  minimum_down_steps: 6
+  startup_cost_yuan_per_unit: 5.0
+
+plant_and_cost_overrides:
+  plant:
+    grid:
+      rated_capacity_kw: 1300.0
+    generator:
+      rated_power_kw: 960.0
+      minimum_stable_power_kw: 480.0
+      ramp_kw_per_step: 120.0
+    storage:
+      rated_power_kw: 500.0
+      energy_capacity_kwh: 133.0
+      soc_initial: 0.65
+      soc_min: 0.15
+      soc_max: 0.90
+      charge_efficiency: 0.95
+      discharge_efficiency: 0.95
+  cost:
+    grid_price_yuan_per_kwh: 0.710425
+    diesel_price_yuan_per_l: 7.50
+    storage_degradation_yuan_per_kwh: 0.15
+    unserved_energy_penalty_yuan_per_kwh: 100.0
+
+supervisor:
+  enabled: true
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.30
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+  low_soc_minimum_committed_units: 2
+  low_soc_forecast_deficit_guard_enabled: true
+  low_soc_forecast_deficit_margin_kw: 0.0
+  grid_headroom_reserve_enabled: true
+  grid_headroom_reserve_target_soc: 0.75
+  grid_headroom_reserve_max_storage_power_fraction: 0.20
+  generator_first_storage_reserve_enabled: true
+
+performance_gate:
+  safety_reference_methods: [Rule-Based, ML-Robust-MPC]
+  aggregate_unserved_tolerance_kwh: 1.0e-9
+  scenario_regret_reference_methods: [Rule-Based, ML-Robust-MPC]
+  maximum_single_scenario_unserved_regret_kwh: 0.50
+  maximum_risk_adjusted_cost_ratio_vs_ml_robust: 1.005
+  maximum_decision_seconds: 5.0
+  require_zero_physical_violations: true
+  require_not_dominated_by_ml_robust: true
+
+final_acceptance:
+  required_reported_holdouts: 2
+  require_every_holdout_gate_pass: false
+  report_scenario_level_regret: true
+  report_all_ineligible_seeds: true
+  statistical_claim: four_independent_frozen_holdouts_after_combining_original_and_extension
+
+claim_boundary:
+  - "20261013仅因校准门在调度前失败而排除，未运行控制器，也未观察任何性能结果。"
+  - "20261014至20261017的替补顺序在其中任何控制结果揭示前锁定，只取最先两个可评估种子。"
+  - "本扩展不改变V15控制器、预测器、风险模型、设备参数、价格、场景规则或性能门。"
+  - "原始V15验收仍以20261011和20261012为准；扩展结果单独报告并可与原始留出合并作四留出描述性稳健性分析。"
+  - "仍只是公开证据约束的合成仿真，不代表现场SCADA、实机或硬件闭环有效性。"

@@ -1,0 +1,15 @@
+{
+  "protocol_id": "V24-ENERGY-REPORTS-SUBMISSION-REVISION-20260915",
+  "completed_at_utc": "2026-09-16T00:33:36.691738+00:00",
+  "status": "pass",
+  "seed_count": 12,
+  "trajectory_count": 108,
+  "freeze_hash_mismatch_count": 0,
+  "evidence_manifest_mismatch_count": 0,
+  "all_seed_audits_pass": true,
+  "aggregate_seed_effects_exactly_reproduced": true,
+  "maximum_power_balance_error_kw": 4.547473508864641e-13,
+  "startup_delay_violation_count": 0,
+  "all_null_and_adverse_results_retained": true,
+  "claim_status": "preregistered_exploratory_outside_primary_family"
+}

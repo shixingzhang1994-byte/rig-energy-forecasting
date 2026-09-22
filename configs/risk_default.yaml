@@ -128,6 +128,11 @@ operational_selection:
   minimum_validation_macro_f1: 0.70
   # 警告级和严重级触发不同调度强度，因此严重级必须单独过门槛。
   minimum_validation_severe_recall: 0.80
+  # If validation cannot certify any learned risk model, keep the seed and
+  # switch the dispatch-facing signal to the deterministic most-conservative
+  # level.  This is a fail-safe operating policy, not evidence that the
+  # learned classifier passed its validation gates.
+  validation_gate_failure_policy: always_severe_dispatch_guard
   # 仅用验证集校准 Ordinal-XGBoost 的严重级哨兵阈值，测试集不参与。
   severe_sentinel_validation_recall_target: 0.85
   # 分类等级用于解释；调度保护等级只对高/严重风险安全动作负责。

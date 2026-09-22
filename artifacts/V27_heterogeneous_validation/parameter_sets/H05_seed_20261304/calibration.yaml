@@ -1,0 +1,482 @@
+metadata:
+  version: V27-heterogeneous-family
+  title: 公开证据约束的代表性交流电驱陆地钻机标定
+  reviewed_on: '2026-08-31'
+  target_scope: 约250—375吨、约4000 m井深、电网-柴油机-储能混合供能的陆地钻机
+  claim_boundary: publicly constrained heterogeneous simulation, not field or HIL
+    validation
+  calibration_rule: 优先用现场研究标定运行分布，用厂家资料限制设备上限，用专利和行业案例交叉核对架构，无公开真值者必须标为工程假设
+sources:
+- id: P_DAI_2019
+  source_type: peer_reviewed_paper
+  title: Analysis of the Peak Load Leveling Mode of a Hybrid Power System with Flywheel
+    Energy Storage in Oil Drilling Rig
+  year: 2019
+  identifier: doi:10.3390/en12040606
+  url: https://www.mdpi.com/1996-1073/12/4/606
+  used_for:
+  - installed_capacity
+  - base_and_peak_load
+  - tripping_period
+  - anti_overclaim
+  evidence: 总装机2—3 MW；峰900—1200 kW、谷200—600 kW；起下钻周期2—4 min；储能节油受机组容量匹配显著影响
+  confidence: high
+- id: P_CIPEK_2016
+  source_type: peer_reviewed_paper
+  title: Oil drilling rig diesel power-plant fuel efficiency improvement potentials
+    through rule-based generator scheduling and utilization of battery energy storage
+    system
+  year: 2016
+  identifier: doi:10.1016/j.enconman.2016.05.022
+  url: https://www.sciencedirect.com/science/article/pii/S0196890416303909
+  used_for:
+  - generator_fleet
+  - storage_energy
+  - fuel_saving_boundary
+  evidence: 30天实际钻机微网数据；4台875 kVA/700 kW机组；最恶劣储能事件94 kWh，按80%DOD得117.5 kWh；仿真节油约12%
+  confidence: high
+- id: P_CHUPIN_2022
+  source_type: peer_reviewed_paper
+  title: Energy storage systems for drilling rigs
+  year: 2022
+  identifier: doi:10.1007/s13202-021-01248-5
+  url: https://link.springer.com/article/10.1007/s13202-021-01248-5
+  used_for:
+  - daily_average_load
+  - storage_power_energy
+  - transient_support
+  - storage_size
+  evidence: 20台钻机2017—2019测量；日均功率350—500 kW；经济储能150—350 kWh；电池500 kW/120 s；原型133 kWh
+  confidence: high
+- id: P_FIELD_2025
+  source_type: peer_reviewed_paper
+  title: Research on superposition-level dual power allocation control strategy for
+    energy storage integration in electrified oil rigs
+  year: 2025
+  url: https://www.sciencedirect.com/science/article/pii/S2352467725003108
+  used_for:
+  - sampling_density
+  - overall_load
+  - drilling_load
+  - ramp_rate
+  - grid_rating
+  evidence: 4000 m井、90天、约700万点；10 kV/2500 kVA；整体均值523 kW；钻进均值1060 kW、最大1561 kW；多工况突变率超过41
+    kW/s
+  confidence: medium_high
+  limitation: 详细分工况数字由出版商索引页和可见预览交叉核对，未获得作者原始序列
+- id: PAT_US8446037
+  source_type: patent
+  title: Power system for a drilling rig
+  year: 2013
+  identifier: US8446037B2
+  url: https://patents.google.com/patent/US8446037B2/en
+  used_for:
+  - base_load
+  - intermittent_peak
+  - dc_bus_architecture
+  evidence: 基础负荷约400—600 kW/更宽600—800 kW；间歇峰1.5 MW、可达2.0 MW；峰值为基荷的2—3倍
+  confidence: medium
+- id: PAT_US20130271083
+  source_type: patent
+  title: Drilling rig power management system
+  year: 2013
+  identifier: US20130271083A1
+  url: https://patents.google.com/patent/US20130271083A1/en
+  used_for:
+  - high_dynamic_load
+  - engine_loading_policy
+  evidence: 发动机容量覆盖平均负荷，储能支持最大短时需求；披露的一种控制使开机发动机不低于80%运行
+  confidence: medium
+- id: PAT_CN112736976
+  source_type: patent
+  title: 钻机混合微电网管理系统
+  year: 2021
+  identifier: CN112736976A
+  url: https://patents.google.com/patent/CN112736976A/en
+  used_for:
+  - generator_battery_supercapacitor_architecture
+  - soc_thresholds
+  evidence: 柴油机-电池-超级电容架构；披露SOC>90%可停机、SOC<30%启机的实施例
+  confidence: medium
+- id: PAT_CN116335625
+  source_type: patent
+  title: 一种钻机储能系统及能量管理方法
+  year: 2023
+  identifier: CN116335625A
+  url: https://patents.google.com/patent/CN116335625A/zh
+  used_for:
+  - peak_shaving_logic
+  - low_load_charging
+  - monitoring_boundary
+  evidence: 低机组负荷时充电、高负荷时放电；要求SOC、测量、通信、热管理和消防
+  confidence: medium
+- id: M_NOV_MUDPUMP
+  source_type: manufacturer
+  title: NOV mud pumps, fluid mixing and processing systems
+  year: 2026
+  url: https://www.nov.com/products/mud-pumps-fluid-mixing-and-processing-systems
+  used_for:
+  - mud_pump_rating
+  evidence: 12-P-160/FD-1600额定1600 hp约1193 kW；14-P-220为2200 hp约1640 kW
+  confidence: high
+- id: M_NOV_DRAWWORKS
+  source_type: manufacturer
+  title: NOV drawworks technology catalog
+  year: 2026
+  url: https://www.nov.com/-/media/nov/files/products/rig/rig-equipment/drawworks-and-hoisting-systems/drawworks-technology-catalog.pdf
+  used_for:
+  - drawworks_rating
+  evidence: DSGD-375连续1500 hp约1119 kW，更大型号额定更高
+  confidence: high
+- id: M_CAT_XQP300
+  source_type: manufacturer
+  title: Caterpillar XQP300 mobile generator set
+  year: 2026
+  url: https://www.cat.com/en_AU/products/new/power-systems/electric-power/mobile-generator-sets/1000024412.html
+  used_for:
+  - generator_prime_rating
+  - fuel_curve
+  evidence: 额定300 kVA prime；50 Hz下50/75/100%负载燃油33.8/47.3/62.5 L/h
+  confidence: high
+- id: M_CAT_LOW_LOAD
+  source_type: manufacturer
+  title: The impact of generator set underloading
+  year: 2026
+  url: https://www.cat.com/en_GB/by-industry/electric-power/Articles/White-papers/the-impact-of-generator-set-underloading.html
+  used_for:
+  - minimum_loading_policy
+  evidence: 柴油机长时轻载需管理；建议每4小时轻载运行至少有30分钟达到30%负载
+  confidence: high
+- id: I_PRECISION_BESS
+  source_type: industry_news
+  title: Precision Drilling EverGreen battery energy storage system case study
+  year: 2022
+  url: https://www.precisiondrilling.com/wp-content/uploads/2023/01/EverGreenEnergy_Case-Study_Battery-Energy-Storage-System_2022.pdf
+  used_for:
+  - field_deployment
+  - soc_start_threshold
+  - saving_boundary
+  evidence: 现场案例展示瞬变支持和SOC 35%自动上线机组；节油/减排为厂商案例，只作边界参考
+  confidence: medium
+- id: I_NABORS_GRID
+  source_type: industry_news
+  title: Nabors and Hess electrify Bakken drilling operations
+  year: 2024
+  url: https://www.nabors.com/nabors-and-hess-electrify-bakken-drilling-operations/
+  used_for:
+  - grid_primary_generator_backup_architecture
+  evidence: 4部钻机以高压线为主供，现场发电为后备；降本减排数字属厂商预期
+  confidence: medium
+- id: I_GRIDASSIST
+  source_type: industry_news
+  title: Innovative power system setups aim to help more rigs access, run on grids
+  year: 2025
+  url: https://drillingcontractor.org/innovative-power-system-setups-aim-to-help-more-rigs-access-run-on-grids-74410
+  used_for:
+  - grid_capacity_scenarios
+  - automatic_source_coordination
+  evidence: EcoCell+GridAssist现场案例的公用电网取电范围0.5—4 MW，充放电与机组启停自动协同
+  confidence: medium
+- id: H_HOMER_MINLOAD
+  source_type: textbook_or_handbook
+  title: HOMER Pro generator minimum load ratio
+  year: 2026
+  url: https://homerenergy.com/products/pro/docs/latest/generator_minimum_load_ratio.html
+  used_for:
+  - minimum_load_model
+  - excess_energy_handling
+  evidence: 微电网仿真需显式建模机组最小负荷；多余功率应进入储能或弃电
+  confidence: high
+- id: H_SANDIA_STORAGE
+  source_type: textbook_or_handbook
+  title: DOE/EPRI Electricity Storage Handbook
+  year: 2015
+  url: https://sandia.gov/ess-ssl/handbook.php
+  used_for:
+  - storage_model_structure
+  - safety_and_interconnection_scope
+  evidence: 储能规划需同时考虑功率、能量、效率、安全和并网；不提供特定钻机唯一参数
+  confidence: high
+- id: S_ETCR8300F
+  source_type: manufacturer
+  title: ETCR8300F三通道柔性线圈电流记录仪
+  year: 2026
+  url: https://www.etcr.net/Three-way-current-recorder/ETCR8300F.html
+  used_for:
+  - measurement_accuracy
+  - sampling_rate
+  - missingness_boundary
+  evidence: 测试精度±2%rdg±5dgt，采样速率2次/s，记录间隔1 s—99 min；开合口位置不当误差可倍增
+  confidence: high
+- id: S_IEC62053_22
+  source_type: standard
+  title: IEC 62053-22:2020 electricity metering equipment
+  year: 2020
+  url: https://webstore.iec.ch/en/publication/29987
+  used_for:
+  - meter_accuracy_classes
+  evidence: 变送器接入式交流有功电能表精度等级0.1S/0.2S/0.5S；仅作工业表计对照，不冒充ETCR仪器精度
+  confidence: high
+- id: E_SHAANXI_202608
+  source_type: government_price
+  title: 2026年8月陕西电网代理购电价格
+  year: 2026
+  url: https://energydc.cn/policy/shaanxi/2026-07/b390ba8d-8bac-11f1-811c-1e0538fafae3
+  used_for:
+  - grid_energy_price
+  - tou_sensitivity
+  evidence: 1—10(20) kV大工业平段0.710425元/kWh，高峰1.030465，低谷0.390385，尖峰1.121905；需量电价另计
+  confidence: medium_high
+  limitation: 汇总页为二次数据页，输配电价组成另与陕西发改部门公开文件交叉核对
+- id: E_NDRC_DIESEL_20260828
+  source_type: government_price
+  title: 2026年8月28日国内成品油价格调整
+  year: 2026
+  url: https://www.ndrc.gov.cn/xwdt/xwfb/202608/t20260828_1407254.html
+  used_for:
+  - diesel_price
+  evidence: 西安中心城市0号标准柴油最高零售价8995元/吨；按密度换算后约7.5元/L
+  confidence: high
+synthetic_overrides:
+  project:
+    seed: 20261001
+    days: 14
+    frequency_seconds: 5
+  simulation:
+    total_power_clip_kw:
+    - 180.0
+    - 2000.0
+    states:
+      idle:
+        duration_minutes:
+        - 12
+        - 25
+      circulation:
+        duration_minutes:
+        - 25
+        - 55
+      drilling:
+        duration_minutes:
+        - 20
+        - 40
+      connection:
+        duration_minutes:
+        - 5
+        - 8
+      tripping:
+        duration_minutes:
+        - 35
+        - 80
+      maintenance:
+        duration_minutes:
+        - 20
+        - 45
+load_calibration:
+  method: 按工况对所有物理功率分量等比标定，冲击值受分工况公开上限截断；标定不读取模型或调度结果
+  total_power_hard_bounds_kw:
+  - 180.0
+  - 2000.0
+  overall_acceptance_mean_kw:
+  - 500.0
+  - 850.0
+  overall_acceptance_max_kw:
+  - 1400.0
+  - 2000.0
+  overall_sources:
+  - P_CHUPIN_2022
+  - P_FIELD_2025
+  - PAT_US8446037
+  state_targets:
+    idle:
+      target_mean_kw: 450.0
+      acceptance_mean_kw:
+      - 400.0
+      - 600.0
+      hard_cap_kw: 650.0
+      source_ids:
+      - PAT_US8446037
+      - P_DAI_2019
+      provenance: direct_range
+    circulation:
+      target_mean_kw: 750.0
+      acceptance_mean_kw:
+      - 600.0
+      - 950.0
+      hard_cap_kw: 1200.0
+      source_ids:
+      - P_DAI_2019
+      - P_CHUPIN_2022
+      provenance: cross_source_derived
+    drilling:
+      target_mean_kw: 1060.0
+      acceptance_mean_kw:
+      - 900.0
+      - 1150.0
+      hard_cap_kw: 1650.0
+      source_ids:
+      - P_FIELD_2025
+      provenance: direct_field_value
+    connection:
+      target_mean_kw: 650.0
+      acceptance_mean_kw:
+      - 500.0
+      - 900.0
+      hard_cap_kw: 1300.0
+      source_ids:
+      - P_DAI_2019
+      - PAT_US8446037
+      provenance: engineering_interpolation
+    tripping:
+      target_mean_kw: 650.0
+      acceptance_mean_kw:
+      - 500.0
+      - 850.0
+      hard_cap_kw: 1250.0
+      source_ids:
+      - P_DAI_2019
+      - P_FIELD_2025
+      - P_CHUPIN_2022
+      provenance: cross_source_derived
+    maintenance:
+      target_mean_kw: 450.0
+      acceptance_mean_kw:
+      - 350.0
+      - 600.0
+      hard_cap_kw: 650.0
+      source_ids:
+      - P_CHUPIN_2022
+      - PAT_US8446037
+      provenance: engineering_interpolation
+measurement_calibration:
+  target_instrument: ETCR8300F-class current logger, converted to aggregate active-power
+    proxy
+  relative_white_noise_sigma: 0.005
+  relative_drift_sigma: 0.003
+  relative_drift_phi: 0.9995
+  relative_error_clip: 0.025
+  quantization_kw: 0.5
+  source_ids:
+  - S_ETCR8300F
+  - S_IEC62053_22
+  provenance: 仪器误差界内的合成测量情景，不是现场误差分布拟合
+  missingness_provenance: 缺少可公开的目标SCADA丢包分布；沿用稀疏短缺失仅用于稳健性压力测试
+dispatch_calibration:
+  grid:
+    nominal_capacity_kw: 1300.0
+    scenario_capacity_kw:
+    - 1300.0
+    - 900.0
+    - 500.0
+    source_ids:
+    - P_FIELD_2025
+    - I_GRIDASSIST
+    provenance: representative_scenario_design
+  generator:
+    unit_count: 4
+    unit_prime_power_kw: 240.0
+    total_prime_power_kw: 960.0
+    minimum_stable_power_kw_per_unit: 120.0
+    ramp_kw_per_5s_per_unit: 30.0
+    minimum_up_seconds: 60
+    minimum_down_seconds: 30
+    startup_cost_yuan_per_unit: 5.0
+    source_ids:
+    - M_CAT_XQP300
+    - M_CAT_LOW_LOAD
+    - P_CIPEK_2016
+    - H_HOMER_MINLOAD
+    provenance:
+      rating_and_fuel: direct_manufacturer
+      minimum_stable_power: conservative_documented_fuel_curve_floor
+      ramp_and_dwell: engineering_assumption_for_sensitivity
+      startup_cost: engineering_proxy_for_start_fuel_and_wear
+    fuel_curve_50hz:
+      load_fraction:
+      - 0.0
+      - 0.5
+      - 0.75
+      - 1.0
+      liters_per_hour:
+      - 0.0
+      - 33.8
+      - 47.3
+      - 62.5
+  storage:
+    rated_power_kw: 500.0
+    energy_capacity_kwh: 133.0
+    soc_initial: 0.65
+    soc_min: 0.15
+    soc_max: 0.9
+    charge_efficiency: 0.95
+    discharge_efficiency: 0.95
+    source_ids:
+    - P_CHUPIN_2022
+    - P_CIPEK_2016
+    - PAT_CN112736976
+  price:
+    grid_flat_yuan_per_kwh: 0.710425
+    grid_tou_sensitivity_yuan_per_kwh:
+    - 0.390385
+    - 0.710425
+    - 1.030465
+    diesel_yuan_per_l: 7.5
+    storage_degradation_yuan_per_kwh: 0.15
+    storage_degradation_sensitivity_yuan_per_kwh:
+    - 0.05
+    - 0.15
+    - 0.5
+    unserved_energy_penalty_yuan_per_kwh: 100.0
+    unserved_penalty_sensitivity_yuan_per_kwh:
+    - 50.0
+    - 100.0
+    - 500.0
+    source_ids:
+    - E_SHAANXI_202608
+    - E_NDRC_DIESEL_20260828
+    provenance:
+      grid_and_diesel: public_price
+      degradation_and_unserved: engineering_policy_with_mandatory_sensitivity
+stress_test_matrix:
+  measurement_relative_error_clip:
+  - 0.005
+  - 0.025
+  - 0.05
+  missing_block_probability_per_day:
+  - 0.0
+  - 0.35
+  - 1.0
+  generator_ramp_kw_per_5s_per_unit:
+  - 15.0
+  - 30.0
+  - 60.0
+  generator_dwell_seconds:
+  - - 30
+    - 30
+  - - 60
+    - 30
+  - - 300
+    - 300
+  storage_power_kw:
+  - 350.0
+  - 500.0
+  - 650.0
+  storage_energy_kwh:
+  - 117.5
+  - 133.0
+  - 350.0
+  grid_capacity_scale:
+  - 0.75
+  - 1.0
+  - 1.25
+  claim: 这些是稳健性区间，不是特定现场置信区间
+v27_risk_overrides:
+  synthetic_supply:
+    grid_rated_capacity_kw: 1300.0
+    generator_rated_power_kw: 960.0
+    storage_rated_power_kw: 500.0
+v27_unit:
+  unit_id: H05
+  seed: 20261304
+  load: nominal
+  transition: frequent
+  plant: nominal

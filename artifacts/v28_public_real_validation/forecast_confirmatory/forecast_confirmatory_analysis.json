@@ -1,0 +1,33 @@
+{
+  "protocol_id": "V28-B-PUBLIC-ELECTRICAL-JOINT-FORECAST-FROZEN-20260921",
+  "config_sha256_before_test_open": "7e03761ca096a0d7366d268cd5502ffdcb69af1bd5533343bf422c557db139a4",
+  "all_8_datasets_and_3_horizons_present": true,
+  "horizon_summary": {
+    "1": {
+      "datasets": 8,
+      "datasets_beating_persistence": 5,
+      "median_selected_minus_persistence_mase": -0.007789551668151928,
+      "mean_selected_minus_persistence_mase_equal_dataset_weight": -0.004264684901849877
+    },
+    "15": {
+      "datasets": 8,
+      "datasets_beating_persistence": 8,
+      "median_selected_minus_persistence_mase": -0.7850704467125746,
+      "mean_selected_minus_persistence_mase_equal_dataset_weight": -0.7668251833253368
+    },
+    "60": {
+      "datasets": 8,
+      "datasets_beating_persistence": 8,
+      "median_selected_minus_persistence_mase": -1.377678504649328,
+      "mean_selected_minus_persistence_mase_equal_dataset_weight": -1.4409203610985366
+    }
+  },
+  "primary_family": {
+    "horizon_minutes": 1,
+    "datasets_with_holm_significant_improvement": 3,
+    "datasets_with_directional_improvement": 5,
+    "conclusion_rule": "Report dataset-specific effects; no universal-improvement claim unless all eight effects are negative and each Holm-adjusted tail probability < 0.05.",
+    "universal_improvement_supported": false
+  },
+  "claim_boundary": "Cross-domain public electrical forecasting only; not target-rig field forecasting or closed-loop controller validation."
+}

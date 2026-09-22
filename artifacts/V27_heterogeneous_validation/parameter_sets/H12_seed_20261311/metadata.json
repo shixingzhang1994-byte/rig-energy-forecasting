@@ -1,0 +1,12 @@
+{
+  "unit_id": "H12",
+  "seed": 20261311,
+  "load": "high",
+  "transition": "extended",
+  "plant": "joint_stress",
+  "calibration_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H12_seed_20261311/calibration.yaml",
+  "calibration_sha256": "f94e463d4acc7424534a34eeb4fe9b18aedaab0b86593874e9167248af578b03",
+  "dispatch_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H12_seed_20261311/dispatch.yaml",
+  "dispatch_sha256": "6db129a9eece3e003ae6500996dfe9a0687450a4c6ad3ee8213095c1596782ee",
+  "outcomes_used": false
+}

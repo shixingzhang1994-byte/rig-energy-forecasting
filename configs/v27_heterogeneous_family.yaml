@@ -1,0 +1,110 @@
+family:
+  id: V27-HETEROGENEOUS-SIMULATOR-FAMILY-20260916
+  declared_before_any_V27_prospective_outcome: true
+  purpose: test whether V24 reliability effects persist across public-evidence-supported load, transition, and plant parameter changes
+  base_calibration: configs/v14_public_evidence_calibration.yaml
+  base_dispatch: configs/v24_dispatch_matched.yaml
+  evidence_boundary: publicly constrained heterogeneous simulation, not field or HIL validation
+  design: balanced_3_load_by_2_transition_by_2_plant_factorial
+  prohibited_use: do not describe parameter-set units as independent rigs or sites
+
+load_levels:
+  low:
+    overall_acceptance_mean_kw: [550.0, 750.0]
+    overall_acceptance_max_kw: [1200.0, 1500.0]
+    idle: 420.0
+    circulation: 620.0
+    drilling: 920.0
+    connection: 520.0
+    tripping: 520.0
+    maintenance: 370.0
+  nominal:
+    overall_acceptance_mean_kw: [500.0, 850.0]
+    overall_acceptance_max_kw: [1400.0, 2000.0]
+    idle: 450.0
+    circulation: 750.0
+    drilling: 1060.0
+    connection: 650.0
+    tripping: 650.0
+    maintenance: 450.0
+  high:
+    overall_acceptance_mean_kw: [800.0, 1000.0]
+    overall_acceptance_max_kw: [1400.0, 1800.0]
+    idle: 580.0
+    circulation: 930.0
+    drilling: 1130.0
+    connection: 880.0
+    tripping: 830.0
+    maintenance: 580.0
+
+transition_levels:
+  frequent:
+    idle: {duration_minutes: [12, 25]}
+    circulation: {duration_minutes: [25, 55]}
+    drilling: {duration_minutes: [20, 40]}
+    connection: {duration_minutes: [5, 8]}
+    tripping: {duration_minutes: [35, 80]}
+    maintenance: {duration_minutes: [20, 45]}
+  extended:
+    idle: {duration_minutes: [30, 45]}
+    circulation: {duration_minutes: [70, 100]}
+    drilling: {duration_minutes: [50, 70]}
+    connection: {duration_minutes: [9, 12]}
+    tripping: {duration_minutes: [120, 180]}
+    maintenance: {duration_minutes: [60, 90]}
+
+plant_levels:
+  nominal:
+    dispatch_overrides: {}
+    risk_overrides:
+      synthetic_supply:
+        grid_rated_capacity_kw: 1300.0
+        generator_rated_power_kw: 960.0
+        storage_rated_power_kw: 500.0
+  joint_stress:
+    dispatch_overrides:
+      plant:
+        grid: {rated_capacity_kw: 975.0}
+        generator:
+          ramp_kw_per_step: 60.0
+          unit_ramp_kw_per_step: 15.0
+        storage:
+          rated_power_kw: 350.0
+          energy_capacity_kwh: 117.5
+      robust_mpc:
+        generator_startup_delay_steps: 12
+      scenarios:
+        A_stable_drilling: {title: "Scenario A: stable drilling", grid_capacity_kw: 975.0}
+        B_connection_transition: {title: "Scenario B: drilling-to-connection transition", grid_capacity_kw: 675.0}
+        C_tripping_impact: {title: "Scenario C: tripping impact", grid_capacity_kw: 375.0}
+    risk_overrides:
+      synthetic_supply:
+        grid_rated_capacity_kw: 975.0
+        generator_rated_power_kw: 960.0
+        storage_rated_power_kw: 350.0
+        regimes:
+          normal: {grid_capacity_kw: 900.0}
+          constrained: {grid_capacity_kw: 562.5}
+          weak: {grid_capacity_kw: 315.0}
+          emergency: {grid_capacity_kw: 112.5}
+
+development_unit:
+  unit_id: D00
+  seed: 20261100
+  load: nominal
+  transition: frequent
+  plant: nominal
+
+prospective_units:
+  - {unit_id: H01, seed: 20261300, load: low, transition: frequent, plant: nominal}
+  - {unit_id: H02, seed: 20261301, load: low, transition: frequent, plant: joint_stress}
+  - {unit_id: H03, seed: 20261302, load: low, transition: extended, plant: nominal}
+  - {unit_id: H04, seed: 20261303, load: low, transition: extended, plant: joint_stress}
+  - {unit_id: H05, seed: 20261304, load: nominal, transition: frequent, plant: nominal}
+  - {unit_id: H06, seed: 20261305, load: nominal, transition: frequent, plant: joint_stress}
+  - {unit_id: H07, seed: 20261306, load: nominal, transition: extended, plant: nominal}
+  - {unit_id: H08, seed: 20261307, load: nominal, transition: extended, plant: joint_stress}
+  - {unit_id: H09, seed: 20261308, load: high, transition: frequent, plant: nominal}
+  - {unit_id: H10, seed: 20261309, load: high, transition: frequent, plant: joint_stress}
+  - {unit_id: H11, seed: 20261310, load: high, transition: extended, plant: nominal}
+  - {unit_id: H12, seed: 20261311, load: high, transition: extended, plant: joint_stress}

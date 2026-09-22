@@ -1,0 +1,103 @@
+protocol:
+  id: V25-HETEROGENEOUS-VALIDATION-20260916
+  status: aborted_at_pre_freeze_development_gate_after_milp_time_limit
+  artifact_namespace: V25_heterogeneous_validation/confirmatory
+  simulation_days: 21
+  purpose: prospective validation of the frozen V24 controller across a public-evidence-supported heterogeneous simulator family
+  historical_evidence_is_read_only: [V15, V19, V20, V21, V22, V23, V24]
+  development_seed_order: [20261100]
+  prospective_holdout_seed_order: [20261200, 20261201, 20261202, 20261203, 20261204, 20261205, 20261206, 20261207, 20261208, 20261209, 20261210, 20261211]
+  required_eligible_holdouts: 12
+  stopping_rule: all twelve preassigned parameter-set-by-seed units are retained; any upstream-ineligible or technically failed unit makes the heterogeneous validation incomplete
+  eligibility_timing: after input construction but before controller execution and before any controller outcome is inspected
+  analysis_unit: preassigned_parameter_set_by_seed_with_three_scenarios_clustered
+  dispatch_execution_policy: serial full-unit execution with no concurrent benchmark job
+  failed_seed_policy: retain the failure and do not replace the parameter set or seed
+  preparation_exception_policy: retain every unexpected preparation failure
+  prospective_freeze_performed: false
+  prospective_outcomes_generated: false
+  retained_failure_record: artifacts/V25_heterogeneous_validation/development/development_failure.json
+
+heterogeneous_family:
+  definition: configs/v25_heterogeneous_family.yaml
+  materialized_manifest: artifacts/V25_heterogeneous_validation/parameter_sets/manifest.json
+  factor_design: 3_load_levels_by_2_transition_structures_by_2_plant_conditions
+  factors:
+    load: [low, nominal, high]
+    transition: [frequent, extended]
+    plant: [nominal, joint_stress]
+  unit_assignment_frozen_before_outcomes: true
+  controller_retuning_per_unit: false
+  interpretation: simulator parameter-set robustness, not independent rigs, sites, field validation, or HIL
+
+risk_validation_fallback:
+  trigger: no learned candidate passes the frozen validation gates
+  action: set every dispatch-facing risk level to severe for that unit
+  seed_excluded_when_active: false
+  learned_model_certification_claimed_when_active: false
+
+data_boundary:
+  chronological_split: true
+  training_fraction: 0.60
+  validation_fraction: 0.20
+  scenario_calibration_split: validation_only
+  scenario_calibration_source_model: Causal-ErrorFeedback-Ensemble
+  test_targets_permitted_in_scenario_generation: false
+  field_scada_active_power_available: false
+  external_validation_status: heterogeneous_simulation_only
+
+scenario_generation:
+  method: stratified_empirical_complete_horizon_residual_vectors
+  scenario_count: 50
+  probabilities: equal
+  preserve_within_horizon_temporal_dependence: true
+  residual_definition: validation_actual_minus_validation_causal_point_forecast
+  nonnegative_load_floor_kw: 0.0
+  random_seed: 20260916
+  output_mode: generate_only_for_selected_dispatch_windows
+  prohibition: never fit, select, rescale, or rank residual scenarios using test targets
+
+cvar:
+  primary_alpha: 0.90
+  primary_weight: 1.0
+  minimum_effective_tail_scenarios: 5.0
+  risk_adaptive_alpha_by_level: {"0": 0.80, "1": 0.85, "2": 0.90, "3": 0.90}
+  degeneration_gate: reject any setting with fewer than five effective tail atoms
+  report_predicted_cvar_separately_from_realized_cost: true
+
+matched_comparison:
+  methods:
+    - Rule-Based
+    - Persistence-MILP
+    - Point-Forecast-MILP
+    - Fixed-Reserve-MILP
+    - Residual-CVaR-MILP
+    - Risk-Adaptive-Residual-CVaR-MILP
+    - Full-Risk-SOC-Supervisory-MILP
+  primary_contrasts:
+    - Full-Risk-SOC-Supervisory-MILP_minus_Rule-Based_EENS
+    - Full-Risk-SOC-Supervisory-MILP_minus_Point-Forecast-MILP_EENS
+    - Full-Risk-SOC-Supervisory-MILP_minus_Risk-Adaptive-Residual-CVaR-MILP_EENS
+  common_terminal_soc_policy_for_all_milp_methods: true
+
+statistics:
+  primary_family: three_parameter-set-by-seed_level_paired_EENS_contrasts
+  interval: unit_cluster_bootstrap_95_percent
+  exact_test: two_sided_sign_flip
+  multiplicity: Holm_for_three_primary_contrasts
+  required_reporting: [mean, median, IQR, interval, improve_tie_worsen, leave_one_unit_out, factor_breakdown]
+
+hard_gates:
+  all_selected_scenarios_generated_without_test_targets: true
+  all_CVaR_settings_pass_discretization_audit: true
+  all_constraint_audits_pass: true
+  maximum_decision_seconds: 5.0
+  no_unit_removed_or_replaced_after_outcomes: true
+  all_null_adverse_and_failed_results_retained: true
+
+claim_boundary:
+  - The V24 controller and comparison definitions are fixed; V25 does not retune them per parameter set.
+  - Each unit is one preassigned parameter-set-by-seed combination, not a rig or site.
+  - Heterogeneous simulation improves parameter robustness evidence but does not provide field, HIL, voltage, frequency, or safety validation.
+  - A fallback unit remains in all estimates and is not evidence of a certified learned risk classifier.
+  - Reliability effects and realized operating-cost effects are reported separately.

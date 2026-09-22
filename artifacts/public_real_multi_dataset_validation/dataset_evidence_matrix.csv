@@ -1,0 +1,5 @@
+dataset,downloaded,actual_data_analysis,real_process,real_anomaly_labels,measured_total_active_power,paper_role
+Energistics-Well-B,True,True,True,False,False,process/state/transition anchor
+Utah-FORGE-58-32,True,True,True,False,False,independent process and proxy anchor
+Petrobras-3W-2.0.0,True,True,False,True,False,scope audit; excluded from core efficacy
+Equinor-Volve,False,False,True,False,,blocked pending authenticated access

@@ -1,0 +1,15 @@
+{
+  "seed_count": 12,
+  "learned_guard_seed_count": 11,
+  "fallback_seed_count": 1,
+  "fallback_seeds": [
+    20261131
+  ],
+  "learned_guard_macro_f1_mean": 0.7401292443440894,
+  "learned_guard_macro_f1_min": 0.6354685400180045,
+  "learned_guard_high_risk_recall_mean": 0.9911039787434697,
+  "learned_guard_high_risk_recall_min": 0.9835319609967498,
+  "learned_guard_severe_recall_mean": 0.9875075566235182,
+  "learned_guard_severe_recall_min": 0.9776155135264544,
+  "fallback_is_not_certified_learned_risk": true
+}

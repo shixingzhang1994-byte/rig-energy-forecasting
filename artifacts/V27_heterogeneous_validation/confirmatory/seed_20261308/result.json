@@ -1,0 +1,60 @@
+{
+  "seed": 20261308,
+  "phase": "heterogeneous_confirmatory",
+  "retained_regardless_of_outcome_direction": true,
+  "proposed_method": "Full-Risk-SOC-Supervisory-MILP",
+  "technical_checks": {
+    "eligible_before_outcomes": true,
+    "validation_only_residuals": true,
+    "cvar_discretization": true,
+    "constraint_audit": true,
+    "startup_delay_audit": true,
+    "real_time_latency": true,
+    "deadline_audit_completed": true,
+    "no_rejected_deadline_incumbent": true,
+    "accepted_incumbents_independently_feasible": true
+  },
+  "technical_gate_pass": true,
+  "performance_gate_applied": false,
+  "performance_direction": {
+    "Rule-Based": {
+      "delta_eens_kwh": -7.566440272505048,
+      "delta_operating_cost_yuan": 255.04548063691345
+    },
+    "Point-Forecast-MILP": {
+      "delta_eens_kwh": -8.068509736045314,
+      "delta_operating_cost_yuan": 273.14906747426676
+    },
+    "Risk-Adaptive-Residual-CVaR-MILP": {
+      "delta_eens_kwh": 0.011173232285784707,
+      "delta_operating_cost_yuan": 252.39431076604092
+    }
+  },
+  "physical_audit": {
+    "trajectory_count": 21,
+    "max_power_balance_error_kw": 4.547473508864641e-13,
+    "max_grid_capacity_violation_kw": 0.0,
+    "max_generator_capacity_violation_kw": 0.0,
+    "max_storage_capacity_violation_kw": 0.0,
+    "soc_violation_count": 0,
+    "simultaneous_charge_discharge_count": 0,
+    "noninteger_commitment_count": 0,
+    "physical_pass": true
+  },
+  "startup_delay_audit": {
+    "startup_delay_steps": 6,
+    "audited_rows": 7560,
+    "early_synchronization_violations": 0,
+    "pass": true
+  },
+  "reproduction_command": "/home/zsx/miniconda3/envs/qz-rig-energy-ml/bin/python scripts/run_v26_dispatch_benchmark.py --predictions /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/source/forecast/forecast_predictions.npz --prediction-keys /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/source/forecast/forecast_prediction_keys.json --config /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/parameter_sets/H09_seed_20261308/dispatch.yaml --risk-signals /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/risk/risk_predictions.csv --scenario-residuals /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/source/forecast/validation_residual_library.npz --scenario-seed 20261308 --artifact-dir /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/dispatch_matched --deadline-audit /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/dispatch_matched/deadline_audit.json",
+  "deadline_policy_audit": {
+    "call_count": 6480,
+    "deadline_count": 0,
+    "accepted_feasible_incumbent_count": 0,
+    "rejected_deadline_count": 0,
+    "maximum_solver_elapsed_seconds": 2.9168786740010546,
+    "maximum_accepted_incumbent_violation": 0.0
+  },
+  "deadline_audit_path": "artifacts/V27_heterogeneous_validation/confirmatory/seed_20261308/dispatch_matched/deadline_audit.json"
+}

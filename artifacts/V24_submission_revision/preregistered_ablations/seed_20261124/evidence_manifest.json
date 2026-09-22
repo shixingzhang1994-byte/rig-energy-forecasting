@@ -1,0 +1,76 @@
+{
+  "seed": 20261124,
+  "claim_status": "preregistered_exploratory",
+  "inputs": [
+    {
+      "path": "configs/v24_dispatch_matched.yaml",
+      "sha256": "7b4215fa0790b7feebf6f63f2d79370c2be2c01fae4e88aeeb528879abbc9d71"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261124/source/forecast/forecast_predictions.npz",
+      "sha256": "db325a1a0cde51e2c8d3cc803e905882384d3b813687475e3d12d7b357993d81"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261124/source/forecast/forecast_prediction_keys.json",
+      "sha256": "8ae19f8a3b1dcb442f2da5492464b5feaafbd553834e8306f976ccb4acd3debc"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261124/source/forecast/validation_residual_library.npz",
+      "sha256": "53e77ea5bf0e26e60efd5645a360d5c3af20a4a4688c6afa44be8dad12246a5f"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/confirmatory/seed_20261124/risk/risk_predictions.csv",
+      "sha256": "f76210c2c5cfbf108e419866775b42ece2a75ff3e15015b6456b7b6c1258d338"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/dispatch_metrics.csv",
+      "sha256": "d47349e6d240731a2c93c3a236ff74ba6501becad7bcb158e7e811095f5efc4c"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/scenario_selection.json",
+      "sha256": "399c35c497bae5fcdd15d664ef69e41f23abefb0f041f5b8b7adabf6c336af62"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/result.json",
+      "sha256": "4e28bed8a800854a292689441419d7586951533ace07ff830f4a1aafe0135e9a"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_A_stable_drilling_full_fixed_cvar_ablation_milp.csv",
+      "sha256": "00e2b0fe0556ac83465cff0f013f39d30eb5e246a014549461bfc9bae5a32cac"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_A_stable_drilling_full_no_generator_first_ablation_milp.csv",
+      "sha256": "e6a74c0de45ce47e6f6095c21b44d304b9ccafbea0eeccba400b61acc3e9cd14"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_A_stable_drilling_full_point_scenario_ablation_milp.csv",
+      "sha256": "ca9f385e72aad38ea34f7de3c59393e966cc370e7629134ddfe5ebf9da49cf5f"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_B_connection_transition_full_fixed_cvar_ablation_milp.csv",
+      "sha256": "e12c5816abe89dfb9c712600164095d41bd34badfcd3650a43433b7ee035b574"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_B_connection_transition_full_no_generator_first_ablation_milp.csv",
+      "sha256": "9a551715bc811298190b85546f66e794286f24682915ac5c4005f4c3d7b9eef3"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_B_connection_transition_full_point_scenario_ablation_milp.csv",
+      "sha256": "d15a2769102b95db6a14d4ed21cdd802138226782a06c0c6765ceb7f94966dc9"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_C_tripping_impact_full_fixed_cvar_ablation_milp.csv",
+      "sha256": "113c565fb699724b0124b519f14301a11662f707b290e4a08efea487aa9e4519"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_C_tripping_impact_full_no_generator_first_ablation_milp.csv",
+      "sha256": "1e759eafbb36cea3069508e8677454c8ef411210d87c29a8d6a97acb7deba5db"
+    },
+    {
+      "path": "artifacts/V24_submission_revision/preregistered_ablations/seed_20261124/dispatch/trajectory_C_tripping_impact_full_point_scenario_ablation_milp.csv",
+      "sha256": "b544a21a717a36001fc7d88583ff90145f343252abfb72dcb5bcb295ba65642f"
+    }
+  ]
+}

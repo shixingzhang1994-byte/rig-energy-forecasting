@@ -1,0 +1,176 @@
+dispatch:
+  interval_seconds: 5
+  scenario_steps: 360
+  warmup_steps: 120
+plant:
+  grid:
+    rated_capacity_kw: 1300.0
+  generator:
+    rated_power_kw: 960.0
+    minimum_stable_power_kw: 480.0
+    ramp_kw_per_step: 120.0
+    unit_count: 4
+    unit_rated_power_kw: 240.0
+    unit_minimum_stable_power_kw: 120.0
+    unit_ramp_kw_per_step: 30.0
+    minimum_up_steps: 12
+    minimum_down_steps: 6
+  storage:
+    rated_power_kw: 500.0
+    energy_capacity_kwh: 133.0
+    soc_initial: 0.65
+    soc_min: 0.15
+    soc_max: 0.9
+    charge_efficiency: 0.95
+    discharge_efficiency: 0.95
+    low_soc_power_derating_band: 0.05
+    high_soc_power_derating_band: 0.05
+cost:
+  grid_price_yuan_per_kwh: 0.710425
+  diesel_price_yuan_per_l: 7.5
+  storage_degradation_yuan_per_kwh: 0.15
+  unserved_energy_penalty_yuan_per_kwh: 100.0
+  generator_startup_cost_yuan_per_unit: 5.0
+robust_mpc:
+  forecast_model: Causal-ErrorFeedback-Ensemble
+  generator_startup_delay_steps: 6
+  fixed_reserve_kw: 10.0
+  forecast_disagreement_weight: 0.25
+  deterministic_terminal_soc_drop: 0.025
+  robust_terminal_soc_drop: 0.005
+  risk_terminal_soc_drop:
+    '0': 0.002
+    '1': 0.005
+    '2': 0.015
+    '3': 0.03
+  matched_terminal_soc:
+    enabled: true
+    terminal_soc_drop_by_level:
+      '0': 0.005
+      '1': 0.01
+      '2': 0.02
+      '3': 0.03
+scenario_cvar_mpc:
+  forecast_members: []
+  residual_scenario_count: 50
+  minimum_effective_tail_scenarios: 5.0
+  alpha: 0.9
+  weight: 1.0
+  terminal_soc_drop: 0.005
+  risk_adaptive:
+    alpha_by_level:
+      '0': 0.8
+      '1': 0.85
+      '2': 0.9
+      '3': 0.9
+    weight_by_level:
+      '0': 1.0
+      '1': 1.0
+      '2': 1.5
+      '3': 2.0
+    terminal_soc_drop_by_level:
+      '0': 0.005
+      '1': 0.01
+      '2': 0.02
+      '3': 0.03
+    minimum_committed_units_by_level:
+      '0': 0
+      '1': 0
+      '2': 0
+      '3': 0
+    activation_level: 2
+supervisory_mpc:
+  enabled: true
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.3
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+  low_soc_minimum_committed_units: 2
+  low_soc_forecast_deficit_guard_enabled: true
+  low_soc_forecast_deficit_margin_kw: 0.0
+  grid_headroom_reserve_enabled: true
+  grid_headroom_reserve_target_soc: 0.75
+  grid_headroom_reserve_max_storage_power_fraction: 0.2
+  generator_first_storage_reserve_enabled: true
+comparison_methods:
+- Rule-Based
+- Persistence-MILP
+- Point-Forecast-MILP
+- Fixed-Reserve-MILP
+- Residual-CVaR-MILP
+- Risk-Adaptive-Residual-CVaR-MILP
+- Full-Risk-SOC-Supervisory-MILP
+scenarios:
+  A_stable_drilling:
+    title: 'Scenario A: stable drilling'
+    grid_capacity_kw: 1300
+  B_connection_transition:
+    title: 'Scenario B: drilling-to-connection transition'
+    grid_capacity_kw: 900
+  C_tripping_impact:
+    title: 'Scenario C: tripping impact'
+    grid_capacity_kw: 500
+scenario_selection:
+  mode: operation_aligned
+  scenarios:
+    A_stable_drilling:
+      primary_states:
+      - drilling
+      minimum_primary_fraction: 0.9
+      acceptable_supply_regimes:
+      - normal
+      minimum_supply_fraction: 0.6
+      maximum_emergency_fraction: 0.0
+      score: stable
+    B_connection_transition:
+      primary_states:
+      - drilling
+      - connection
+      anchor_states:
+      - connection
+      minimum_primary_fraction: 0.75
+      minimum_anchor_fraction: 0.1
+      acceptable_supply_regimes:
+      - constrained
+      - weak
+      minimum_supply_fraction: 0.5
+      maximum_emergency_fraction: 0.2
+      score: transition
+    C_tripping_impact:
+      primary_states:
+      - tripping
+      minimum_primary_fraction: 0.9
+      acceptable_supply_regimes:
+      - weak
+      - emergency
+      minimum_supply_fraction: 0.5
+      maximum_emergency_fraction: 1.0
+      score: impact
+fuel_model:
+  name: CAT-XQP300-50Hz-prime
+  load_fraction:
+  - 0.0
+  - 0.5
+  - 0.75
+  - 1.0
+  liters_per_hour:
+  - 0.0
+  - 33.8
+  - 47.3
+  - 62.5
+  source: M_CAT_XQP300
+  optimization_form: exact_convex_piecewise_linear_over_50_to_100_percent_unit_load
+  reporting_form: identical_to_optimization_curve
+metadata:
+  version: V27-heterogeneous-family
+  seed: 20260914
+  evidence_scope: publicly constrained synthetic active-power simulation
+  field_or_HIL_validation: false
+  parameter_unit: H07
+  factor_levels:
+    load: nominal
+    transition: extended
+    plant: nominal

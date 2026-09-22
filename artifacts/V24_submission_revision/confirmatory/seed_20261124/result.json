@@ -1,0 +1,48 @@
+{
+  "seed": 20261124,
+  "phase": "confirmatory",
+  "retained_regardless_of_outcome_direction": true,
+  "proposed_method": "Full-Risk-SOC-Supervisory-MILP",
+  "technical_checks": {
+    "eligible_before_outcomes": true,
+    "validation_only_residuals": true,
+    "cvar_discretization": true,
+    "constraint_audit": true,
+    "startup_delay_audit": true,
+    "real_time_latency": true
+  },
+  "technical_gate_pass": true,
+  "performance_gate_applied": false,
+  "performance_direction": {
+    "Rule-Based": {
+      "delta_eens_kwh": -14.080477709222066,
+      "delta_operating_cost_yuan": 164.7025750313669
+    },
+    "Point-Forecast-MILP": {
+      "delta_eens_kwh": -27.54217844370831,
+      "delta_operating_cost_yuan": 220.66432623956075
+    },
+    "Risk-Adaptive-Residual-CVaR-MILP": {
+      "delta_eens_kwh": -10.552342863630685,
+      "delta_operating_cost_yuan": 153.7918755808928
+    }
+  },
+  "physical_audit": {
+    "trajectory_count": 21,
+    "max_power_balance_error_kw": 2.2737367544323206e-13,
+    "max_grid_capacity_violation_kw": 0.0,
+    "max_generator_capacity_violation_kw": 0.0,
+    "max_storage_capacity_violation_kw": 0.0,
+    "soc_violation_count": 0,
+    "simultaneous_charge_discharge_count": 0,
+    "noninteger_commitment_count": 0,
+    "physical_pass": true
+  },
+  "startup_delay_audit": {
+    "startup_delay_steps": 6,
+    "audited_rows": 7560,
+    "early_synchronization_violations": 0,
+    "pass": true
+  },
+  "reproduction_command": "/home/zsx/miniconda3/envs/qz-rig-energy-ml/bin/python scripts/run_v22_dispatch_benchmark.py --predictions /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V24_submission_revision/confirmatory/seed_20261124/source/forecast/forecast_predictions.npz --prediction-keys /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V24_submission_revision/confirmatory/seed_20261124/source/forecast/forecast_prediction_keys.json --config /home/zsx/桌面/QZ/rig-energy-forecasting/configs/v24_dispatch_matched.yaml --risk-signals /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V24_submission_revision/confirmatory/seed_20261124/risk/risk_predictions.csv --scenario-residuals /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V24_submission_revision/confirmatory/seed_20261124/source/forecast/validation_residual_library.npz --scenario-seed 20261124 --artifact-dir /home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V24_submission_revision/confirmatory/seed_20261124/dispatch_matched"
+}

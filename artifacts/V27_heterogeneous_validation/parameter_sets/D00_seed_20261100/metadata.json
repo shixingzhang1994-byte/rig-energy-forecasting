@@ -1,0 +1,12 @@
+{
+  "unit_id": "D00",
+  "seed": 20261100,
+  "load": "nominal",
+  "transition": "frequent",
+  "plant": "nominal",
+  "calibration_path": "artifacts/V27_heterogeneous_validation/parameter_sets/D00_seed_20261100/calibration.yaml",
+  "calibration_sha256": "5db5f82a8d8eb66a315b4293a9966d568dce684365fa482d91eb0a8a040f3538",
+  "dispatch_path": "artifacts/V27_heterogeneous_validation/parameter_sets/D00_seed_20261100/dispatch.yaml",
+  "dispatch_sha256": "62c1e06c944ec84d5843e4151f4f92ee0e17febf5da3084521be53bd5dd35dda",
+  "outcomes_used": false
+}

@@ -1,0 +1,12 @@
+{
+  "unit_id": "H03",
+  "seed": 20261302,
+  "load": "low",
+  "transition": "extended",
+  "plant": "nominal",
+  "calibration_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H03_seed_20261302/calibration.yaml",
+  "calibration_sha256": "7c91f51090f039a96b7b27df8a0cdb0df0f06eee46b357b19aa5d96a8b5230a1",
+  "dispatch_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H03_seed_20261302/dispatch.yaml",
+  "dispatch_sha256": "aeb22c3e19e330933c4d87f14e4bf4a15d5e96057febc9e993b20f98a67f094a",
+  "outcomes_used": false
+}

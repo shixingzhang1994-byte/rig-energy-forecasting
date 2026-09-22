@@ -1,0 +1,129 @@
+protocol:
+  name: v16-expert-remediation-surrogate-preflight
+  status: engineering_preflight_not_acceptance
+  data_claim: mechanistic_synthetic_v15_aligned
+  forbid_field_claim: true
+  interval_seconds: 5
+  random_seed: 20260902
+
+input:
+  data_path: ../data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/11_evaluation_ready_5s.csv.gz
+  manifest_path: ../data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/00_manifest.yaml
+  equipment_path: ../data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/05_equipment_parameters.csv
+  event_path: ../data/V15_rig_industrial_dataset_v2_download/rig_industrial_dataset_v2/03_event_log.csv
+  demand_column: pre_shed_demand_kw
+
+v15_capacity_normalization:
+  source_grid_rated_kw: 1300.0
+  target_grid_rated_kw: 1300.0
+  source_generator_unit_rated_kw: 240.0
+  target_generator_unit_rated_kw: 240.0
+  target_generator_unit_count: 4
+  target_storage_power_kw: 500.0
+  target_storage_soc_min_pct: 15.0
+
+load_priority_placeholder:
+  approval_status: NOT_OPERATIONALLY_APPROVED
+  note: "仅用于验证关键负荷优先算法；必须由目标钻机HAZOP/电气/钻井运行人员签字替换"
+  tier_order: [critical, essential, interruptible]
+  fractions_by_state:
+    idle: [0.70, 0.20, 0.10]
+    circulation: [0.70, 0.20, 0.10]
+    drilling: [0.55, 0.30, 0.15]
+    connection: [0.60, 0.20, 0.20]
+    tripping: [0.65, 0.30, 0.05]
+    maintenance: [0.70, 0.20, 0.10]
+    unknown: [0.70, 0.20, 0.10]
+
+stress_scenarios:
+  base_v15_normalized:
+    grid_capacity_factor: 1.00
+    unavailable_generator_units: 0
+    storage_power_limit_kw: 500.0
+    storage_soc_bias_pct: 0.0
+    load_measurement_factor: 1.00
+    capacity_telemetry_delay_steps: 0
+  grid_derate_25pct:
+    grid_capacity_factor: 0.75
+    unavailable_generator_units: 0
+    storage_power_limit_kw: 500.0
+    storage_soc_bias_pct: 0.0
+    load_measurement_factor: 1.00
+    capacity_telemetry_delay_steps: 0
+  one_generator_unavailable:
+    grid_capacity_factor: 1.00
+    unavailable_generator_units: 1
+    storage_power_limit_kw: 500.0
+    storage_soc_bias_pct: 0.0
+    load_measurement_factor: 1.00
+    capacity_telemetry_delay_steps: 0
+  storage_derate_350kw:
+    grid_capacity_factor: 1.00
+    unavailable_generator_units: 0
+    storage_power_limit_kw: 350.0
+    storage_soc_bias_pct: 0.0
+    load_measurement_factor: 1.00
+    capacity_telemetry_delay_steps: 0
+  joint_extreme:
+    grid_capacity_factor: 0.75
+    unavailable_generator_units: 1
+    storage_power_limit_kw: 350.0
+    storage_soc_bias_pct: -10.0
+    load_measurement_factor: 1.025
+    capacity_telemetry_delay_steps: 3
+
+missingness_retraining_diagnostic:
+  model: XGBoost-missing-aware-multi-horizon-diagnostic
+  claim_boundary: "诊断重训，不代表V15主模型或现场缺失分布"
+  history_steps: 120
+  horizon_steps: 12
+  stride: 5
+  train_fraction: 0.70
+  test_fraction: 0.15
+  device: cuda
+  n_estimators: 220
+  max_depth: 7
+  learning_rate: 0.05
+  subsample: 0.90
+  colsample_bytree: 0.90
+  moderate_mae_degradation_limit_pct: 5.0
+  severe_mae_degradation_limit_pct: 15.0
+  conditions:
+    reference:
+      target_missing_fraction: 0.0
+      block_seconds: [0, 0]
+    moderate_blocks:
+      target_missing_fraction: 0.005
+      block_seconds: [15, 90]
+    severe_blocks:
+      target_missing_fraction: 0.02
+      block_seconds: [30, 180]
+
+statistical_claim_audit:
+  holdout_seeds: [20261011, 20261012]
+  project_method: Risk-SOC-Supervisory-MPC
+  reference_methods: [Rule-Based, ML-Robust-MPC]
+  bootstrap_samples: 100000
+  confidence: 0.95
+
+parameter_evidence_gaps:
+  - {asset: genset, parameter: ramp_up_limit, current_evidence: surrogate_trace_only, required_evidence: target_SCADA_or_OEM_curve, status: OPEN}
+  - {asset: genset, parameter: ramp_down_limit, current_evidence: surrogate_trace_only, required_evidence: target_SCADA_or_OEM_curve, status: OPEN}
+  - {asset: genset, parameter: minimum_on_time, current_evidence: surrogate_trace_only, required_evidence: target_controller_setting, status: OPEN}
+  - {asset: genset, parameter: minimum_off_time, current_evidence: surrogate_trace_only, required_evidence: target_controller_setting, status: OPEN}
+  - {asset: genset, parameter: minimum_stable_power, current_evidence: project_spec_example, required_evidence: target_OEM_or_commissioning_test, status: OPEN}
+  - {asset: genset, parameter: fuel_curve, current_evidence: public_700kW_reference_not_target_240kW, required_evidence: target_OEM_curve_or_fuel_meter, status: OPEN}
+  - {asset: storage, parameter: charge_discharge_efficiency, current_evidence: engineering_assumption, required_evidence: PCS_BMS_test, status: OPEN}
+  - {asset: storage, parameter: usable_energy_and_SOH, current_evidence: public_prototype_plus_surrogate_trace, required_evidence: target_BMS_export, status: OPEN}
+  - {asset: storage, parameter: degradation_coefficients, current_evidence: absent, required_evidence: cell_OEM_curve_plus_cycle_history, status: OPEN}
+  - {asset: storage, parameter: SOC_operating_limits, current_evidence: benchmark_assumption, required_evidence: target_BMS_setting_and_safety_signoff, status: OPEN}
+
+closure_boundary:
+  target_rig_scada: OPEN_EXTERNAL_DEPENDENCY
+  statistical_sota: CLOSED_BY_RESTRICTING_CLAIM_NOT_BY_PROVING_SOTA
+  independent_solver_baseline: PARTIAL_SAFETY_LAYER_HIGHS
+  emergency_load_protection: IMPLEMENTED_SOFTWARE_PLACEHOLDER_NEEDS_HAZOP
+  target_equipment_parameters: OPEN_EXTERNAL_DEPENDENCY
+  missingness_retraining: PARTIAL_DIAGNOSTIC_MODEL
+  joint_extreme: IMPLEMENTED_SURROGATE_SIL
+  hardware_in_loop: OPEN_EXTERNAL_DEPENDENCY

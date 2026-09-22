@@ -1,0 +1,83 @@
+{
+  "protocol_id": "V27-HETEROGENEOUS-VALIDATION-20260916",
+  "status": "validation_calibration_audited_before_V27_controller_outcomes",
+  "residual_source": {
+    "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261301/source/forecast/validation_residual_library.npz",
+    "sha256": "dc7e8891aaaa2bb89216ed7e9bb3a40514e33ae7feeb0639c3035e26faaef2e8",
+    "metadata_path": "/home/zsx/桌面/QZ/rig-energy-forecasting/artifacts/V27_heterogeneous_validation/confirmatory/seed_20261301/source/forecast/validation_residual_library.json",
+    "metadata_sha256": "e22ab4def5362f93646090d2028373d27d289d749a39105f1ee05813e66ba004",
+    "split_name": "validation",
+    "test_targets_used": false,
+    "source_model": "Causal-ErrorFeedback-Ensemble",
+    "sample_count": 54290,
+    "horizon_steps": 12
+  },
+  "protocol": {
+    "path": "/home/zsx/桌面/QZ/rig-energy-forecasting/configs/v27_heterogeneous_validation.yaml",
+    "sha256": "a569d3b8e85802bd5f12d7c670c167dcf72996559b7c8a998f532c4607259ffb"
+  },
+  "scenario_generation": {
+    "method": "stratified_empirical_complete_horizon_residual_vectors",
+    "scenario_count": 50,
+    "random_seed": 20260916,
+    "complete_horizon_vector_sampling": true,
+    "full_scenario_array_persisted": false,
+    "generation_scope": "generate_only_for_selected_dispatch_windows",
+    "probability_sum": 1.0,
+    "smoke_unique_residual_rows": 150
+  },
+  "cvar_discretization_audit": {
+    "scenario_count": 50,
+    "alpha": 0.9,
+    "tail_probability": 0.09999999999999998,
+    "largest_scenario_probability": 0.02,
+    "effective_tail_scenarios": 4.999999999999999,
+    "collapses_to_single_worst_scenario": false,
+    "minimum_effective_tail_scenarios": 5.0
+  },
+  "residual_diagnostics_kw": {
+    "mean": -0.04230063784998586,
+    "standard_deviation": 46.821666179542405,
+    "minimum": -726.90087890625,
+    "maximum": 596.0377197265625,
+    "quantiles": {
+      "q01": -98.11552337646485,
+      "q05": -33.91591796875,
+      "q50": -0.1028594970703125,
+      "q95": 37.65735168457031,
+      "q99": 110.46246856689444
+    },
+    "adjacent_horizon_correlation": 0.879477917494055
+  },
+  "internal_validation_coverage_audit": {
+    "scope": "chronological_first_half_calibration_second_half_evaluation_within_validation_only",
+    "test_targets_used": false,
+    "calibration_sample_count": 27145,
+    "evaluation_sample_count": 27145,
+    "central_80_percent": {
+      "nominal": 0.8,
+      "overall": 0.7945355191256831,
+      "minimum_across_leads": 0.7903112912138516,
+      "maximum_across_leads": 0.7979738441701971
+    },
+    "central_90_percent": {
+      "nominal": 0.8999999999999999,
+      "overall": 0.8955608767728863,
+      "minimum_across_leads": 0.8930189721864064,
+      "maximum_across_leads": 0.8986185301160434
+    },
+    "upper_90_percent_quantile_exceedance": {
+      "nominal": 0.09999999999999998,
+      "overall": 0.0984374040645914,
+      "minimum_across_leads": 0.09563455516669736,
+      "maximum_across_leads": 0.10046048996131884
+    },
+    "upper_95_percent_quantile_exceedance": {
+      "nominal": 0.050000000000000044,
+      "overall": 0.05179898078221895,
+      "minimum_across_leads": 0.04921716706575797,
+      "maximum_across_leads": 0.05452201142015104
+    }
+  },
+  "leakage_gate_pass": true
+}

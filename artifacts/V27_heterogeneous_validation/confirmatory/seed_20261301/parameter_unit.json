@@ -1,0 +1,12 @@
+{
+  "unit_id": "H02",
+  "seed": 20261301,
+  "load": "low",
+  "transition": "frequent",
+  "plant": "joint_stress",
+  "calibration_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H02_seed_20261301/calibration.yaml",
+  "calibration_sha256": "37603d18e1ca5272913ac546420149f08b16591e0f8a1d82a99381058bfdfcd8",
+  "dispatch_path": "artifacts/V27_heterogeneous_validation/parameter_sets/H02_seed_20261301/dispatch.yaml",
+  "dispatch_sha256": "f03a77e0b9f8e103bdbf1b81a8a989ee398ef7edfc5f47267a1f5d472f416ad0",
+  "outcomes_used": false
+}

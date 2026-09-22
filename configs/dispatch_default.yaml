@@ -11,6 +11,13 @@ plant:
     rated_power_kw: 1200
     minimum_stable_power_kw: 240
     ramp_kw_per_step: 120
+    # V7多机组离散约束接口；默认1台保持V2/V3/V5冻结复现口径。
+    unit_count: 1
+    unit_rated_power_kw: 1200
+    unit_minimum_stable_power_kw: 240
+    unit_ramp_kw_per_step: 120
+    minimum_up_steps: 1
+    minimum_down_steps: 1
   storage:
     rated_power_kw: 500
     energy_capacity_kwh: 133
@@ -25,6 +32,7 @@ cost:
   diesel_price_yuan_per_l: 7.50
   storage_degradation_yuan_per_kwh: 0.15
   unserved_energy_penalty_yuan_per_kwh: 100.0
+  generator_startup_cost_yuan_per_unit: 0.0
 
 robust_mpc:
   # 项目预测主链；权重仅由验证集学习，不包含 PatchTST/iTransformer 对手。
@@ -70,6 +78,32 @@ scenario_cvar_mpc:
       "1": 0.010
       "2": 0.020
       "3": 0.030
+    # V8风险可达性接口；默认不强制预启机组，保持冻结版本口径。
+    minimum_committed_units_by_level:
+      "0": 0
+      "1": 0
+      "2": 0
+      "3": 0
+
+# V9单一预声明的风险—SOC监督切换器。默认关闭，不改变冻结版本。
+supervisory_mpc:
+  enabled: false
+  economic_controller: Risk-Adaptive-CVaR-MPC
+  protection_controller: ML-Robust-MPC
+  risk_enter_level: 2
+  risk_exit_level: 1
+  soc_enter: 0.30
+  soc_exit: 0.35
+  exit_dwell_steps: 12
+  # V11低SOC机组承诺保护接口；默认0保持V9冻结口径。
+  low_soc_minimum_committed_units: 0
+  # V12因果缺口门接口；默认关闭，保持V9/V11历史口径。
+  low_soc_forecast_deficit_guard_enabled: false
+  low_soc_forecast_deficit_margin_kw: 0.0
+  # V13网电余量储能储备屏障；参数复用Rule-Based既有75%目标和20%功率。
+  grid_headroom_reserve_enabled: false
+  grid_headroom_reserve_target_soc: 0.75
+  grid_headroom_reserve_max_storage_power_fraction: 0.20
 
 scenarios:
   A_supply_adequate:
