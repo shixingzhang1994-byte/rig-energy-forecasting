@@ -1,0 +1,48 @@
+# Local caches and temporary outputs
+.cache/
+tmp/
+output/
+
+# Raw/local data are represented by frozen manifests, not committed here
+data/
+docs/
+
+# Historical release payloads remain in their existing independent repository
+releases/*
+!releases/README.md
+
+# Paper allowlist: current status, evidence map, and submission inputs only
+paper/*
+!paper/README.md
+!paper/STATUS.md
+!paper/citation_verification.md
+!paper/evidence_register.md
+!paper/highlights.txt
+!paper/submission_blockers.md
+!paper/review/
+paper/review/*
+!paper/review/claims-matrix-v28.md
+!paper/review/citation-check-v28-offline.json
+!paper/review/citation-check-v28-online.json
+!paper/submission/
+paper/submission/*
+!paper/submission/Highlights.docx
+!paper/submission/body.tex
+!paper/submission/cas-common.sty
+!paper/submission/cas-model2-names.bst
+!paper/submission/cas-sc.cls
+!paper/submission/emergency_priority_ablation.png
+!paper/submission/fig02_load_feature_summary_en.png
+!paper/submission/fig03_typical_state_curves_en.png
+!paper/submission/fig04_target_domain_forecast_traces_en.png
+!paper/submission/fig05_target_domain_forecast_metrics_en.png
+!paper/submission/fig07_joint_stress_critical_protection.png
+!paper/submission/main.pdf
+!paper/submission/main.tex
+!paper/submission/refs.bib
+
+# Editor and language caches
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.ruff_cache/

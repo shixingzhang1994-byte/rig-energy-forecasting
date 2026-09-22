@@ -1,0 +1,4 @@
+[submodule "rig-energy-forecasting"]
+	path = rig-energy-forecasting
+	url = git@github.com:shixingzhang1994-byte/rig-energy-forecasting.git
+	branch = main

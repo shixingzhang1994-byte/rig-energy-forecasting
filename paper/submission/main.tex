@@ -1,0 +1,173 @@
+%% Elsevier CAS manuscript for Energy Reports.
+%% Content adapted from the reviewed manuscript revision.
+
+\documentclass[a4paper,fleqn]{cas-sc}
+
+\usepackage[authoryear,longnamesfirst]{natbib}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{calc}
+\setlength{\emergencystretch}{3em}
+
+% CAS 2.4 prints an empty ORCID footnote when no identifiers are supplied.
+% Remove this override if verified ORCID values are later added to the authors.
+\RenewDocumentCommand{\printorcid}{}{}
+
+\providecommand{\tightlist}{}
+\providecommand{\real}[1]{#1}
+% Preserve bibliographic diacritics used by the existing BibTeX database.
+\DeclareRobustCommand{\?}[1]{\u{#1}}
+\DeclareRobustCommand{\>}[1]{\c{#1}}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+\shorttitle{Forecast-informed reserve--SOC supervision}
+\shortauthors{Zhang et al.}
+
+\title[mode = title]{Forecast-informed reserve--SOC supervision for drilling-rig power systems: confirmatory simulation and public real-data checks}
+
+\author[1,2]{Shixing Zhang}
+\cormark[1]
+\fnmark[1]
+\ead{shixingzhang@cnpc.com.cn}
+
+\author[1,2]{Pengchong Wei}
+\fnmark[1]
+
+\author[1,2]{Lei Luo}
+
+\author[1,2]{Pengfei Zhang}
+
+\author[1,2]{Xingjun Yu}
+
+\affiliation[1]{organization={Baoji Oilfield Machinery Co., Ltd.},
+            addressline={Weiyang District},
+            city={Xi'an},
+            postcode={710016},
+            state={Shaanxi},
+            country={China}}
+
+\affiliation[2]{organization={CNPC National Oil and Gas Drilling Equipment Engineering Technology Research Center Co., Ltd.},
+            addressline={Weiyang District},
+            city={Xi'an},
+            postcode={710016},
+            state={Shaanxi},
+            country={China}}
+
+\cortext[1]{Corresponding author.}
+\fntext[1]{Shixing Zhang and Pengchong Wei contributed equally to this work and share first authorship.}
+
+\begin{abstract}
+Abrupt drilling-load transitions can exhaust storage reserve before additional
+diesel generation becomes model-reachable under commitment and ramping constraints.
+We evaluate a reserve--SOC supervisory model predictive control architecture
+(RSS) that couples validation-residual load scenarios, conditional value at
+risk, discrete generator commitment, and storage-reserve supervision. In a
+prospectively frozen 12-seed simulation study, RSS reduces mean expected energy
+not served (EENS) by 5.24 kWh relative to rule-based control, 15.59 kWh relative
+to point-forecast mixed-integer predictive control, and 5.49 kWh relative to
+risk-adaptive residual-CVaR control. Seed-cluster bootstrap 95\% intervals are
+$[-9.43,-1.29]$, $[-21.45,-9.98]$, and $[-8.70,-2.80]$ kWh, respectively; all
+three contrasts remain significant after Holm correction. Mean realized
+operating cost is nevertheless 153.83--280.17 yuan higher, establishing a
+reliability--cost trade-off rather than joint improvement; no equal-cost sweep
+was performed. A public-data audit spans eight dataset families and covers load
+forecasting, BESS behavior, and drilling-process timing. Confirmatory forecasting
+on eight measured electrical series from three dataset families improves on
+persistence for 5/8 series at 1 min and 8/8 at both 15 and 60 min. Two real BESS
+datasets show 95.28--97.98\% power--SOC directional consistency. A pooled
+coarse-state diagnostic for two public drilling records yields shorter dwell
+times than the simulator (median 2 versus 43 min), although 85.39\% of the
+Energistics labels are unknown. The results therefore support a conditional
+reliability advantage in the frozen simulation and bounded real-data component
+checks, but not economic superiority, closed-loop field efficacy, or direct
+transfer of the simulator's temporal assumptions.
+\end{abstract}
+
+\begin{highlights}
+\item Storage-reserve supervision coordinates batteries and model-reachable generation.
+\item Frozen 12-seed tests show lower EENS than three matched references.
+\item Reliability gains require higher realized operating cost.
+\item Real-load tests improve on persistence at 15 and 60 min in 8/8 series.
+\item Real BESS and drilling records expose both support and transfer limits.
+\end{highlights}
+
+\begin{keywords}
+drilling rig power system \sep multi-source energy management \sep battery energy storage \sep model predictive control \sep unit commitment \sep supply reliability
+\end{keywords}
+
+\maketitle
+
+\input{body.tex}
+
+\section*{CRediT authorship contribution statement}
+\noindent\textbf{Shixing Zhang}: Conceptualization, Methodology, Software,
+Formal analysis, Investigation, Visualization, Writing--original draft, Project
+administration.\\
+\textbf{Pengchong Wei}: Methodology, Validation, Investigation, Data curation,
+Writing--review \& editing.\\
+\textbf{Lei Luo}: Resources, Validation, Writing--review \& editing.\\
+\textbf{Pengfei Zhang}: Investigation, Validation, Writing--review \& editing.\\
+\textbf{Xingjun Yu}: Supervision, Project administration, Funding acquisition,
+Resources, Writing--review \& editing.
+
+\section*{Declaration of competing interest}
+All authors are employees of companies affiliated with China National Petroleum
+Corporation (CNPC). The authors declare no other competing financial interests
+or personal relationships that could have influenced the work reported in this
+paper.
+
+\section*{Funding}
+This work was supported by the CNPC Youth Science and Technology Special Project
+[grant number 2026DQ03150]. The funder had no role in the study design, data
+generation, analysis and interpretation, manuscript preparation, or the
+decision to submit the article.
+
+\section*{Data availability}
+The previously archived reproducibility package is available in the public GitHub repository
+at \url{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v1}.
+It contains the permitted mechanistic simulator and data generator, controller
+and experiment configurations, environment specification, the simulated 72~h
+record, selected trajectory-level audit outputs, result manifests, analysis
+scripts, and manuscript sources for the earlier protocol. Large
+development intermediates, duplicate plots, and model weights are excluded as
+documented in the repository README. The version-specific archival snapshot
+(v1.0.0) is available at \url{https://doi.org/10.5281/zenodo.22739760}. The
+package uses the scoped MIT and CC BY 4.0 licenses documented in the repository.
+The V24/V28 configurations, manifests, and derived result tables are versioned
+in the working evidence ledger but are not part of v1.0.0. An updated archival
+release containing these materials is required before submission of the revised
+manuscript and reproducibility artifact; until then, v1.0.0 alone does not
+reproduce the new results.
+The public-data sources are identified by immutable records or
+versioned repositories: REFIT (\url{https://doi.org/10.5281/zenodo.5063428}),
+UCI household power (\url{https://doi.org/10.24432/C58K54}), the Tsukuba
+microgrid (\url{https://doi.org/10.6084/m9.figshare.7403954.v1}), M5BAT Pb1
+(\url{https://doi.org/10.18154/RWTH-2026-06637}), Utah FORGE Well 58-32
+(\url{https://doi.org/10.15121/1495411}), the Energistics Well B example
+(\url{https://energistics.org/sites/default/files/2023-03/NA-NA-EnergisticsWell2016-B.zip}),
+Petrobras 3W at commit \texttt{d717f0aadbe90b6dc6e15e29f6035e9630d22a5e},
+and OpenCEM at commit \texttt{5884d253a5267fb240b7a8df6fa9e4d49a905167}.
+The two repositories are available at \url{https://github.com/petrobras/3W}
+and \url{https://github.com/OpenCEM-platform/opencem-dataset}, respectively.
+Their original
+licenses govern redistribution. The working evidence ledger records source
+URLs, versions, hashes, cleaning rules, and derived one-minute artifacts rather
+than relicensing the raw data.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the
+manuscript preparation process}
+During the preparation of this manuscript, OpenAI Codex was used to assist with
+LaTeX formatting, language and structural editing, and consistency checks. The
+tool was not used as an author and did not determine the reported methods or
+results. After using the tool, the authors reviewed and edited its output and
+take full responsibility for the content of the publication.
+
+\bibliographystyle{cas-model2-names}
+\bibliography{refs}
+
+\end{document}

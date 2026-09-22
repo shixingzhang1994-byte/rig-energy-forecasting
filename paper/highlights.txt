@@ -1,0 +1,4 @@
+Reserve–SOC supervision coordinates grid, diesel generation, and storage.
+Unserved energy falls by 3.27% versus rule-based control over ten holdouts.
+Risk-adjusted operating cost falls by 3.85% versus rule-based control.
+Forecast-error scenarios and SOC supervision both reduce supply shortage.

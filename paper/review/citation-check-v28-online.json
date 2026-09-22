@@ -1,0 +1,622 @@
+{
+  "file": "paper/submission/refs.bib",
+  "checked_at": "2026-09-21T20:59:55Z",
+  "mode": "online",
+  "verdict": "PASS",
+  "verdict_line": "PASS: 50/50 verified, 0 errors, 0 warnings (0 checks skipped)",
+  "skipped_checks": [],
+  "entries": [
+    {
+      "key": "demirci2022transformer",
+      "type": "inproceedings",
+      "line": 4,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1109/iceee55327.2022.9772608",
+        "doi": "10.1109/iceee55327.2022.9772608"
+      },
+      "flags": []
+    },
+    {
+      "key": "wu2024distribution",
+      "type": "article",
+      "line": 16,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.3389/fenrg.2024.1422639",
+        "doi": "10.3389/fenrg.2024.1422639"
+      },
+      "flags": []
+    },
+    {
+      "key": "yager1987dempster",
+      "type": "article",
+      "line": 28,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/0020-0255(87)90007-7",
+        "doi": "10.1016/0020-0255(87)90007-7"
+      },
+      "flags": []
+    },
+    {
+      "key": "denoeux2019decision",
+      "type": "article",
+      "line": 41,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.ijar.2019.03.009",
+        "doi": "10.1016/j.ijar.2019.03.009"
+      },
+      "flags": []
+    },
+    {
+      "key": "jokar2022bilevel",
+      "type": "article",
+      "line": 53,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.egyr.2022.01.137",
+        "doi": "10.1016/j.egyr.2022.01.137"
+      },
+      "flags": []
+    },
+    {
+      "key": "vafamand2020predictive",
+      "type": "article",
+      "line": 65,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.egyr.2019.11.118",
+        "doi": "10.1016/j.egyr.2019.11.118"
+      },
+      "flags": []
+    },
+    {
+      "key": "vergine2022optimal",
+      "type": "article",
+      "line": 77,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.egyr.2022.07.044",
+        "doi": "10.1016/j.egyr.2022.07.044"
+      },
+      "flags": []
+    },
+    {
+      "key": "pavkovic2016oil",
+      "type": "article",
+      "line": 89,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.enconman.2016.05.022",
+        "doi": "10.1016/j.enconman.2016.05.022"
+      },
+      "flags": []
+    },
+    {
+      "key": "zamora2010controls",
+      "type": "article",
+      "line": 101,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.rser.2010.03.019",
+        "doi": "10.1016/j.rser.2010.03.019"
+      },
+      "flags": []
+    },
+    {
+      "key": "meng2016supervisory",
+      "type": "article",
+      "line": 114,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.rser.2016.03.003",
+        "doi": "10.1016/j.rser.2016.03.003"
+      },
+      "flags": []
+    },
+    {
+      "key": "zia2018microgrid",
+      "type": "article",
+      "line": 126,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2018.04.103",
+        "doi": "10.1016/j.apenergy.2018.04.103"
+      },
+      "flags": []
+    },
+    {
+      "key": "hu2021mpcoverview",
+      "type": "article",
+      "line": 138,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.rser.2020.110422",
+        "doi": "10.1016/j.rser.2020.110422"
+      },
+      "flags": []
+    },
+    {
+      "key": "abbasi2023emsreview",
+      "type": "article",
+      "line": 150,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.enconman.2023.117723",
+        "doi": "10.1016/j.enconman.2023.117723"
+      },
+      "flags": []
+    },
+    {
+      "key": "zhang2015smartmicrogrid",
+      "type": "article",
+      "line": 162,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.solener.2015.10.027",
+        "doi": "10.1016/j.solener.2015.10.027"
+      },
+      "flags": []
+    },
+    {
+      "key": "dao2019hierarchical",
+      "type": "article",
+      "line": 174,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.scs.2019.101536",
+        "doi": "10.1016/j.scs.2019.101536"
+      },
+      "flags": []
+    },
+    {
+      "key": "garciatorres2019network",
+      "type": "article",
+      "line": 186,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1109/tie.2018.2826476",
+        "doi": "10.1109/tie.2018.2826476"
+      },
+      "flags": []
+    },
+    {
+      "key": "tobajas2022resilience",
+      "type": "article",
+      "line": 199,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2021.118092",
+        "doi": "10.1016/j.apenergy.2021.118092"
+      },
+      "flags": []
+    },
+    {
+      "key": "franke2020stochasticmilp",
+      "type": "article",
+      "line": 211,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.ifacol.2020.12.2132",
+        "doi": "10.1016/j.ifacol.2020.12.2132"
+      },
+      "flags": []
+    },
+    {
+      "key": "ji2018robustcvar",
+      "type": "article",
+      "line": 223,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.energy.2018.04.037",
+        "doi": "10.1016/j.energy.2018.04.037"
+      },
+      "flags": []
+    },
+    {
+      "key": "huang2019drilling",
+      "type": "article",
+      "line": 235,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.energy.2019.05.157",
+        "doi": "10.1016/j.energy.2019.05.157"
+      },
+      "flags": []
+    },
+    {
+      "key": "chupin2021drillingstorage",
+      "type": "article",
+      "line": 247,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1007/s13202-021-01248-5",
+        "doi": "10.1007/s13202-021-01248-5"
+      },
+      "flags": []
+    },
+    {
+      "key": "rockafellar2000cvar",
+      "type": "article",
+      "line": 260,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.21314/jor.2000.038",
+        "doi": "10.21314/jor.2000.038"
+      },
+      "flags": []
+    },
+    {
+      "key": "lim2021tft",
+      "type": "article",
+      "line": 272,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.ijforecast.2021.03.012",
+        "doi": "10.1016/j.ijforecast.2021.03.012"
+      },
+      "flags": []
+    },
+    {
+      "key": "nie2023patchtst",
+      "type": "misc",
+      "line": 285,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "arXiv",
+        "url": "https://arxiv.org/abs/2211.14730",
+        "doi": null
+      },
+      "flags": []
+    },
+    {
+      "key": "liu2024itransformer",
+      "type": "misc",
+      "line": 295,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "arXiv",
+        "url": "https://arxiv.org/abs/2310.06625",
+        "doi": null
+      },
+      "flags": []
+    },
+    {
+      "key": "onsomu2024bessreview",
+      "type": "article",
+      "line": 305,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1002/eng2.12995",
+        "doi": "10.1002/eng2.12995"
+      },
+      "flags": []
+    },
+    {
+      "key": "pamulapati2023trilemma",
+      "type": "article",
+      "line": 316,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.3390/en16010289",
+        "doi": "10.3390/en16010289"
+      },
+      "flags": []
+    },
+    {
+      "key": "joshal2023mpcreview",
+      "type": "article",
+      "line": 328,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.3390/en16134851",
+        "doi": "10.3390/en16134851"
+      },
+      "flags": []
+    },
+    {
+      "key": "hu2024empc",
+      "type": "article",
+      "line": 340,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1109/tsg.2023.3266253",
+        "doi": "10.1109/tsg.2023.3266253"
+      },
+      "flags": []
+    },
+    {
+      "key": "vasquez2023mpcmultiobjective",
+      "type": "article",
+      "line": 352,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2023.120998",
+        "doi": "10.1016/j.apenergy.2023.120998"
+      },
+      "flags": []
+    },
+    {
+      "key": "pajares2023mpcmethodology",
+      "type": "article",
+      "line": 363,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2023.121809",
+        "doi": "10.1016/j.apenergy.2023.121809"
+      },
+      "flags": []
+    },
+    {
+      "key": "alarcon2023scenariompc",
+      "type": "article",
+      "line": 374,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.segan.2023.101205",
+        "doi": "10.1016/j.segan.2023.101205"
+      },
+      "flags": []
+    },
+    {
+      "key": "zhang2023drcvar",
+      "type": "article",
+      "line": 385,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.segan.2023.101172",
+        "doi": "10.1016/j.segan.2023.101172"
+      },
+      "flags": []
+    },
+    {
+      "key": "sepehrzad2023dcmicrogrid",
+      "type": "article",
+      "line": 396,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.est.2023.109282",
+        "doi": "10.1016/j.est.2023.109282"
+      },
+      "flags": []
+    },
+    {
+      "key": "eren2024stlfreview",
+      "type": "article",
+      "line": 407,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.rser.2023.114031",
+        "doi": "10.1016/j.rser.2023.114031"
+      },
+      "flags": []
+    },
+    {
+      "key": "zhou2021informer",
+      "type": "article",
+      "line": 418,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1609/aaai.v35i12.17325",
+        "doi": "10.1609/aaai.v35i12.17325"
+      },
+      "flags": []
+    },
+    {
+      "key": "esmaeili2023critical",
+      "type": "article",
+      "line": 430,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.jclepro.2022.135490",
+        "doi": "10.1016/j.jclepro.2022.135490"
+      },
+      "flags": []
+    },
+    {
+      "key": "peixoto2024psv",
+      "type": "article",
+      "line": 441,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2023.122476",
+        "doi": "10.1016/j.apenergy.2023.122476"
+      },
+      "flags": []
+    },
+    {
+      "key": "banihabib2023offshore",
+      "type": "article",
+      "line": 452,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.jclepro.2023.138742",
+        "doi": "10.1016/j.jclepro.2023.138742"
+      },
+      "flags": []
+    },
+    {
+      "key": "maslak2024switchedmpc",
+      "type": "article",
+      "line": 463,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.rser.2024.114685",
+        "doi": "10.1016/j.rser.2024.114685"
+      },
+      "flags": []
+    },
+    {
+      "key": "erenoglu2023restoration",
+      "type": "article",
+      "line": 474,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1109/tpwrd.2022.3206272",
+        "doi": "10.1109/tpwrd.2022.3206272"
+      },
+      "flags": []
+    },
+    {
+      "key": "niknami2024resilient",
+      "type": "article",
+      "line": 486,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.clet.2024.100763",
+        "doi": "10.1016/j.clet.2024.100763"
+      },
+      "flags": []
+    },
+    {
+      "key": "wu2023timesnet",
+      "type": "misc",
+      "line": 497,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "arXiv",
+        "url": "https://arxiv.org/abs/2210.02186",
+        "doi": null
+      },
+      "flags": []
+    },
+    {
+      "key": "vivas2025hierarchical",
+      "type": "article",
+      "line": 508,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.ecmx.2025.101027",
+        "doi": "10.1016/j.ecmx.2025.101027"
+      },
+      "flags": []
+    },
+    {
+      "key": "lim2026twolayer",
+      "type": "article",
+      "line": 519,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.ijepes.2025.111516",
+        "doi": "10.1016/j.ijepes.2025.111516"
+      },
+      "flags": []
+    },
+    {
+      "key": "guan2025optimized",
+      "type": "article",
+      "line": 530,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.engappai.2025.111737",
+        "doi": "10.1016/j.engappai.2025.111737"
+      },
+      "flags": []
+    },
+    {
+      "key": "chapaloglou2022datadriven",
+      "type": "article",
+      "line": 540,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2022.118906",
+        "doi": "10.1016/j.apenergy.2022.118906"
+      },
+      "flags": []
+    },
+    {
+      "key": "moretti2019twolayer",
+      "type": "article",
+      "line": 550,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.renene.2019.05.060",
+        "doi": "10.1016/j.renene.2019.05.060"
+      },
+      "flags": []
+    },
+    {
+      "key": "nelson2020realtime",
+      "type": "article",
+      "line": 560,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.apenergy.2020.114963",
+        "doi": "10.1016/j.apenergy.2020.114963"
+      },
+      "flags": []
+    },
+    {
+      "key": "wang2025dualpower",
+      "type": "article",
+      "line": 570,
+      "status": "VERIFIED",
+      "resolved": {
+        "source": "Crossref",
+        "url": "https://doi.org/10.1016/j.segan.2025.101928",
+        "doi": "10.1016/j.segan.2025.101928"
+      },
+      "flags": []
+    }
+  ],
+  "summary": {
+    "total": 50,
+    "verified": 50,
+    "errors": 0,
+    "warnings_only": 0,
+    "warnings_by_flag": {},
+    "unresolved": 0,
+    "retracted": 0,
+    "canonical_instance": 0,
+    "low_relevance": 0,
+    "checks_skipped": 0
+  }
+}

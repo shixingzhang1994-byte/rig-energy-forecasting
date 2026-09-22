@@ -1,0 +1,446 @@
+{
+  "file": "paper/submission/refs.bib",
+  "checked_at": "2026-09-21T20:52:27Z",
+  "mode": "offline",
+  "verdict": "PASS",
+  "verdict_line": "PASS: 0/53 verified, 0 errors, 0 warnings (0 checks skipped)",
+  "skipped_checks": [],
+  "entries": [
+    {
+      "key": "demirci2022transformer",
+      "type": "inproceedings",
+      "line": 4,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "wu2024distribution",
+      "type": "article",
+      "line": 16,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "yager1987dempster",
+      "type": "article",
+      "line": 28,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "denoeux2019decision",
+      "type": "article",
+      "line": 41,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "jokar2022bilevel",
+      "type": "article",
+      "line": 53,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "vafamand2020predictive",
+      "type": "article",
+      "line": 65,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "vergine2022optimal",
+      "type": "article",
+      "line": 77,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "pavkovic2016oil",
+      "type": "article",
+      "line": 89,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "zamora2010controls",
+      "type": "article",
+      "line": 101,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "meng2016supervisory",
+      "type": "article",
+      "line": 114,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "zia2018microgrid",
+      "type": "article",
+      "line": 126,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "hu2021mpcoverview",
+      "type": "article",
+      "line": 138,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "abbasi2023emsreview",
+      "type": "article",
+      "line": 150,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "zhang2015smartmicrogrid",
+      "type": "article",
+      "line": 162,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "dao2019hierarchical",
+      "type": "article",
+      "line": 174,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "garciatorres2019network",
+      "type": "article",
+      "line": 186,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "tobajas2022resilience",
+      "type": "article",
+      "line": 199,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "franke2020stochasticmilp",
+      "type": "article",
+      "line": 211,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "ji2018robustcvar",
+      "type": "article",
+      "line": 223,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "huang2019drilling",
+      "type": "article",
+      "line": 235,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "chupin2021drillingstorage",
+      "type": "article",
+      "line": 247,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "rockafellar2000cvar",
+      "type": "article",
+      "line": 260,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "lim2021tft",
+      "type": "article",
+      "line": 272,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "nie2023patchtst",
+      "type": "misc",
+      "line": 285,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "liu2024itransformer",
+      "type": "misc",
+      "line": 295,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "onsomu2024bessreview",
+      "type": "article",
+      "line": 305,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "pamulapati2023trilemma",
+      "type": "article",
+      "line": 316,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "joshal2023mpcreview",
+      "type": "article",
+      "line": 328,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "hu2024empc",
+      "type": "article",
+      "line": 340,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "vasquez2023mpcmultiobjective",
+      "type": "article",
+      "line": 352,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "pajares2023mpcmethodology",
+      "type": "article",
+      "line": 363,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "alarcon2023scenariompc",
+      "type": "article",
+      "line": 374,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "tereza2023riskaware",
+      "type": "article",
+      "line": 385,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "zhang2023drcvar",
+      "type": "article",
+      "line": 397,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "sepehrzad2023dcmicrogrid",
+      "type": "article",
+      "line": 408,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "eren2024stlfreview",
+      "type": "article",
+      "line": 419,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "zhou2021informer",
+      "type": "article",
+      "line": 430,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "esmaeili2023critical",
+      "type": "article",
+      "line": 442,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "peixoto2024psv",
+      "type": "article",
+      "line": 453,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "banihabib2023offshore",
+      "type": "article",
+      "line": 464,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "maslak2024switchedmpc",
+      "type": "article",
+      "line": 475,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "erenoglu2023restoration",
+      "type": "article",
+      "line": 486,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "niknami2024resilient",
+      "type": "article",
+      "line": 498,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "wu2021autoformer",
+      "type": "inproceedings",
+      "line": 509,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "zhou2022fedformer",
+      "type": "inproceedings",
+      "line": 521,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "wu2023timesnet",
+      "type": "misc",
+      "line": 534,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "vivas2025hierarchical",
+      "type": "article",
+      "line": 545,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "lim2026twolayer",
+      "type": "article",
+      "line": 556,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "guan2025optimized",
+      "type": "article",
+      "line": 567,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "chapaloglou2022datadriven",
+      "type": "article",
+      "line": 577,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "moretti2019twolayer",
+      "type": "article",
+      "line": 587,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "nelson2020realtime",
+      "type": "article",
+      "line": 597,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    },
+    {
+      "key": "wang2025dualpower",
+      "type": "article",
+      "line": 607,
+      "status": "PARSED_ONLY",
+      "resolved": null,
+      "flags": []
+    }
+  ],
+  "summary": {
+    "total": 53,
+    "verified": 0,
+    "errors": 0,
+    "warnings_only": 0,
+    "warnings_by_flag": {},
+    "unresolved": 0,
+    "retracted": 0,
+    "canonical_instance": 0,
+    "low_relevance": 0,
+    "checks_skipped": 0
+  }
+}
