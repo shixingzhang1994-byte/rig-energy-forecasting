@@ -128,21 +128,18 @@ generation, analysis and interpretation, manuscript preparation, or the
 decision to submit the article.
 
 \section*{Data availability}
-The previously archived reproducibility package is available in the public GitHub repository
-at \url{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v1}.
-It contains the permitted mechanistic simulator and data generator, controller
-and experiment configurations, environment specification, the simulated 72~h
-record, selected trajectory-level audit outputs, result manifests, analysis
-scripts, and manuscript sources for the earlier protocol. Large
-development intermediates, duplicate plots, and model weights are excluded as
-documented in the repository README. The version-specific archival snapshot
-(v1.0.0) is available at \url{https://doi.org/10.5281/zenodo.22739760}. The
-package uses the scoped MIT and CC BY 4.0 licenses documented in the repository.
-The V24/V28 configurations, manifests, and derived result tables are versioned
-in the working evidence ledger but are not part of v1.0.0. An updated archival
-release containing these materials is required before submission of the revised
-manuscript and reproducibility artifact; until then, v1.0.0 alone does not
-reproduce the new results.
+The evidence-synchronized V24/V28 source and compact audit package is available
+under the \href{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/v24-v28-reproducibility-20260922}{public archival tag \texttt{v24-v28-reproducibility-20260922}}.
+It fixes the manuscript, configurations, source code, tests, and retained compact
+evidence to immutable Git commits; the code and evidence submodule is pinned to
+\href{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/commit/3499ed37cb93684b90a30926be95400ac3f0a72c}{commit \texttt{3499ed3}}. Raw third-party
+datasets, prepared Parquet files, prediction exports, model weights, and bulk
+trajectory outputs are excluded because of size, licensing, or
+non-authoritative status. Dataset identities, source versions, preparation
+audits, cleaning rules, and retained result summaries are included. The earlier
+V21 package remains separately archived as v1.0.0 at
+\url{https://doi.org/10.5281/zenodo.22739760}; it does not reproduce the V24/V28
+results. A DOI for the V24/V28 package will be added after its archival deposit.
 The public-data sources are identified by immutable records or
 versioned repositories: REFIT (\url{https://doi.org/10.5281/zenodo.5063428}),
 UCI household power (\url{https://doi.org/10.24432/C58K54}), the Tsukuba
@@ -154,10 +151,9 @@ Petrobras 3W at commit \texttt{d717f0aadbe90b6dc6e15e29f6035e9630d22a5e},
 and OpenCEM at commit \texttt{5884d253a5267fb240b7a8df6fa9e4d49a905167}.
 The two repositories are available at \url{https://github.com/petrobras/3W}
 and \url{https://github.com/OpenCEM-platform/opencem-dataset}, respectively.
-Their original
-licenses govern redistribution. The working evidence ledger records source
-URLs, versions, hashes, cleaning rules, and derived one-minute artifacts rather
-than relicensing the raw data.
+Their original licenses govern redistribution. The package records source URLs,
+versions, hashes, cleaning rules, and derived one-minute artifact identities
+rather than relicensing the raw data.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the
 manuscript preparation process}

@@ -1,0 +1,14 @@
+id: energy-reports-2026
+cfp_url: "https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors"
+review:
+  blind: single
+format:
+  template: elsevier-cas
+  documentclass: "\\documentclass[a4paper,fleqn]{cas-sc}"
+  columns: 1
+  required_sections:
+    - coi-declaration
+    - ai-use-acknowledgement
+  keywords: unknown
+tracks:
+  - name: Original Research

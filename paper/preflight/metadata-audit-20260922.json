@@ -1,0 +1,40 @@
+{
+  "manuscript_authors": [
+    "Shixing Zhang",
+    "Pengchong Wei",
+    "Lei Luo",
+    "Pengfei Zhang",
+    "Xingjun Yu"
+  ],
+  "credit_authors": [
+    "Shixing Zhang",
+    "Pengchong Wei",
+    "Lei Luo",
+    "Pengfei Zhang",
+    "Xingjun Yu"
+  ],
+  "cff_authors": [
+    "Shixing Zhang",
+    "Pengchong Wei",
+    "Lei Luo",
+    "Pengfei Zhang",
+    "Xingjun Yu"
+  ],
+  "zenodo_authors": [
+    "Shixing Zhang",
+    "Pengchong Wei",
+    "Lei Luo",
+    "Pengfei Zhang",
+    "Xingjun Yu"
+  ],
+  "author_order_consistent": true,
+  "corresponding_email_present": true,
+  "two_affiliations_present": true,
+  "all_authors_have_both_affiliations": true,
+  "equal_first_authorship_present": true,
+  "coi_present": true,
+  "funding_and_role_present": true,
+  "data_availability_current_tag": true,
+  "ai_disclosure_present": true,
+  "orcid_count": 0
+}
