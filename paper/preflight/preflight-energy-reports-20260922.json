@@ -46,7 +46,7 @@
         "severity": "INFO",
         "check": "abstract/length",
         "file": "main.tex",
-        "line": 64,
+        "line": 63,
         "message": "abstract is 246 words; profile mandates no numeric bound (CS norm is roughly 150-250) \u2014 verify the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors"
       },
       {

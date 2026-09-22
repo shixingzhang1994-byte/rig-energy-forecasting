@@ -16,7 +16,7 @@ note: track: Original Research
 
 -- abstract ------------------------------------------------------------------
    [INFO ] keywords/unknown-style           main.tex — profile keyword style is 'unknown' — no automated format check; verify against the CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
-   [INFO ] abstract/length                  main.tex:64 — abstract is 246 words; profile mandates no numeric bound (CS norm is roughly 150-250) — verify the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
+   [INFO ] abstract/length                  main.tex:63 — abstract is 246 words; profile mandates no numeric bound (CS norm is roughly 150-250) — verify the live CFP: https://www.sciencedirect.com/journal/energy-reports/publish/guide-for-authors
 
 ==============================================================================
 VERDICT: FAIL — fix ERRORs before submitting   (1 error(s), 1 warning(s), 4 info)

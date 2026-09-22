@@ -4,7 +4,7 @@ title: "Forecast-informed reserve-SOC supervision for drilling-rig power systems
 type: software
 version: "V24/V28-baseline-20260922"
 date-released: 2026-09-22
-repository-code: "https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/v24-v28-reproducibility-20260922"
+repository-code: "https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v24-v28"
 authors:
   - family-names: Zhang
     given-names: Shixing
@@ -12,7 +12,9 @@ authors:
     given-names: Pengchong
   - family-names: Luo
     given-names: Lei
-  - family-names: Zhang
-    given-names: Pengfei
-  - family-names: Yu
-    given-names: Xingjun
+  - family-names: Wang
+    given-names: Yilei
+  - family-names: Sun
+    given-names: Yaoze
+  - family-names: Liu
+    given-names: Zhiming
