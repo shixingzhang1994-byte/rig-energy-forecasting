@@ -3,38 +3,51 @@
     "Shixing Zhang",
     "Pengchong Wei",
     "Lei Luo",
-    "Pengfei Zhang",
-    "Xingjun Yu"
+    "Yilei Wang",
+    "Yaoze Sun",
+    "Zhiming Liu"
   ],
   "credit_authors": [
     "Shixing Zhang",
     "Pengchong Wei",
     "Lei Luo",
-    "Pengfei Zhang",
-    "Xingjun Yu"
+    "Yilei Wang",
+    "Yaoze Sun",
+    "Zhiming Liu"
   ],
   "cff_authors": [
     "Shixing Zhang",
     "Pengchong Wei",
     "Lei Luo",
-    "Pengfei Zhang",
-    "Xingjun Yu"
+    "Yilei Wang",
+    "Yaoze Sun",
+    "Zhiming Liu"
   ],
   "zenodo_authors": [
     "Shixing Zhang",
     "Pengchong Wei",
     "Lei Luo",
-    "Pengfei Zhang",
-    "Xingjun Yu"
+    "Yilei Wang",
+    "Yaoze Sun",
+    "Zhiming Liu"
   ],
   "author_order_consistent": true,
   "corresponding_email_present": true,
   "two_affiliations_present": true,
   "all_authors_have_both_affiliations": true,
-  "equal_first_authorship_present": true,
+  "equal_first_authorship_expected": false,
+  "equal_first_authorship_present": false,
+  "sole_first_author": "Shixing Zhang",
+  "sole_corresponding_author": "Shixing Zhang",
+  "author_change_reported_approved_by_project_owner": true,
+  "individual_signed_attestations_verified": false,
+  "removed_authors": [
+    "Pengfei Zhang",
+    "Xingjun Yu"
+  ],
   "coi_present": true,
   "funding_and_role_present": true,
-  "data_availability_current_tag": true,
+  "data_availability_current_package_branch": true,
   "ai_disclosure_present": true,
   "orcid_count": 0
 }

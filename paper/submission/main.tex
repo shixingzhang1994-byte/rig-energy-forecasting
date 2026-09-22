@@ -32,17 +32,17 @@
 
 \author[1,2]{Shixing Zhang}
 \cormark[1]
-\fnmark[1]
 \ead{shixingzhang@cnpc.com.cn}
 
 \author[1,2]{Pengchong Wei}
-\fnmark[1]
 
 \author[1,2]{Lei Luo}
 
-\author[1,2]{Pengfei Zhang}
+\author[1,2]{Yilei Wang}
 
-\author[1,2]{Xingjun Yu}
+\author[1,2]{Yaoze Sun}
+
+\author[1,2]{Zhiming Liu}
 
 \affiliation[1]{organization={Baoji Oilfield Machinery Co., Ltd.},
             addressline={Weiyang District},
@@ -59,7 +59,6 @@
             country={China}}
 
 \cortext[1]{Corresponding author.}
-\fntext[1]{Shixing Zhang and Pengchong Wei contributed equally to this work and share first authorship.}
 
 \begin{abstract}
 Abrupt drilling-load transitions can exhaust storage reserve before additional
@@ -111,8 +110,11 @@ administration.\\
 \textbf{Pengchong Wei}: Methodology, Validation, Investigation, Data curation,
 Writing--review \& editing.\\
 \textbf{Lei Luo}: Resources, Validation, Writing--review \& editing.\\
-\textbf{Pengfei Zhang}: Investigation, Validation, Writing--review \& editing.\\
-\textbf{Xingjun Yu}: Supervision, Project administration, Funding acquisition,
+\textbf{Yilei Wang}: Investigation, Validation, Data curation,
+Writing--review \& editing.\\
+\textbf{Yaoze Sun}: Formal analysis, Visualization, Validation,
+Writing--review \& editing.\\
+\textbf{Zhiming Liu}: Supervision, Project administration, Funding acquisition,
 Resources, Writing--review \& editing.
 
 \section*{Declaration of competing interest}
@@ -129,9 +131,10 @@ decision to submit the article.
 
 \section*{Data availability}
 The evidence-synchronized V24/V28 source and compact audit package is available
-under the \href{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/v24-v28-reproducibility-20260922}{public archival tag \texttt{v24-v28-reproducibility-20260922}}.
-It fixes the manuscript, configurations, source code, tests, and retained compact
-evidence to immutable Git commits; the code and evidence submodule is pinned to
+on the \href{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/tree/reproducibility-package-v24-v28}{public reproducibility-package branch}.
+The final author-approved archival tag and DOI will be added after deposit.
+The package fixes the manuscript, configurations, source code, tests, and retained
+compact evidence to Git commits; the code and evidence submodule is pinned to
 \href{https://github.com/shixingzhang1994-byte/rig-energy-forecasting/commit/3499ed37cb93684b90a30926be95400ac3f0a72c}{commit \texttt{3499ed3}}. Raw third-party
 datasets, prepared Parquet files, prediction exports, model weights, and bulk
 trajectory outputs are excluded because of size, licensing, or
@@ -139,7 +142,7 @@ non-authoritative status. Dataset identities, source versions, preparation
 audits, cleaning rules, and retained result summaries are included. The earlier
 V21 package remains separately archived as v1.0.0 at
 \url{https://doi.org/10.5281/zenodo.22739760}; it does not reproduce the V24/V28
-results. A DOI for the V24/V28 package will be added after its archival deposit.
+results.
 The public-data sources are identified by immutable records or
 versioned repositories: REFIT (\url{https://doi.org/10.5281/zenodo.5063428}),
 UCI household power (\url{https://doi.org/10.24432/C58K54}), the Tsukuba

@@ -2,9 +2,17 @@
 
 Created: 2026-09-22
 
+## Status
+
+**Superseded — do not deposit.** The manuscript author list was subsequently
+changed from five authors to six, shared first authorship was removed, and the
+CRediT allocation was revised. This record and checksum are retained only to
+preserve the audit trail. A new final archive and checksum must be generated
+after a DOI is reserved and inserted into the author-approved files.
+
 ## Immutable sources
 
-- Public archive tag: `v24-v28-reproducibility-20260922`
+- Superseded pre-author-change tag: `v24-v28-reproducibility-20260922`
 - Tag object: `0b3b501788df1136988242eb9b7abcb54a792795`
 - Reproducibility-package commit: `0f9bee6ed535724afefa31483a54cb2d351062e7`
 - Code and evidence submodule commit: `3499ed37cb93684b90a30926be95400ac3f0a72c`
